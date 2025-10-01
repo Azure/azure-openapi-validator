@@ -16,7 +16,7 @@ export const XMSSecretInResponse = (properties: any, _opts: any, ctx: any) => {
         if (properties[prpName]["x-ms-secret"] !== true) {
           errors.push({
             message: `Property '${prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
-            path: [...path, properties, prpName],
+            path: [...path, prpName],
           })
         }
       }

@@ -3,7 +3,7 @@ import linterForRule from "./utils"
 
 let linter: Spectral
 
-const ERROR_MESSAGE = `contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`
+const ERROR_MESSAGE = `Property '{prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`
 beforeAll(async () => {
   linter = await linterForRule("XMSSecretInResponse")
   return linter
@@ -126,18 +126,18 @@ test("XMSSecretInResponse should find errors", () => {
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(6)
-    expect(results[0].message).toContain(ERROR_MESSAGE)
-    expect(results[0].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties")
-    expect(results[1].message).toContain(ERROR_MESSAGE)
-    expect(results[1].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties")
-    expect(results[2].message).toContain(ERROR_MESSAGE)
-    expect(results[2].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.properties.properties")
-    expect(results[3].message).toContain(ERROR_MESSAGE)
-    expect(results[3].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties")
-    expect(results[4].message).toContain(ERROR_MESSAGE)
-    expect(results[4].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.properties.properties")
-    expect(results[5].message).toContain(ERROR_MESSAGE)
-    expect(results[5].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.properties.properties")
+    expect(results[0].message).toBe(ERROR_MESSAGE.replace("{prpName}", "accessKey"))
+    expect(results[0].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.accessKey")
+    expect(results[1].message).toBe(ERROR_MESSAGE.replace("{prpName}", "connection"))
+    expect(results[1].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.connection")
+    expect(results[2].message).toBe(ERROR_MESSAGE.replace("{prpName}", "token"))
+    expect(results[2].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.properties.properties.token")
+    expect(results[3].message).toBe(ERROR_MESSAGE.replace("{prpName}", "key"))
+    expect(results[3].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.key")
+    expect(results[4].message).toBe(ERROR_MESSAGE.replace("{prpName}", "credentials"))
+    expect(results[4].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.properties.properties.credentials")
+    expect(results[5].message).toBe(ERROR_MESSAGE.replace("{prpName}", "secret"))
+    expect(results[5].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.properties.properties.secret")
   })
 })
 
