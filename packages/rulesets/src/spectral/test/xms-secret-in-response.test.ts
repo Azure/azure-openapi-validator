@@ -46,6 +46,70 @@ test("XMSSecretInResponse should find errors", () => {
             "final-state-via": "azure-async-operation",
           },
         },
+        get: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_get",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooRule",
+              },
+            },
+            "201": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooDefinition",
+              },
+            },
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation",
+          },
+        },
+        post: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_post",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooRule",
+              },
+            },
+            "201": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooDefinition",
+              },
+            },
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation",
+          },
+        },
       },
     },
     definitions: {
@@ -125,19 +189,43 @@ test("XMSSecretInResponse should find errors", () => {
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(6)
+    expect(results.length).toBe(18)
     expect(results[0].message).toBe(ERROR_MESSAGE.replace("{prpName}", "accessKey"))
-    expect(results[0].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.accessKey")
+    expect(results[0].path.join(".")).toBe("paths./foo.get.responses.200.schema.properties.accessKey")
     expect(results[1].message).toBe(ERROR_MESSAGE.replace("{prpName}", "connection"))
-    expect(results[1].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.connection")
+    expect(results[1].path.join(".")).toBe("paths./foo.get.responses.200.schema.properties.connection")
     expect(results[2].message).toBe(ERROR_MESSAGE.replace("{prpName}", "token"))
-    expect(results[2].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.properties.properties.token")
+    expect(results[2].path.join(".")).toBe("paths./foo.get.responses.200.schema.properties.properties.properties.token")
     expect(results[3].message).toBe(ERROR_MESSAGE.replace("{prpName}", "key"))
-    expect(results[3].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.key")
+    expect(results[3].path.join(".")).toBe("paths./foo.get.responses.201.schema.properties.key")
     expect(results[4].message).toBe(ERROR_MESSAGE.replace("{prpName}", "credentials"))
-    expect(results[4].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.properties.properties.credentials")
+    expect(results[4].path.join(".")).toBe("paths./foo.get.responses.201.schema.properties.properties.properties.credentials")
     expect(results[5].message).toBe(ERROR_MESSAGE.replace("{prpName}", "secret"))
-    expect(results[5].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.properties.properties.secret")
+    expect(results[5].path.join(".")).toBe("paths./foo.get.responses.201.schema.properties.properties.properties.secret")
+    expect(results[6].message).toBe(ERROR_MESSAGE.replace("{prpName}", "accessKey"))
+    expect(results[6].path.join(".")).toBe("paths./foo.post.responses.200.schema.properties.accessKey")
+    expect(results[7].message).toBe(ERROR_MESSAGE.replace("{prpName}", "connection"))
+    expect(results[7].path.join(".")).toBe("paths./foo.post.responses.200.schema.properties.connection")
+    expect(results[8].message).toBe(ERROR_MESSAGE.replace("{prpName}", "token"))
+    expect(results[8].path.join(".")).toBe("paths./foo.post.responses.200.schema.properties.properties.properties.token")
+    expect(results[9].message).toBe(ERROR_MESSAGE.replace("{prpName}", "key"))
+    expect(results[9].path.join(".")).toBe("paths./foo.post.responses.201.schema.properties.key")
+    expect(results[10].message).toBe(ERROR_MESSAGE.replace("{prpName}", "credentials"))
+    expect(results[10].path.join(".")).toBe("paths./foo.post.responses.201.schema.properties.properties.properties.credentials")
+    expect(results[11].message).toBe(ERROR_MESSAGE.replace("{prpName}", "secret"))
+    expect(results[11].path.join(".")).toBe("paths./foo.post.responses.201.schema.properties.properties.properties.secret")
+    expect(results[12].message).toBe(ERROR_MESSAGE.replace("{prpName}", "accessKey"))
+    expect(results[12].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.accessKey")
+    expect(results[13].message).toBe(ERROR_MESSAGE.replace("{prpName}", "connection"))
+    expect(results[13].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.connection")
+    expect(results[14].message).toBe(ERROR_MESSAGE.replace("{prpName}", "token"))
+    expect(results[14].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.properties.properties.token")
+    expect(results[15].message).toBe(ERROR_MESSAGE.replace("{prpName}", "key"))
+    expect(results[15].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.key")
+    expect(results[16].message).toBe(ERROR_MESSAGE.replace("{prpName}", "credentials"))
+    expect(results[16].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.properties.properties.credentials")
+    expect(results[17].message).toBe(ERROR_MESSAGE.replace("{prpName}", "secret"))
+    expect(results[17].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.properties.properties.secret")
   })
 })
 
@@ -153,6 +241,70 @@ test("XMSSecretInResponse should find no errors", () => {
           parameters: [
             {
               name: "foo_put",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooRule",
+              },
+            },
+            "201": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooDefinition",
+              },
+            },
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation",
+          },
+        },
+        get: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_get",
+              in: "body",
+              schema: {
+                $ref: "#/definitions/FooRequestParams",
+              },
+            },
+          ],
+          responses: {
+            "200": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooRule",
+              },
+            },
+            "201": {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/FooDefinition",
+              },
+            },
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation",
+          },
+        },
+        post: {
+          tags: ["SampleTag"],
+          operationId: "Foo_Update",
+          description: "Test Description",
+          parameters: [
+            {
+              name: "foo_post",
               in: "body",
               schema: {
                 $ref: "#/definitions/FooRequestParams",

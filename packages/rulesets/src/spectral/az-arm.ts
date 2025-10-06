@@ -691,7 +691,7 @@ const ruleset: any = {
       message: "{{error}}",
       severity: "error",
       resolved: true,
-      given: ["$[paths,'x-ms-paths'].*.[put,get].responses.*.schema.properties"],
+      given: ["$[paths,'x-ms-paths'].*.[put,get,post].responses.*.schema.properties"],
       then: {
         function: XMSSecretInResponse,
       },
