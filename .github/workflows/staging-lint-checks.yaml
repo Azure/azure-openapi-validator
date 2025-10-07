@@ -8,7 +8,8 @@ env:
   SPEC_REPO: Azure/azure-rest-api-specs
   SPEC_CHECKOUT_PATH: specs
   FAIL_ON_ERRORS: "false" # Set to "true" to fail the job when error findings appear
-  MAX_READMES: "50"
+  # The runner script expects MAX_FILES (not MAX_READMES) – increase cap as desired
+  MAX_FILES: "50"
 
 jobs:
   run-selected-rules:
@@ -21,6 +22,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+
+      - name: Install script runner dependencies
+        working-directory: .github/scripts
+        run: |
+          npm ci --no-fund --no-audit
 
       - name: Determine rule names (labels first, fallback to body)
         uses: actions/github-script@v7
@@ -75,7 +81,7 @@ jobs:
           RULE_NAMES: ${{ env.RULE_NAMES }}
           SPEC_ROOT: ${{ github.workspace }}/${{ env.SPEC_CHECKOUT_PATH }}
           FAIL_ON_ERRORS: ${{ env.FAIL_ON_ERRORS }}
-          MAX_READMES: ${{ env.MAX_READMES }}
+          MAX_FILES: ${{ env.MAX_FILES }}
           OUTPUT_FILE: ${{ github.workspace }}/artifacts/linter-findings.txt
         run: |
           node .github/scripts/run-autorest-selected-rules.js
