@@ -10,8 +10,6 @@ env:
   FAIL_ON_ERRORS: "false" # Set to "true" to fail the job when error findings appear
   # The runner script expects MAX_FILES (not MAX_READMES) – increase cap as desired
   MAX_FILES: "50"
-  # Allow requiring monorepo-built packages without separate npm install in scripts dir
-  NODE_PATH: ${{ github.workspace }}/packages/rulesets:${{ github.workspace }}/packages/rulesets/dist
 
 jobs:
   run-selected-rules:
@@ -24,9 +22,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-
-      # No separate npm install in .github/scripts to avoid needing a package-lock commit; we load built package via NODE_PATH
-
+          
       - name: Determine rule names (labels first, fallback to body)
         uses: actions/github-script@v7
         with:
