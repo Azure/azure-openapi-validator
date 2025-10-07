@@ -7,8 +7,8 @@ on:
 env:
   SPEC_REPO: Azure/azure-rest-api-specs
   SPEC_CHECKOUT_PATH: specs
-  EXCLUDE_DIRS: '[]' # List of folder substrings to exclude (JSON array), e.g. ["node_modules",".git","specification/common-types"]
-  FAIL_ON_ERRORS: "false" # Set to "true" to fail the job when errors are found
+  FAIL_ON_ERRORS: "false" # Set to "true" to fail the job when error findings appear
+  MAX_READMES: "50"
 
 jobs:
   run-selected-rules:
@@ -58,21 +58,27 @@ jobs:
           repository: ${{ env.SPEC_REPO }}
           path: ${{ env.SPEC_CHECKOUT_PATH }}
 
-      - name: Install runner dependencies
+      - name: Install Rush & dependencies
         run: |
-          npm --version
-          npm init -y
-          npm i @microsoft.azure/openapi-validator-rulesets @stoplight/spectral-core @stoplight/json-ref-resolver js-yaml
+          node common/scripts/install-run-rush.js install
 
-      - name: Run selected rules on specs
+      - name: Build validator (local changes)
+        run: |
+          node common/scripts/install-run-rush.js build -t @microsoft.azure/openapi-validator
+
+      - name: Install AutoRest
+        run: |
+          npm install --no-fund --no-audit autorest@latest
+
+      - name: Run selected rules via AutoRest
         env:
           RULE_NAMES: ${{ env.RULE_NAMES }}
           SPEC_ROOT: ${{ github.workspace }}/${{ env.SPEC_CHECKOUT_PATH }}
-          EXCLUDE_DIRS: ${{ env.EXCLUDE_DIRS }}
           FAIL_ON_ERRORS: ${{ env.FAIL_ON_ERRORS }}
+          MAX_READMES: ${{ env.MAX_READMES }}
           OUTPUT_FILE: ${{ github.workspace }}/artifacts/linter-findings.txt
         run: |
-          node .github/scripts/run-selected-rules.js
+          node .github/scripts/run-autorest-selected-rules.js
 
       - name: Upload findings artifact
         if: always()
