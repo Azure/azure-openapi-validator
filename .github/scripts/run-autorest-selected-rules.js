@@ -120,8 +120,29 @@ function buildSuppressionFile() {
     allRuleNames = ['PostResponseCodes', 'DeleteMustNotHaveRequestBody', 'GetResponseCodes', 'PutResponseCodes'];
   } else {
     try {
-      const { spectralRulesets } = require('@microsoft.azure/openapi-validator-rulesets');
+      // Attempt to load the rulesets from multiple candidate locations so we can
+      // use the locally built package (monorepo) without requiring a published install.
+      const candidates = [
+        '@microsoft.azure/openapi-validator-rulesets',                            // normal resolution (installed dependency or NODE_PATH)
+        path.join(process.cwd(), 'packages', 'rulesets', 'dist'),                 // built dist output
+        path.join(process.cwd(), 'packages', 'rulesets')                          // source root (may export dist via main)
+      ];
+      let mod = null;
+      for (const c of candidates) {
+        try {
+          mod = require(c);
+          console.log(`INFO | Runner | rules | Loaded ruleset module from: ${c}`);
+          break;
+        } catch (_) { /* try next */ }
+      }
+      if (!mod) throw new Error('Unable to resolve ruleset module from candidates');
+
+      // Support both named export and potential default nesting
+      const spectralRulesets = mod.spectralRulesets || (mod.default && mod.default.spectralRulesets) || mod;
       allRuleNames = Object.keys(spectralRulesets?.azARM?.rules || {});
+      if (!allRuleNames.length) {
+        console.warn('WARN | Runner | rules | Zero rules discovered in azARM.rules – verify build step ran');
+      }
     } catch (e) {
       console.error('WARN | Runner | rules | Could not load full rule set:', e.message);
       // Fallback to common rules if package loading fails
