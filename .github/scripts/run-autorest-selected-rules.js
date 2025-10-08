@@ -68,7 +68,7 @@ function env(name, def='') { return (process.env[name]||'').trim() || def; }
 const DESIRED_RULE_NAMES = env('RULE_NAMES');
 const SPEC_ROOT = env('SPEC_ROOT');
 const OUTPUT_FILE = env('OUTPUT_FILE');
-const FAIL_ON_ERRORS = /^true$/i.test(env('FAIL_ON_ERRORS'));
+// const FAIL_ON_ERRORS = /^true$/i.test(env('FAIL_ON_ERRORS'));
 const MAX_FILES = parseInt(env('MAX_FILES')||'100',10);
 const ALLOWED_RPS = (env('ALLOWED_RPS')||'network,compute,monitor,sql,hdinsight,resource,storage').split(',').map(s=>s.trim()).filter(Boolean);
 
