@@ -46,7 +46,49 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
   }
 
   try {
-    const mergedRuleset: IRuleSet = mergeRulesets(Object.values(nativeRulesets))
+    let mergedRuleset: IRuleSet = mergeRulesets(Object.values(nativeRulesets))
+
+    // Minimal addition: support optional --selected-rules (comma/space/semicolon separated)
+    // If not provided, behavior is unchanged.
+    let selectedRaw: string | undefined
+    try {
+      selectedRaw = await initiator.GetValue("selected-rules")
+    } catch {
+      /* ignore */
+    }
+    if (selectedRaw && typeof selectedRaw === "string" && selectedRaw.trim()) {
+      const requested = Array.from(
+        new Set(
+          selectedRaw
+            .split(/[,;\s]/)
+            .map((r) => r.trim())
+            .filter(Boolean),
+        ),
+      )
+      if (requested.length) {
+        const filtered: Record<string, any> = {}
+        const missing: string[] = []
+        for (const name of requested) {
+          if (mergedRuleset.rules[name]) {
+            filtered[name] = mergedRuleset.rules[name]
+          } else {
+            missing.push(name)
+          }
+        }
+        if (Object.keys(filtered).length) {
+          mergedRuleset = { documentationUrl: mergedRuleset.documentationUrl, rules: filtered }
+          initiator.Message({
+            Channel: "information",
+            Text: `openapiValidatorPluginFunc: Running only ${Object.keys(filtered).length} selected rule(s).`,
+          })
+        } else {
+          initiator.Message({ Channel: "warning", Text: `openapiValidatorPluginFunc: No selected rules matched; running full ruleset.` })
+        }
+        if (missing.length) {
+          initiator.Message({ Channel: "warning", Text: `openapiValidatorPluginFunc: Unknown rule name(s): ${missing.join(", ")}` })
+        }
+      }
+    }
 
     const resolvedOpenapiType = getOpenapiType(openapiType)
 

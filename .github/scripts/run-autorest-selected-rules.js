@@ -63,20 +63,6 @@ function collectSpecs() {
   return out;
 }
 
-function getAllRuleNames() {
-  try {
-    const dist = path.join(process.cwd(),'packages','rulesets','dist');
-    const mod = require(dist);
-    const spectralRulesets = mod.spectralRulesets || (mod.default && mod.default.spectralRulesets) || mod;
-    const names = Object.keys(spectralRulesets?.azARM?.rules || {});
-    console.log(`INFO | Runner | rules | Found ${names.length} rules in built ruleset.`);
-    return names;
-  } catch (e) {
-    console.log(`WARN | Runner | rules | Could not load built ruleset: ${e.message}`);
-    return [];
-  }
-}
-
 function runAutorest(specPath) {
   const start = Date.now();
   const rel = path.relative(SPEC_ROOT, specPath).replace(/\\/g,'/');
@@ -84,6 +70,8 @@ function runAutorest(specPath) {
     '--level=warning','--v3','--spectral','--azure-validator',
     '--semantic-validator=false','--model-validator=false',
     '--openapi-type=arm','--openapi-subtype=arm','--message-format=json',
+    // Pass selected rules down to the validator so only those rules execute inside the plugins.
+    `--selected-rules=${SELECTED_RULES.join(',')}`,
     `--use=${path.join(process.cwd(),'packages','azure-openapi-validator','autorest')}`,
     `--input-file=${specPath}` ];
   const res = spawnSync('npm', args, {encoding:'utf8', shell:true});
@@ -111,15 +99,6 @@ function main() {
     return;
   }
   console.log(`INFO | Runner | specs | Processing ${specs.length} file(s)`);
-
-  const allNames = getAllRuleNames();
-  if (allNames.length) {
-    const unknown = SELECTED_RULES.filter(r=>!allNames.includes(r));
-    if (unknown.length) console.log('WARN | Runner | validation | Unknown selected rules:', unknown.join(','));
-    else console.log('INFO | Runner | validation | All selected rules are known');
-  } else {
-    console.log('INFO | Runner | validation | Using runtime rule discovery');
-  }
 
   let errors = 0, warnings = 0; const outLines = [];
   for (const spec of specs) {

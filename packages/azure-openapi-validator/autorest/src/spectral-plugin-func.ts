@@ -49,6 +49,47 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
     rulesetForTypeSpecGeneratedSpecs: Ruleset
   } = await getRulesets(initiator, resolvedOpenapiType, isStagingRun)
 
+  // Minimal optional filtering: disable all spectral rules not in --selected-rules if provided.
+  let selectedRaw: string | undefined
+  try {
+    selectedRaw = await initiator.GetValue("selected-rules")
+  } catch {
+    /* ignore */
+  }
+  if (selectedRaw && selectedRaw.trim()) {
+    const requested = Array.from(
+      new Set(
+        selectedRaw
+          .split(/[,;\s]/)
+          .map((r) => r.trim())
+          .filter(Boolean),
+      ),
+    )
+    if (requested.length) {
+      const apply = (rs: Ruleset, label: string) => {
+        const all = Object.keys(rs.rules)
+        const missing: string[] = []
+        for (const n of all) {
+          if (!requested.includes(n)) {
+            // @ts-ignore internal structure acceptable for in-memory modification
+            const rule = rs.definition.rules[n]
+            if (rule) rule.severity = "off"
+          }
+        }
+        for (const r of requested) if (!all.includes(r)) missing.push(r)
+        initiator.Message({
+          Channel: "information",
+          Text: `spectralPluginFunc: Selected rules active for ${label}: ${requested.length}. Disabled ${all.length - requested.length}.`,
+        })
+        if (missing.length) {
+          initiator.Message({ Channel: "warning", Text: `spectralPluginFunc: Unknown spectral rule name(s): ${missing.join(", ")}` })
+        }
+      }
+      apply(rulesetForManualSpecs, "manual specs")
+      apply(rulesetForTypeSpecGeneratedSpecs, "TypeSpec-generated specs")
+    }
+  }
+
   for (const openApiSpecFile of openApiSpecFiles) {
     await validateOpenApiSpecFileUsingSpectral(
       initiator,
