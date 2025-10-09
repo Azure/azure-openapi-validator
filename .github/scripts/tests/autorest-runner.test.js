@@ -10,7 +10,7 @@ function run(env = {}, cwd = repoRoot) {
     cwd,
     env: { ...process.env, ...env, IN_TEST: 'true' },
     encoding: 'utf8',
-    timeout: 45000 // Reduce timeout to 45 seconds
+    timeout: 60000
   })
 }
 

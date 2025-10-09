@@ -4,21 +4,6 @@
 Simplified AutoRest rule runner
 --------------------------------
 Runs selefunction runAutorest(specFile, suppressFile) {
-  // In test mode, use simpler execution to avoid timeouts
-  if (IN_TEST) {
-    const args = [
-      '--level=warning',
-      '--v3',
-      '--spectral',
-      '--azure-validator',
-      '--message-format=json',
-      `--use=${path.join(process.cwd(),'packages','azure-openapi-validator','autorest')}`,
-      `--config-file=${suppressFile}`,
-      `--input-file=${specFile}`
-    ];
-    return spawnSync('autorest', args, { encoding:'utf8', shell:true, timeout: 15000 });
-  }
-  
   // Production mode - use npm exec for proper package resolution
   const args = [
     'exec','--','autorest',
@@ -112,27 +97,13 @@ function walk(dir, fileCb) {
 // 2. Build suppression config
 function buildSuppressionFile() {
   let allRuleNames = [];
-  try {
-    // Attempt to load the rulesets from multiple candidate locations so we can
-    // use the locally built package (monorepo) without requiring a published install.
-    const candidates = [
-      '@microsoft.azure/openapi-validator-rulesets',                            // normal resolution (installed dependency or NODE_PATH)
-      path.join(process.cwd(), 'packages', 'rulesets', 'dist'),                 // built dist output
-      path.join(process.cwd(), 'packages', 'rulesets')                          // source root (may export dist via main)
-    ];
-    let mod = null;
-    for (const c of candidates) {
-      try {
-        mod = require(c);
-        console.log(`INFO | Runner | rules | Loaded ruleset module from: ${c}`);
-        break;
-      } catch (_) { /* try next */ }
-    }
+  try {  
+    const x = path.join(process.cwd(), 'packages', 'rulesets', 'dist');
+    const mod = require(x);
     if (!mod) throw new Error('Unable to resolve ruleset module from candidates');
-
     // Support both named export and potential default nesting
     const spectralRulesets = mod.spectralRulesets || (mod.default && mod.default.spectralRulesets) || mod;
-    console.log(`INFO | Runner | rules | Found ${spectralRulesets.length} spectralRulesets in total.`);
+    // console.log(`INFO | Runner | rules | Found ${spectralRulesets} spectralRulesets in total.`);
     allRuleNames = Object.keys(spectralRulesets?.azARM?.rules || {});
     console.log(`INFO | Runner | rules | Found ${allRuleNames.length} azARM/allRuleNames rules in total.`);
   } catch (e) {
@@ -173,7 +144,6 @@ function runAutorest(specFile, suppressFile) {
     `--config-file=${suppressFile}`,
     `--input-file=${specFile}`
   ];
-  console.log(`DEBUG | runAutorest | cmd | npm ${args.join(' ')}`);
   const result = spawnSync('npm', args, { encoding:'utf8', shell:true });
   const dur = Date.now() - start;
   if (result.error) {
@@ -218,7 +188,7 @@ function main() {
     console.log(`WARN | Runner | autorest | Found ${spec}: ${msgs.length} issues.`);
     for (const m of msgs) {
       const code = m.code || m.id || 'Unknown';
-      if (!SELECTED_RULES.includes(code)) continue; // Should already be suppressed otherwise
+      // if (!SELECTED_RULES.includes(code)) continue; // Should already be suppressed otherwise
       const level = (m.level||'').toLowerCase();
       const sev = level==='error' ? 'ERROR' : (level==='warning'?'WARN':'INFO');
       if (sev==='ERROR') errors++; else if (sev==='WARN') warns++;

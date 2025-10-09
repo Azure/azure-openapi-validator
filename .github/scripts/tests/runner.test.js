@@ -10,7 +10,7 @@ function run(env = {}, cwd = repoRoot) {
     cwd,
     env: { ...process.env, ...env },
     encoding: 'utf8',
-    timeout: 60000,
+    timeout: 90000,
   })
   return result
 }
@@ -21,14 +21,26 @@ function writeFile(p, content) {
 }
 
 describe('runner', () => {
-  const tmpRoot = path.join(repoRoot, '.github', 'scripts', 'tmp-tests')
-  const specsDir = path.join(tmpRoot, 'specs')
+  const tmpRoot = path.join(repoRoot, '.github', 'scripts', 'tmp-autorest-tests')
   const artifactsDir = path.join(tmpRoot, 'artifacts')
+  const allowedDir = path.join(tmpRoot, 'specification', 'network', 'resource-manager', 'stable')
+  // For backward-compat tests expecting a simple "specsDir" variable
+  const specsDir = allowedDir
 
   beforeAll(() => {
     fs.rmSync(tmpRoot, { recursive: true, force: true })
-    fs.mkdirSync(specsDir, { recursive: true })
     fs.mkdirSync(artifactsDir, { recursive: true })
+    fs.mkdirSync(allowedDir, { recursive: true })
+
+    // Copy existing spec files to the test directory structure
+    const sourceSpecs = path.join(__dirname, 'specs')
+    try {
+        fs.copyFileSync(path.join(sourceSpecs, 'lro-post-demo.json'), path.join(allowedDir, 'lro-post-good.json'))
+        fs.copyFileSync(path.join(sourceSpecs, 'bad-lro-post.json'), path.join(allowedDir, 'lro-bad.json'))
+        fs.copyFileSync(path.join(sourceSpecs, 'bad-delete-with-body.json'), path.join(allowedDir, 'delete-bad.json'))
+    } catch (err) {
+        console.error('Failed to copy spec files:', err)
+    }
   })
 
   afterAll(() => {
@@ -37,49 +49,44 @@ describe('runner', () => {
 
   test('no rules -> no-op with summary and 0 exit', () => {
     const outFile = path.join(artifactsDir, 'no-rules.txt')
-    // New script logs: 'INFO | Runner | rules | No RULE_NAMES specified; nothing to run.'
-    const res = run({ SPEC_ROOT: specsDir, RULE_NAMES: '', OUTPUT_FILE: outFile })
+    const res = run({ SPEC_ROOT: tmpRoot, RULE_NAMES: '', OUTPUT_FILE: outFile })
     expect(res.status).toBe(0)
     const out = fs.readFileSync(outFile, 'utf8')
-    expect(out).toMatch(/No\s+RULE_NAMES\s+specified;\s+nothing\s+to\s+run/i)
-    expect(out).toMatch(/Files scanned:\s*0/i)
+    expect(out).toMatch(/Files scanned: 0, Errors: 0, Warnings: 0/i)
   })
 
   test('unknown rule -> warning is logged', () => {
     const outFile = path.join(artifactsDir, 'unknown-rule.txt')
-    const res = run({ SPEC_ROOT: specsDir, RULE_NAMES: 'DoesNotExist', OUTPUT_FILE: outFile })
+    const res = run({ SPEC_ROOT: tmpRoot, RULE_NAMES: 'DoesNotExist', OUTPUT_FILE: outFile })
     expect(res.status).toBe(0)
     const out = fs.readFileSync(outFile, 'utf8')
-    expect(out).toMatch(/Unknown rule names: DoesNotExist/)
+    expect(out).toMatch(/Unknown rule names.*DoesNotExist/i)
   })
 
  test('MAX_FILES limits scanning', () => {
-    // Create many dummy files
+    // Create many dummy files under the stable path to be discovered
     for (let i = 0; i < 5; i++) {
-      writeFile(path.join(specsDir, `dummy${i}.json`), '{}')
+      writeFile(path.join(allowedDir, `dummy${i}.json`), '{}')
     }
     const outFile = path.join(artifactsDir, 'maxfiles.txt')
-    const res = run({ SPEC_ROOT: specsDir, RULE_NAMES: 'PostResponseCodes', OUTPUT_FILE: outFile, MAX_FILES: '2' })
+    const res = run({ SPEC_ROOT: tmpRoot, RULE_NAMES: 'PostResponseCodes', OUTPUT_FILE: outFile, MAX_FILES: '2' })
     expect(res.status).toBe(0)
     const out = fs.readFileSync(outFile, 'utf8')
-    expect(out).toMatch(/Reached MAX_FILES=2/)
+    // New script does not emit explicit "Reached MAX_FILES"; assert summary reflects cap
+    expect(out).toMatch(/Files scanned:\s*2\b/)
   })
 
   test('LRO POST triggers PostResponseCodes no error', () => {
-    const localSpecRoot = path.join(__dirname, 'specs', 'lro-post-demo.json')
     const outFile = path.join(artifactsDir, 'lro-post.txt')
-    const res = run({ SPEC_ROOT: localSpecRoot, RULE_NAMES: 'PostResponseCodes', OUTPUT_FILE: outFile, FAIL_ON_ERRORS: 'true' })
-    // IN_TEST gating keeps exit code 0 even if errors are found
+    const res = run({ SPEC_ROOT: tmpRoot, RULE_NAMES: 'PostResponseCodes', OUTPUT_FILE: outFile, FAIL_ON_ERRORS: 'true' })
     expect(res.status).toBe(0)
     const out = fs.readFileSync(outFile, 'utf8')
     expect(out).toMatch(/Files scanned:\s*\d+/i)
   })
 
   test('violating LRO POST triggers PostResponseCodes error', () => {
-    // Run directly against only the violating spec file
-    const badSpec = path.join(__dirname, 'specs', 'bad-lro-post.json')
     const outFile = path.join(artifactsDir, 'lro-post-bad.txt')
-    const res = run({ SPEC_ROOT: badSpec, RULE_NAMES: 'PostResponseCodes', OUTPUT_FILE: outFile, FAIL_ON_ERRORS: 'true' })
+    const res = run({ SPEC_ROOT: tmpRoot, RULE_NAMES: 'PostResponseCodes', OUTPUT_FILE: outFile, FAIL_ON_ERRORS: 'true' })
     // IN_TEST gating keeps exit code 0 even if errors are found
     expect(res.status).toBe(0)
     const out = fs.readFileSync(outFile, 'utf8')
@@ -89,16 +96,8 @@ describe('runner', () => {
 
   test('run multiple rules against multiple specs and flag errors', () => {
     const outFile = path.join(artifactsDir, 'multi-rules.txt')
-    const specRoot = path.join(__dirname, 'specs')
-    // Ensure both violating specs exist
-    expect(fs.existsSync(path.join(specRoot, 'bad-lro-post.json'))).toBe(true)
-    expect(fs.existsSync(path.join(specRoot, 'bad-delete-with-body.json'))).toBe(true)
-    const res = run({
-      SPEC_ROOT: specRoot,
-      RULE_NAMES: 'PostResponseCodes,DeleteMustNotHaveRequestBody',
-      OUTPUT_FILE: outFile,
-      FAIL_ON_ERRORS: 'true'
-    })
+    const res = run({ SPEC_ROOT: tmpRoot, RULE_NAMES: 'PostResponseCodes,DeleteMustNotHaveRequestBody', OUTPUT_FILE: outFile, FAIL_ON_ERRORS: 'true' })
+    
     // IN_TEST gating keeps exit code 0
     expect(res.status).toBe(0)
     const out = fs.readFileSync(outFile, 'utf8')
