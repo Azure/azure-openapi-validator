@@ -1447,8 +1447,8 @@ The 200 response model for an ARM PUT operation must have x-ms-azure-resource ex
 
 Please refer to [xms-resource-in-put-response.md](./xms-resource-in-put-response.md) for details.
 
-### XmsResourceInPutResponse
+### XMSSecretInResponse
 
-When defining the response model for an ARM PUT or GET operation, any property that contains sensitive information (such as passwords, keys, tokens, credentials, or other secrets) must include the `"x-ms-secret": true` annotation. This ensures that secrets are properly identified and handled according to ARM security guidelines.
+When defining the response model for an ARM PUT/GET/POST operation, any property that contains sensitive information (such as passwords, keys, tokens, credentials, or other secrets) must include the `"x-ms-secret": true` annotation. This ensures that secrets are properly identified and handled according to ARM security guidelines.
 
 Please refer to [xms-secret-in-response.md](./xms-secret-in-response.md) for details.

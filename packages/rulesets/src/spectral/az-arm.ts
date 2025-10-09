@@ -687,7 +687,7 @@ const ruleset: any = {
     // RPC Code: RPC-Put-V1-13
     XMSSecretInResponse: {
       rpcGuidelineCode: "RPC-Put-V1-13",
-      description: `When defining the response model for an ARM PUT or GET operation, any property that contains sensitive information (such as passwords, keys, tokens, credentials, or other secrets) must include the "x-ms-secret": true annotation. This ensures that secrets are properly identified and handled according to ARM security guidelines.`,
+      description: `When defining the response model for an ARM PUT/GET/POST operation, any property that contains sensitive information (such as passwords, keys, tokens, credentials, or other secrets) must include the "x-ms-secret": true annotation. This ensures that secrets are properly identified and handled according to ARM security guidelines.`,
       message: "{{error}}",
       severity: "error",
       resolved: true,

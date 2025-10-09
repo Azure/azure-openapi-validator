@@ -3,7 +3,7 @@ export const XMSSecretInResponse = (properties: any, _opts: any, ctx: any) => {
     return []
   }
 
-  const secretKeywords = ["access", "credentials", "secret", "password", "key", "token", "auth", "connection"]
+  const secretKeywords = ["access", "credential", "secret", "password", "key", "token", "auth", "connection"]
   const path = ctx.path || []
   const errors: any[] = []
 
