@@ -57,6 +57,7 @@ import { validatePatchBodyParamProperties } from "./functions/validate-patch-bod
 import withXmsResource from "./functions/with-xms-resource"
 import verifyXMSLongRunningOperationProperty from "./functions/xms-long-running-operation-property"
 import xmsPageableForListCalls from "./functions/xms-pageable-for-list-calls"
+import XMSSecretInResponse from "./functions/xms-secret-in-response"
 
 const ruleset: any = {
   extends: [common],
@@ -681,6 +682,18 @@ const ruleset: any = {
       given: ["$[paths,'x-ms-paths'].*.put"],
       then: {
         function: withXmsResource,
+      },
+    },
+    // RPC Code: RPC-Put-V1-13
+    XMSSecretInResponse: {
+      rpcGuidelineCode: "RPC-Put-V1-13",
+      description: `When defining the response model for an ARM PUT/GET/POST operation, any property that contains sensitive information (such as passwords, keys, tokens, credentials, or other secrets) must include the "x-ms-secret": true annotation. This ensures that secrets are properly identified and handled according to ARM security guidelines.`,
+      message: "{{error}}",
+      severity: "error",
+      resolved: true,
+      given: ["$[paths,'x-ms-paths'].*.[put,get,post].responses.*.schema.properties"],
+      then: {
+        function: XMSSecretInResponse,
       },
     },
     // RPC Code: RPC-Put-V1-14
