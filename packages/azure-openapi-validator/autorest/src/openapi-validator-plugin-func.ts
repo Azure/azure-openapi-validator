@@ -73,14 +73,19 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
             missingRuleNames.push(ruleName)
           }
         }
-        if (Object.keys(filteredRules).length) {
-          mergedRuleset = { documentationUrl: mergedRuleset.documentationUrl, rules: filteredRules }
+        // Always use filtered ruleset (even if empty) to avoid running unselected rules
+        mergedRuleset = { documentationUrl: mergedRuleset.documentationUrl, rules: filteredRules }
+        const matchedCount = Object.keys(filteredRules).length
+        if (matchedCount > 0) {
           initiator.Message({
             Channel: "information",
-            Text: `openapiValidatorPluginFunc: Running only ${Object.keys(filteredRules).length} selected rule(s).`,
+            Text: `openapiValidatorPluginFunc: Running only ${matchedCount} selected rule(s).`,
           })
         } else {
-          initiator.Message({ Channel: "warning", Text: `openapiValidatorPluginFunc: No selected rules matched; running full ruleset.` })
+          initiator.Message({
+            Channel: "information",
+            Text: `openapiValidatorPluginFunc: No selected rules matched; skipping native validation.`,
+          })
         }
         if (missingRuleNames.length) {
           initiator.Message({
