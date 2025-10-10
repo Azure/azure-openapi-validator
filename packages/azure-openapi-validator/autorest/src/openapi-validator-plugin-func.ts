@@ -47,45 +47,46 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
 
   try {
     let mergedRuleset: IRuleSet = mergeRulesets(Object.values(nativeRulesets))
-
-    // Minimal addition: support optional --selected-rules (comma/space/semicolon separated)
-    // If not provided, behavior is unchanged.
-    let selectedRaw: string | undefined
+    let selectedRulesFilter: string | undefined
     try {
-      selectedRaw = await initiator.GetValue("selected-rules")
+      selectedRulesFilter = await initiator.GetValue("selected-rules")
     } catch {
       /* ignore */
     }
-    if (selectedRaw && typeof selectedRaw === "string" && selectedRaw.trim()) {
-      const requested = Array.from(
+
+    if (selectedRulesFilter && typeof selectedRulesFilter === "string" && selectedRulesFilter.trim()) {
+      const requestedRuleNames = Array.from(
         new Set(
-          selectedRaw
+          selectedRulesFilter
             .split(/[,;\s]/)
             .map((r) => r.trim())
             .filter(Boolean),
         ),
       )
-      if (requested.length) {
-        const filtered: Record<string, any> = {}
-        const missing: string[] = []
-        for (const name of requested) {
-          if (mergedRuleset.rules[name]) {
-            filtered[name] = mergedRuleset.rules[name]
+      if (requestedRuleNames.length) {
+        const filteredRules: Record<string, any> = {}
+        const missingRuleNames: string[] = []
+        for (const ruleName of requestedRuleNames) {
+          if (mergedRuleset.rules[ruleName]) {
+            filteredRules[ruleName] = mergedRuleset.rules[ruleName]
           } else {
-            missing.push(name)
+            missingRuleNames.push(ruleName)
           }
         }
-        if (Object.keys(filtered).length) {
-          mergedRuleset = { documentationUrl: mergedRuleset.documentationUrl, rules: filtered }
+        if (Object.keys(filteredRules).length) {
+          mergedRuleset = { documentationUrl: mergedRuleset.documentationUrl, rules: filteredRules }
           initiator.Message({
             Channel: "information",
-            Text: `openapiValidatorPluginFunc: Running only ${Object.keys(filtered).length} selected rule(s).`,
+            Text: `openapiValidatorPluginFunc: Running only ${Object.keys(filteredRules).length} selected rule(s).`,
           })
         } else {
           initiator.Message({ Channel: "warning", Text: `openapiValidatorPluginFunc: No selected rules matched; running full ruleset.` })
         }
-        if (missing.length) {
-          initiator.Message({ Channel: "warning", Text: `openapiValidatorPluginFunc: Unknown rule name(s): ${missing.join(", ")}` })
+        if (missingRuleNames.length) {
+          initiator.Message({
+            Channel: "warning",
+            Text: `openapiValidatorPluginFunc: Unknown rule name(s): ${missingRuleNames.join(", ")}`,
+          })
         }
       }
     }
