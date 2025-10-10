@@ -105,7 +105,14 @@ function main() {
     const res = runAutorest(spec);
     if (res.error) { console.log(`WARN | Runner | autorest | Failed ${spec}: ${res.error.message}`); continue; }
     const messages = parseMessages(res.stdout||'', res.stderr||'');
-    console.log(`WARN | Runner | autorest | Found ${spec}: ${messages.length} issues.`);
+    console.log(`INFO | Runner | autorest | Found ${messages.length} message(s) for ${path.relative(SPEC_ROOT,spec).replace(/\\/g,'/')}`);
+    
+    // Log each message for debugging
+    messages.forEach((m, idx) => {
+      const code = m.code || m.id || 'Unknown';
+      const level = (m.level||'').toLowerCase();
+      console.log(`DEBUG | Runner | message[${idx}] | code=${code} level=${level} msg="${(m.message||'').substring(0,80)}${m.message&&m.message.length>80?'...':''}"`)
+    });
   
     for (const m of messages) {
       const code = m.code || m.id || 'Unknown';
