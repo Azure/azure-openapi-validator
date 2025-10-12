@@ -1,8 +1,4 @@
 {
-  "jest.rootPath": ".github/scripts",
-  "jest.jestCommandLine": "npm test --",
-  "jest.enableInlineErrorMessages": true,
-  "jest.autoRun": "off",
   "[typescript]": {
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,

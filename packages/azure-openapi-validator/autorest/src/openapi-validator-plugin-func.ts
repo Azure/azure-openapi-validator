@@ -77,9 +77,10 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
         mergedRuleset = { documentationUrl: mergedRuleset.documentationUrl, rules: filteredRules }
         const matchedCount = Object.keys(filteredRules).length
         if (matchedCount > 0) {
+          const matchedRuleNames = Object.keys(filteredRules)
           initiator.Message({
             Channel: "information",
-            Text: `openapiValidatorPluginFunc: Running only ${matchedCount} selected rule(s).`,
+            Text: `openapiValidatorPluginFunc: Running only ${matchedCount} selected native rule(s): ${matchedRuleNames.join(", ")}`,
           })
         } else {
           initiator.Message({
@@ -87,10 +88,10 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
             Text: `openapiValidatorPluginFunc: No selected rules matched; skipping native validation.`,
           })
         }
-        if (missingRuleNames.length) {
+        if (missingRuleNames.length > 0) {
           initiator.Message({
-            Channel: "warning",
-            Text: `openapiValidatorPluginFunc: Unknown rule name(s): ${missingRuleNames.join(", ")}`,
+            Channel: "information",
+            Text: `openapiValidatorPluginFunc: Unknown native rule name(s): ${missingRuleNames.join(", ")}`,
           })
         }
       }

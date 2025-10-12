@@ -101,16 +101,41 @@ async function getRulesets(
   if (selectedRulesFilter) {
     const selectedRuleNames = new Set(selectedRulesFilter.split(",").map((r: string) => r.trim()))
     const filteredRules: any = {}
+    const matchedRuleNames: string[] = []
+    const unmatchedRuleNames: string[] = []
 
-    for (const ruleName of Object.keys(rulesetPayload.rules)) {
-      if (selectedRuleNames.has(ruleName)) {
-        filteredRules[ruleName] = rulesetPayload.rules[ruleName]
+    for (const requestedRuleName of selectedRuleNames) {
+      if (rulesetPayload.rules[requestedRuleName]) {
+        filteredRules[requestedRuleName] = rulesetPayload.rules[requestedRuleName]
+        matchedRuleNames.push(requestedRuleName)
+      } else {
+        unmatchedRuleNames.push(requestedRuleName)
       }
     }
 
     rulesetPayload.rules = filteredRules
     // Also clear the extends array to prevent Spectral from loading additional rulesets
     rulesetPayload.extends = []
+
+    // Log filtering activity
+    if (matchedRuleNames.length > 0) {
+      initiator.Message({
+        Channel: "information",
+        Text: `spectralPluginFunc: Running only ${matchedRuleNames.length} selected spectral rule(s): ${matchedRuleNames.join(", ")}`,
+      })
+    } else {
+      initiator.Message({
+        Channel: "information",
+        Text: `spectralPluginFunc: No selected rules matched; skipping spectral validation.`,
+      })
+    }
+
+    if (unmatchedRuleNames.length > 0) {
+      initiator.Message({
+        Channel: "information",
+        Text: `spectralPluginFunc: Unknown spectral rule name(s): ${unmatchedRuleNames.join(", ")}`,
+      })
+    }
   }
 
   // We need two of rulesetPayloads:
