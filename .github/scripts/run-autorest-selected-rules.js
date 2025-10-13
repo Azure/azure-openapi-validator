@@ -123,16 +123,6 @@ function main() {
     if (res.error) { console.log(`WARN | Runner | autorest | Failed ${spec}: ${res.error.message}`); continue; }
     const messages = parseMessages(res.stdout||'', res.stderr||'');
     console.log(`INFO | Runner | autorest | Found ${messages.length} message(s) for ${path.relative(SPEC_ROOT,spec).replace(/\\/g,'/')}`);
-    
-    // Log each message for debugging (skip "Unknown rule name" warnings from other plugin)
-    messages.forEach((m, idx) => {
-      const code = m.code || m.id || 'Unknown';
-      const level = (m.level||'').toLowerCase();
-      const msg = m.message || '';
-      // Skip informational warnings about unknown rule names (cross-plugin noise)
-      if (msg.includes('Unknown rule name')) return;
-      console.log(`DEBUG | Runner | message[${idx}] | code=${code} level=${level} msg="${msg.substring(0,80)}${msg.length>80?'...':''}"`)
-    });
   
     for (const m of messages) {
       const code = m.code || m.id || 'Unknown';
@@ -141,13 +131,14 @@ function main() {
       const sev = level==='error' ? 'ERROR' : (level==='warning' ? 'WARN' : 'INFO');
       if (sev==='ERROR') errors++; else if (sev==='WARN') warnings++;
       
-      // Handle source file - may be string or object with path property
-      const rawSrc = m.source || m.file || '';
-      const src = (typeof rawSrc === 'string' ? rawSrc : (rawSrc.path || rawSrc.document || '')).replace(/\\/g, '/');
+      // Extract location information - try multiple possible fields
+      const line = m.line ?? m.range?.start?.line ?? m.position?.line ?? null;
+      const column = m.column ?? m.range?.start?.character ?? m.position?.character ?? null;
+      const loc = line != null ? `${line}:${column != null ? column : 1}` : '';
       
-      const loc = m.line!=null ? `${m.line}:${m.column!=null?m.column:1}` : '';
-      const jp = m.jsonpath ? (Array.isArray(m.jsonpath)?m.jsonpath.join('.') : m.jsonpath) : '';
-      outLines.push(`${sev} | ${code} | ${path.relative(SPEC_ROOT,spec).replace(/\\/g,'/')}${src? ' -> '+src : ''}${loc? ':'+loc:''}${jp? ' @ '+jp:''} | ${m.message||''}`.trim());
+      // Extract JSON path information
+      const jp = m.jsonpath ? (Array.isArray(m.jsonpath) ? m.jsonpath.join('.') : m.jsonpath) : '';
+      outLines.push(`${sev} | ${code} | ${path.relative(SPEC_ROOT,spec).replace(/\\/g,'/')}${loc? ':'+loc : ''}${jp? ' @ '+jp : ''} | ${m.message||''}`.trim());
     }
   }
   outLines.forEach(l=>console.log(l));
