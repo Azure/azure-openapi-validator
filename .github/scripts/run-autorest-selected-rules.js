@@ -140,7 +140,11 @@ function main() {
       const level = (m.level||'').toLowerCase();
       const sev = level==='error' ? 'ERROR' : (level==='warning' ? 'WARN' : 'INFO');
       if (sev==='ERROR') errors++; else if (sev==='WARN') warnings++;
-      const src = String(m.file||m.source||'').replace(/\\/g,'/');
+      
+      // Handle source file - may be string or object with path property
+      const rawSrc = m.source || m.file || '';
+      const src = (typeof rawSrc === 'string' ? rawSrc : (rawSrc.path || rawSrc.document || '')).replace(/\\/g, '/');
+      
       const loc = m.line!=null ? `${m.line}:${m.column!=null?m.column:1}` : '';
       const jp = m.jsonpath ? (Array.isArray(m.jsonpath)?m.jsonpath.join('.') : m.jsonpath) : '';
       outLines.push(`${sev} | ${code} | ${path.relative(SPEC_ROOT,spec).replace(/\\/g,'/')}${src? ' -> '+src : ''}${loc? ':'+loc:''}${jp? ' @ '+jp:''} | ${m.message||''}`.trim());
