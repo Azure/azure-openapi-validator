@@ -36,6 +36,7 @@ jobs:
             specification/hdinsight
             specification/resource
             specification/storage
+            .github/shared
           sparse-checkout-cone-mode: false
 
       - name: Install Rush & dependencies
