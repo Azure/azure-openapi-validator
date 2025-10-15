@@ -9,8 +9,6 @@ env:
   SPEC_CHECKOUT_PATH: specs
   FAIL_ON_ERRORS: "false" # Set to "true" to fail the job when error findings appear
   MAX_FILES: "100"
-  # Resource providers to scan (sparse checkout optimization)
-  # Can be overridden to test specific RPs. Matches run-autorest-selected-rules.js defaults
   ALLOWED_RPS: "network,compute,monitor,sql,hdinsight,resource,storage"
 
 jobs:
@@ -25,28 +23,20 @@ jobs:
         with:
           node-version: 22
           
-      - name: Determine rule names (labels first, fallback to body)
-        env:
-          PR_LABELS: ${{ toJson(github.event.pull_request.labels.*.name) }}
-          PR_BODY: ${{ github.event.pull_request.body }}
-        run: |
-          RULE_NAMES=$(node .github/scripts/extract-rule-names.js)
-          echo "RULE_NAMES=${RULE_NAMES}" >> $GITHUB_ENV
-          echo "Selected rules: ${RULE_NAMES:-<none>}"
-
       - name: Checkout specs repository (sparse - only needed RPs)
-        run: |
-          # Sparse checkout to avoid cloning the entire specs repo (~1GB+)
-          # Only fetch specification folders for tested resource providers
-          git clone --filter=blob:none --sparse --depth=1 \
-            https://github.com/${{ env.SPEC_REPO }}.git \
-            ${{ env.SPEC_CHECKOUT_PATH }}
-          
-          # Configure sparse checkout - directly pass comma-separated list converted to paths
-          git -C ${{ env.SPEC_CHECKOUT_PATH }} sparse-checkout set \
-            $(echo "${{ env.ALLOWED_RPS }}" | tr ',' '\n' | sed 's|^|specification/|')
-          
-          echo "Sparse checkout configured for RPs: ${{ env.ALLOWED_RPS }}"
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SPEC_REPO }}
+          path: ${{ env.SPEC_CHECKOUT_PATH }}
+          sparse-checkout: |
+            specification/network
+            specification/compute
+            specification/monitor
+            specification/sql
+            specification/hdinsight
+            specification/resource
+            specification/storage
+          sparse-checkout-cone-mode: false
 
       - name: Install Rush & dependencies
         run: |
@@ -56,20 +46,12 @@ jobs:
         run: |
           node common/scripts/install-run-rush.js build -t @microsoft.azure/openapi-validator
 
-      - name: Install AutoRest
-        run: |
-          npm install --no-fund --no-audit autorest@latest
-
-      - name: Run selected rules via AutoRest
-        env:
-          RULE_NAMES: ${{ env.RULE_NAMES }}
-          SPEC_ROOT: ${{ github.workspace }}/${{ env.SPEC_CHECKOUT_PATH }}
-          FAIL_ON_ERRORS: ${{ env.FAIL_ON_ERRORS }}
-          MAX_FILES: ${{ env.MAX_FILES }}
-          ALLOWED_RPS: ${{ env.ALLOWED_RPS }}
-          OUTPUT_FILE: ${{ github.workspace }}/artifacts/linter-findings.txt
-        run: |
-          node .github/scripts/run-autorest-selected-rules.js
+      - name: Extract rules and run AutoRest validation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { runInGitHubActions } = await import('./.github/workflows/src/extract-rule-names-and-run-validation.js');
+            await runInGitHubActions(context, core, process.env);
 
       - name: Upload findings artifact
         if: always()

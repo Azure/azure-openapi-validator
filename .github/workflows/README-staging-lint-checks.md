@@ -2,122 +2,98 @@
 
 ## Overview
 
-This workflow runs selected Azure OpenAPI validator rules against spec files from `azure-rest-api-specs` to test rule changes before they're merged.
+This workflow validates Azure OpenAPI validator rule changes by running selected rules against spec files from the
+`azure-rest-api-specs` repository. It provides a staging environment to test new rules, rule modifications before they are
+merged into the main codebase.
 
-## Features
+## Purpose and Intent
 
-### 🎯 Selective Rule Execution
-Specify which rules to test via:
-- **PR Labels**: Add labels like `test-PostResponseCodes`, `test-DeleteMustNotHaveRequestBody`
-- **PR Body**: Add a line like `rules: PostResponseCodes, DeleteMustNotHaveRequestBody`
+The workflow serves as a validation tool for linter rule development with the following workflow:
 
-Priority: Labels take precedence over body if both are present.
+1. **Rule Development**: Engineers write new validation rules or modify existing ones
+2. **Testing Setup**: Engineers create a PR and specify which rules to test via labels or PR description
+3. **Automated Validation**: The workflow runs specified rules against live specification files using AutoRest
+4. **Result Analysis**: Engineers review the output to identify false positives, false negatives, or unexpected behavior
+5. **Quality Assurance**: Engineers and reviewers validate that rules work correctly before production release
 
-### ⚡ Sparse Checkout Optimization
+**Important**: This workflow is designed to assist validation, not to block PR merging. The responsibility for
+ensuring rule quality lies with the engineer and reviewer based on the workflow output.
 
-The workflow uses Git sparse checkout to dramatically reduce clone time and disk usage:
+## How to Use
 
-**Without sparse checkout:**
-- Full `azure-rest-api-specs` repo: ~1GB+
-- Clone time: 2-3 minutes
+### Specifying Rules to Test
 
-**With sparse checkout:**
-- Only specified RPs: ~50-100MB
-- Clone time: 10-20 seconds
-- **10x faster checkout** ⚡
+You can specify which validation rules to test using either of these methods:
 
-#### How it works:
-```bash
-# Clone with blob filter and sparse checkout enabled
-git clone --filter=blob:none --sparse --depth=1 <repo>
+#### Method 1: PR Labels
 
-# Only fetch needed folders
-git sparse-checkout set specification/network specification/compute ...
+Add labels to your pull request with the format `test-<RuleName>`:
+
+- `test-PostResponseCodes`
+- `test-DeleteMustNotHaveRequestBody`
+- `test-LongRunningOperationsWithLongRunningExtension`
+
+#### Method 2: PR Description
+
+Add a line in your PR body:
+
+```text
+rules: PostResponseCodes, DeleteMustNotHaveRequestBody
 ```
 
-### 🎛️ Configuration
+Note: If both methods are used, PR labels take precedence.
 
-Environment variables at the top of the workflow:
+### Workflow Configuration
+
+The workflow can be configured through environment variables:
 
 ```yaml
 env:
   SPEC_REPO: Azure/azure-rest-api-specs
-  FAIL_ON_ERRORS: "false"  # Set to "true" to fail on errors
-  MAX_FILES: "100"          # Safety cap for number of files scanned
+  FAIL_ON_ERRORS: "false"
+  MAX_FILES: "100"
   ALLOWED_RPS: "network,compute,monitor,sql,hdinsight,resource,storage"
 ```
 
-#### ALLOWED_RPS
+- **SPEC_REPO**: Source repository for OpenAPI specifications
+- **FAIL_ON_ERRORS**: Whether the workflow should fail when validation errors are found
+- **MAX_FILES**: Maximum number of specification files to process
+- **ALLOWED_RPS**: Comma-separated list of resource providers to include in testing
 
-Controls which resource providers are:
-1. **Checked out** via sparse checkout
-2. **Scanned** by the runner script
+### Supported Resource Providers
 
-Default RPs (7 total):
-- `network` - Network resources (VNets, Load Balancers, etc.)
-- `compute` - VMs, Scale Sets, Disks
-- `monitor` - Metrics, Alerts, Diagnostics
-- `sql` - SQL Databases, Managed Instances
-- `hdinsight` - HDInsight clusters
-- `resource` - Resource management operations
-- `storage` - Storage accounts, Blobs, Files
+The default configuration includes these resource providers:
 
-**To test different RPs**, update the `ALLOWED_RPS` env variable.
+- network: Virtual networks, load balancers, network interfaces
+- compute: Virtual machines, scale sets, disks
+- monitor: Monitoring, metrics, alerts
+- sql: SQL databases and managed instances
+- hdinsight: HDInsight cluster services
+- resource: Resource management operations
+- storage: Storage accounts and services
 
-### 📊 Scan Scope
+## Debugging and Troubleshooting
 
-The runner script only scans:
-- Files under `specification/<rp>/resource-manager/stable/*.json`
-- Up to `MAX_FILES` limit (default: 100)
-- Only the resource providers listed in `ALLOWED_RPS`
+### Viewing Results
 
-This focused scope ensures fast test runs while covering representative specs.
+1. Navigate to the Actions tab in your repository
+2. Find the workflow run for your PR
+3. Download the `linter-findings` artifact to see detailed validation results
+4. The artifact contains output logs and any errors found
 
-## Usage Examples
+### Common Issues
 
-### Test a specific rule via label
-1. Add label: `test-PostResponseCodes` to your PR
-2. Workflow runs automatically
-3. Check the uploaded artifact for results
+**No rules detected**: Ensure your PR labels follow the exact format `test-<RuleName>` or verify the rules line
+in your PR description is properly formatted.
 
-### Test multiple rules via PR body
-```markdown
-## Changes
-Fixed validation logic for LRO operations
+**Workflow fails**: Check the workflow logs for specific error messages. The artifact will still be uploaded
+even if the workflow fails.
 
-rules: PostResponseCodes, LongRunningOperationsWithLongRunningExtension
-```
+**Missing resource provider**: If testing rules against specifications from RPs not in the default list, update
+the `ALLOWED_RPS` environment variable.
 
-### Test against different RPs
-Fork the workflow and modify:
-```yaml
-env:
-  ALLOWED_RPS: "web,keyvault,containerservice"
-```
+## Related Components
 
-## Performance Benchmarks
-
-Typical workflow run times:
-
-| Step | Time |
-|------|------|
-| Checkout validator repo | 5s |
-| Setup Node.js | 10s |
-| Sparse checkout specs | 15s |
-| Install Rush dependencies | 60s |
-| Build validator | 45s |
-| Install AutoRest | 10s |
-| Run rules (10 files) | 60s |
-| **Total** | **~3-4 minutes** |
-
-Without sparse checkout: **~5-6 minutes** (40% slower)
-
-## Artifacts
-
-The workflow always uploads findings to an artifact named `linter-findings`, even if the run fails. Download it from the Actions tab to see detailed results.
-
-## Related Files
-
-- `.github/scripts/extract-rule-names.js` - Extracts rule names from PR
-- `.github/scripts/run-autorest-selected-rules.js` - Runs AutoRest with selected rules
-- `.github/scripts/tests/` - Test suite for the scripts (Vitest)
+- `.github/scripts/extract-rule-names.js`: Parses rule names from PR labels and body
+- `.github/scripts/run-autorest-selected-rules.js`: Executes validation rules against specifications
+- `.github/scripts/tests/`: Test suite validating script functionality

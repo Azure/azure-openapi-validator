@@ -1,11 +1,13 @@
 {
-  "name": "validator-runner-tests",
+  "name": "validator-runner-scripts",
   "private": true,
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
-    "test": "vitest run --pool=forks --poolOptions.forks.singleFork"
+    "test": "vitest",
+    "test:ci": "vitest run --coverage --reporter=verbose",
+    "validate": "node workflows/src/extract-rule-names-and-run-validation.js"
   },
   "devDependencies": {
-    "vitest": "^3.1.2"
+    "vitest": "^3.2.4"
   }
 }
