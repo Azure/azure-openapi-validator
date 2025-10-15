@@ -36,12 +36,19 @@ jobs:
             specification/hdinsight
             specification/resource
             specification/storage
-            .github/shared
+            .github/shared/src/spec-model.js
+            .github/shared/src/exec.js
+            .github/shared/src/changed-files.js
+            
           sparse-checkout-cone-mode: false
 
       - name: Install Rush & dependencies
         run: |
           node common/scripts/install-run-rush.js install
+
+      - name: Install shared helper runtime deps (debug, simple-git)
+        run: |
+          npm install --no-save debug simple-git
 
       - name: Build validator (local changes)
         run: |
