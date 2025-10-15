@@ -1,17 +1,21 @@
-// Synchronous POST must have 200 & 204 return codes and LRO POST must have 200 & 202 return codes.
-// RPC Code: RPC-Async-V1-11
+// Synchronous POST must have 200 & 204 return codes and LRO POST must have 202 & 200 or 202 & 204 or 202, 200 & 204 return codes.
 
 const SYNC_POST_RESPONSES_OK = ["200", "default"]
 const SYNC_POST_RESPONSES_NO_CONTENT = ["204", "default"]
-const LR_POST_RESPONSES_WITH_FINAL_SCHEMA = ["200", "202", "default"]
-const LR_POST_RESPONSES_NO_FINAL_SCHEMA = ["202", "default"]
+const LR_POST_RESPONSES_OK = ["202", "200", "default"]
+const LR_POST_RESPONSES_NO_CONTENT = ["202", "204", "default"]
+const HTTP_STATUS_CODE_OK = "200"
+const HTTP_STATUS_CODE_ACCEPTED = "202"
+const HTTP_STATUS_CODE_NO_CONTENT = "204"
 
 const SYNC_ERROR =
-  "Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes."
+  "Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. No other response codes are permitted."
 const LR_ERROR =
-  "Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes."
-const LR_NO_SCHEMA_ERROR =
+  "Long-running POST operations must initially return 202 with a default response and no schema. The final response must be 200 with a schema if one is required, or 204 with no schema if not. No other response codes are permitted."
+const LR_NO_SCHEMA_ERROR_OK =
   "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified."
+const LR_SCHEMA_ERROR_ACCEPTED = "202 response for a LRO POST operation must not have a response schema specified."
+const LR_SCHEMA_ERROR_NO_CONTENT = "204 response for a Sync/LRO POST operation must not have a response schema specified."
 const EmptyResponse_ERROR =
   "POST operation response codes must be non-empty. Synchronous POST operation must have response codes 200 and default or 204 and default. LRO POST operations must have response codes 202 and default. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified."
 
@@ -33,14 +37,11 @@ export const PostResponseCodes = (postOp: any, _opts: any, ctx: any) => {
   }
 
   const isAsyncOperation =
-    postOp.responses["202"] ||
+    postOp.responses[HTTP_STATUS_CODE_ACCEPTED] ||
     (postOp["x-ms-long-running-operation"] && postOp["x-ms-long-running-operation"] === true) ||
     postOp["x-ms-long-running-operation-options"]
 
   if (isAsyncOperation) {
-    let wrongResponseCodes = false
-    let okResponseCodeNoSchema = false
-
     if (!postOp["x-ms-long-running-operation"] || postOp["x-ms-long-running-operation"] !== true) {
       errors.push({
         message: "An async POST operation must set '\"x-ms-long-running-operation\" : true'.",
@@ -49,50 +50,51 @@ export const PostResponseCodes = (postOp: any, _opts: any, ctx: any) => {
       return errors
     }
 
-    if (responses.length === LR_POST_RESPONSES_WITH_FINAL_SCHEMA.length) {
-      if (!LR_POST_RESPONSES_WITH_FINAL_SCHEMA.every((value) => responses.includes(value))) {
-        wrongResponseCodes = true
-      } else if (!postOp.responses["200"]?.schema) {
-        okResponseCodeNoSchema = true
-      }
-    } else if (
-      responses.length !== LR_POST_RESPONSES_NO_FINAL_SCHEMA.length ||
-      !LR_POST_RESPONSES_NO_FINAL_SCHEMA.every((value) => responses.includes(value))
-    ) {
-      wrongResponseCodes = true
-    }
+    const respSet = new Set(responses)
+    const setEquals = (target: string[]) => target.length === respSet.size && target.every((v) => respSet.has(v))
+    const matchesOk = setEquals(LR_POST_RESPONSES_OK)
+    const matchesNoContent = setEquals(LR_POST_RESPONSES_NO_CONTENT)
 
-    if (postOp.responses["202"]?.schema) {
-      errors.push({
-        message: "202 response for a LRO POST operation must not have a response schema specified.",
-        path: path,
-      })
-    }
-
-    if (wrongResponseCodes) {
+    if (!(matchesOk || matchesNoContent)) {
       errors.push({
         message: LR_ERROR,
         path: path,
       })
-    } else if (okResponseCodeNoSchema) {
-      errors.push({
-        message: LR_NO_SCHEMA_ERROR,
-        path: path,
-      })
     }
-
-    return errors
   } else {
-    if (
-      responses.length !== SYNC_POST_RESPONSES_OK.length ||
-      (!SYNC_POST_RESPONSES_OK.every((value) => responses.includes(value)) &&
-        !SYNC_POST_RESPONSES_NO_CONTENT.every((value) => responses.includes(value)))
-    ) {
+    const responseSet = new Set(responses)
+    const setEquals = (target: string[]) => target.length === responseSet.size && target.every((v) => responseSet.has(v))
+
+    const matchesOk = setEquals(SYNC_POST_RESPONSES_OK)
+    const matchesNoContent = setEquals(SYNC_POST_RESPONSES_NO_CONTENT)
+
+    if (!(matchesOk || matchesNoContent)) {
       errors.push({
         message: SYNC_ERROR,
         path: path,
       })
     }
+  }
+
+  if (postOp.responses[HTTP_STATUS_CODE_OK] && !postOp.responses[HTTP_STATUS_CODE_OK]?.schema) {
+    errors.push({
+      message: LR_NO_SCHEMA_ERROR_OK,
+      path: path,
+    })
+  }
+
+  if (postOp.responses[HTTP_STATUS_CODE_ACCEPTED]?.schema) {
+    errors.push({
+      message: LR_SCHEMA_ERROR_ACCEPTED,
+      path: path,
+    })
+  }
+
+  if (postOp.responses[HTTP_STATUS_CODE_NO_CONTENT]?.schema) {
+    errors.push({
+      message: LR_SCHEMA_ERROR_NO_CONTENT,
+      path: path,
+    })
   }
 
   return errors
