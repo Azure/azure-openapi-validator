@@ -8,15 +8,12 @@
  * the selected rules against Azure REST API specs.
  * 
  * Usage in GitHub Actions:
- *   Uses github-script action with direct access to context and core
- * 
- * Usage standalone:
- *   Requires environment variables: PR_LABELS (JSON), PR_BODY, SPEC_ROOT, etc.
+ * Uses github-script action with direct access to context and core
  */
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath, pathToFileURL } from 'url';
+import { fileURLToPath } from 'url';
 
 // ES module equivalent of __filename and __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -76,75 +73,66 @@ function extractRuleNames(context) {
 }
 
 /**
- * Enumerate stable ARM swagger files for specified resource providers using SpecModel.
- * No legacy fallback – script will fail fast if SpecModel cannot be loaded.
- * @param {string} specRoot Absolute path to the azure-rest-api-specs checkout root
- * @param {string[]} allowedRPs Resource provider folder names (e.g. network, compute)
- * @param {number} maxFiles Upper bound on number of swagger JSON files to return
- * @returns {Promise<string[]>}
+ * Enumerate stable ARM swagger files.
+ * Criteria: contains /resource-manager/ and /stable/, ends with .json.
+ * Excludes examples, readme, quickstart-templates, scenarios.
  */
 async function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
-  const specModelModule = path.join(specRoot, '.github', 'shared', 'src', 'spec-model.js');
-  if (!fs.existsSync(specModelModule)) {
-    throw new Error(`SpecModel module not found at ${specModelModule}`);
-  }
-  const { SpecModel } = await import(pathToFileURL(specModelModule).href);
-
-  const results = new Set();
+  const results = [];
   const isStableArm = p => /\/resource-manager\//.test(p) && /\/stable\//.test(p);
-
   for (const rp of allowedRPs) {
-    if (results.size >= maxFiles) break;
+    if (results.length >= maxFiles) break;
     const rpRoot = path.join(specRoot, 'specification', rp);
     if (!fs.existsSync(rpRoot)) continue;
-    const model = new SpecModel(rpRoot);
-    const swaggers = await model.getSwaggers();
-    for (const s of swaggers) {
-      if (results.size >= maxFiles) break;
-      const filePath = (s && s.path) ? s.path : String(s);
-      if (typeof filePath !== 'string') continue;
-      const norm = filePath.replace(/\\/g, '/');
-      if (!norm.toLowerCase().endsWith('.json')) continue;
-      if (!isStableArm(norm)) continue;
-      if (!norm.includes(`/specification/${rp}/`)) continue;
-      results.add(filePath);
+    const stack = [rpRoot];
+    while (stack.length && results.length < maxFiles) {
+      const current = stack.pop();
+      let entries; try { entries = fs.readdirSync(current, { withFileTypes: true }); } catch { continue; }
+      for (const entry of entries) {
+        const abs = path.join(current, entry.name);
+        if (entry.isDirectory()) { stack.push(abs); continue; }
+        if (!entry.isFile()) continue;
+        if (!abs.toLowerCase().endsWith('.json')) continue;
+        const norm = abs.replace(/\\/g, '/');
+        if (!isStableArm(norm)) continue;
+        if (/\/examples\//i.test(norm)) continue;
+        if (/readme\.(md|json)$/i.test(norm)) continue;
+        if (/quickstart-templates\//i.test(norm)) continue;
+        if (/\/scenarios\//i.test(norm)) continue;
+        results.push(abs);
+        if (results.length >= maxFiles) break;
+      }
     }
   }
-  return [...results];
+  return results;
 }
 
 /**
  * Run AutoRest against a single specification file
  */
 async function runAutorest(specPath, specRoot, selectedRules) {
+  const { spawn } = await import('node:child_process');
   const start = Date.now();
   const rel = path.relative(specRoot, specPath).replace(/\\/g, '/');
-  const autorestArgs = [
-    'autorest',
-    '--level=warning', '--v3', '--spectral', '--azure-validator',
-    '--semantic-validator=false', '--model-validator=false',
-    '--openapi-type=arm', '--openapi-subtype=arm', '--message-format=json',
+  const args = [
+    '--level=warning','--v3','--spectral','--azure-validator',
+    '--semantic-validator=false','--model-validator=false',
+    '--openapi-type=arm','--openapi-subtype=arm','--message-format=json',
     `--selected-rules=${selectedRules.join(',')}`,
     `--use=${path.join(process.cwd(), 'packages', 'azure-openapi-validator', 'autorest')}`,
     `--input-file=${specPath}`
   ];
-
-  const execModulePath = path.join(specRoot, '.github', 'shared', 'src', 'exec.js');
-  if (!fs.existsSync(execModulePath)) {
-    throw new Error(`Execution helper not found at ${execModulePath}`);
-  }
-
-  let execNpmExec;
-  try {
-    ({ execNpmExec } = await import(pathToFileURL(execModulePath).href));
-  } catch (e) {
-    throw new Error(`Failed to load exec helper: ${(e && e.message) || e}`);
-  }
-
-  const result = await execNpmExec(autorestArgs, { cwd: process.cwd() });
-  const dur = Date.now() - start;
-  console.log(`DEBUG | runAutorest | end | ${rel} status=0 (${dur}ms) [exec helper only]`);
-  return { stdout: result.stdout, stderr: result.stderr, status: 0 };
+  return await new Promise(resolve => {
+    const proc = spawn('npx', ['-y','autorest', ...args], { cwd: process.cwd(), shell: false });
+    let stdout = '', stderr = '';
+    proc.stdout.on('data', d => { stdout += d.toString(); });
+    proc.stderr.on('data', d => { stderr += d.toString(); });
+    proc.on('close', code => {
+      const dur = Date.now() - start;
+      console.log(`DEBUG | runAutorest | end | ${rel} status=${code} (${dur}ms)`);
+      resolve({ stdout, stderr, status: code });
+    });
+  });
 }
 
 /**
@@ -192,54 +180,7 @@ async function runInGitHubActions(context, core, env = process.env) {
 }
 
 /**
- * Main execution function for standalone usage
- */
-async function runStandalone() {
-  try {
-    // Read from environment variables (for standalone usage)
-    const labelsJson = process.env.PR_LABELS || '[]';
-    const body = process.env.PR_BODY || '';
-
-    // Parse labels
-    let labels = [];
-    try {
-      labels = JSON.parse(labelsJson);
-      if (!Array.isArray(labels)) {
-        labels = [];
-      }
-    } catch (err) {
-      console.error('Warning: Failed to parse PR_LABELS as JSON, using empty array');
-      labels = [];
-    }
-
-    // Create mock context for extractRuleNames
-    const mockContext = {
-      payload: {
-        pull_request: {
-          labels: labels,
-          body: body
-        }
-      }
-    };
-
-    const selectedRules = extractRuleNames(mockContext);
-    console.log(`Selected rules: ${selectedRules.length > 0 ? selectedRules.join(', ') : '<none>'}`);
-    
-    if (selectedRules.length === 0) {
-      console.log('No rules specified, exiting.');
-      return;
-    }
-    
-    return await runValidation(selectedRules, process.env);
-    
-  } catch (error) {
-    console.error('Error:', error.message);
-    process.exit(1);
-  }
-}
-
-/**
- * Core validation logic shared between GitHub Actions and standalone modes
+ * Core validation logic
  */
 async function runValidation(selectedRules, env, core = null) {
   const SPEC_ROOT = path.join(env.GITHUB_WORKSPACE || process.cwd(), env.SPEC_CHECKOUT_PATH || 'specs');
@@ -334,10 +275,5 @@ export {
   enumerateSpecs,
   parseMessages,
   runInGitHubActions,
-  runStandalone,
   runValidation
 };
-
-if (import.meta.url === `file://${path.resolve(process.argv[1] || '').replace(/\\/g, '/')}`) {
-  runStandalone();
-}

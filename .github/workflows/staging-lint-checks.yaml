@@ -39,10 +39,6 @@ jobs:
         run: |
           node common/scripts/install-run-rush.js build -t @microsoft.azure/openapi-validator
 
-      - name: Install shared helper runtime deps (debug, simple-git)
-        run: |
-          npm install --no-save debug simple-git
-
       - name: Extract rules and run AutoRest validation
         uses: actions/github-script@v7
         with:
