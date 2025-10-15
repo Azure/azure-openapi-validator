@@ -50,8 +50,24 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const { runInGitHubActions } = await import('./.github/workflows/src/extract-rule-names-and-run-validation.js');
-            await runInGitHubActions(context, core, process.env);
+            // Dynamically import the workflow helper script from the repository using an absolute path.
+            // Relative specifiers here are resolved against the github-script action's dist folder, not the repo root,
+            // which caused the earlier ERR_MODULE_NOT_FOUND. We build an absolute path from GITHUB_WORKSPACE instead.
+            const { join } = await import('node:path');
+            const { pathToFileURL } = await import('node:url');
+            const scriptPath = join(process.env.GITHUB_WORKSPACE, '.github', 'workflows', 'src', 'extract-rule-names-and-run-validation.js');
+            console.log(`DEBUG | importing validation script from: ${scriptPath}`);
+            try {
+              const mod = await import(pathToFileURL(scriptPath).href);
+              if (!mod.runInGitHubActions) {
+                core.setFailed('runInGitHubActions export not found in validation script');
+              } else {
+                await mod.runInGitHubActions(context, core, process.env);
+              }
+            } catch (e) {
+              core.setFailed(`Failed to import validation script: ${e?.message || e}`);
+              throw e;
+            }
 
       - name: Upload findings artifact
         if: always()
