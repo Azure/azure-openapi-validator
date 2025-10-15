@@ -23,32 +23,17 @@ jobs:
         with:
           node-version: 22
           
-      - name: Checkout specs repository (sparse - only needed RPs)
+      - name: Checkout full specs repository
         uses: actions/checkout@v4
         with:
           repository: ${{ env.SPEC_REPO }}
           path: ${{ env.SPEC_CHECKOUT_PATH }}
-          sparse-checkout: |
-            specification/network
-            specification/compute
-            specification/monitor
-            specification/sql
-            specification/hdinsight
-            specification/resource
-            specification/storage
-            .github/shared/src/spec-model.js
-            .github/shared/src/exec.js
-            .github/shared/src/changed-files.js
-            
-          sparse-checkout-cone-mode: false
+          fetch-depth: 0
 
       - name: Install Rush & dependencies
         run: |
           node common/scripts/install-run-rush.js install
 
-      - name: Install shared helper runtime deps (debug, simple-git)
-        run: |
-          npm install --no-save debug simple-git
 
       - name: Build validator (local changes)
         run: |
