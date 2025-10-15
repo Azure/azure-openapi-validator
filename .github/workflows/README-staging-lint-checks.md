@@ -94,6 +94,5 @@ the `ALLOWED_RPS` environment variable.
 
 ## Related Components
 
-- `.github/scripts/extract-rule-names.js`: Parses rule names from PR labels and body
-- `.github/scripts/run-autorest-selected-rules.js`: Executes validation rules against specifications
-- `.github/scripts/tests/`: Test suite validating script functionality
+- `.github/workflows/src/extract-rule-names-and-run-validation.js`: Single consolidated script that parses rule names (from PR labels or body) and runs AutoRest with the selected rules over allowed spec files. (Replaces earlier separate extract + run scripts.)
+- GitHub Action workflow file: `.github/workflows/staging-lint-checks.yaml` orchestrates checkout, build, and script execution.

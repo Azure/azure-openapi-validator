@@ -14,6 +14,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { spawnSync } from 'node:child_process';
 
 // ES module equivalent of __filename and __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -110,29 +111,36 @@ async function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
 /**
  * Run AutoRest against a single specification file
  */
-async function runAutorest(specPath, specRoot, selectedRules) {
-  const { spawn } = await import('node:child_process');
+function runAutorest(specPath, specRoot, selectedRules) {
   const start = Date.now();
   const rel = path.relative(specRoot, specPath).replace(/\\/g, '/');
   const args = [
+    'exec', '--', 'autorest',
     '--level=warning','--v3','--spectral','--azure-validator',
     '--semantic-validator=false','--model-validator=false',
     '--openapi-type=arm','--openapi-subtype=arm','--message-format=json',
+    // Pass selected rules down to the validator so only those rules execute inside the plugins.
     `--selected-rules=${selectedRules.join(',')}`,
     `--use=${path.join(process.cwd(), 'packages', 'azure-openapi-validator', 'autorest')}`,
     `--input-file=${specPath}`
   ];
-  return await new Promise(resolve => {
-    const proc = spawn('npx', ['-y','autorest', ...args], { cwd: process.cwd(), shell: false });
-    let stdout = '', stderr = '';
-    proc.stdout.on('data', d => { stdout += d.toString(); });
-    proc.stderr.on('data', d => { stderr += d.toString(); });
-    proc.on('close', code => {
-      const dur = Date.now() - start;
-      console.log(`DEBUG | runAutorest | end | ${rel} status=${code} (${dur}ms)`);
-      resolve({ stdout, stderr, status: code });
-    });
+  
+  const result = spawnSync('npm', args, { 
+    cwd: process.cwd(), 
+    shell: true,
+    encoding: 'utf8',
+    maxBuffer: 10 * 1024 * 1024 // 10MB buffer
   });
+  
+  const dur = Date.now() - start;
+  console.log(`DEBUG | runAutorest | end | ${rel} status=${result.status} (${dur}ms)`);
+  
+  return { 
+    stdout: result.stdout || '', 
+    stderr: result.stderr || '', 
+    status: result.status,
+    error: result.error 
+  };
 }
 
 /**
@@ -183,20 +191,19 @@ async function runInGitHubActions(context, core, env = process.env) {
  * Core validation logic
  */
 async function runValidation(selectedRules, env, core = null) {
-  const SPEC_ROOT = path.join(env.GITHUB_WORKSPACE || process.cwd(), env.SPEC_CHECKOUT_PATH || 'specs');
-  const MAX_FILES = parseInt(env.MAX_FILES || '100', 10);
-  const ALLOWED_RPS = (env.ALLOWED_RPS || 'network,compute,monitor,sql,hdinsight,resource,storage')
+  const specRoot = path.join(env.GITHUB_WORKSPACE || process.cwd(), env.SPEC_CHECKOUT_PATH || 'specs');
+  const maxFiles = parseInt(env.MAX_FILES || '100', 10);
+  const allowedRps = (env.ALLOWED_RPS || 'network,compute,monitor,sql,hdinsight,resource,storage')
     .split(',').map(s => s.trim()).filter(Boolean);
-  const OUTPUT_FILE = path.join(env.GITHUB_WORKSPACE || process.cwd(), 'artifacts', 'linter-findings.txt');
+  const outputFile = path.join(env.GITHUB_WORKSPACE || process.cwd(), 'artifacts', 'linter-findings.txt');
   
   console.log(`Processing rules: ${selectedRules.join(', ')}`);
-  console.log(`Max files: ${MAX_FILES}, Allowed RPs: ${ALLOWED_RPS.join(', ')}`);
-  console.log(`Spec root: ${SPEC_ROOT}`);
+  console.log(`Max files: ${maxFiles}, Allowed RPs: ${allowedRps.join(', ')}`);
+  console.log(`Spec root: ${specRoot}`);
   
-  // Collect specs using SpecModel (no fallback)
   let specs;
   try {
-    specs = await enumerateSpecs(SPEC_ROOT, ALLOWED_RPS, MAX_FILES);
+    specs = await enumerateSpecs(specRoot, allowedRps, maxFiles);
   } catch (err) {
     const message = `Failed to enumerate specs: ${err.message}`;
     if (core) core.setFailed(message); else console.error(`ERROR | ${message}`);
@@ -207,8 +214,8 @@ async function runValidation(selectedRules, env, core = null) {
     if (core) core.warning(message);
     else console.log(`WARN | ${message}`);
     
-    fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-    fs.writeFileSync(OUTPUT_FILE, 'INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0\n');
+    fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+    fs.writeFileSync(outputFile, 'INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0\n');
     return;
   }
   
@@ -216,16 +223,16 @@ async function runValidation(selectedRules, env, core = null) {
   let errors = 0, warnings = 0;
   const outLines = [];
   
-  // Process each spec file
+  // Process each spec file sequentially
   for (const spec of specs) {
-    const res = await runAutorest(spec, SPEC_ROOT, selectedRules);
+    const res = runAutorest(spec, specRoot, selectedRules);
     if (res.error) {
       console.log(`Failed ${spec}: ${res.error.message}`);
       continue;
     }
 
     const messages = parseMessages(res.stdout || '', res.stderr || '');
-    console.log(`Found ${messages.length} message(s) for ${path.relative(SPEC_ROOT, spec).replace(/\\/g, '/')}`);
+    console.log(`Found ${messages.length} message(s) for ${path.relative(specRoot, spec).replace(/\\/g, '/')}`);
     
     for (const m of messages) {
       const code = m.code || m.id || 'Unknown';
@@ -238,10 +245,9 @@ async function runValidation(selectedRules, env, core = null) {
       
       const line = m.line ?? m.range?.start?.line ?? m.position?.line ?? null;
       const column = m.column ?? m.range?.start?.character ?? m.position?.character ?? null;
-      const loc = line != null ? `${line}:${column != null ? column : 1}` : '';
-      const jp = m.jsonpath ? (Array.isArray(m.jsonpath) ? m.jsonpath.join('.') : m.jsonpath) : '';
+      const loc = line != null ? `:${line}:${column != null ? column : 0}` : '';
       
-      outLines.push(`${sev} | ${code} | ${path.relative(SPEC_ROOT, spec).replace(/\\/g, '/')}${loc ? ':' + loc : ''}${jp ? ' @ ' + jp : ''} | ${m.message || ''}`.trim());
+      outLines.push(`${sev} | ${code} | ${path.relative(specRoot, spec).replace(/\\/g, '/')}${loc} | ${m.message || ''}`.trim());
     }
   }
   
@@ -251,8 +257,8 @@ async function runValidation(selectedRules, env, core = null) {
   console.log(summary);
   
   // Write output file
-  fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-  fs.writeFileSync(OUTPUT_FILE, outLines.concat([summary]).join('\n') + '\n', 'utf8');
+  fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+  fs.writeFileSync(outputFile, outLines.concat([summary]).join('\n') + '\n', 'utf8');
   
   // Handle failure conditions
   if (errors > 0 && env.FAIL_ON_ERRORS === 'true') {
