@@ -1,6 +1,6 @@
 {
   "name": "@microsoft.azure/openapi-validator-rulesets",
-  "version": "2.1.9",
+  "version": "2.2.0",
   "description": "Azure OpenAPI Validator",
   "main": "dist/index.js",
   "scripts": {
@@ -42,7 +42,7 @@
     "@stoplight/spectral-formats": "^1.6.0",
     "@stoplight/spectral-functions": "^1.7.2",
     "@stoplight/types": "^14.1.1",
-    "jsonpath-plus": "^8.1.0",
+    "jsonpath-plus": "^10.3.0",
     "string.prototype.matchall": "^4.0.11",
     "lodash": "^4.17.21",
     "tslib": "^2.3.1"

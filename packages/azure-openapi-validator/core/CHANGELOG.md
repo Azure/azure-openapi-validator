@@ -1,6 +1,10 @@
 # Change Log - @microsoft.azure/openapi-validator-core
 
-This log was last generated on Tue, 30 Jan 2024 18:28:15 GMT and should not be manually modified.
+## 1.0.7
+
+### Patches
+
+- Bump jsonpath-plus from ^8.1.0 to ^10.3.0
 
 ## 1.0.4
 Tue, 30 Jan 2024 18:28:15 GMT

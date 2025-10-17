@@ -10,18 +10,13 @@ ARM OpenAPI (swagger) specs
 
 ## Related ARM Guideline Code
 
-- RPC-Async-V1-11, RPC-Async-V1-14
-
-## Output Message
-
-Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes.
-Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes.
+- RPC-Async-V1-11, RPC-Async-V1-14, RPC-POST-V1-02, RPC-POST-V1-03 
 
 ## Description
 
-Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. They also must not have other response codes.
-Long-running POST operations must have responses with 202 and default return codes. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified. They also must not have other response codes.
-202 response for a LRO POST operation must not have a response schema specified.
+Synchronous POST operations must only use 200 with a default response when a response schema is required, or 204 with a default response when no schema is needed. No other response codes are allowed. 
+
+Long-running POST (LRO) operations must initially return 202 with a default response and no schema. The final response must be 200 with a schema if one is required, or 204 with no schema if not. No other response codes are permitted.
 
 ## How to fix the violation
 
@@ -29,7 +24,7 @@ Synchronous POST operations must have one of the following combinations of respo
 
 For Long-running POST operations:
 1. Add responses with 202 and default return codes.
-2. Add 200 response code if only if the final response is intended to have a schema.
+2. Add 200 response code if only if the final response is intended to have a schema if not add 204 response code.
 3. Ensure no other response codes are specified.
 4. Make sure to define "x-ms-long-running-operation".
 5. 202 response for a LRO POST operation must not have a response schema specified.
@@ -62,9 +57,6 @@ The following would be a valid SYNC POST:
   "responses": {
     "204": {
       "description": "No Content",
-      "schema": {
-        "$ref": "#/definitions/FooResource"
-      }
     },
     "default": {
       "description": "Error response describing why the operation failed.",
@@ -106,6 +98,9 @@ The following would be a valid ASYNC POST:
   "responses": {
     "202": {
       "description": "Operation accepted",
+    },
+    "204": {
+      "description": "No Content",
     },
     "default": {
       "description": "Error response describing why the operation failed.",
