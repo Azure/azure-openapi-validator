@@ -1,0 +1,13 @@
+{
+  "name": "validator-runner-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "test:ci": "vitest run --coverage --reporter=verbose",
+    "validate": "node workflows/src/extract-rule-names-and-run-validation.js"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
+}

@@ -46,7 +46,56 @@ export async function openapiValidatorPluginFunc(initiator: IAutoRestPluginIniti
   }
 
   try {
-    const mergedRuleset: IRuleSet = mergeRulesets(Object.values(nativeRulesets))
+    let mergedRuleset: IRuleSet = mergeRulesets(Object.values(nativeRulesets))
+    let selectedRulesFilter: string | undefined
+    try {
+      selectedRulesFilter = await initiator.GetValue("selected-rules")
+    } catch {
+      /* ignore */
+    }
+
+    if (selectedRulesFilter && typeof selectedRulesFilter === "string" && selectedRulesFilter.trim()) {
+      const requestedRuleNames = Array.from(
+        new Set(
+          selectedRulesFilter
+            .split(/[,;\s]/)
+            .map((r) => r.trim())
+            .filter(Boolean),
+        ),
+      )
+      if (requestedRuleNames.length) {
+        const filteredRules: Record<string, any> = {}
+        const missingRuleNames: string[] = []
+        for (const ruleName of requestedRuleNames) {
+          if (mergedRuleset.rules[ruleName]) {
+            filteredRules[ruleName] = mergedRuleset.rules[ruleName]
+          } else {
+            missingRuleNames.push(ruleName)
+          }
+        }
+        // Always use filtered ruleset (even if empty) to avoid running unselected rules
+        mergedRuleset = { documentationUrl: mergedRuleset.documentationUrl, rules: filteredRules }
+        const matchedCount = Object.keys(filteredRules).length
+        if (matchedCount > 0) {
+          const matchedRuleNames = Object.keys(filteredRules)
+          initiator.Message({
+            Channel: "information",
+            Text: `openapiValidatorPluginFunc: Running only ${matchedCount} selected native rule(s): ${matchedRuleNames.join(", ")}`,
+          })
+        } else {
+          initiator.Message({
+            Channel: "information",
+            Text: `openapiValidatorPluginFunc: No selected rules matched; skipping native validation.`,
+          })
+        }
+        if (missingRuleNames.length > 0) {
+          initiator.Message({
+            Channel: "information",
+            Text: `openapiValidatorPluginFunc: Unknown native rule name(s): ${missingRuleNames.join(", ")}`,
+          })
+        }
+      }
+    }
 
     const resolvedOpenapiType = getOpenapiType(openapiType)
 
