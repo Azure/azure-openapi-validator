@@ -1,11 +1,5 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-## 2.2.0
-
-### Minor changes
-
-- Added rule RPC-V1-13 to check for secrets and mandate the x-ms-secret annotation.
-
 ## 2.1.10
 
 ### Patches
