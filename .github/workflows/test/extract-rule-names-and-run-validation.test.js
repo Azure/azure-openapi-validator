@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, test } from "vitest";
 import { extractRulesFromLabels } from "../src/extract-rule-names-and-run-validation.js";
 
 describe('extractRulesFromLabels', () => {
