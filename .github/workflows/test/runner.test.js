@@ -1,6 +1,7 @@
-const fs = require('fs')
-const path = require('path')
-const { spawnSync } = require('child_process')
+import { spawnSync } from "child_process"
+import * as fs from "fs"
+import * as path from "path"
+import { afterAll, beforeAll, describe, expect, test } from "vitest"
 
 const repoRoot = path.resolve(__dirname, '../..')
 const scriptPath = path.join(repoRoot, '.github', 'scripts', 'run-autorest-selected-rules.js')
@@ -33,7 +34,7 @@ describe('runner', () => {
     fs.mkdirSync(allowedDir, { recursive: true })
 
     // Copy existing spec files to the test directory structure
-    const sourceSpecs = path.join(__dirname, 'specs')
+    const sourceSpecs = path.join(__dirname, 'fixtures')
     try {
         // fs.copyFileSync(path.join(sourceSpecs, 'lro-post-demo.json'), path.join(allowedDir, 'lro-post-good.json'))
         fs.copyFileSync(path.join(sourceSpecs, 'bad-lro-post.json'), path.join(allowedDir, 'lro-bad.json'))
