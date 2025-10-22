@@ -13,7 +13,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { spawnSync } from 'node:child_process';
 
 // ES module equivalent of __filename and __dirname
@@ -111,36 +111,36 @@ async function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
 /**
  * Run AutoRest against a single specification file
  */
-function runAutorest(specPath, specRoot, selectedRules) {
+async function runAutorest(specPath, specRoot, selectedRules) {
   const start = Date.now();
   const rel = path.relative(specRoot, specPath).replace(/\\/g, '/');
-  const args = [
-    'exec', '--no', '--', 'autorest',
-    '--level=warning','--v3','--spectral','--azure-validator',
-    '--semantic-validator=false','--model-validator=false',
-    '--openapi-type=arm','--openapi-subtype=arm','--message-format=json',
+  const autorestArgs = [
+    'autorest',
+    '--level=warning', '--v3', '--spectral', '--azure-validator',
+    '--semantic-validator=false', '--model-validator=false',
+    '--openapi-type=arm', '--openapi-subtype=arm', '--message-format=json',
     // Pass selected rules down to the validator so only those rules execute inside the plugins.
     `--selected-rules=${selectedRules.join(',')}`,
     `--use=${path.join(process.cwd(), 'packages', 'azure-openapi-validator', 'autorest')}`,
     `--input-file=${specPath}`
   ];
-  
-  const result = spawnSync('npm', args, { 
-    cwd: process.cwd(), 
-    shell: true,
-    encoding: 'utf8',
-    maxBuffer: 10 * 1024 * 1024 // 10MB buffer
-  });
-  
+
+  const execModulePath = path.join(specRoot, '.github', 'shared', 'src', 'exec.js');
+  if (!fs.existsSync(execModulePath)) {
+    throw new Error(`Execution helper not found at ${execModulePath}`);
+  }
+
+  let execNpmExec;
+  try {
+    ({ execNpmExec } = await import(pathToFileURL(execModulePath).href));
+  } catch (e) {
+    throw new Error(`Failed to load exec helper: ${(e && e.message) || e}`);
+  }
+
+  const result = await execNpmExec(autorestArgs, { cwd: process.cwd() });
   const dur = Date.now() - start;
-  console.log(`DEBUG | runAutorest | end | ${rel} status=${result.status} (${dur}ms)`);
-  
-  return { 
-    stdout: result.stdout || '', 
-    stderr: result.stderr || '', 
-    status: result.status,
-    error: result.error 
-  };
+  console.log(`DEBUG | runAutorest | end | ${rel} status=0 (${dur}ms) [exec helper]`);
+  return { stdout: result.stdout, stderr: result.stderr, status: 0 };
 }
 
 /**
@@ -225,10 +225,23 @@ async function runValidation(selectedRules, env, core = null) {
   
   // Process each spec file sequentially
   for (const spec of specs) {
-    const res = runAutorest(spec, specRoot, selectedRules);
-    if (res.error) {
-      console.log(`Failed ${spec}: ${res.error.message}`);
+    let res;
+    try {
+      res = await runAutorest(spec, specRoot, selectedRules);
+    } catch (error) {
+      console.log(`Failed ${spec}: ${error.message}`);
       continue;
+    }
+    
+    // Debug: log output if AutoRest failed with no messages
+    if (res.status !== 0) {
+      const relPath = path.relative(specRoot, spec).replace(/\\/g, '/');
+      if (res.stderr && res.stderr.trim()) {
+        console.log(`DEBUG | stderr for ${relPath}: ${res.stderr.substring(0, 300)}`);
+      }
+      if (res.stdout && res.stdout.trim() && res.stdout.length < 500) {
+        console.log(`DEBUG | stdout for ${relPath}: ${res.stdout}`);
+      }
     }
 
     const messages = parseMessages(res.stdout || '', res.stderr || '');
