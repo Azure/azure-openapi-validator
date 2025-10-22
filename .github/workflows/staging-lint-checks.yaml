@@ -29,6 +29,7 @@ jobs:
           repository: ${{ env.SPEC_REPO }}
           path: ${{ env.SPEC_CHECKOUT_PATH }}
           sparse-checkout: |
+            .github/shared
             specification/network
             specification/compute
             specification/monitor
