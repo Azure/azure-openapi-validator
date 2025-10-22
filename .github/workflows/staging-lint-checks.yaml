@@ -39,6 +39,11 @@ jobs:
             specification/storage
           sparse-checkout-cone-mode: false
 
+      - name: Install specs repo dependencies
+        run: |
+          cd ${{ env.SPEC_CHECKOUT_PATH }}/.github/shared
+          npm install
+
       - name: Install Rush & dependencies
         run: |
           node common/scripts/install-run-rush.js install
