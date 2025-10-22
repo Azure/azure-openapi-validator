@@ -115,7 +115,7 @@ function runAutorest(specPath, specRoot, selectedRules) {
   const start = Date.now();
   const rel = path.relative(specRoot, specPath).replace(/\\/g, '/');
   const args = [
-    'exec', '--', 'autorest',
+    'exec', '--no', '--', 'autorest',
     '--level=warning','--v3','--spectral','--azure-validator',
     '--semantic-validator=false','--model-validator=false',
     '--openapi-type=arm','--openapi-subtype=arm','--message-format=json',
