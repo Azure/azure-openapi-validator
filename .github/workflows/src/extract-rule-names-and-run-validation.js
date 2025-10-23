@@ -116,7 +116,7 @@ function runAutorest(specPath, specRoot, selectedRules) {
   const rel = path.relative(specRoot, specPath).replace(/\\/g, '/');
   const args = [
     'exec', '--', 'autorest',
-    '--level=info','--v3','--spectral','--azure-validator',
+    '--level=information','--v3','--spectral','--azure-validator',
     '--semantic-validator=false','--model-validator=false',
     '--openapi-type=arm','--openapi-subtype=arm','--message-format=json',
     // Pass selected rules down to the validator so only those rules execute inside the plugins.
@@ -125,12 +125,7 @@ function runAutorest(specPath, specRoot, selectedRules) {
     `--input-file=${specPath}`
   ];
   
-  const result = spawnSync('npm', args, { 
-    cwd: process.cwd(), 
-    shell: true,
-    encoding: 'utf8',
-    maxBuffer: 10 * 1024 * 1024 // 10MB buffer
-  });
+  const result = spawnSync('npm', args, {encoding:'utf8', shell:true});
   
   const dur = Date.now() - start;
   console.log(`DEBUG | runAutorest | end | ${rel} status=${result.status} (${dur}ms)`);
