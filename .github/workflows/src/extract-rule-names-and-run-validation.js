@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Extract rule names from GitHub PR and run AutoRest validation
  * 
@@ -111,7 +109,7 @@ async function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
 /**
  * Run AutoRest against a single specification file
  */
-function runAutorest(specPath, specRoot, selectedRules) {
+function runAutorest(specPath, specRoot, selectedRules, repoRoot) {
   const start = Date.now();
   const rel = path.relative(specRoot, specPath).replace(/\\/g, '/');
   const args = [
@@ -121,7 +119,7 @@ function runAutorest(specPath, specRoot, selectedRules) {
     '--openapi-type=arm','--openapi-subtype=arm','--message-format=json',
     // Pass selected rules down to the validator so only those rules execute inside the plugins.
     `--selected-rules=${selectedRules.join(',')}`,
-    `--use=${path.join(process.cwd(), 'packages', 'azure-openapi-validator', 'autorest')}`,
+    `--use=${path.join(repoRoot, 'packages', 'azure-openapi-validator', 'autorest')}`,
     `--input-file=${specPath}`
   ];
   
@@ -216,11 +214,12 @@ async function runInGitHubActions(context, core, env = process.env) {
  * Core validation logic
  */
 async function runValidation(selectedRules, env, core = null) {
-  const specRoot = path.join(env.GITHUB_WORKSPACE || process.cwd(), env.SPEC_CHECKOUT_PATH || 'specs');
+  const repoRoot = env.GITHUB_WORKSPACE || process.cwd();
+  const specRoot = path.join(repoRoot, env.SPEC_CHECKOUT_PATH || 'specs');
   const maxFiles = parseInt(env.MAX_FILES || '100', 10);
   const allowedRps = (env.ALLOWED_RPS || 'network,compute,monitor,sql,hdinsight,resource,storage')
     .split(',').map(s => s.trim()).filter(Boolean);
-  const outputFile = path.join(env.GITHUB_WORKSPACE || process.cwd(), 'artifacts', 'linter-findings.txt');
+  const outputFile = path.join(repoRoot, 'artifacts', 'linter-findings.txt');
   
   console.log(`Processing rules: ${selectedRules.join(', ')}`);
   console.log(`Max files: ${maxFiles}, Allowed RPs: ${allowedRps.join(', ')}`);
@@ -250,7 +249,7 @@ async function runValidation(selectedRules, env, core = null) {
   
   // Process each spec file sequentially
   for (const spec of specs) {
-    const res = runAutorest(spec, specRoot, selectedRules);
+    const res = runAutorest(spec, specRoot, selectedRules, repoRoot);
     if (res.error) {
       console.log(`Failed ${spec}: ${res.error.message}`);
       continue;
@@ -275,8 +274,9 @@ async function runValidation(selectedRules, env, core = null) {
       if (sev === 'ERROR') errors++;
       else if (sev === 'WARN') warnings++;
       
-      const line = m.line ?? m.range?.start?.line ?? m.position?.line ?? undefined;
-      const column = m.column ?? m.range?.start?.character ?? m.position?.character ?? undefined;
+      // Extract line and column from various possible locations in the message object
+      const line = m.line ?? m.range?.start?.line ?? m.position?.line ?? m.details?.range?.start?.line ?? undefined;
+      const column = m.column ?? m.range?.start?.character ?? m.position?.character ?? m.details?.range?.start?.column ?? undefined;
       const loc = line !== undefined ? `:${line}${column !== undefined ? `:${column}` : ''}` : '';
       
       console.log(`DEBUG | Extracted location - line: ${line}, column: ${column}, loc: '${loc}'`);
