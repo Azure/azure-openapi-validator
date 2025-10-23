@@ -243,9 +243,9 @@ async function runValidation(selectedRules, env, core = null) {
       if (sev === 'ERROR') errors++;
       else if (sev === 'WARN') warnings++;
       
-      const line = m.line ?? m.range?.start?.line ?? m.position?.line ?? null;
-      const column = m.column ?? m.range?.start?.character ?? m.position?.character ?? null;
-      const loc = line != null ? `:${line}:${column != null ? column : 0}` : '';
+      const line = m.line ?? m.range?.start?.line ?? m.position?.line ?? undefined;
+      const column = m.column ?? m.range?.start?.character ?? m.position?.character ?? undefined;
+      const loc = line !== undefined ? `:${line}${column !== undefined ? `:${column}` : ''}` : '';
       
       outLines.push(`${sev} | ${code} | ${path.relative(specRoot, spec).replace(/\\/g, '/')}${loc} | ${m.message || ''}`.trim());
     }

@@ -23,12 +23,20 @@ jobs:
         with:
           node-version: 22
           
-      - name: Checkout full specs repository
+      - name: Checkout specs repository (sparse - only needed RPs)
         uses: actions/checkout@v4
         with:
           repository: ${{ env.SPEC_REPO }}
           path: ${{ env.SPEC_CHECKOUT_PATH }}
-          fetch-depth: 0
+          sparse-checkout: |
+            specification/network
+            specification/compute
+            specification/monitor
+            specification/sql
+            specification/hdinsight
+            specification/resource
+            specification/storage
+          sparse-checkout-cone-mode: false
 
       - name: Install Rush & dependencies
         run: |
