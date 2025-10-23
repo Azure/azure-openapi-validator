@@ -30,6 +30,7 @@ jobs:
           path: ${{ env.SPEC_CHECKOUT_PATH }}
           sparse-checkout: |
             .github/shared
+            specification/common-types
             specification/network
             specification/compute
             specification/monitor
@@ -51,6 +52,10 @@ jobs:
       - name: Build validator (local changes)
         run: |
           node common/scripts/install-run-rush.js build -t @microsoft.azure/openapi-validator
+
+      - name: Install AutoRest globally for npm exec
+        run: |
+          npm install -g autorest@latest
 
       - name: Extract rules and run AutoRest validation
         uses: actions/github-script@v7
