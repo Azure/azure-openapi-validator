@@ -116,7 +116,7 @@ function runAutorest(specPath, specRoot, selectedRules) {
   const rel = path.relative(specRoot, specPath).replace(/\\/g, '/');
   const args = [
     'exec', '--', 'autorest',
-    '--level=warning','--v3','--spectral','--azure-validator',
+    '--level=info','--v3','--spectral','--azure-validator',
     '--semantic-validator=false','--model-validator=false',
     '--openapi-type=arm','--openapi-subtype=arm','--message-format=json',
     // Pass selected rules down to the validator so only those rules execute inside the plugins.
@@ -135,6 +135,14 @@ function runAutorest(specPath, specRoot, selectedRules) {
   const dur = Date.now() - start;
   console.log(`DEBUG | runAutorest | end | ${rel} status=${result.status} (${dur}ms)`);
   
+  // Log raw output for debugging
+  if (result.stdout) {
+    console.log(`DEBUG | runAutorest | stdout for ${rel}:\n${result.stdout}`);
+  }
+  if (result.stderr) {
+    console.log(`DEBUG | runAutorest | stderr for ${rel}:\n${result.stderr}`);
+  }
+  
   return { 
     stdout: result.stdout || '', 
     stderr: result.stderr || '', 
@@ -148,12 +156,34 @@ function runAutorest(specPath, specRoot, selectedRules) {
  */
 function parseMessages(stdout, stderr) {
   const msgs = [];
-  (stdout + '\n' + stderr).split(/\r?\n/).forEach(line => {
+  const allOutput = stdout + '\n' + stderr;
+  console.log(`DEBUG | parseMessages | Total output length: ${allOutput.length} characters`);
+  
+  let matchedLines = 0;
+  let parsedCount = 0;
+  
+  allOutput.split(/\r?\n/).forEach((line, idx) => {
     if (!line.includes('"extensionName":"@microsoft.azure/openapi-validator"')) return;
+    matchedLines++;
+    console.log(`DEBUG | parseMessages | Line ${idx} matched extension filter`);
+    
     const i = line.indexOf('{');
-    if (i < 0) return;
-    try { msgs.push(JSON.parse(line.slice(i))); } catch { }
+    if (i < 0) {
+      console.log(`DEBUG | parseMessages | Line ${idx} has no opening brace`);
+      return;
+    }
+    
+    try { 
+      const parsed = JSON.parse(line.slice(i));
+      msgs.push(parsed);
+      parsedCount++;
+      console.log(`DEBUG | parseMessages | Line ${idx} parsed successfully - code: ${parsed.code || parsed.id}`);
+    } catch (e) { 
+      console.log(`DEBUG | parseMessages | Line ${idx} failed to parse: ${e.message}`);
+    }
   });
+  
+  console.log(`DEBUG | parseMessages | Matched ${matchedLines} lines, parsed ${parsedCount} messages`);
   return msgs;
 }
 
@@ -238,6 +268,13 @@ async function runValidation(selectedRules, env, core = null) {
       const code = m.code || m.id || 'Unknown';
       if (!selectedRules.includes(code)) continue;
       
+      console.log(`DEBUG | Message object keys: ${Object.keys(m).join(', ')}`);
+      console.log(`DEBUG | Message properties - line: ${m.line}, column: ${m.column}`);
+      console.log(`DEBUG | Message range: ${JSON.stringify(m.range)}`);
+      console.log(`DEBUG | Message position: ${JSON.stringify(m.position)}`);
+      console.log(`DEBUG | Message source: ${JSON.stringify(m.source)}`);
+      console.log(`DEBUG | Full message object: ${JSON.stringify(m, null, 2)}`);
+      
       const level = (m.level || '').toLowerCase();
       const sev = level === 'error' ? 'ERROR' : (level === 'warning' ? 'WARN' : 'INFO');
       if (sev === 'ERROR') errors++;
@@ -246,6 +283,8 @@ async function runValidation(selectedRules, env, core = null) {
       const line = m.line ?? m.range?.start?.line ?? m.position?.line ?? undefined;
       const column = m.column ?? m.range?.start?.character ?? m.position?.character ?? undefined;
       const loc = line !== undefined ? `:${line}${column !== undefined ? `:${column}` : ''}` : '';
+      
+      console.log(`DEBUG | Extracted location - line: ${line}, column: ${column}, loc: '${loc}'`);
       
       outLines.push(`${sev} | ${code} | ${path.relative(specRoot, spec).replace(/\\/g, '/')}${loc} | ${m.message || ''}`.trim());
     }
