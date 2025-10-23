@@ -246,6 +246,7 @@ async function runValidation(selectedRules, env, core = null) {
   console.log(`Processing ${specs.length} file(s)`);
   let errors = 0, warnings = 0;
   const outLines = [];
+  const seenErrors = new Set(); // Track unique errors to avoid duplicates from $ref resolution
   
   // Process each spec file sequentially
   for (const spec of specs) {
@@ -256,32 +257,73 @@ async function runValidation(selectedRules, env, core = null) {
     }
 
     const messages = parseMessages(res.stdout || '', res.stderr || '');
-    console.log(`Found ${messages.length} message(s) for ${path.relative(specRoot, spec).replace(/\\/g, '/')}`);
+    const specRelPath = path.relative(specRoot, spec).replace(/\\/g, '/');
+    const specBasename = path.basename(spec);
+    console.log(`Found ${messages.length} message(s) for ${specRelPath}`);
     
     for (const m of messages) {
       const code = m.code || m.id || 'Unknown';
       if (!selectedRules.includes(code)) continue;
       
+      // Extract the actual source file from the message
+      // The source field contains the actual file where the error occurred
+      let errorSourceFile = null;
+      let errorSourcePath = null;
+      
+      if (m.source && Array.isArray(m.source) && m.source.length > 0) {
+        const sourceEntry = m.source[0];
+        if (sourceEntry && sourceEntry.document) {
+          // Extract file path from URI like "file:///home/runner/.../applicationGateway.json"
+          errorSourcePath = sourceEntry.document;
+          const match = errorSourcePath.match(/([^/\\]+)\.json$/i);
+          if (match) {
+            errorSourceFile = match[0]; // e.g., "applicationGateway.json"
+          }
+        }
+      }
+      
+      // Skip errors that don't have source information or don't match the spec being processed
+      if (!errorSourceFile) {
+        const jsonpath = m.details?.jsonpath?.[1] || 'unknown';
+        console.log(`DEBUG | Skipping error with no source field - path: ${jsonpath}`);
+        continue;
+      }
+      
+      if (errorSourceFile !== specBasename) {
+        console.log(`DEBUG | Skipping error from different file - error source: ${errorSourceFile}, current spec: ${specBasename}`);
+        continue;
+      }
+      
+      console.log(`DEBUG | Processing error from matching file: ${errorSourceFile}`);
+      
+      // Extract line and column from the source position (more accurate than other fields)
+      const line = m.source?.[0]?.position?.line ?? m.details?.range?.start?.line ?? m.range?.start?.line ?? undefined;
+      const column = m.source?.[0]?.position?.column ?? m.details?.range?.start?.column ?? m.range?.start?.character ?? undefined;
+      const loc = line !== undefined ? `:${line}${column !== undefined ? `:${column}` : ''}` : '';
+      
+      // Create unique signature for error deduplication
+      // Even with source filtering, the same file might be validated multiple times
+      const errorSignature = `${errorSourceFile}:${line}:${column}:${code}:${m.message || ''}`;
+      
+      if (seenErrors.has(errorSignature)) {
+        console.log(`DEBUG | Skipping duplicate error: ${errorSignature}`);
+        continue;
+      }
+      seenErrors.add(errorSignature);
+      
       console.log(`DEBUG | Message object keys: ${Object.keys(m).join(', ')}`);
-      console.log(`DEBUG | Message properties - line: ${m.line}, column: ${m.column}`);
-      console.log(`DEBUG | Message range: ${JSON.stringify(m.range)}`);
-      console.log(`DEBUG | Message position: ${JSON.stringify(m.position)}`);
-      console.log(`DEBUG | Message source: ${JSON.stringify(m.source)}`);
+      console.log(`DEBUG | Error source file: ${errorSourceFile}`);
+      console.log(`DEBUG | Error source path: ${errorSourcePath}`);
       console.log(`DEBUG | Full message object: ${JSON.stringify(m, null, 2)}`);
+      console.log(`DEBUG | Extracted location - line: ${line}, column: ${column}, loc: '${loc}'`);
+      console.log(`DEBUG | Error signature: ${errorSignature}`);
       
       const level = (m.level || '').toLowerCase();
       const sev = level === 'error' ? 'ERROR' : (level === 'warning' ? 'WARN' : 'INFO');
       if (sev === 'ERROR') errors++;
       else if (sev === 'WARN') warnings++;
       
-      // Extract line and column from various possible locations in the message object
-      const line = m.line ?? m.range?.start?.line ?? m.position?.line ?? m.details?.range?.start?.line ?? undefined;
-      const column = m.column ?? m.range?.start?.character ?? m.position?.character ?? m.details?.range?.start?.column ?? undefined;
-      const loc = line !== undefined ? `:${line}${column !== undefined ? `:${column}` : ''}` : '';
-      
-      console.log(`DEBUG | Extracted location - line: ${line}, column: ${column}, loc: '${loc}'`);
-      
-      outLines.push(`${sev} | ${code} | ${path.relative(specRoot, spec).replace(/\\/g, '/')}${loc} | ${m.message || ''}`.trim());
+      outLines.push(`${sev} | ${code} | ${specRelPath}${loc} | ${m.message || ''}`.trim());
     }
   }
   
