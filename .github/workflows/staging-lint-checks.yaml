@@ -9,7 +9,7 @@ env:
   SPEC_CHECKOUT_PATH: specs
   FAIL_ON_ERRORS: "false" # Set to "true" to fail the job when error findings appear
   MAX_FILES: "100"
-  ALLOWED_RPS: "network,compute,monitor,sql,hdinsight,resource,storage"
+  ALLOWED_RPS: "compute,monitor,sql,hdinsight,network,resource,storage"
 
 jobs:
   run-selected-rules:

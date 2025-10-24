@@ -236,7 +236,7 @@ async function runValidation(selectedRules, env, core = null) {
   const repoRoot = env.GITHUB_WORKSPACE || process.cwd();
   const specRoot = path.join(repoRoot, env.SPEC_CHECKOUT_PATH || 'specs');
   const maxFiles = parseInt(env.MAX_FILES || '100', 10);
-  const allowedRps = (env.ALLOWED_RPS || 'network,compute,monitor,sql,hdinsight,resource,storage')
+  const allowedRps = (env.ALLOWED_RPS || 'compute,monitor,sql,hdinsight,network,resource,storage')
     .split(',').map(s => s.trim()).filter(Boolean);
   const outputFile = path.join(repoRoot, 'artifacts', 'linter-findings.txt');
   
