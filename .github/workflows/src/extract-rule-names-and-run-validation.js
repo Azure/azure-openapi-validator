@@ -75,34 +75,65 @@ function extractRuleNames(context) {
  * Enumerate stable ARM swagger files.
  * Criteria: contains /resource-manager/ and /stable/, ends with .json.
  * Excludes examples, readme, quickstart-templates, scenarios.
+ * Distributes files randomly across all allowed RPs to ensure diversity.
  */
 async function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
-  const results = [];
   const isStableArm = p => /\/resource-manager\//.test(p) && /\/stable\//.test(p);
+  const allFiles = [];
+  
+  // Collect all matching files from all RPs
   for (const rp of allowedRPs) {
-    if (results.length >= maxFiles) break;
     const rpRoot = path.join(specRoot, 'specification', rp);
     if (!fs.existsSync(rpRoot)) continue;
+    
     const stack = [rpRoot];
-    while (stack.length && results.length < maxFiles) {
+    while (stack.length) {
       const current = stack.pop();
-      let entries; try { entries = fs.readdirSync(current, { withFileTypes: true }); } catch { continue; }
+      let entries;
+      try {
+        entries = fs.readdirSync(current, { withFileTypes: true });
+      } catch {
+        continue;
+      }
+      
       for (const entry of entries) {
         const abs = path.join(current, entry.name);
-        if (entry.isDirectory()) { stack.push(abs); continue; }
+        if (entry.isDirectory()) {
+          stack.push(abs);
+          continue;
+        }
         if (!entry.isFile()) continue;
         if (!abs.toLowerCase().endsWith('.json')) continue;
+        
         const norm = abs.replace(/\\/g, '/');
         if (!isStableArm(norm)) continue;
         if (/\/examples\//i.test(norm)) continue;
         if (/readme\.(md|json)$/i.test(norm)) continue;
         if (/quickstart-templates\//i.test(norm)) continue;
         if (/\/scenarios\//i.test(norm)) continue;
-        results.push(abs);
-        if (results.length >= maxFiles) break;
+        
+        allFiles.push(abs);
       }
     }
   }
+  
+  // Shuffle using sort with random comparator and take first maxFiles
+  const results = allFiles.sort(() => Math.random() - 0.5).slice(0, maxFiles);
+  
+  // Log distribution for transparency
+  console.log(`Collected ${results.length} files randomly from ${allFiles.length} total files`);
+  const rpCounts = new Map();
+  for (const file of results) {
+    const match = file.match(/specification[/\\]([^/\\]+)[/\\]/);
+    if (match) {
+      const rp = match[1];
+      rpCounts.set(rp, (rpCounts.get(rp) || 0) + 1);
+    }
+  }
+  for (const [rp, count] of rpCounts.entries()) {
+    console.log(`  ${rp}: ${count} files`);
+  }
+  
   return results;
 }
 
@@ -114,7 +145,7 @@ function runAutorest(specPath, specRoot, selectedRules, repoRoot) {
   const rel = path.relative(specRoot, specPath).replace(/\\/g, '/');
   const args = [
     'exec', '--', 'autorest',
-    '--level=information','--v3','--spectral','--azure-validator',
+    '--level=warning','--v3','--spectral','--azure-validator',
     '--semantic-validator=false','--model-validator=false',
     '--openapi-type=arm','--openapi-subtype=arm','--message-format=json',
     // Pass selected rules down to the validator so only those rules execute inside the plugins.
