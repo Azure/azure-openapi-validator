@@ -39,6 +39,21 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
 
   const resolvedOpenapiType: OpenApiTypes = getOpenapiType(openapiType)
 
+  let selectedRulesFilter: string | undefined
+  try {
+    selectedRulesFilter = await initiator.GetValue("selected-rules")
+  } catch {
+    /* ignore */
+  }
+
+   // Filtering is now handled in getRulesets() by only loading selected rules
+  if (!selectedRulesFilter) {
+    initiator.Message({
+      Channel: "information",
+      Text: `spectralPluginFunc: No --selected-rules provided. Running all spectral rules.`,
+    })
+  }
+  
   const {
     rulesetPayload,
     rulesetForManualSpecs,
@@ -47,7 +62,7 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
     rulesetPayload: SpectralRulesetPayload
     rulesetForManualSpecs: Ruleset
     rulesetForTypeSpecGeneratedSpecs: Ruleset
-  } = await getRulesets(initiator, resolvedOpenapiType, isStagingRun)
+  } = await getRulesets(initiator, resolvedOpenapiType, isStagingRun, selectedRulesFilter)
 
   for (const openApiSpecFile of openApiSpecFiles) {
     await validateOpenApiSpecFileUsingSpectral(
@@ -69,6 +84,7 @@ async function getRulesets(
   initiator: IAutoRestPluginInitiator,
   resolvedOpenapiType: OpenApiTypes,
   isStagingRun: boolean,
+  selectedRulesFilter?: string,
 ): Promise<{
   rulesetPayload: SpectralRulesetPayload
   rulesetForManualSpecs: Ruleset
@@ -80,6 +96,47 @@ async function getRulesets(
     resolvedOpenapiType === OpenApiTypes.dataplane
       ? getNamesOfRulesInPayloadWithPropertySetToTrue(rulesetPayload, "disableForTypeSpecDataPlane")
       : []
+
+  // If selectedRulesFilter is specified, filter the ruleset payload to only include those rules
+  if (selectedRulesFilter) {
+    const selectedRuleNames = new Set(selectedRulesFilter.split(",").map((r: string) => r.trim()))
+    const filteredRules: any = {}
+    const matchedRuleNames: string[] = []
+    const unmatchedRuleNames: string[] = []
+
+    for (const requestedRuleName of selectedRuleNames) {
+      if (rulesetPayload.rules[requestedRuleName]) {
+        filteredRules[requestedRuleName] = rulesetPayload.rules[requestedRuleName]
+        matchedRuleNames.push(requestedRuleName)
+      } else {
+        unmatchedRuleNames.push(requestedRuleName)
+      }
+    }
+
+    rulesetPayload.rules = filteredRules
+    // Also clear the extends array to prevent Spectral from loading additional rulesets
+    rulesetPayload.extends = []
+
+    // Log filtering activity
+    if (matchedRuleNames.length > 0) {
+      initiator.Message({
+        Channel: "information",
+        Text: `spectralPluginFunc: Running only ${matchedRuleNames.length} selected spectral rule(s): ${matchedRuleNames.join(", ")}`,
+      })
+    } else {
+      initiator.Message({
+        Channel: "information",
+        Text: `spectralPluginFunc: No selected rules matched; skipping spectral validation.`,
+      })
+    }
+
+    if (unmatchedRuleNames.length > 0) {
+      initiator.Message({
+        Channel: "information",
+        Text: `spectralPluginFunc: Unknown spectral rule name(s): ${unmatchedRuleNames.join(", ")}`,
+      })
+    }
+  }
 
   // We need two of rulesetPayloads:
   // - The original, to prepare it as argument for spectral Rulesets. See deletePropertiesNotValidForSpectralRules for more.
