@@ -158,15 +158,7 @@ function runAutorest(specPath, specRoot, selectedRules, repoRoot) {
   
   const dur = Date.now() - start;
   console.log(`DEBUG | runAutorest | end | ${rel} status=${result.status} (${dur}ms)`);
-  
-  // Log raw output for debugging
-  if (result.stdout) {
-    console.log(`DEBUG | runAutorest | stdout for ${rel}:\n${result.stdout}`);
-  }
-  if (result.stderr) {
-    console.log(`DEBUG | runAutorest | stderr for ${rel}:\n${result.stderr}`);
-  }
-  
+
   return { 
     stdout: result.stdout || '', 
     stderr: result.stderr || '', 
@@ -189,7 +181,6 @@ function parseMessages(stdout, stderr) {
   allOutput.split(/\r?\n/).forEach((line, idx) => {
     if (!line.includes('"extensionName":"@microsoft.azure/openapi-validator"')) return;
     matchedLines++;
-    console.log(`DEBUG | parseMessages | Line ${idx} matched extension filter`);
     
     const i = line.indexOf('{');
     if (i < 0) {
@@ -201,13 +192,11 @@ function parseMessages(stdout, stderr) {
       const parsed = JSON.parse(line.slice(i));
       msgs.push(parsed);
       parsedCount++;
-      console.log(`DEBUG | parseMessages | Line ${idx} parsed successfully - code: ${parsed.code || parsed.id}`);
     } catch (e) { 
       console.log(`DEBUG | parseMessages | Line ${idx} failed to parse: ${e.message}`);
     }
   });
-  
-  console.log(`DEBUG | parseMessages | Matched ${matchedLines} lines, parsed ${parsedCount} messages`);
+
   return msgs;
 }
 
@@ -234,7 +223,6 @@ async function runInGitHubActions(context, core, env = process.env) {
     }
     
     return await runValidation(selectedRules, env, core);
-    
   } catch (error) {
     core.setFailed(`Script execution failed: ${error.message}`);
     throw error;
@@ -342,13 +330,6 @@ async function runValidation(selectedRules, env, core = null) {
       }
       seenErrors.add(errorSignature);
       
-      console.log(`DEBUG | Message object keys: ${Object.keys(m).join(', ')}`);
-      console.log(`DEBUG | Error source file: ${errorSourceFile}`);
-      console.log(`DEBUG | Error source path: ${errorSourcePath}`);
-      console.log(`DEBUG | Full message object: ${JSON.stringify(m, null, 2)}`);
-      console.log(`DEBUG | Extracted location - line: ${line}, column: ${column}, loc: '${loc}'`);
-      console.log(`DEBUG | Error signature: ${errorSignature}`);
-      
       const level = (m.level || '').toLowerCase();
       const sev = level === 'error' ? 'ERROR' : (level === 'warning' ? 'WARN' : 'INFO');
       if (sev === 'ERROR') errors++;
@@ -359,7 +340,6 @@ async function runValidation(selectedRules, env, core = null) {
   }
   
   // Output results
-  outLines.forEach(l => console.log(l));
   const summary = `INFO | Runner | summary | Files scanned: ${specs.length}, Errors: ${errors}, Warnings: ${warnings}`;
   console.log(summary);
   

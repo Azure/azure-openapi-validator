@@ -41,7 +41,7 @@ Add a line in your PR body:
 rules: PostResponseCodes, DeleteMustNotHaveRequestBody
 ```
 
-Note: If both methods are used, PR labels take precedence.
+Note: If both methods are used, rules from both sources are combined.
 
 ### Workflow Configuration
 
@@ -60,17 +60,8 @@ env:
 - **MAX_FILES**: Maximum number of specification files to process
 - **ALLOWED_RPS**: Comma-separated list of resource providers to include in testing
 
-### Supported Resource Providers
-
-The default configuration includes these resource providers:
-
-- network: Virtual networks, load balancers, network interfaces
-- compute: Virtual machines, scale sets, disks
-- monitor: Monitoring, metrics, alerts
-- sql: SQL databases and managed instances
-- hdinsight: HDInsight cluster services
-- resource: Resource management operations
-- storage: Storage accounts and services
+**Note**: These values can be modified directly in the `.github/workflows/staging-lint-checks.yaml` file to adjust the
+workflow behavior based on testing requirements.
 
 ## Debugging and Troubleshooting
 
@@ -94,5 +85,5 @@ the `ALLOWED_RPS` environment variable.
 
 ## Related Components
 
-- `.github/workflows/src/extract-rule-names-and-run-validation.js`: Single consolidated script that parses rule names (from PR labels or body) and runs AutoRest with the selected rules over allowed spec files. (Replaces earlier separate extract + run scripts.)
+- `.github/workflows/src/extract-rule-names-and-run-validation.js`: Single consolidated script that parses rule names (from PR labels or body) and runs AutoRest with the selected rules over allowed spec files.
 - GitHub Action workflow file: `.github/workflows/staging-lint-checks.yaml` orchestrates checkout, build, and script execution.

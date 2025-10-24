@@ -46,6 +46,14 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
     /* ignore */
   }
 
+   // Filtering is now handled in getRulesets() by only loading selected rules
+  if (!selectedRulesFilter) {
+    initiator.Message({
+      Channel: "information",
+      Text: `spectralPluginFunc: No --selected-rules provided. Running all spectral rules.`,
+    })
+  }
+  
   const {
     rulesetPayload,
     rulesetForManualSpecs,
@@ -55,14 +63,6 @@ export async function spectralPluginFunc(initiator: IAutoRestPluginInitiator): P
     rulesetForManualSpecs: Ruleset
     rulesetForTypeSpecGeneratedSpecs: Ruleset
   } = await getRulesets(initiator, resolvedOpenapiType, isStagingRun, selectedRulesFilter)
-
-  // Filtering is now handled in getRulesets() by only loading selected rules
-  if (!selectedRulesFilter) {
-    initiator.Message({
-      Channel: "information",
-      Text: `spectralPluginFunc: No --selected-rules provided. Running all spectral rules.`,
-    })
-  }
 
   for (const openApiSpecFile of openApiSpecFiles) {
     await validateOpenApiSpecFileUsingSpectral(
