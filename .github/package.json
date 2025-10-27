@@ -1,13 +1,12 @@
 {
-  "name": "validator-runner-scripts",
   "private": true,
   "type": "module",
-  "scripts": {
-    "test": "vitest",
-    "test:ci": "vitest run --coverage --reporter=verbose"
-  },
   "devDependencies": {
     "@vitest/coverage-v8": "^3.2.4",
     "vitest": "^3.2.4"
+  },
+  "scripts": {
+    "test": "vitest",
+    "test:ci": "vitest run --coverage --reporter=verbose"
   }
 }
