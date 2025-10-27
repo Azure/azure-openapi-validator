@@ -63,7 +63,7 @@ jobs:
         with:
           script: |
             const { runInGitHubActions } = await import('${{ github.workspace }}/.github/workflows/src/extract-rule-names-and-run-validation.js');
-            await runInGitHubActions(context, core, process.env);
+            await runInGitHubActions(context, core);
 
       - name: Upload findings artifact
         if: always()
