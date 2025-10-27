@@ -2,7 +2,16 @@ name: Staging Lint Checks
 
 on:
   pull_request:
-    types: [opened, edited, synchronize, labeled, unlabeled]
+    types:
+      # default
+      - opened
+      - synchronize
+      - reopened
+      # body can be used to select rule(s) for testing
+      - edited
+      # labels can be used to select rule(s) for testing
+      - labeled
+      - unlabeled
 
 env:
   SPEC_REPO: Azure/azure-rest-api-specs
