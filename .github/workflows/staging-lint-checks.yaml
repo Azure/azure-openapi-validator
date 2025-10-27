@@ -13,6 +13,9 @@ on:
       - labeled
       - unlabeled
 
+permissions:
+  contents: read
+
 env:
   SPEC_REPO: Azure/azure-rest-api-specs
   SPEC_CHECKOUT_PATH: specs
