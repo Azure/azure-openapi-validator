@@ -237,13 +237,11 @@ async function runInGitHubActions({ context, core }) {
 /**
  * Core validation logic
  */
-async function runValidation(selectedRules, core = null) {
-  const repoRoot = process.env.GITHUB_WORKSPACE || process.cwd();
-  const specRoot = path.join(repoRoot, process.env.SPEC_CHECKOUT_PATH || "specs");
-  const maxFiles = parseInt(process.env.MAX_FILES || "100", 10);
-  const allowedRps = (
-    process.env.ALLOWED_RPS || "compute,monitor,sql,hdinsight,network,resource,storage"
-  )
+async function runValidation(selectedRules, env, core = null) {
+  const repoRoot = env.GITHUB_WORKSPACE || process.cwd();
+  const specRoot = path.join(repoRoot, env.SPEC_CHECKOUT_PATH || "specs");
+  const maxFiles = parseInt(env.MAX_FILES || "100", 10);
+  const allowedRps = (env.ALLOWED_RPS || "compute,monitor,sql,hdinsight,network,resource,storage")
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean);
