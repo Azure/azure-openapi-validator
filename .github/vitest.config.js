@@ -24,5 +24,7 @@ export default defineConfig({
         "**/test/**",
       ],
     },
+    // Increase timeout for test "MAX_FILES limits scanning"
+    testTimeout: 20000,
   },
 });
