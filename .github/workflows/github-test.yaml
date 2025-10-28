@@ -1,3 +1,5 @@
+# Modified copy of https://github.com/Azure/azure-rest-api-specs/blob/main/.github/workflows/github-test.yaml
+
 name: GitHub Actions - Test
 
 on:
@@ -66,7 +68,7 @@ jobs:
       - name: Install dev deps
         run: npm ci
 
-      # - run: npm run lint
+      - run: npm run lint
 
       - run: npm run format:check:ci
 
@@ -75,6 +77,6 @@ jobs:
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         with:
-          name: code-coverage-report-${{ matrix.os }}-${{ fromJSON('{".github":"github", ".github/shared":"github-shared"}')[matrix.folder] }}
-          path: ./${{ matrix.folder }}/coverage
+          name: code-coverage-report-${{ matrix.os }}
+          path: ./.github/coverage
           if-no-files-found: ignore
