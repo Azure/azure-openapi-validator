@@ -3,9 +3,14 @@
   "type": "module",
   "devDependencies": {
     "@vitest/coverage-v8": "^3.2.4",
+    "prettier": "~3.6.2",
+    "prettier-plugin-organize-imports": "^4.2.0",
     "vitest": "^3.2.4"
   },
   "scripts": {
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "format:check:ci": "prettier . --check --log-level debug",
     "test": "vitest",
     "test:ci": "vitest run --coverage --reporter=verbose"
   }
