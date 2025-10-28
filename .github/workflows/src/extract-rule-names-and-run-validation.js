@@ -12,11 +12,6 @@
 import fs from "fs";
 import { spawnSync } from "node:child_process";
 import path from "path";
-import { fileURLToPath } from "url";
-
-// ES module equivalent of __filename and __dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 /**
  * Extract rule names from PR labels
@@ -181,12 +176,8 @@ function parseMessages(stdout, stderr) {
   const allOutput = stdout + "\n" + stderr;
   console.log(`DEBUG | parseMessages | Total output length: ${allOutput.length} characters`);
 
-  let matchedLines = 0;
-  let parsedCount = 0;
-
   allOutput.split(/\r?\n/).forEach((line, idx) => {
     if (!line.includes('"extensionName":"@microsoft.azure/openapi-validator"')) return;
-    matchedLines++;
 
     const i = line.indexOf("{");
     if (i < 0) {
@@ -197,7 +188,6 @@ function parseMessages(stdout, stderr) {
     try {
       const parsed = JSON.parse(line.slice(i));
       msgs.push(parsed);
-      parsedCount++;
     } catch (e) {
       console.log(`DEBUG | parseMessages | Line ${idx} failed to parse: ${e.message}`);
     }
