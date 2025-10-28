@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
  * Extract rule names from GitHub PR and run AutoRest validation
  *
@@ -198,11 +200,9 @@ function parseMessages(stdout, stderr) {
 
 /**
  * Main execution function for GitHub Actions
- * @param {object} context - GitHub Actions context
- * @param {object} core - GitHub Actions core utilities
- * @param {object} env - Environment variables
+ * @param {import('@actions/github-script').AsyncFunctionArguments} AsyncFunctionArguments
  */
-async function runInGitHubActions(context, core, env = process.env) {
+async function runInGitHubActions({ context, core }) {
   try {
     // Extract rule names from PR
     const selectedRules = extractRuleNames(context);
@@ -214,7 +214,11 @@ async function runInGitHubActions(context, core, env = process.env) {
     if (selectedRules.length === 0) {
       core.warning("No linting rules specified in labels or PR body");
       // Create empty output file
-      const outputFile = path.join(env.GITHUB_WORKSPACE, "artifacts", "linter-findings.txt");
+      const outputFile = path.join(
+        process.env.GITHUB_WORKSPACE,
+        "artifacts",
+        "linter-findings.txt",
+      );
       fs.mkdirSync(path.dirname(outputFile), { recursive: true });
       fs.writeFileSync(
         outputFile,
@@ -223,7 +227,7 @@ async function runInGitHubActions(context, core, env = process.env) {
       return;
     }
 
-    return await runValidation(selectedRules, env, core);
+    return await runValidation(selectedRules, core);
   } catch (error) {
     core.setFailed(`Script execution failed: ${error.message}`);
     throw error;
@@ -233,11 +237,13 @@ async function runInGitHubActions(context, core, env = process.env) {
 /**
  * Core validation logic
  */
-async function runValidation(selectedRules, env, core = null) {
-  const repoRoot = env.GITHUB_WORKSPACE || process.cwd();
-  const specRoot = path.join(repoRoot, env.SPEC_CHECKOUT_PATH || "specs");
-  const maxFiles = parseInt(env.MAX_FILES || "100", 10);
-  const allowedRps = (env.ALLOWED_RPS || "compute,monitor,sql,hdinsight,network,resource,storage")
+async function runValidation(selectedRules, core = null) {
+  const repoRoot = process.env.GITHUB_WORKSPACE || process.cwd();
+  const specRoot = path.join(repoRoot, process.env.SPEC_CHECKOUT_PATH || "specs");
+  const maxFiles = parseInt(process.env.MAX_FILES || "100", 10);
+  const allowedRps = (
+    process.env.ALLOWED_RPS || "compute,monitor,sql,hdinsight,network,resource,storage"
+  )
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean);
@@ -366,7 +372,7 @@ async function runValidation(selectedRules, env, core = null) {
   fs.writeFileSync(outputFile, outLines.concat([summary]).join("\n") + "\n", "utf8");
 
   // Handle failure conditions
-  if (errors > 0 && env.FAIL_ON_ERRORS === "true") {
+  if (errors > 0 && process.env.FAIL_ON_ERRORS === "true") {
     const message = `Found ${errors} error(s) in validation`;
     if (core) core.setFailed(message);
     else {
