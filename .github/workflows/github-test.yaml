@@ -68,7 +68,7 @@ jobs:
       - name: Install dev deps
         run: npm ci
 
-      # - run: npm run lint
+      - run: npm run lint
 
       - run: npm run format:check:ci
 
