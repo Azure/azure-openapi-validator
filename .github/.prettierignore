@@ -1,9 +1,5 @@
 # code coverage
 coverage
 
-# specs in test folders
-fixtures
-specification
-
 # unmanaged files and folders
 ISSUE_TEMPLATE
