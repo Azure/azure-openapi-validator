@@ -1,3 +1,4 @@
+// Copied from https://github.com/Azure/azure-rest-api-specs/blob/main/.github/tsconfig.json
 // Only used for type-checking of JavaScript sources.  Folder should contain no TypeScript sources.
 {
   "extends": "@tsconfig/node20/tsconfig.json",

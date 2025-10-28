@@ -1,3 +1,5 @@
+# Includes subset of https://github.com/Azure/azure-rest-api-specs/blob/main/.github/.prettierignore
+
 # code coverage
 coverage
 
