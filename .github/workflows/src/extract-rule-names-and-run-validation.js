@@ -14,21 +14,25 @@
 import fs from "fs";
 import { spawnSync } from "node:child_process";
 import path from "path";
+import process from "node:process";
 
 /**
  * Extract rule names from PR labels
  * Expects labels in format: test-<RuleName>
- * @param {string[]} labels - Array of label names
+ * @param {Array<string | {name: string}>} labels - Array of label names or label objects
  * @returns {string[]} - Array of extracted rule names
  */
 function extractRulesFromLabels(labels) {
   if (!Array.isArray(labels)) return [];
   // If labels are objects (GitHub API), map to their name first.
   const names = labels.map((l) => (l && typeof l === "object" ? l.name : l));
-  return names
-    .filter((name) => typeof name === "string" && /^test-/i.test(name))
-    .map((name) => name.replace(/^test-/i, "").trim())
-    .filter(Boolean);
+  return (
+    names
+      .filter((name) => typeof name === "string" && /^test-/i.test(name))
+      // @ts-expect-error - filter above ensures name is string
+      .map((name) => name.replace(/^test-/i, "").trim())
+      .filter(Boolean)
+  );
 }
 
 /**
@@ -51,7 +55,7 @@ function extractRulesFromBody(body) {
 /**
  * Extract and combine rule names from GitHub context
  * Combines rules from both labels and body, removing duplicates
- * @param {Object} context - GitHub Actions context object
+ * @param {{ payload: { pull_request?: { labels?: Array<string | {name: string}>, body?: string } } }} context - GitHub Actions context object
  * @returns {string[]} - Array of unique rule names
  */
 function extractRuleNames(context) {
@@ -71,8 +75,13 @@ function extractRuleNames(context) {
  * Criteria: contains /resource-manager/ and /stable/, ends with .json.
  * Excludes examples, readme, quickstart-templates, scenarios.
  * Distributes files randomly across all allowed RPs to ensure diversity.
+ * @param {string} specRoot - Root directory containing specifications
+ * @param {string[]} allowedRPs - Array of allowed resource provider names
+ * @param {number} maxFiles - Maximum number of files to return
+ * @returns {Promise<string[]>} - Array of file paths
  */
 async function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
+  /** @param {string} p */
   const isStableArm = (p) => /\/resource-manager\//.test(p) && /\/stable\//.test(p);
   const allFiles = [];
 
@@ -82,8 +91,10 @@ async function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
     if (!fs.existsSync(rpRoot)) continue;
 
     const stack = [rpRoot];
-    while (stack.length) {
+    while (stack.length > 0) {
       const current = stack.pop();
+      if (!current) continue;
+      
       let entries;
       try {
         entries = fs.readdirSync(current, { withFileTypes: true });
@@ -125,15 +136,19 @@ async function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
       rpCounts.set(rp, (rpCounts.get(rp) || 0) + 1);
     }
   }
-  for (const [rp, count] of rpCounts.entries()) {
+  rpCounts.forEach((count, rp) => {
     console.log(`  ${rp}: ${count} files`);
-  }
+  });
 
   return results;
 }
 
 /**
  * Run AutoRest against a single specification file
+ * @param {string} specPath - Path to the specification file
+ * @param {string} specRoot - Root directory of specifications
+ * @param {string[]} selectedRules - Array of rule names to validate
+ * @param {string} repoRoot - Root directory of the repository
  */
 function runAutorest(specPath, specRoot, selectedRules, repoRoot) {
   const start = Date.now();
@@ -172,8 +187,12 @@ function runAutorest(specPath, specRoot, selectedRules, repoRoot) {
 
 /**
  * Parse AutoRest output for validation messages
+ * @param {string} stdout - Standard output from AutoRest
+ * @param {string} stderr - Standard error output from AutoRest
+ * @returns {any[]} - Array of parsed validation messages
  */
 function parseMessages(stdout, stderr) {
+  /** @type {any[]} */
   const msgs = [];
   const allOutput = stdout + "\n" + stderr;
   console.log(`DEBUG | parseMessages | Total output length: ${allOutput.length} characters`);
@@ -191,7 +210,8 @@ function parseMessages(stdout, stderr) {
       const parsed = JSON.parse(line.slice(i));
       msgs.push(parsed);
     } catch (e) {
-      console.log(`DEBUG | parseMessages | Line ${idx} failed to parse: ${e.message}`);
+      const errorMessage = e instanceof Error ? e.message : String(e);
+      console.log(`DEBUG | parseMessages | Line ${idx} failed to parse: ${errorMessage}`);
     }
   });
 
@@ -200,7 +220,7 @@ function parseMessages(stdout, stderr) {
 
 /**
  * Main execution function for GitHub Actions
- * @param {import('@actions/github-script').AsyncFunctionArguments} AsyncFunctionArguments
+ * @param {{ context: any, core: any }} params - GitHub Actions context and core
  */
 async function runInGitHubActions({ context, core }) {
   try {
@@ -215,7 +235,7 @@ async function runInGitHubActions({ context, core }) {
       core.warning("No linting rules specified in labels or PR body");
       // Create empty output file
       const outputFile = path.join(
-        process.env.GITHUB_WORKSPACE,
+        process.env.GITHUB_WORKSPACE || "",
         "artifacts",
         "linter-findings.txt",
       );
@@ -227,15 +247,19 @@ async function runInGitHubActions({ context, core }) {
       return;
     }
 
-    return await runValidation(selectedRules, core);
+    return await runValidation(selectedRules, process.env, core);
   } catch (error) {
-    core.setFailed(`Script execution failed: ${error.message}`);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    core.setFailed(`Script execution failed: ${errorMessage}`);
     throw error;
   }
 }
 
 /**
  * Core validation logic
+ * @param {string[]} selectedRules - Array of rule names to validate
+ * @param {any} env - Environment variables object
+ * @param {any} core - GitHub Actions core object (optional)
  */
 async function runValidation(selectedRules, env, core = null) {
   const repoRoot = env.GITHUB_WORKSPACE || process.cwd();
@@ -243,7 +267,7 @@ async function runValidation(selectedRules, env, core = null) {
   const maxFiles = parseInt(env.MAX_FILES || "100", 10);
   const allowedRps = (env.ALLOWED_RPS || "compute,monitor,sql,hdinsight,network,resource,storage")
     .split(",")
-    .map((s) => s.trim())
+    .map((/** @type {string} */ s) => s.trim())
     .filter(Boolean);
   const outputFile = path.join(repoRoot, "artifacts", "linter-findings.txt");
 
@@ -255,10 +279,11 @@ async function runValidation(selectedRules, env, core = null) {
   try {
     specs = await enumerateSpecs(specRoot, allowedRps, maxFiles);
   } catch (err) {
-    const message = `Failed to enumerate specs: ${err.message}`;
+    const errorMessage = err instanceof Error ? err.message : String(err);
+    const message = `Failed to enumerate specs: ${errorMessage}`;
     if (core) core.setFailed(message);
     else console.error(`ERROR | ${message}`);
-    return;
+    return { specs: 0, errors: 0, warnings: 0 };
   }
   if (!specs.length) {
     const message = "No matching spec files found";
@@ -270,7 +295,7 @@ async function runValidation(selectedRules, env, core = null) {
       outputFile,
       "INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0\n",
     );
-    return;
+    return { specs: 0, errors: 0, warnings: 0 };
   }
 
   console.log(`Processing ${specs.length} file(s)`);
@@ -294,7 +319,7 @@ async function runValidation(selectedRules, env, core = null) {
 
     for (const m of messages) {
       const code = m.code || m.id || "Unknown";
-      if (!selectedRules.includes(code)) continue;
+      if (selectedRules.indexOf(code) === -1) continue;
 
       // Extract the actual source file from the message
       // The source field contains the actual file where the error occurred
@@ -370,7 +395,7 @@ async function runValidation(selectedRules, env, core = null) {
   fs.writeFileSync(outputFile, outLines.concat([summary]).join("\n") + "\n", "utf8");
 
   // Handle failure conditions
-  if (errors > 0 && process.env.FAIL_ON_ERRORS === "true") {
+  if (errors > 0 && env.FAIL_ON_ERRORS === "true") {
     const message = `Found ${errors} error(s) in validation`;
     if (core) core.setFailed(message);
     else {
