@@ -1,0 +1,82 @@
+# Modified copy of https://github.com/Azure/azure-rest-api-specs/blob/main/.github/workflows/github-test.yaml
+
+name: GitHub Actions - Test
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/**
+  pull_request:
+    paths:
+      - .github/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu, windows]
+
+    runs-on: ${{ fromJSON('{"ubuntu":"ubuntu-24.04", "windows":"windows-2022"}')[matrix.os] }}
+
+    defaults:
+      run:
+        working-directory: ./.github
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+
+      # Content copied from https://raw.githubusercontent.com/rhysd/actionlint/2ab3a12c7848f6c15faca9a92612ef4261d0e370/.github/actionlint-matcher.json
+      - if: ${{ matrix.os == 'ubuntu'}}
+        name: Add ActionLint Problem Matcher
+        run: echo "::add-matcher::.github/matchers/actionlint.json"
+
+      - if: ${{ matrix.os == 'ubuntu'}}
+        name: Lint workflows
+        uses: docker://rhysd/actionlint:1.7.8
+        with:
+          args: -color -verbose
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # actions/github-script@v7 uses Node 20
+          node-version: 20.x
+
+      - name: Install runtime deps
+        run: npm ci --omit dev
+
+      - name: Verify all modules are importable
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { join } = await import("path");
+            const { pathToFileURL } = await import("url");
+            const fullPath = join(process.env.GITHUB_WORKSPACE, ".github", "workflows", "src", "github-test.js");
+            const { default: importAllModules } = await import(pathToFileURL(fullPath).href);
+            await importAllModules({ core });
+
+      - name: Install dev deps
+        run: npm ci
+
+      - run: npm run lint
+
+      - run: npm run format:check:ci
+
+      - run: npm run test:ci
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage-report-${{ matrix.os }}
+          path: ./.github/coverage
+          if-no-files-found: ignore
