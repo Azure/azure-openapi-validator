@@ -11,9 +11,8 @@
  * Uses github-script action with direct access to context and core
  */
 
-import fs from "fs";
-import path from "path";
-import process from "process";
+import { existsSync, mkdirSync, readdirSync, writeFileSync } from "fs";
+import { basename, dirname, join, relative } from "path";
 import { execNpmExec } from "../../shared/src/exec.js";
 
 /**
@@ -86,8 +85,8 @@ function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
 
   // Collect all matching files from all RPs
   for (const rp of allowedRPs) {
-    const rpRoot = path.join(specRoot, "specification", rp);
-    if (!fs.existsSync(rpRoot)) continue;
+    const rpRoot = join(specRoot, "specification", rp);
+    if (!existsSync(rpRoot)) continue;
 
     const stack = [rpRoot];
     while (stack.length > 0) {
@@ -96,13 +95,13 @@ function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
 
       let entries;
       try {
-        entries = fs.readdirSync(current, { withFileTypes: true });
+        entries = readdirSync(current, { withFileTypes: true });
       } catch {
         continue;
       }
 
       for (const entry of entries) {
-        const abs = path.join(current, entry.name);
+        const abs = join(current, entry.name);
         if (entry.isDirectory()) {
           stack.push(abs);
           continue;
@@ -152,7 +151,7 @@ function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
  */
 async function runAutorest(specPath, specRoot, selectedRules, repoRoot) {
   const start = Date.now();
-  const rel = path.relative(specRoot, specPath).replace(/\\/g, "/");
+  const rel = relative(specRoot, specPath).replace(/\\/g, "/");
   const args = [
     "autorest",
     "--level=warning",
@@ -166,7 +165,7 @@ async function runAutorest(specPath, specRoot, selectedRules, repoRoot) {
     "--message-format=json",
     // Pass selected rules down to the validator so only those rules execute inside the plugins.
     `--selected-rules=${selectedRules.join(",")}`,
-    `--use=${path.join(repoRoot, "packages", "azure-openapi-validator", "autorest")}`,
+    `--use=${join(repoRoot, "packages", "azure-openapi-validator", "autorest")}`,
     `--input-file=${specPath}`,
   ];
 
@@ -227,13 +226,13 @@ async function runInGitHubActions({ context, core }) {
     if (selectedRules.length === 0) {
       core.warning("No linting rules specified in labels or PR body");
       // Create empty output file
-      const outputFile = path.join(
+      const outputFile = join(
         process.env.GITHUB_WORKSPACE || "",
         "artifacts",
         "linter-findings.txt",
       );
-      fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-      fs.writeFileSync(
+      mkdirSync(dirname(outputFile), { recursive: true });
+      writeFileSync(
         outputFile,
         "INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0\n",
       );
@@ -256,13 +255,13 @@ async function runInGitHubActions({ context, core }) {
  */
 async function runValidation(selectedRules, env, core = null) {
   const repoRoot = env.GITHUB_WORKSPACE || process.cwd();
-  const specRoot = path.join(repoRoot, env.SPEC_CHECKOUT_PATH || "specs");
+  const specRoot = join(repoRoot, env.SPEC_CHECKOUT_PATH || "specs");
   const maxFiles = parseInt(env.MAX_FILES || "100", 10);
   const allowedRps = (env.ALLOWED_RPS || "compute,monitor,sql,hdinsight,network,resource,storage")
     .split(",")
     .map((/** @type {string} */ s) => s.trim())
     .filter(Boolean);
-  const outputFile = path.join(repoRoot, "artifacts", "linter-findings.txt");
+  const outputFile = join(repoRoot, "artifacts", "linter-findings.txt");
 
   console.log(`Processing rules: ${selectedRules.join(", ")}`);
   console.log(`Max files: ${maxFiles}, Allowed RPs: ${allowedRps.join(", ")}`);
@@ -283,8 +282,8 @@ async function runValidation(selectedRules, env, core = null) {
     if (core) core.warning(message);
     else console.log(`WARN | ${message}`);
 
-    fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-    fs.writeFileSync(
+    mkdirSync(dirname(outputFile), { recursive: true });
+    writeFileSync(
       outputFile,
       "INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0\n",
     );
@@ -308,8 +307,8 @@ async function runValidation(selectedRules, env, core = null) {
     }
 
     const messages = parseMessages(res.stdout, res.stderr);
-    const specRelPath = path.relative(specRoot, spec).replace(/\\/g, "/");
-    const specBasename = path.basename(spec);
+    const specRelPath = relative(specRoot, spec).replace(/\\/g, "/");
+    const specBasename = basename(spec);
     console.log(`Found ${messages.length} message(s) for ${specRelPath}`);
 
     for (const m of messages) {
@@ -386,8 +385,8 @@ async function runValidation(selectedRules, env, core = null) {
   console.log(summary);
 
   // Write output file
-  fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-  fs.writeFileSync(outputFile, outLines.concat([summary]).join("\n") + "\n", "utf8");
+  mkdirSync(dirname(outputFile), { recursive: true });
+  writeFileSync(outputFile, outLines.concat([summary]).join("\n") + "\n", "utf8");
 
   // Handle failure conditions
   if (errors > 0 && env.FAIL_ON_ERRORS === "true") {
