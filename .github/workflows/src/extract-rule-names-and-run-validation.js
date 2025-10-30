@@ -11,10 +11,10 @@
  * Uses github-script action with direct access to context and core
  */
 
+import { spawnSync } from "child_process";
 import fs from "fs";
-import { spawnSync } from "node:child_process";
-import process from "node:process";
 import path from "path";
+import process from "process";
 
 /**
  * Extract rule names from PR labels
