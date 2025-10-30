@@ -32,6 +32,7 @@ export default async function importAllModules({ core }) {
     const fileUrl = pathToFileURL(fullPath).href;
 
     // if import fails, throws error which causes step to fail
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const module = await import(fileUrl);
 
     core.info(inspect(module));
