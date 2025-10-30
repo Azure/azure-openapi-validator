@@ -26,13 +26,10 @@ function extractRulesFromLabels(labels) {
   if (!Array.isArray(labels)) return [];
   // If labels are objects (GitHub API), map to their name first.
   const names = labels.map((l) => (l && typeof l === "object" ? l.name : l));
-  return (
-    names
-      .filter((name) => typeof name === "string" && /^test-/i.test(name))
-      // @ts-expect-error - filter above ensures name is string
-      .map((name) => name.replace(/^test-/i, "").trim())
-      .filter(Boolean)
-  );
+  return names
+    .filter(/** @returns {name is string} */ (name) => typeof name === "string" && /^test-/i.test(name))
+    .map((name) => name.replace(/^test-/i, "").trim())
+    .filter(Boolean);
 }
 
 /**

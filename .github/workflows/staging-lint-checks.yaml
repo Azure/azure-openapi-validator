@@ -48,7 +48,6 @@ jobs:
             specification/hdinsight
             specification/resource
             specification/storage
-          sparse-checkout-cone-mode: false
 
       - name: Install Rush & dependencies
         run: |
