@@ -3236,6 +3236,31 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
         ];
 };
 
+const XMSSecretInResponse = (properties, _opts, ctx) => {
+    if (properties === null || typeof properties !== "object") {
+        return [];
+    }
+    const secretKeywords = ["access", "credential", "secret", "password", "key", "token", "auth", "connection"];
+    const path = ctx.path || [];
+    const errors = [];
+    for (const prpName of Object.keys(properties)) {
+        if (prpName === "properties" && typeof properties[prpName] === "object") {
+            errors.push(...XMSSecretInResponse(properties[prpName], _opts, { ...ctx, path: [...path, prpName] }));
+        }
+        else {
+            if (secretKeywords.some((keyword) => prpName.toLowerCase().includes(keyword))) {
+                if (properties[prpName]["x-ms-secret"] !== true) {
+                    errors.push({
+                        message: `Property '${prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
+                        path: [...path, prpName],
+                    });
+                }
+            }
+        }
+    }
+    return errors;
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -3736,6 +3761,17 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*.put"],
             then: {
                 function: withXmsResource,
+            },
+        },
+        XMSSecretInResponse: {
+            rpcGuidelineCode: "RPC-Put-V1-13",
+            description: `When defining the response model for an ARM PUT/GET/POST operation, any property that contains sensitive information (such as passwords, keys, tokens, credentials, or other secrets) must include the "x-ms-secret": true annotation. This ensures that secrets are properly identified and handled according to ARM security guidelines.`,
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            given: ["$[paths,'x-ms-paths'].*.[put,get,post].responses.*.schema.properties"],
+            then: {
+                function: XMSSecretInResponse,
             },
         },
         LocationMustHaveXmsMutability: {
