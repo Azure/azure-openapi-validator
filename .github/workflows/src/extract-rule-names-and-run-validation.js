@@ -11,10 +11,10 @@
  * Uses github-script action with direct access to context and core
  */
 
-import { spawnSync } from "child_process";
 import fs from "fs";
 import path from "path";
 import process from "process";
+import { execNpmExec } from "../../shared/src/exec.js";
 
 /**
  * Extract rule names from PR labels
@@ -148,13 +148,12 @@ function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
  * @param {string} specRoot - Root directory of specifications
  * @param {string[]} selectedRules - Array of rule names to validate
  * @param {string} repoRoot - Root directory of the repository
+ * @returns {Promise<import("../../shared/src/exec.js").ExecResult>}
  */
-function runAutorest(specPath, specRoot, selectedRules, repoRoot) {
+async function runAutorest(specPath, specRoot, selectedRules, repoRoot) {
   const start = Date.now();
   const rel = path.relative(specRoot, specPath).replace(/\\/g, "/");
   const args = [
-    "exec",
-    "--",
     "autorest",
     "--level=warning",
     "--v3",
@@ -171,17 +170,12 @@ function runAutorest(specPath, specRoot, selectedRules, repoRoot) {
     `--input-file=${specPath}`,
   ];
 
-  const result = spawnSync("npm", args, { encoding: "utf8", shell: true });
+  const result = await execNpmExec(args);
 
   const dur = Date.now() - start;
-  console.log(`DEBUG | runAutorest | end | ${rel} status=${result.status} (${dur}ms)`);
+  console.log(`DEBUG | runAutorest | end | ${rel} (${dur}ms)`);
 
-  return {
-    stdout: result.stdout || "",
-    stderr: result.stderr || "",
-    status: result.status,
-    error: result.error,
-  };
+  return result;
 }
 
 /**
@@ -305,13 +299,15 @@ async function runValidation(selectedRules, env, core = null) {
 
   // Process each spec file sequentially
   for (const spec of specs) {
-    const res = runAutorest(spec, specRoot, selectedRules, repoRoot);
-    if (res.error) {
-      console.log(`Failed ${spec}: ${res.error.message}`);
+    let res;
+    try {
+      res = await runAutorest(spec, specRoot, selectedRules, repoRoot);
+    } catch (error) {
+      console.log(`Failed ${spec}: ${error}`);
       continue;
     }
 
-    const messages = parseMessages(res.stdout || "", res.stderr || "");
+    const messages = parseMessages(res.stdout, res.stderr);
     const specRelPath = path.relative(specRoot, spec).replace(/\\/g, "/");
     const specBasename = path.basename(spec);
     console.log(`Found ${messages.length} message(s) for ${specRelPath}`);
