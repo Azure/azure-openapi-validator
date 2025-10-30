@@ -13,8 +13,8 @@
 
 import fs from "fs";
 import { spawnSync } from "node:child_process";
-import path from "path";
 import process from "node:process";
+import path from "path";
 
 /**
  * Extract rule names from PR labels
@@ -27,7 +27,9 @@ function extractRulesFromLabels(labels) {
   // If labels are objects (GitHub API), map to their name first.
   const names = labels.map((l) => (l && typeof l === "object" ? l.name : l));
   return names
-    .filter(/** @returns {name is string} */ (name) => typeof name === "string" && /^test-/i.test(name))
+    .filter(
+      /** @returns {name is string} */ (name) => typeof name === "string" && /^test-/i.test(name),
+    )
     .map((name) => name.replace(/^test-/i, "").trim())
     .filter(Boolean);
 }
@@ -91,7 +93,7 @@ async function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
     while (stack.length > 0) {
       const current = stack.pop();
       if (!current) continue;
-      
+
       let entries;
       try {
         entries = fs.readdirSync(current, { withFileTypes: true });
