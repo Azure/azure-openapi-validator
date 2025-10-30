@@ -77,9 +77,9 @@ function extractRuleNames(context) {
  * @param {string} specRoot - Root directory containing specifications
  * @param {string[]} allowedRPs - Array of allowed resource provider names
  * @param {number} maxFiles - Maximum number of files to return
- * @returns {Promise<string[]>} - Array of file paths
+ * @returns {string[]} - Array of file paths
  */
-async function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
+function enumerateSpecs(specRoot, allowedRPs, maxFiles) {
   /** @param {string} p */
   const isStableArm = (p) => /\/resource-manager\//.test(p) && /\/stable\//.test(p);
   const allFiles = [];
