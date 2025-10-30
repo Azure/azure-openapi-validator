@@ -21,14 +21,11 @@ import { execNpmExec } from "../../shared/src/exec.js";
  * @param {Array<string | {name: string}>} labels - Array of label names or label objects
  * @returns {string[]} - Array of extracted rule names
  */
-function extractRulesFromLabels(labels) {
-  if (!Array.isArray(labels)) return [];
+export function extractRulesFromLabels(labels) {
   // If labels are objects (GitHub API), map to their name first.
   const names = labels.map((l) => (l && typeof l === "object" ? l.name : l));
   return names
-    .filter(
-      /** @returns {name is string} */ (name) => typeof name === "string" && /^test-/i.test(name),
-    )
+    .filter((name) => /^test-/i.test(name))
     .map((name) => name.replace(/^test-/i, "").trim())
     .filter(Boolean);
 }
@@ -39,11 +36,10 @@ function extractRulesFromLabels(labels) {
  * @param {string} body - PR body text
  * @returns {string[]} - Array of extracted rule names
  */
-function extractRulesFromBody(body) {
-  if (typeof body !== "string") return [];
+export function extractRulesFromBody(body) {
   // Find lines like "rules: A, B" or "rule: A"
-  const matches = body.match(/^\s*rules?\s*:(.*)$/gim) || [];
-  const ruleLine = matches.map((line) => line.split(":")[1] || "").join(",");
+  const matches = body.match(/^\s*rules?\s*:(.*)$/gim) ?? [];
+  const ruleLine = matches.map((line) => line.split(":")[1] ?? "").join(",");
   return ruleLine
     .split(/[\n,]/)
     .map((s) => s.trim())
@@ -53,15 +49,15 @@ function extractRulesFromBody(body) {
 /**
  * Extract and combine rule names from GitHub context
  * Combines rules from both labels and body, removing duplicates
- * @param {{ payload: { pull_request?: { labels?: Array<string | {name: string}>, body?: string } } }} context - GitHub Actions context object
+ * @param {import('@actions/github-script').AsyncFunctionArguments['context']} context  - GitHub Actions context object
  * @returns {string[]} - Array of unique rule names
  */
-function extractRuleNames(context) {
+export function extractRuleNames(context) {
   const pr = context.payload.pull_request;
   if (!pr) return [];
 
-  const fromLabels = extractRulesFromLabels(pr.labels || []);
-  const fromBody = extractRulesFromBody(pr.body || "");
+  const fromLabels = extractRulesFromLabels(pr.labels ?? []);
+  const fromBody = extractRulesFromBody(pr.body ?? "");
 
   // Combine both sources and remove duplicates
   const allRules = [...fromLabels, ...fromBody];
@@ -212,9 +208,9 @@ function parseMessages(stdout, stderr) {
 
 /**
  * Main execution function for GitHub Actions
- * @param {{ context: any, core: any }} params - GitHub Actions context and core
+ * @param {import('@actions/github-script').AsyncFunctionArguments} AsyncFunctionArguments
  */
-async function runInGitHubActions({ context, core }) {
+export async function runInGitHubActions({ context, core }) {
   try {
     // Extract rule names from PR
     const selectedRules = extractRuleNames(context);
@@ -251,9 +247,9 @@ async function runInGitHubActions({ context, core }) {
  * Core validation logic
  * @param {string[]} selectedRules - Array of rule names to validate
  * @param {any} env - Environment variables object
- * @param {any} core - GitHub Actions core object (optional)
+ * @param {import('@actions/github-script').AsyncFunctionArguments['core'] | null} core  - GitHub Actions core object (optional)
  */
-async function runValidation(selectedRules, env, core = null) {
+export async function runValidation(selectedRules, env, core = null) {
   const repoRoot = env.GITHUB_WORKSPACE || process.cwd();
   const specRoot = join(repoRoot, env.SPEC_CHECKOUT_PATH || "specs");
   const maxFiles = parseInt(env.MAX_FILES || "100", 10);
@@ -269,18 +265,24 @@ async function runValidation(selectedRules, env, core = null) {
 
   let specs;
   try {
-    specs = await enumerateSpecs(specRoot, allowedRps, maxFiles);
+    specs = enumerateSpecs(specRoot, allowedRps, maxFiles);
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : String(err);
     const message = `Failed to enumerate specs: ${errorMessage}`;
-    if (core) core.setFailed(message);
-    else console.error(`ERROR | ${message}`);
+    if (core) {
+      core.setFailed(message);
+    } else {
+      console.error(`ERROR | ${message}`);
+    }
     return { specs: 0, errors: 0, warnings: 0 };
   }
   if (!specs.length) {
     const message = "No matching spec files found";
-    if (core) core.warning(message);
-    else console.log(`WARN | ${message}`);
+    if (core) {
+      core.warning(message);
+    } else {
+      console.log(`WARN | ${message}`);
+    }
 
     mkdirSync(dirname(outputFile), { recursive: true });
     writeFileSync(
@@ -291,8 +293,8 @@ async function runValidation(selectedRules, env, core = null) {
   }
 
   console.log(`Processing ${specs.length} file(s)`);
-  let errors = 0,
-    warnings = 0;
+  let errors = 0;
+  let warnings = 0;
   const outLines = [];
   const seenErrors = new Set(); // Track unique errors to avoid duplicates from $ref resolution
 
@@ -400,14 +402,3 @@ async function runValidation(selectedRules, env, core = null) {
 
   return { specs: specs.length, errors, warnings };
 }
-
-// Export functions for testing and GitHub Actions usage
-export {
-  enumerateSpecs,
-  extractRuleNames,
-  extractRulesFromBody,
-  extractRulesFromLabels,
-  parseMessages,
-  runInGitHubActions,
-  runValidation,
-};
