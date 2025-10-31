@@ -11,6 +11,7 @@
   },
   "include": [
     // Only check runtime sources.  Tests currently have too many errors.
+    "*.js",
     "**/src/**/*.js",
   ],
 }

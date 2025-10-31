@@ -1,0 +1,77 @@
+name: Staging Lint Checks
+
+on:
+  pull_request:
+    types:
+      # default
+      - opened
+      - synchronize
+      - reopened
+      # body can be used to select rule(s) for testing
+      - edited
+      # labels can be used to select rule(s) for testing
+      - labeled
+      - unlabeled
+
+permissions:
+  contents: read
+
+env:
+  SPEC_REPO: Azure/azure-rest-api-specs
+  SPEC_CHECKOUT_PATH: specs
+  FAIL_ON_ERRORS: "false" # Set to "true" to fail the job when error findings appear
+  MAX_FILES: "100"
+  ALLOWED_RPS: "compute,monitor,sql,hdinsight,network,resource,storage"
+
+jobs:
+  run-selected-rules:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout validator repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Checkout specs repository (sparse - only needed RPs)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SPEC_REPO }}
+          path: ${{ env.SPEC_CHECKOUT_PATH }}
+          sparse-checkout: |
+            specification/network
+            specification/compute
+            specification/monitor
+            specification/sql
+            specification/hdinsight
+            specification/resource
+            specification/storage
+
+      - name: Install Rush & dependencies
+        run: |
+          node common/scripts/install-run-rush.js install
+
+      - name: Build validator (local changes)
+        run: |
+          node common/scripts/install-run-rush.js build -t @microsoft.azure/openapi-validator
+
+      - name: Install .github runtime dependencies
+        run: npm ci --omit dev
+        working-directory: .github
+
+      - name: Extract rules and run AutoRest validation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { runInGitHubActions } = await import('${{ github.workspace }}/.github/workflows/src/extract-rule-names-and-run-validation.js');
+            await runInGitHubActions({ context, core });
+
+      - name: Upload findings artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: linter-findings
+          path: artifacts/linter-findings.txt
+          if-no-files-found: warn

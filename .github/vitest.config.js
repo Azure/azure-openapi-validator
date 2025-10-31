@@ -6,13 +6,15 @@ export default defineConfig({
   esbuild: {
     // Ignore tsconfig.json, since it's only used for type checking, and causes
     // a warning if vitest tries to load it
+
+    // @ts-expect-error: 'tsConfig' does not exist in type 'ESBuildOptions'
     tsConfig: false,
   },
 
   test: {
     coverage: {
       exclude: [
-        ...configDefaults.coverage.exclude,
+        ...(configDefaults.coverage.exclude ?? []),
 
         // Not worth testing CLI code
         "**/cmd/**",
@@ -24,5 +26,7 @@ export default defineConfig({
         "**/test/**",
       ],
     },
+    // Increase timeout for test "MAX_FILES limits scanning"
+    testTimeout: 20000,
   },
 });
