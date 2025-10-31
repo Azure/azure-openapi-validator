@@ -13,7 +13,10 @@
 
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from "fs";
 import { basename, dirname, join, relative } from "path";
+import { fileURLToPath } from "url";
 import { execNpmExec } from "../../shared/src/exec.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 /**
  * Extract rule names from PR labels
@@ -165,7 +168,11 @@ async function runAutorest(specPath, specRoot, selectedRules, repoRoot) {
     `--input-file=${specPath}`,
   ];
 
-  const result = await execNpmExec(args);
+  const result = await execNpmExec(args, {
+    // Call "npm exec autorest" from the folder containing this JS file, to ensure it's available
+    // in a parent node_modules
+    cwd: __dirname,
+  });
 
   const dur = Date.now() - start;
   console.log(`DEBUG | runAutorest | end | ${rel} (${dur}ms)`);

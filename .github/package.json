@@ -4,6 +4,9 @@
   "_comments": {
     "copy": "Includes subset of https://github.com/Azure/azure-rest-api-specs/blob/main/.github/package.json"
   },
+  "dependencies": {
+    "autorest": "3.7.2"
+  },
   "devDependencies": {
     "@actions/github-script": "github:actions/github-script",
     "@eslint/js": "^9.22.0",
