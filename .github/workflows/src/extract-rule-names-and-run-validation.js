@@ -52,7 +52,7 @@ export function extractRulesFromBody(body) {
 /**
  * Extract and combine rule names from GitHub context
  * Combines rules from both labels and body, removing duplicates
- * @param {import('@actions/github-script').AsyncFunctionArguments['context']} context  - GitHub Actions context object
+ * @param {import('@actions/github-script').AsyncFunctionArguments['context']} context - GitHub Actions context object
  * @returns {string[]} - Array of unique rule names
  */
 export function extractRuleNames(context) {
@@ -254,7 +254,7 @@ export async function runInGitHubActions({ context, core }) {
  * Core validation logic
  * @param {string[]} selectedRules - Array of rule names to validate
  * @param {any} env - Environment variables object
- * @param {import('@actions/github-script').AsyncFunctionArguments['core'] | null} core  - GitHub Actions core object (optional)
+ * @param {import('@actions/github-script').AsyncFunctionArguments['core'] | null} core - GitHub Actions core object (optional)
  */
 export async function runValidation(selectedRules, env, core = null) {
   const repoRoot = env.GITHUB_WORKSPACE || process.cwd();
