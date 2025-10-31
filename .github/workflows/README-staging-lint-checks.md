@@ -52,7 +52,7 @@ env:
   SPEC_REPO: Azure/azure-rest-api-specs
   FAIL_ON_ERRORS: "false"
   MAX_FILES: "100"
-  ALLOWED_RPS: "network,compute,monitor,sql,hdinsight,resource,storage"
+  ALLOWED_RPS: "compute,monitor,sql,hdinsight,network,resource,storage"
 ```
 
 - **SPEC_REPO**: Source repository for OpenAPI specifications
