@@ -3236,25 +3236,39 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
         ];
 };
 
+const sensitiveKeywords = ["access", "credential", "secret", "password", "key", "token", "auth", "connection"];
+const excludeKeywords = ["publicKey"].map((keyword) => keyword.toLowerCase());
+function isPotentialSensitiveProperty(propertyName) {
+    const lowerName = propertyName.toLowerCase();
+    return (sensitiveKeywords.some((keyword) => lowerName.endsWith(keyword) && !lowerName.startsWith(keyword)) &&
+        !excludeKeywords.some((keyword) => lowerName.endsWith(keyword) && !lowerName.startsWith(keyword)));
+}
+function isKeyValuePairKeyProp(propertiesKeys) {
+    return propertiesKeys.includes("key") && propertiesKeys.includes("value");
+}
 const XMSSecretInResponse = (properties, _opts, ctx) => {
     if (properties === null || typeof properties !== "object") {
         return [];
     }
-    const secretKeywords = ["access", "credential", "secret", "password", "key", "token", "auth", "connection"];
     const path = ctx.path || [];
     const errors = [];
-    for (const prpName of Object.keys(properties)) {
+    const propertiesSize = Object.keys(properties).length;
+    const propertiesKeys = Object.keys(properties);
+    const keyValuePairCheck = propertiesSize === 2 && isKeyValuePairKeyProp(propertiesKeys);
+    for (const prpName of propertiesKeys) {
         if (prpName === "properties" && typeof properties[prpName] === "object") {
             errors.push(...XMSSecretInResponse(properties[prpName], _opts, { ...ctx, path: [...path, prpName] }));
         }
         else {
-            if (secretKeywords.some((keyword) => prpName.toLowerCase().includes(keyword))) {
-                if (properties[prpName]["x-ms-secret"] !== true) {
-                    errors.push({
-                        message: `Property '${prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
-                        path: [...path, prpName],
-                    });
-                }
+            if (isPotentialSensitiveProperty(prpName) &&
+                properties[prpName] &&
+                properties[prpName]["x-ms-secret"] !== true &&
+                !keyValuePairCheck &&
+                properties[prpName].type === "string") {
+                errors.push({
+                    message: `Property '${prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
+                    path: [...path, prpName],
+                });
             }
         }
     }

@@ -939,7 +939,6 @@ Please refer to [post-operation-id-contains-url-verb.md](./post-operation-id-con
 ### PostResponseCodes
 
 Synchronous POST operations must only use 200 with a default response when a response schema is required, or 204 with a default response when no schema is needed. No other response codes are allowed. 
-
 Long-running POST (LRO) operations must initially return 202 with a default response and no schema. The final response must be 200 with a schema if one is required, or 204 with no schema if not. No other response codes are permitted.
 
 Please refer to [post-response-codes.md](./post-response-codes.md) for details.
