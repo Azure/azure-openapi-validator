@@ -3236,6 +3236,45 @@ const xmsPageableForListCalls = (swaggerObj, _opts, paths) => {
         ];
 };
 
+const sensitiveKeywords = ["access", "credential", "secret", "password", "key", "token", "auth", "connection"];
+const excludeKeywords = ["publicKey"].map((keyword) => keyword.toLowerCase());
+function isPotentialSensitiveProperty(propertyName) {
+    const lowerName = propertyName.toLowerCase();
+    return (sensitiveKeywords.some((keyword) => lowerName.endsWith(keyword) && !lowerName.startsWith(keyword)) &&
+        !excludeKeywords.some((keyword) => lowerName.endsWith(keyword) && !lowerName.startsWith(keyword)));
+}
+function isKeyValuePairKeyProp(propertiesKeys) {
+    return propertiesKeys.includes("key") && propertiesKeys.includes("value");
+}
+const XMSSecretInResponse = (properties, _opts, ctx) => {
+    if (properties === null || typeof properties !== "object") {
+        return [];
+    }
+    const path = ctx.path || [];
+    const errors = [];
+    const propertiesSize = Object.keys(properties).length;
+    const propertiesKeys = Object.keys(properties);
+    const keyValuePairCheck = propertiesSize === 2 && isKeyValuePairKeyProp(propertiesKeys);
+    for (const prpName of propertiesKeys) {
+        if (prpName === "properties" && typeof properties[prpName] === "object") {
+            errors.push(...XMSSecretInResponse(properties[prpName], _opts, { ...ctx, path: [...path, prpName] }));
+        }
+        else {
+            if (isPotentialSensitiveProperty(prpName) &&
+                properties[prpName] &&
+                properties[prpName]["x-ms-secret"] !== true &&
+                !keyValuePairCheck &&
+                properties[prpName].type === "string") {
+                errors.push({
+                    message: `Property '${prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
+                    path: [...path, prpName],
+                });
+            }
+        }
+    }
+    return errors;
+};
+
 const ruleset = {
     extends: [ruleset$1],
     rules: {
@@ -3736,6 +3775,17 @@ const ruleset = {
             given: ["$[paths,'x-ms-paths'].*.put"],
             then: {
                 function: withXmsResource,
+            },
+        },
+        XMSSecretInResponse: {
+            rpcGuidelineCode: "RPC-Put-V1-13",
+            description: `When defining the response model for an ARM PUT/GET/POST operation, any property that contains sensitive information (such as passwords, keys, tokens, credentials, or other secrets) must include the "x-ms-secret": true annotation. This ensures that secrets are properly identified and handled according to ARM security guidelines.`,
+            message: "{{error}}",
+            severity: "error",
+            resolved: true,
+            given: ["$[paths,'x-ms-paths'].*.[put,get,post].responses.*.schema.properties"],
+            then: {
+                function: XMSSecretInResponse,
             },
         },
         LocationMustHaveXmsMutability: {

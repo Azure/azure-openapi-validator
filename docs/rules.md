@@ -939,7 +939,6 @@ Please refer to [post-operation-id-contains-url-verb.md](./post-operation-id-con
 ### PostResponseCodes
 
 Synchronous POST operations must only use 200 with a default response when a response schema is required, or 204 with a default response when no schema is needed. No other response codes are allowed. 
-
 Long-running POST (LRO) operations must initially return 202 with a default response and no schema. The final response must be 200 with a schema if one is required, or 204 with no schema if not. No other response codes are permitted.
 
 Please refer to [post-response-codes.md](./post-response-codes.md) for details.
@@ -1446,3 +1445,9 @@ Please refer to [xms-paths-must-overload-paths.md](./xms-paths-must-overload-pat
 The 200 response model for an ARM PUT operation must have x-ms-azure-resource extension set to true in its hierarchy. Operation: '{0}' Model: '{1}'.
 
 Please refer to [xms-resource-in-put-response.md](./xms-resource-in-put-response.md) for details.
+
+### XMSSecretInResponse
+
+When defining the response model for an ARM PUT/GET/POST operation, any property that contains sensitive information (such as passwords, keys, tokens, credentials, or other secrets) must include the `"x-ms-secret": true` annotation. This ensures that secrets are properly identified and handled according to ARM security guidelines.
+
+Please refer to [xms-secret-in-response.md](./xms-secret-in-response.md) for details.
