@@ -59,7 +59,7 @@ describe("CompositeAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
-      NestedResourcesMustHaveListOperation
+      NestedResourcesMustHaveListOperation,
     )
     assertValidationRuleCount(messages, NestedResourcesMustHaveListOperation, 1)
   })
@@ -69,7 +69,7 @@ describe("CompositeAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
-      TopLevelResourcesListByResourceGroup
+      TopLevelResourcesListByResourceGroup,
     )
     assertValidationRuleCount(messages, TopLevelResourcesListByResourceGroup, 1)
   })
@@ -79,7 +79,7 @@ describe("CompositeAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
-      TopLevelResourcesListBySubscription
+      TopLevelResourcesListBySubscription,
     )
     assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 0)
   })
@@ -89,10 +89,40 @@ describe("CompositeAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
-      TopLevelResourcesListBySubscription
+      TopLevelResourcesListBySubscription,
     )
-    // There is tenant level api in compute.json file
+    // This spec includes tenant-level APIs; validation should still run for subscription-scoped resources.
     assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 0)
+  })
+
+  test("tenant-only specs should skip list-by-subscription validation", async () => {
+    const fileName = "armResource/topLevelListBySubscription_tenantOnlyResource.json"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      TopLevelResourcesListBySubscription,
+    )
+    assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 0)
+  })
+
+  test("mixed tenant and subscription specs should still validate list-by-subscription", async () => {
+    const fileName = "armResource/topLevelListBySubscription_mixedTenantAndSubscription_missingCollection.json"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      TopLevelResourcesListBySubscription,
+    )
+    assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 1)
+  })
+
+  test("subscription paths under x-ms-paths should still validate list-by-subscription", async () => {
+    const fileName = "armResource/topLevelListBySubscription_subscriptionInXmsPaths_missingCollection.json"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
+      fileName,
+      OpenApiTypes.arm,
+      TopLevelResourcesListBySubscription,
+    )
+    assertValidationRuleCount(messages, TopLevelResourcesListBySubscription, 1)
   })
 
   test("get collection response schema should match the ARM specification", async () => {
@@ -106,7 +136,7 @@ describe("CompositeAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
-      AllResourcesMustHaveGetOperation
+      AllResourcesMustHaveGetOperation,
     )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 1)
   })
@@ -116,7 +146,7 @@ describe("CompositeAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
-      AllResourcesMustHaveGetOperation
+      AllResourcesMustHaveGetOperation,
     )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   })
@@ -126,7 +156,7 @@ describe("CompositeAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
-      AllResourcesMustHaveGetOperation
+      AllResourcesMustHaveGetOperation,
     )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   })
@@ -135,7 +165,7 @@ describe("CompositeAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
-      AllResourcesMustHaveGetOperation
+      AllResourcesMustHaveGetOperation,
     )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   })
@@ -145,7 +175,7 @@ describe("CompositeAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
-      AllResourcesMustHaveGetOperation
+      AllResourcesMustHaveGetOperation,
     )
     assertValidationRuleCount(messages, AllResourcesMustHaveGetOperation, 0)
   })
@@ -161,7 +191,7 @@ describe("CompositeAzureTests", () => {
     const messages: LintResultMessage[] = await collectTestMessagesFromValidator(
       fileName,
       OpenApiTypes.arm,
-      PrivateEndpointResourceSchemaValidation
+      PrivateEndpointResourceSchemaValidation,
     )
     assertValidationRuleCount(messages, PrivateEndpointResourceSchemaValidation, 2)
   })

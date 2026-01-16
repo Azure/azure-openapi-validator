@@ -15,22 +15,41 @@ rules.push({
   *run(doc, node, path, ctx) {
     const msg = 'The top-level resource "{0}" does not have list by subscription operation, please add it.'
     const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
-    const topLevelResources = utils.getTopLevelResourceNames()
+    const topLevelResources = utils.getTopLevelResources()
     const allCollectionApis = utils.getCollectionApiInfo()
-    for (const path in node.paths) {
-      const hasMatchedTenantLevel = !path.includes("/subscriptions/")
-      if (hasMatchedTenantLevel) {
-        return
-      }
+
+    // Skip validation if there is no subscription-scoped paths in the spec
+    const allPaths = { ...(node.paths || {}), ...(node["x-ms-paths"] || {}) }
+    const hasAnySubscriptionScopedPath = Object.keys(allPaths).some((p) => utils.isPathBySubscription(p))
+    if (!hasAnySubscriptionScopedPath) {
+      return
     }
+
+    // The same model can be discovered multiple times (different operations/files),
+    // but we only want to report at most once per definition name.
+    const validatedModels = new Set<string>()
     for (const resource of topLevelResources) {
+      const resourceName = resource.modelName
+      // Skip already validated resources
+      if (validatedModels.has(resourceName)) {
+        continue
+      }
+
+      // Tenant-scoped resources do not need list-by-subscription, so skip them.
+      const hasSubscriptionScopedOperation = resource.operations?.some((op: { apiPath: string }) => utils.isPathBySubscription(op.apiPath))
+      if (!hasSubscriptionScopedOperation) {
+        continue
+      }
+
+      validatedModels.add(resourceName)
       const hasMatched = allCollectionApis.some(
-        (collection) => resource === collection.childModelName && collection.collectionGetPath.some((p) => utils.isPathBySubscription(p)),
+        (collection) =>
+          resourceName === collection.childModelName && collection.collectionGetPath.some((p) => utils.isPathBySubscription(p)),
       )
       if (!hasMatched) {
         yield {
-          message: msg.replace("{0}", resource),
-          location: ["$", "definitions", resource] as JsonPath,
+          message: msg.replace("{0}", resourceName),
+          location: ["$", "definitions", resourceName] as JsonPath,
         }
       }
     }
