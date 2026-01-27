@@ -77,6 +77,7 @@ export function* armResourcePropertiesBag(openapiSection: any, options: {}, ctx:
     "sku",
     "etag",
     "managedby",
+    "managedbyextended",
     "identity",
     "kind",
     "zones",
@@ -144,6 +145,7 @@ export function* bodyTopLevelProperties(openapiSection: any, options: {}, ctx: R
       "sku",
       "etag",
       "managedby",
+      "managedbyextended",
       "identity",
       "kind",
       "zones",
@@ -155,7 +157,7 @@ export function* bodyTopLevelProperties(openapiSection: any, options: {}, ctx: R
       if (!allowedBodyTopLevelProperties.includes(propName.toLowerCase())) {
         yield {
           location: ["definitions", re.modelName],
-          message: `Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, identity, zones. Model definition '${re.modelName}' has extra properties ['${propName}'].`,
+          message: `Top level properties should be one of name, type, id, location, properties, tags, plan, sku, etag, managedBy, managedByExtended, identity, zones. Model definition '${re.modelName}' has extra properties ['${propName}'].`,
         }
       }
     }
