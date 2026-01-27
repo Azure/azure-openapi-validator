@@ -21,6 +21,13 @@ describe("IndividualAzureTests", () => {
     assertValidationRuleCount(messages, ruleName, 1)
   })
 
+  test("body top level resource with managedByExtended should pass", async () => {
+    const fileNames = ["body-top-level-properties-managedByExtended.json"]
+    const ruleName = "BodyTopLevelProperties"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 0)
+  })
+
   test("tracked resource must have patch", async () => {
     const fileNames = ["armResource/trackedResourceNoPatch.json", "armResource/trackedResourceCommon.json"]
     const ruleName = "TrackedResourcePatchOperation"
