@@ -257,6 +257,32 @@ describe("extract-rule-names", () => {
       expect(result).toBe(false);
     });
 
+    test("returns false for files that contain path substring but are not in rule directories", async () => {
+      const mockGithub = {
+        rest: {
+          pulls: {
+            listFiles: vi.fn().mockResolvedValue({
+              data: [
+                // False positive candidates - path is in the middle or at the end
+                { filename: "docs/packages/rulesets/src/spectral/functions/example.md" },
+                { filename: "backup-packages/rulesets/src/native/functions/old.ts" },
+                { filename: "test-packages/rulesets/src/spectral/functions/helper.ts" },
+              ],
+            }),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {
+          pull_request: { number: 999 },
+        },
+        repo: { owner: "owner", repo: "repo" },
+      };
+
+      const result = await hasLinterRuleChanges(mockGithub, mockContext);
+      expect(result).toBe(false);
+    });
+
     test("returns false when no pull request in context", async () => {
       const mockGithub = {
         rest: {

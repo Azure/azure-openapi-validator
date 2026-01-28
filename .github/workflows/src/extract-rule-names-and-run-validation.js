@@ -237,7 +237,7 @@ export async function hasLinterRuleChanges(github, context) {
       "packages/rulesets/src/native/functions/",
     ];
 
-    return files.some((file) => rulePaths.some((path) => file.filename.includes(path)));
+    return files.some((file) => rulePaths.some((path) => file.filename.startsWith(path)));
   } catch (error) {
     console.log(`Failed to check for linter rule changes: ${error}`);
     return false;
@@ -288,7 +288,7 @@ export async function runInGitHubActions({ context, core, github }) {
         const commentBody =
           "⚠️ **Linter Rule Changes Detected**\n\n" +
           "This PR modifies linter rule files, but no specific rules were selected for testing.\n\n" +
-          "Make sure to validate the changes to the linter rule using 'Staging Lint Checks' workflow.\n\n" +
+          "Make sure to validate the changes to the linter rules using 'Staging Lint Checks' workflow.\n\n" +
           "To test your changes, add one of the following:\n" +
           "- A label in the format `test-<RuleName>` (e.g., `test-PostResponseCodes`)\n" +
           "- A line in the PR description: `rules: RuleName1, RuleName2`";
