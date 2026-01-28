@@ -214,10 +214,63 @@ function parseMessages(stdout, stderr) {
 }
 
 /**
+ * Check if PR contains changes to linter rule files
+ * @param {import('@actions/github-script').AsyncFunctionArguments['github']} github - GitHub API client
+ * @param {import('@actions/github-script').AsyncFunctionArguments['context']} context - GitHub Actions context object
+ * @returns {Promise<boolean>} - True if linter rule files were changed
+ */
+export async function hasLinterRuleChanges(github, context) {
+  const pr = context.payload.pull_request;
+  if (!pr) return false;
+
+  try {
+    // Get list of files changed in the PR
+    const { data: files } = await github.rest.pulls.listFiles({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      pull_number: pr.number,
+    });
+
+    // Check if any changed files are in the linter rule directories
+    const rulePaths = [
+      "packages/rulesets/src/spectral/functions/",
+      "packages/rulesets/src/native/functions/",
+    ];
+
+    return files.some((file) => rulePaths.some((path) => file.filename.includes(path)));
+  } catch (error) {
+    console.log(`Failed to check for linter rule changes: ${error}`);
+    return false;
+  }
+}
+
+/**
+ * Add a comment to the PR
+ * @param {import('@actions/github-script').AsyncFunctionArguments['github']} github - GitHub API client
+ * @param {import('@actions/github-script').AsyncFunctionArguments['context']} context - GitHub Actions context object
+ * @param {string} body - Comment body
+ */
+export async function addPRComment(github, context, body) {
+  const pr = context.payload.pull_request;
+  if (!pr) return;
+
+  try {
+    await github.rest.issues.createComment({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      issue_number: pr.number,
+      body: body,
+    });
+  } catch (error) {
+    console.log(`Failed to add PR comment: ${error}`);
+  }
+}
+
+/**
  * Main execution function for GitHub Actions
  * @param {import('@actions/github-script').AsyncFunctionArguments} AsyncFunctionArguments
  */
-export async function runInGitHubActions({ context, core }) {
+export async function runInGitHubActions({ context, core, github }) {
   try {
     // Extract rule names from PR
     const selectedRules = extractRuleNames(context);
@@ -228,6 +281,21 @@ export async function runInGitHubActions({ context, core }) {
 
     if (selectedRules.length === 0) {
       core.warning("No linting rules specified in labels or PR body");
+
+      // Check if linter rule files were changed
+      const hasRuleChanges = await hasLinterRuleChanges(github, context);
+      if (hasRuleChanges) {
+        const commentBody =
+          "⚠️ **Linter Rule Changes Detected**\n\n" +
+          "This PR modifies linter rule files, but no specific rules were selected for testing.\n\n" +
+          "Make sure to validate the changes to the linter rule using 'Staging Lint Checks' workflow.\n\n" +
+          "To test your changes, add one of the following:\n" +
+          "- A label in the format `test-<RuleName>` (e.g., `test-PostResponseCodes`)\n" +
+          "- A line in the PR description: `rules: RuleName1, RuleName2`";
+        await addPRComment(github, context, commentBody);
+        core.notice("Added comment to PR about untested linter rule changes");
+      }
+
       // Create empty output file
       const outputFile = join(
         process.env.GITHUB_WORKSPACE || "",

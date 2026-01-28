@@ -1,8 +1,10 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import {
+  addPRComment,
   extractRuleNames,
   extractRulesFromBody,
   extractRulesFromLabels,
+  hasLinterRuleChanges,
 } from "../src/extract-rule-names-and-run-validation.js";
 
 describe("extract-rule-names", () => {
@@ -173,6 +175,188 @@ describe("extract-rule-names", () => {
     ])("$description", ({ context, expected }) => {
       const result = extractRuleNames(context);
       expect(result).toEqual(expected);
+    });
+  });
+
+  describe("hasLinterRuleChanges", () => {
+    test("returns true when PR contains changes to spectral functions", async () => {
+      const mockGithub = {
+        rest: {
+          pulls: {
+            listFiles: vi.fn().mockResolvedValue({
+              data: [
+                { filename: "packages/rulesets/src/spectral/functions/test-rule.ts" },
+                { filename: "README.md" },
+              ],
+            }),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {
+          pull_request: { number: 123 },
+        },
+        repo: { owner: "owner", repo: "repo" },
+      };
+
+      const result = await hasLinterRuleChanges(mockGithub, mockContext);
+      expect(result).toBe(true);
+      expect(mockGithub.rest.pulls.listFiles).toHaveBeenCalledWith({
+        owner: "owner",
+        repo: "repo",
+        pull_number: 123,
+      });
+    });
+
+    test("returns true when PR contains changes to native functions", async () => {
+      const mockGithub = {
+        rest: {
+          pulls: {
+            listFiles: vi.fn().mockResolvedValue({
+              data: [
+                { filename: "packages/rulesets/src/native/functions/rule.ts" },
+                { filename: "other-file.js" },
+              ],
+            }),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {
+          pull_request: { number: 456 },
+        },
+        repo: { owner: "owner", repo: "repo" },
+      };
+
+      const result = await hasLinterRuleChanges(mockGithub, mockContext);
+      expect(result).toBe(true);
+    });
+
+    test("returns false when PR does not contain rule changes", async () => {
+      const mockGithub = {
+        rest: {
+          pulls: {
+            listFiles: vi.fn().mockResolvedValue({
+              data: [
+                { filename: "README.md" },
+                { filename: "src/other-file.ts" },
+                { filename: "docs/guide.md" },
+              ],
+            }),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {
+          pull_request: { number: 789 },
+        },
+        repo: { owner: "owner", repo: "repo" },
+      };
+
+      const result = await hasLinterRuleChanges(mockGithub, mockContext);
+      expect(result).toBe(false);
+    });
+
+    test("returns false when no pull request in context", async () => {
+      const mockGithub = {
+        rest: {
+          pulls: {
+            listFiles: vi.fn(),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {},
+        repo: { owner: "owner", repo: "repo" },
+      };
+
+      const result = await hasLinterRuleChanges(mockGithub, mockContext);
+      expect(result).toBe(false);
+      expect(mockGithub.rest.pulls.listFiles).not.toHaveBeenCalled();
+    });
+
+    test("returns false when API call fails", async () => {
+      const mockGithub = {
+        rest: {
+          pulls: {
+            listFiles: vi.fn().mockRejectedValue(new Error("API Error")),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {
+          pull_request: { number: 999 },
+        },
+        repo: { owner: "owner", repo: "repo" },
+      };
+
+      const result = await hasLinterRuleChanges(mockGithub, mockContext);
+      expect(result).toBe(false);
+    });
+  });
+
+  describe("addPRComment", () => {
+    test("successfully adds comment to PR", async () => {
+      const mockGithub = {
+        rest: {
+          issues: {
+            createComment: vi.fn().mockResolvedValue({}),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {
+          pull_request: { number: 123 },
+        },
+        repo: { owner: "owner", repo: "repo" },
+      };
+      const commentBody = "Test comment";
+
+      await addPRComment(mockGithub, mockContext, commentBody);
+
+      expect(mockGithub.rest.issues.createComment).toHaveBeenCalledWith({
+        owner: "owner",
+        repo: "repo",
+        issue_number: 123,
+        body: commentBody,
+      });
+    });
+
+    test("handles missing pull request in context", async () => {
+      const mockGithub = {
+        rest: {
+          issues: {
+            createComment: vi.fn(),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {},
+        repo: { owner: "owner", repo: "repo" },
+      };
+
+      await addPRComment(mockGithub, mockContext, "Test");
+
+      expect(mockGithub.rest.issues.createComment).not.toHaveBeenCalled();
+    });
+
+    test("handles API errors gracefully", async () => {
+      const mockGithub = {
+        rest: {
+          issues: {
+            createComment: vi.fn().mockRejectedValue(new Error("API Error")),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {
+          pull_request: { number: 789 },
+        },
+        repo: { owner: "owner", repo: "repo" },
+      };
+
+      // Should not throw
+      await expect(addPRComment(mockGithub, mockContext, "Test")).resolves.toBeUndefined();
     });
   });
 });
