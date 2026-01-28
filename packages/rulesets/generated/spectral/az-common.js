@@ -821,7 +821,7 @@ const ruleset = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths']..?(@property === 'readOnly')^"],
+            given: ["$[paths,'x-ms-paths']..*[?(@ != null && @.readOnly !== undefined && @['x-ms-mutability'] !== undefined)]"],
             then: {
                 function: mutabilityWithReadOnly,
             },
