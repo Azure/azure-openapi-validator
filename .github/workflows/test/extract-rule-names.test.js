@@ -4,6 +4,7 @@ import {
   extractRuleNames,
   extractRulesFromBody,
   extractRulesFromLabels,
+  hasExistingComment,
   hasLinterRuleChanges,
 } from "../src/extract-rule-names-and-run-validation.js";
 
@@ -383,6 +384,129 @@ describe("extract-rule-names", () => {
 
       // Should not throw
       await expect(addPRComment(mockGithub, mockContext, "Test")).resolves.toBeUndefined();
+    });
+  });
+
+  describe("hasExistingComment", () => {
+    test("returns true when a comment with the marker exists", async () => {
+      const mockGithub = {
+        rest: {
+          issues: {
+            listComments: vi.fn().mockResolvedValue({
+              data: [
+                { body: "Some other comment" },
+                { body: "<!-- staging-lint-checks-reminder -->\nLinter rule changes detected" },
+                { body: "Another comment" },
+              ],
+            }),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {
+          pull_request: { number: 123 },
+        },
+        repo: { owner: "owner", repo: "repo" },
+      };
+      const marker = "<!-- staging-lint-checks-reminder -->";
+
+      const result = await hasExistingComment(mockGithub, mockContext, marker);
+      expect(result).toBe(true);
+      expect(mockGithub.rest.issues.listComments).toHaveBeenCalledWith({
+        owner: "owner",
+        repo: "repo",
+        issue_number: 123,
+      });
+    });
+
+    test("returns false when no comment with the marker exists", async () => {
+      const mockGithub = {
+        rest: {
+          issues: {
+            listComments: vi.fn().mockResolvedValue({
+              data: [
+                { body: "Some comment" },
+                { body: "Another comment" },
+              ],
+            }),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {
+          pull_request: { number: 456 },
+        },
+        repo: { owner: "owner", repo: "repo" },
+      };
+      const marker = "<!-- staging-lint-checks-reminder -->";
+
+      const result = await hasExistingComment(mockGithub, mockContext, marker);
+      expect(result).toBe(false);
+    });
+
+    test("returns false when no pull request in context", async () => {
+      const mockGithub = {
+        rest: {
+          issues: {
+            listComments: vi.fn(),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {},
+        repo: { owner: "owner", repo: "repo" },
+      };
+      const marker = "<!-- staging-lint-checks-reminder -->";
+
+      const result = await hasExistingComment(mockGithub, mockContext, marker);
+      expect(result).toBe(false);
+      expect(mockGithub.rest.issues.listComments).not.toHaveBeenCalled();
+    });
+
+    test("returns false when API call fails", async () => {
+      const mockGithub = {
+        rest: {
+          issues: {
+            listComments: vi.fn().mockRejectedValue(new Error("API Error")),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {
+          pull_request: { number: 789 },
+        },
+        repo: { owner: "owner", repo: "repo" },
+      };
+      const marker = "<!-- staging-lint-checks-reminder -->";
+
+      const result = await hasExistingComment(mockGithub, mockContext, marker);
+      expect(result).toBe(false);
+    });
+
+    test("handles comments with null body", async () => {
+      const mockGithub = {
+        rest: {
+          issues: {
+            listComments: vi.fn().mockResolvedValue({
+              data: [
+                { body: null },
+                { body: undefined },
+                { body: "Valid comment" },
+              ],
+            }),
+          },
+        },
+      };
+      const mockContext = {
+        payload: {
+          pull_request: { number: 999 },
+        },
+        repo: { owner: "owner", repo: "repo" },
+      };
+      const marker = "some-marker";
+
+      const result = await hasExistingComment(mockGithub, mockContext, marker);
+      expect(result).toBe(false);
     });
   });
 });
