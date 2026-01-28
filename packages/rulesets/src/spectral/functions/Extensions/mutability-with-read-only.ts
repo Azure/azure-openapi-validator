@@ -5,8 +5,8 @@ export const mutabilityWithReadOnly = (prop: any, _opts: any, ctx: any) => {
     return [];
   }
   // The given clause filters for readOnly !== undefined and x-ms-mutability !== undefined
-  // We only need to check if x-ms-mutability is an empty array
-  if (prop["x-ms-mutability"].length === 0) {
+  // We need to check if x-ms-mutability is an array and not empty
+  if (!Array.isArray(prop["x-ms-mutability"]) || prop["x-ms-mutability"].length === 0) {
     return [];
   }
   const path = ctx.path || [];
