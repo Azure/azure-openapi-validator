@@ -93,3 +93,40 @@ test("MutabilityWithReadOnly should find no errors", () => {
     expect(results.length).toBe(0);
   });
 });
+
+test("MutabilityWithReadOnly should ignore empty x-ms-mutability arrays", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        put: {
+          operationId: "Path_Create",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/LroStatusCodeSchema",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      LroStatusCodeSchema: {
+        type: "object",
+        properties: {
+          name: {
+            type: "string",
+            readOnly: true,
+            "x-ms-mutability": [],
+          },
+        },
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    // Empty x-ms-mutability arrays should be ignored (no errors)
+    expect(results.length).toBe(0);
+  });
+});

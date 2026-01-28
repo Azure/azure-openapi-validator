@@ -141,9 +141,7 @@ const mutabilityWithReadOnly = (prop, _opts, ctx) => {
     if (prop === null || typeof prop !== "object") {
         return [];
     }
-    if (prop.readOnly === undefined ||
-        prop["x-ms-mutability"] === undefined ||
-        prop["x-ms-mutability"].length === 0) {
+    if (prop["x-ms-mutability"].length === 0) {
         return [];
     }
     const path = ctx.path || [];
