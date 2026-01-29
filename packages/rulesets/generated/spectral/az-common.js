@@ -141,6 +141,9 @@ const mutabilityWithReadOnly = (prop, _opts, ctx) => {
     if (prop === null || typeof prop !== "object") {
         return [];
     }
+    if (prop["x-ms-mutability"].length === 0) {
+        return [];
+    }
     const path = ctx.path || [];
     const errors = [];
     let hasErrors = false;
@@ -816,7 +819,7 @@ const ruleset = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths']..*[?(@ != null && @.readOnly !== undefined && @['x-ms-mutability'] !== undefined && @['x-ms-mutability'].length > 0)]"],
+            given: ["$[paths,'x-ms-paths']..*[?(@.readOnly !== undefined && @['x-ms-mutability'] !== undefined)]"],
             then: {
                 function: mutabilityWithReadOnly,
             },
