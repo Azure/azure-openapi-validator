@@ -310,3 +310,121 @@ test("MutabilityWithReadOnly: readOnly false with only read is invalid", () => {
     expect(results[0].message).toContain("Extension contains invalid values: 'read'");
   });
 });
+
+test("MutabilityWithReadOnly: should ignore properties with only readOnly (no x-ms-mutability)", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        put: {
+          operationId: "Path_Create",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/Schema",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      Schema: {
+        type: "object",
+        properties: {
+          propWithOnlyReadOnly: {
+            type: "string",
+            readOnly: true,
+          },
+          anotherPropWithOnlyReadOnly: {
+            type: "string",
+            readOnly: false,
+          },
+        },
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    // Properties without x-ms-mutability should be ignored by the given clause
+    expect(results.length).toBe(0);
+  });
+});
+
+test("MutabilityWithReadOnly: should ignore properties with only x-ms-mutability (no readOnly)", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        put: {
+          operationId: "Path_Create",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/Schema",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      Schema: {
+        type: "object",
+        properties: {
+          propWithOnlyMutability: {
+            type: "string",
+            "x-ms-mutability": ["read"],
+          },
+          anotherPropWithOnlyMutability: {
+            type: "string",
+            "x-ms-mutability": ["read", "create", "update"],
+          },
+        },
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    // Properties without readOnly should be ignored by the given clause
+    expect(results.length).toBe(0);
+  });
+});
+
+test("MutabilityWithReadOnly: should ignore properties with neither readOnly nor x-ms-mutability", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        put: {
+          operationId: "Path_Create",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/Schema",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      Schema: {
+        type: "object",
+        properties: {
+          normalProperty: {
+            type: "string",
+          },
+          anotherNormalProperty: {
+            type: "integer",
+          },
+        },
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    // Properties without both fields should be ignored by the given clause
+    expect(results.length).toBe(0);
+  });
+});
