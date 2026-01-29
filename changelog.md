@@ -1,5 +1,15 @@
 # Changelog
 
+## What's New (01/29/2026)
+
+### Bug Fix
+
+- Fixed regression in `TopLevelResourcesListBySubscription` rule where validation would terminate when any tenant-level API path was encountered, preventing validation of subscription-scoped resources in specs containing both tenant and subscription-level operations.
+
+For details, see:  
+  Fix TopLevelResourcesListBySubscription regression #808  
+  https://github.com/Azure/azure-openapi-validator/pull/808
+
 ## What's New (05/03/2023)
 
 Continuing the work from 05/02/2023, updated the `@microsoft.azure/openapi-validator`

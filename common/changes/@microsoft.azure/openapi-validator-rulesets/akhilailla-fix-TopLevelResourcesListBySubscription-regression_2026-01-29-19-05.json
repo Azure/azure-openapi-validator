@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Fix regression in TopLevelResourcesListBySubscription rule where validation terminated when any tenant-level API was present, preventing validation of subscription-scoped resources.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}
