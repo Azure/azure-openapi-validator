@@ -4,7 +4,7 @@
 
 ### Patches
 
-- [TopLevelResourcesListBySubscription] Fix rule to properly handle tenant-level APIs without stopping validation
+- [TopLevelResourcesListBySubscription] Exclude tenant-level APIs from validation
 
 ## 2.2.0
 
