@@ -144,9 +144,6 @@ const mutabilityWithReadOnly = (prop, _opts, ctx) => {
     if (prop === null || typeof prop !== "object") {
         return [];
     }
-    if (!Array.isArray(prop["x-ms-mutability"])) {
-        return [];
-    }
     const path = ctx.path || [];
     const errors = [];
     let hasErrors = false;

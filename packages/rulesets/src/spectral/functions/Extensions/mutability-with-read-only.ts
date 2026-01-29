@@ -8,10 +8,6 @@ export const mutabilityWithReadOnly = (prop: any, _opts: any, ctx: any) => {
   // - readOnly !== undefined
   // - x-ms-mutability !== undefined
   // - x-ms-mutability.length > 0
-  // We still check Array.isArray as a defensive measure for type safety
-  if (!Array.isArray(prop["x-ms-mutability"])) {
-    return [];
-  }
   const path = ctx.path || [];
   const errors: any = [];
   let hasErrors = false;
