@@ -4,7 +4,7 @@
 
 ### Patches
 
-- [MutabilityWithReadOnly] Optimize rule to prevent out-of-memory issues on large specs
+- [MutabilityWithReadOnly] Optimize rule to prevent excessive memory usage on large specs
 
 ## 2.2.0
 
