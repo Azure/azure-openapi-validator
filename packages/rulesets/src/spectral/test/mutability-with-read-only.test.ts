@@ -9,7 +9,7 @@ beforeAll(async () => {
 });
 
 // Helper function to create OpenAPI document with properties
-const createOpenApiDoc = (properties: any) => ({
+const createOpenApiDoc = (properties: unknown) => ({
   swagger: "2.0",
   paths: {
     "/api/Paths": {
