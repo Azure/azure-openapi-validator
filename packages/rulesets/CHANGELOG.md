@@ -1,5 +1,11 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.2.1
+
+### Patches
+
+- [MutabilityWithReadOnly] Optimize rule to prevent out-of-memory issues by filtering in JSONPath given clause (fixes #812)
+
 ## 2.2.0
 
 ### Minor changes
