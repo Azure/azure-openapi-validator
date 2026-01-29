@@ -4,7 +4,7 @@
 
 ### Patches
 
-- Add managedByExtended to allowed body top-level properties
+- [BodyTopLevelProperties] Add "managedByExtended" to allowed list of top-level properties
 
 ## 2.2.0
 
