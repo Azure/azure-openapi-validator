@@ -130,3 +130,183 @@ test("MutabilityWithReadOnly should ignore empty x-ms-mutability arrays", () => 
     expect(results.length).toBe(0);
   });
 });
+
+test("MutabilityWithReadOnly: readOnly true with valid combinations", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        put: {
+          operationId: "Path_Create",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/Schema",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      Schema: {
+        type: "object",
+        properties: {
+          validProp: {
+            type: "string",
+            readOnly: true,
+            "x-ms-mutability": ["read"],
+          },
+        },
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0);
+  });
+});
+
+test("MutabilityWithReadOnly: readOnly true with invalid combinations", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        put: {
+          operationId: "Path_Create",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/Schema",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      Schema: {
+        type: "object",
+        properties: {
+          invalidUpdate: {
+            type: "string",
+            readOnly: true,
+            "x-ms-mutability": ["update"],
+          },
+          invalidCreate: {
+            type: "string",
+            readOnly: true,
+            "x-ms-mutability": ["create"],
+          },
+          invalidReadCreate: {
+            type: "string",
+            readOnly: true,
+            "x-ms-mutability": ["read", "create"],
+          },
+          invalidAll: {
+            type: "string",
+            readOnly: true,
+            "x-ms-mutability": ["read", "create", "update"],
+          },
+        },
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(4);
+    // Check that all errors are for readOnly true violations
+    results.forEach((result) => {
+      expect(result.message).toContain('When property is modeled as "readOnly": true');
+    });
+  });
+});
+
+test("MutabilityWithReadOnly: readOnly false with valid combinations", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        put: {
+          operationId: "Path_Create",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/Schema",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      Schema: {
+        type: "object",
+        properties: {
+          validReadCreate: {
+            type: "string",
+            readOnly: false,
+            "x-ms-mutability": ["read", "create"],
+          },
+          validUpdate: {
+            type: "string",
+            readOnly: false,
+            "x-ms-mutability": ["update"],
+          },
+          validCreate: {
+            type: "string",
+            readOnly: false,
+            "x-ms-mutability": ["create"],
+          },
+          validAll: {
+            type: "string",
+            readOnly: false,
+            "x-ms-mutability": ["read", "create", "update"],
+          },
+        },
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0);
+  });
+});
+
+test("MutabilityWithReadOnly: readOnly false with only read is invalid", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/api/Paths": {
+        put: {
+          operationId: "Path_Create",
+          responses: {
+            200: {
+              description: "Success",
+              schema: {
+                $ref: "#/definitions/Schema",
+              },
+            },
+          },
+        },
+      },
+    },
+    definitions: {
+      Schema: {
+        type: "object",
+        properties: {
+          invalidReadOnly: {
+            type: "string",
+            readOnly: false,
+            "x-ms-mutability": ["read"],
+          },
+        },
+      },
+    },
+  };
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(1);
+    expect(results[0].message).toContain('When property is modeled as "readOnly": false');
+    expect(results[0].message).toContain("Extension contains invalid values: 'read'");
+  });
+});
