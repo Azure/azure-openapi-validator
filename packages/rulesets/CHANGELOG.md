@@ -1,5 +1,11 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.2.1
+
+### Patches
+
+- Add managedByExtended to allowed body top-level properties
+
 ## 2.2.0
 
 ### Minor changes
