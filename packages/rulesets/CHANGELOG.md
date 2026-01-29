@@ -1,5 +1,11 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.2.1
+
+### Patches
+
+- [TopLevelResourcesListBySubscription] Fix rule to properly handle tenant-level APIs without stopping validation
+
 ## 2.2.0
 
 ### Minor changes
