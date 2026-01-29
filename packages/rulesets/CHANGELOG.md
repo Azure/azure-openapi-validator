@@ -4,7 +4,7 @@
 
 ### Patches
 
-- [MutabilityWithReadOnly] Optimize rule to prevent out-of-memory issues by filtering in JSONPath given clause (fixes #812)
+- [MutabilityWithReadOnly] Optimize rule to prevent out-of-memory issues on large specs
 
 ## 2.2.0
 
