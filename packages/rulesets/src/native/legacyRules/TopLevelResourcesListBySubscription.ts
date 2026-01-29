@@ -15,15 +15,15 @@ rules.push({
   *run(doc, node, path, ctx) {
     const msg = 'The top-level resource "{0}" does not have list by subscription operation, please add it.'
     const utils = new ArmHelper(doc, ctx?.specPath!, ctx?.inventory!)
+    // Top-level resources are calculated by ArmHelper.getTopLevelResources():
+    // 1. Scans all operations (GET/PUT/POST/PATCH/DELETE) in paths and x-ms-paths
+    // 2. For each operation, checks the 200/201 response schema's $ref to find resource definitions
+    // 3. A definition is a "resource" if it has x-ms-azure-resource:true or allOfs Resource/TrackedResource/ProxyResource
+    // 4. A resource is "top-level" if its path has exactly ONE resource-type segment after /providers/
+    //    e.g., /subscriptions/{sub}/providers/Microsoft.Contoso/widgets/{name} → "widgets" is top-level
+    //    vs. /.../widgets/{name}/parts/{partName} → "parts" is nested (2 segments)
     const topLevelResources = utils.getTopLevelResources()
     const allCollectionApis = utils.getCollectionApiInfo()
-
-    // Skip validation if there is no subscription-scoped paths in the spec
-    const allPaths = { ...(node.paths || {}), ...(node["x-ms-paths"] || {}) }
-    const hasAnySubscriptionScopedPath = Object.keys(allPaths).some((p) => utils.isPathBySubscription(p))
-    if (!hasAnySubscriptionScopedPath) {
-      return
-    }
 
     // The same model can be discovered multiple times (different operations/files),
     // but we only want to report at most once per definition name.
