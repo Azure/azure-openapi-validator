@@ -6,8 +6,7 @@
   "files": [
     "dist/**",
     "!dist/**/tests/**",
-    "!dist/**/test/**",
-    "CHANGELOG.md"
+    "!dist/**/test/**"
   ],
   "scripts": {
     "build": "tsc && npm run build-esm && npm run rollup-spectral",
