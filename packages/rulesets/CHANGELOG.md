@@ -1,5 +1,11 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.2.2
+
+### Patches
+
+- Reduce package size by 88% (6.3MB → 745KB unpacked) by excluding test files and source TypeScript files
+
 ## 2.2.1
 
 ### Patches
