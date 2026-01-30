@@ -5,6 +5,7 @@
 ### Patches
 
 - [TopLevelResourcesListBySubscription] Exclude tenant-level APIs from validation
+- [MutabilityWithReadOnly] Optimize rule to prevent excessive memory usage on large specs
 
 ## 2.2.0
 
