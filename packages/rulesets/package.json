@@ -3,6 +3,14 @@
   "version": "2.2.1",
   "description": "Azure OpenAPI Validator",
   "main": "dist/index.js",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.js.map",
+    "!dist/**/tests/**",
+    "!dist/**/test/**",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "build": "tsc && npm run build-esm && npm run rollup-spectral",
     "build-esm": "tsc -p ./tsconfig.spectral.esm.json",
