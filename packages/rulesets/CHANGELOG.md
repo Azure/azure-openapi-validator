@@ -1,10 +1,15 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-## 2.2.1
+## 2.2.2
 
 ### Patches
 
 - [BodyTopLevelProperties] Add "managedByExtended" to allowed list of top-level properties
+
+## 2.2.1
+
+### Patches
+
 - [MutabilityWithReadOnly] Optimize rule to prevent excessive memory usage on large specs
 
 ## 2.2.0
