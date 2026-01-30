@@ -4,11 +4,8 @@ export const mutabilityWithReadOnly = (prop: any, _opts: any, ctx: any) => {
   if (prop === null || typeof prop !== "object") {
     return [];
   }
-  if (
-    prop.readOnly === undefined ||
-    prop["x-ms-mutability"] === undefined ||
-    prop["x-ms-mutability"].length === 0
-  ) {
+  // The "given" clause already filters for "readOnly !== undefined" and "x-ms-mutability !== undefined"
+  if (prop["x-ms-mutability"].length === 0) {
     return [];
   }
   const path = ctx.path || [];
