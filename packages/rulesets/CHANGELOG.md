@@ -5,6 +5,7 @@
 ### Patches
 
 - [BodyTopLevelProperties] Add "managedByExtended" to allowed list of top-level properties
+- [MutabilityWithReadOnly] Optimize rule to prevent excessive memory usage on large specs
 
 ## 2.2.0
 
