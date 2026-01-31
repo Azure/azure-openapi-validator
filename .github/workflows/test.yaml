@@ -54,5 +54,5 @@ jobs:
           name: packages
           path: |
             packages/**/*.tgz
-            !packages/**/node_modules/**/*.tgz
+            !packages/**/node_modules/**
           if-no-files-found: error
