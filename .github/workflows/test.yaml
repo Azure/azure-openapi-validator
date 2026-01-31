@@ -51,7 +51,7 @@ jobs:
         if: contains(matrix.os, 'ubuntu')
         uses: actions/upload-artifact@v6
         with:
-          name: npm-packages
+          name: packages
           path: |
             packages/**/*.tgz
           if-no-files-found: error
