@@ -44,12 +44,14 @@ jobs:
         run: node common/scripts/install-run-rush.js regen-ruleindex
 
       - name: rush pack
+        if: matrix.os == 'ubuntu-latest'
         run: node common/scripts/install-run-rush.js pack
 
       - name: Upload npm packages
+        if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v4
         with:
-          name: npm-packages-${{ matrix.os }}-node${{ matrix.node-version }}
+          name: npm-packages
           path: |
             packages/**/*.tgz
           if-no-files-found: error
