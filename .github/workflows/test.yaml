@@ -44,11 +44,11 @@ jobs:
         run: node common/scripts/install-run-rush.js regen-ruleindex
 
       - name: rush pack
-        if: matrix.os == 'ubuntu-latest'
+        if: contains(matrix.os, 'ubuntu')
         run: node common/scripts/install-run-rush.js pack
 
       - name: Upload npm packages
-        if: matrix.os == 'ubuntu-latest'
+        if: contains(matrix.os, 'ubuntu')
         uses: actions/upload-artifact@v4
         with:
           name: npm-packages
