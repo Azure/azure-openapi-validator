@@ -42,3 +42,14 @@ jobs:
 
       - name: rush regen-ruleindex
         run: node common/scripts/install-run-rush.js regen-ruleindex
+
+      - name: rush pack
+        run: node common/scripts/install-run-rush.js pack
+
+      - name: Upload npm packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-packages-${{ matrix.os }}-node${{ matrix.node-version }}
+          path: |
+            packages/**/*.tgz
+          if-no-files-found: error
