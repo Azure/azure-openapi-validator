@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           sparse-checkout: |
             .github
@@ -42,21 +42,21 @@ jobs:
 
       - if: ${{ matrix.os == 'ubuntu'}}
         name: Lint workflows
-        uses: docker://rhysd/actionlint:1.7.8
+        uses: docker://rhysd/actionlint:1.7.10
         with:
           args: -color -verbose
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          # actions/github-script@v7 uses Node 20
-          node-version: 20.x
+          # actions/github-script@v8 uses Node 24
+          node-version: 24.x
 
       - name: Install runtime deps
         run: npm ci --omit dev
 
       - name: Verify all modules are importable
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const { join } = await import("path");
@@ -75,7 +75,7 @@ jobs:
       - run: npm run test:ci
 
       - name: Archive code coverage results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: code-coverage-report-${{ matrix.os }}
           path: ./.github/coverage
