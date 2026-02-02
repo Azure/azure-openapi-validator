@@ -1,18 +1,5 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-## 2.2.3
-
-### Patches
-
-- [MutabilityWithReadOnly] Add null check to given clause filter to prevent null property objects from being processed
-
-## 2.2.2
-
-### Patches
-
-- Reduce package size by 88% (6.3MB → 745KB unpacked) by excluding test files and source TypeScript files
-- Upgrade minimum required Node.js version from 18 to 20
-
 ## 2.2.2
 
 ### Patches
@@ -21,6 +8,7 @@
 - Reduce package size by 88% (6.3MB → 745KB unpacked) by excluding test files and source TypeScript files
 - Upgrade minimum required Node.js version from 18 to 20
 
+## 2.2.1
 
 ### Patches
 
