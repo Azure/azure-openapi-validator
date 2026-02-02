@@ -1,8 +1,13 @@
 {
   "name": "@microsoft.azure/openapi-validator-rulesets",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Azure OpenAPI Validator",
   "main": "dist/index.js",
+  "files": [
+    "dist/**",
+    "!dist/**/tests/**",
+    "!dist/**/test/**"
+  ],
   "scripts": {
     "build": "tsc && npm run build-esm && npm run rollup-spectral",
     "build-esm": "tsc -p ./tsconfig.spectral.esm.json",
@@ -14,7 +19,7 @@
     "lint": "eslint ./src --ext .ts --max-warnings=0"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "repository": {
     "type": "git",
