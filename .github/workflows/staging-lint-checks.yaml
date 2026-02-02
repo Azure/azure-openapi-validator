@@ -28,15 +28,15 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout validator repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Checkout specs repository (sparse - only needed RPs)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ env.SPEC_REPO }}
           path: ${{ env.SPEC_CHECKOUT_PATH }}
@@ -62,7 +62,7 @@ jobs:
         working-directory: .github
 
       - name: Extract rules and run AutoRest validation
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const { runInGitHubActions } = await import('${{ github.workspace }}/.github/workflows/src/extract-rule-names-and-run-validation.js');
@@ -70,7 +70,7 @@ jobs:
 
       - name: Upload findings artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: linter-findings
           path: artifacts/linter-findings.txt
