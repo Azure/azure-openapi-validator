@@ -1,5 +1,11 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.2.3
+
+### Patches
+
+- [MutabilityWithReadOnly] Add null check to given clause filter to prevent null property objects from being processed
+
 ## 2.2.2
 
 ### Patches
