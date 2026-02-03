@@ -214,10 +214,88 @@ function parseMessages(stdout, stderr) {
 }
 
 /**
+ * Check if PR contains changes to linter rule files
+ * @param {import('@actions/github-script').AsyncFunctionArguments['github']} github - GitHub API client
+ * @param {import('@actions/github-script').AsyncFunctionArguments['context']} context - GitHub Actions context object
+ * @returns {Promise<boolean>} - True if linter rule files were changed
+ */
+export async function hasLinterRuleChanges(github, context) {
+  const pr = context.payload.pull_request;
+  if (!pr) return false;
+
+  try {
+    // Get list of files changed in the PR
+    const { data: files } = await github.rest.pulls.listFiles({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      pull_number: pr.number,
+    });
+
+    // Check if any changed files are in the linter rule directories
+    const rulePaths = [
+      "packages/rulesets/src/spectral/functions/",
+      "packages/rulesets/src/native/functions/",
+    ];
+
+    return files.some((file) => rulePaths.some((path) => file.filename.startsWith(path)));
+  } catch (error) {
+    console.log(`Failed to check for linter rule changes: ${error}`);
+    return false;
+  }
+}
+
+/**
+ * Check if a similar comment already exists on the PR
+ * @param {import('@actions/github-script').AsyncFunctionArguments['github']} github - GitHub API client
+ * @param {import('@actions/github-script').AsyncFunctionArguments['context']} context - GitHub Actions context object
+ * @param {string} commentMarker - A unique marker to identify our comments
+ * @returns {Promise<boolean>} - True if a comment with the marker already exists
+ */
+export async function hasExistingComment(github, context, commentMarker) {
+  const pr = context.payload.pull_request;
+  if (!pr) return false;
+
+  try {
+    const { data: comments } = await github.rest.issues.listComments({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      issue_number: pr.number,
+    });
+
+    return comments.some((comment) => comment.body && comment.body.includes(commentMarker));
+  } catch (error) {
+    console.log(`Failed to check for existing comments: ${error}`);
+    return false;
+  }
+}
+
+/**
+ * Add a comment to the PR
+ * @param {import('@actions/github-script').AsyncFunctionArguments['github']} github - GitHub API client
+ * @param {import('@actions/github-script').AsyncFunctionArguments['context']} context - GitHub Actions context object
+ * @param {string} body - Comment body
+ */
+export async function addPRComment(github, context, body) {
+  const pr = context.payload.pull_request;
+  if (!pr) return;
+
+  try {
+    await github.rest.issues.createComment({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      issue_number: pr.number,
+      body: body,
+    });
+  } catch (error) {
+    console.log(`Failed to add PR comment: ${error}`);
+  }
+}
+
+/**
  * Main execution function for GitHub Actions
  * @param {import('@actions/github-script').AsyncFunctionArguments} AsyncFunctionArguments
  */
-export async function runInGitHubActions({ context, core }) {
+export async function runInGitHubActions({ context, core, github }) {
   try {
     // Extract rule names from PR
     const selectedRules = extractRuleNames(context);
@@ -228,6 +306,30 @@ export async function runInGitHubActions({ context, core }) {
 
     if (selectedRules.length === 0) {
       core.warning("No linting rules specified in labels or PR body");
+
+      // Check if linter rule files were changed
+      const hasRuleChanges = await hasLinterRuleChanges(github, context);
+      if (hasRuleChanges) {
+        // Use a unique marker to identify our comments and prevent duplicates
+        const commentMarker = "<!-- staging-lint-checks-reminder -->";
+        const alreadyCommented = await hasExistingComment(github, context, commentMarker);
+
+        if (!alreadyCommented) {
+          const commentBody =
+            commentMarker +
+            "\n⚠️ **Linter Rule Changes Detected**\n\n" +
+            "This PR modifies linter rule files, but no specific rules were selected for testing.\n\n" +
+            "Make sure to validate the changes to the linter rules using 'Staging Lint Checks' workflow.\n\n" +
+            "To test your changes, add one of the following:\n" +
+            "- A label in the format `test-<RuleName>` (e.g., `test-PostResponseCodes`)\n" +
+            "- A line in the PR description: `rules: RuleName1, RuleName2`";
+          await addPRComment(github, context, commentBody);
+          core.notice("Added comment to PR about untested linter rule changes");
+        } else {
+          core.notice("Comment about untested linter rule changes already exists on PR");
+        }
+      }
+
       // Create empty output file
       const outputFile = join(
         process.env.GITHUB_WORKSPACE || "",

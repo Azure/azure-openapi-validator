@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 env:
   SPEC_REPO: Azure/azure-rest-api-specs
@@ -66,7 +67,7 @@ jobs:
         with:
           script: |
             const { runInGitHubActions } = await import('${{ github.workspace }}/.github/workflows/src/extract-rule-names-and-run-validation.js');
-            await runInGitHubActions({ context, core });
+            await runInGitHubActions({ context, core, github });
 
       - name: Upload findings artifact
         if: always()
