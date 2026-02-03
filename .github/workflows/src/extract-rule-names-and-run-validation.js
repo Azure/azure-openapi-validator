@@ -14,7 +14,7 @@
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from "fs";
 import { basename, dirname, join, relative } from "path";
 import { fileURLToPath } from "url";
-import { execNpmExec } from "../../shared/src/exec.js";
+import { execNpmExec, isExecError } from "../../shared/src/exec.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -312,6 +312,11 @@ export async function runValidation(selectedRules, env, core = null) {
       res = await runAutorest(spec, specRoot, selectedRules, repoRoot);
     } catch (error) {
       console.log(`Failed ${spec}: ${error}`);
+      if (isExecError(error)) {
+        if (error.stdout) console.log(`  stdout: ${error.stdout}`);
+        if (error.stderr) console.log(`  stderr: ${error.stderr}`);
+        if (error.code !== undefined) console.log(`  exit code: ${error.code}`);
+      }
       continue;
     }
 

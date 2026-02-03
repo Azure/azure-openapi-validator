@@ -41,6 +41,7 @@ jobs:
           repository: ${{ env.SPEC_REPO }}
           path: ${{ env.SPEC_CHECKOUT_PATH }}
           sparse-checkout: |
+            specification/common-types
             specification/network
             specification/compute
             specification/monitor
