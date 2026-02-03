@@ -4,6 +4,7 @@
 
 ### Patches
 
+- [MutabilityWithReadOnly] Add null check to given clause filter
 - Reduce package size by 88% (6.3MB → 745KB unpacked) by excluding test files and source TypeScript files
 - Upgrade minimum required Node.js version from 18 to 20
 
