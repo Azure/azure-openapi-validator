@@ -3259,10 +3259,13 @@ const XMSSecretInResponse = (properties, _opts, ctx) => {
         }
         else {
             if (isPotentialSensitiveProperty(prpName) &&
+                !prpName.toLowerCase().includes("public") &&
                 properties[prpName] &&
                 properties[prpName]["x-ms-secret"] !== true &&
                 !keyValuePairCheck &&
-                properties[prpName].type === "string") {
+                properties[prpName].type === "string" &&
+                !properties[prpName].enum &&
+                !properties[prpName]["x-ms-enum"]) {
                 errors.push({
                     message: `Property '${prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
                     path: [...path, prpName],
@@ -3780,8 +3783,8 @@ const ruleset = {
             description: `When defining the response model for an ARM PUT/GET/POST operation, any property that contains sensitive information (such as passwords, keys, tokens, credentials, or other secrets) must include the "x-ms-secret": true annotation. This ensures that secrets are properly identified and handled according to ARM security guidelines.`,
             message: "{{error}}",
             severity: "error",
-            resolved: true,
-            given: ["$[paths,'x-ms-paths'].*.[put,get,post].responses.*.schema.properties"],
+            resolved: false,
+            given: ["$.definitions.*.properties"],
             then: {
                 function: XMSSecretInResponse,
             },

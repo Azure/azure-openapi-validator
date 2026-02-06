@@ -33,10 +33,13 @@ export const XMSSecretInResponse = (properties: any, _opts: any, ctx: any) => {
       // Add all conditions for secret detection
       if (
         isPotentialSensitiveProperty(prpName) && // property name matches sensitive keywords
+        !prpName.toLowerCase().includes("public") && // skip properties containing "public"
         properties[prpName] && // property exists
         properties[prpName]["x-ms-secret"] !== true && // not explicitly marked as secret
         !keyValuePairCheck && // not a key-value pair key
-        properties[prpName].type === "string" // property type is string
+        properties[prpName].type === "string" && // property type is string
+        !properties[prpName].enum && // not a standard enum property
+        !properties[prpName]["x-ms-enum"] // not an x-ms-enum property
       ) {
         errors.push({
           message: `Property '${prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
