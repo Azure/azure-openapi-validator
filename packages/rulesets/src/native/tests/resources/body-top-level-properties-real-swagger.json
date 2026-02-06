@@ -140,6 +140,13 @@
           "type": "string",
           "description": "The escaped name of the namespace."
         },
+        "managedByExtended": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The fully qualified resource IDs of the resources that manage this resource"
+        },
         "classification": {
           "$ref": "#/definitions/NamespaceClassification",
           "description": "Kind of namespace"

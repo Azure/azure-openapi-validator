@@ -15,7 +15,7 @@ ARM OpenAPI(swagger) specs
 ## Description
 
 Top level properties should be one of `name`, `type`, `id`, `location`, `properties`, `tags`, `plan`, `sku`, `etag`,
-`managedBy`, `identity`, `systemData`, `extendedlocation`. Per [ARM guidelines](https://github.com/cloud-and-ai-microsoft/resource-provider-contract/blob/master/v1.0/resource-api-reference.md),
+`managedBy`, `managedByExtended`, `identity`, `kind`, `zones`, `systemData`, `extendedLocation`. Per [ARM guidelines](https://github.com/cloud-and-ai-microsoft/resource-provider-contract/blob/master/v1.0/resource-api-reference.md),
 top level properties of a resource should be only ones from the allowed set.
 
 ## How to fix
