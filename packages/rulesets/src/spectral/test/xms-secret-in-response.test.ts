@@ -192,7 +192,7 @@ test("XMSSecretInResponse should find errors", () => {
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(6)
+    expect(results.length).toBe(10)
     const errorPaths = results.map((r) => r.path.join("."))
     expect(errorPaths).toContain("definitions.FooResource.properties.somepassword")
     expect(errorPaths).toContain("definitions.FooResource.properties.sometoken")
@@ -200,6 +200,10 @@ test("XMSSecretInResponse should find errors", () => {
     expect(errorPaths).toContain("definitions.Foo.properties.somesecret")
     expect(errorPaths).toContain("definitions.FooRule.properties.someaccess")
     expect(errorPaths).toContain("definitions.FooRule.properties.someconnection")
+    expect(errorPaths).toContain("definitions.FooDefinition.properties.properties.properties.somecredential")
+    expect(errorPaths).toContain("definitions.FooDefinition.properties.properties.properties.somesecret")
+    expect(errorPaths).toContain("definitions.FooRule.properties.properties.properties.somepassword")
+    expect(errorPaths).toContain("definitions.FooRule.properties.properties.properties.sometoken")
 
     // Verify error messages
     results.forEach((result) => {
