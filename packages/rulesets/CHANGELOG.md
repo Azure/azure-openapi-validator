@@ -1,6 +1,6 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-## 2.2.2
+## 2.2.3
 
 ### Patches
 
