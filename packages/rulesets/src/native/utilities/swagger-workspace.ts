@@ -120,7 +120,7 @@ export namespace Workspace {
       visited.add(source.value)
       source = resolveRef(source, inventory)!
     }
-    if (!source) {
+    if (!source || !source.value) {
       return undefined
     }
     const attribute = source.value[attributeName]
