@@ -82,7 +82,7 @@ rush regression-test   # Run regression tests
 - Prefer clear, descriptive variable names
 
 ### Null Safety Pattern
-**Important:** After calling `Workspace.resolveRef()`, always check `!source.value` since $ref resolution can return `{ file, value: undefined }` when the target doesn't exist.
+**Important:** After calling `Workspace.resolveRef()`, always check both `!source` and `!source.value` since the function's return type is `EnhancedSchema | undefined`, and the value property can be undefined when the $ref target doesn't exist.
 
 Example:
 ```typescript
