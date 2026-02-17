@@ -5,7 +5,7 @@
 ### Patches
 
 - [XMSSecretInResponse] Enhanced rule to check definitions properties, exclude enum properties (enum and x-ms-enum), exclude properties containing 'public' in their name, and report errors at definition level
-- [RequiredPropertiesMissingInResourceModel] Fix crash with "TypeError: Cannot read properties of undefined (reading 'readOnly')" when a resource property uses a `$ref` to another definition instead of an inline type
+- [RequiredPropertiesMissingInResourceModel] Fix crash with "TypeError: Cannot read properties of undefined|null"
 
 ## 2.2.2
 
