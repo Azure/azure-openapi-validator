@@ -32,8 +32,8 @@ rush build     # Build all projects
 **Test:**
 ```bash
 rush test                                                    # Run all tests
-npx jest --config ./jest.native.config.js                  # Native tests only (in packages/rulesets)
-npx jest --config ./jest.config.js                         # Spectral tests only (in packages/rulesets)
+npx jest --config packages/rulesets/jest.native.config.js  # Native tests only (in packages/rulesets)
+npx jest --config packages/rulesets/jest.config.js         # Spectral tests only (in packages/rulesets)
 ```
 
 **Lint:**
