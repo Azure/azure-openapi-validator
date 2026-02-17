@@ -5,3 +5,6 @@ coverage
 
 # unmanaged files and folders
 ISSUE_TEMPLATE
+
+# Copilot instructions - disable formatting
+**/*instructions.md
