@@ -1,11 +1,5 @@
 # Changelog
 
-## What's New (02/17/2026)
-
-### Bug fix
-
-- RequiredPropertiesMissingInResourceModel - Fix crash with "TypeError: Cannot read properties of undefined (reading 'readOnly')" when a resource property (e.g. `name`) uses a `$ref` to another definition (e.g. `LocalizableString`) instead of an inline type. Refer [Issue #781](https://github.com/Azure/azure-openapi-validator/issues/781) for further details.
-
 ## What's New (05/03/2023)
 
 Continuing the work from 05/02/2023, updated the `@microsoft.azure/openapi-validator`
