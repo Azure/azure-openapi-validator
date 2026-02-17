@@ -104,8 +104,9 @@ When writing validation rules:
 ## Testing
 
 - Jest is used for testing
-- Test files should be colocated with source files or in `__tests__` directories
-- Coverage threshold: 80% for functions
+- Spectral tests are in `packages/rulesets/src/spectral/test/`
+- Native tests are in `packages/rulesets/src/native/tests/` and match `*-test(s).ts`
+- Coverage threshold: ≥80% statement coverage for `src/spectral/functions/*.ts`
 - Native tests use `jest.native.config.js`
 - Spectral tests use `jest.config.js`
 
