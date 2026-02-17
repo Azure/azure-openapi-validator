@@ -1,2 +1,5 @@
 # TypeScript cache
 *.tsbuildinfo
+
+# Copilot instructions - disable formatting
+**/*instructions.md
