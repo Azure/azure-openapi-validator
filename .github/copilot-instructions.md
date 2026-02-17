@@ -82,12 +82,12 @@ rush regression-test   # Run regression tests
 - Prefer clear, descriptive variable names
 
 ### Null Safety Pattern
-**Important:** After calling `resolveRef()` in swagger-workspace.ts, always check `!source.value` since $ref resolution can return `{ file, value: undefined }` when the target doesn't exist.
+**Important:** After calling `Workspace.resolveRef()`, always check `!source.value` since $ref resolution can return `{ file, value: undefined }` when the target doesn't exist.
 
 Example:
 ```typescript
-const source = workspace.resolveRef(ref)
-if (!source.value) {
+const source = Workspace.resolveRef(enhancedSchema, inventory)
+if (!source || !source.value) {
   // Handle undefined case
   return
 }
