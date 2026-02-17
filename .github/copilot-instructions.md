@@ -18,7 +18,7 @@ This is a monorepo managed by Rush.js with the following main packages:
 ## Build and Test Commands
 
 ### Prerequisites
-- Node.js >= 20
+- Node.js >= 18.0.0 (some packages like rulesets require >= 20)
 - Rush.js (`npm install -g @microsoft/rush`)
 
 ### Essential Commands
@@ -144,9 +144,9 @@ All rules should have documentation in `docs/` directory. When adding a new rule
 
 ## Dependencies
 
-- Uses pnpm (v8.15.7) as package manager (configured in rush.json)
+- Rush.js uses pnpm (v8.15.7) as the underlying package manager (configured in rush.json)
 - Strict peer dependencies enabled
-- Node.js >= 18.0.0 required (suppress LTS warning)
+- Node.js >= 18.0.0 supported by Rush (individual packages like rulesets may require >= 20)
 
 ## Deployment
 
