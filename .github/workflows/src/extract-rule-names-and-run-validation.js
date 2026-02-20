@@ -34,24 +34,8 @@ export function extractRulesFromLabels(labels) {
 }
 
 /**
- * Extract rule names from PR body
- * Parses lines matching pattern: rules: RuleName1, RuleName2
- * @param {string} body - PR body text
- * @returns {string[]} - Array of extracted rule names
- */
-export function extractRulesFromBody(body) {
-  // Find lines like "rules: A, B" or "rule: A"
-  const matches = body.match(/^\s*rules?\s*:(.*)$/gim) ?? [];
-  const ruleLine = matches.map((line) => line.split(":")[1] ?? "").join(",");
-  return ruleLine
-    .split(/[\n,]/)
-    .map((s) => s.trim())
-    .filter(Boolean);
-}
-
-/**
- * Extract and combine rule names from GitHub context
- * Combines rules from both labels and body, removing duplicates
+ * Extract rule names from GitHub context
+ * Extracts rules from PR labels with test- prefix
  * @param {import('@actions/github-script').AsyncFunctionArguments['context']} context - GitHub Actions context object
  * @returns {string[]} - Array of unique rule names
  */
@@ -59,12 +43,7 @@ export function extractRuleNames(context) {
   const pr = context.payload.pull_request;
   if (!pr) return [];
 
-  const fromLabels = extractRulesFromLabels(pr.labels ?? []);
-  const fromBody = extractRulesFromBody(pr.body ?? "");
-
-  // Combine both sources and remove duplicates
-  const allRules = [...fromLabels, ...fromBody];
-  return Array.from(new Set(allRules));
+  return extractRulesFromLabels(pr.labels ?? []);
 }
 
 /**
@@ -214,11 +193,117 @@ function parseMessages(stdout, stderr) {
 }
 
 /**
+ * Check if the PR has a specific label
+ * Reads directly from the event payload — no GitHub API calls needed.
+ * @param {import('@actions/github-script').AsyncFunctionArguments['context']} context
+ * @param {string} labelName
+ * @returns {boolean}
+ */
+export function hasLabel(context, labelName) {
+  const labels = context.payload.pull_request?.labels ?? [];
+  return labels.some(
+    (/** @type {string | {name: string}} */ l) =>
+      (typeof l === "object" ? l.name : l).toLowerCase() === labelName.toLowerCase(),
+  );
+}
+
+/**
+ * Evaluate blocking conditions after validation completes.
+ * Triggers core.setFailed() when merge should be blocked.
+ *
+ * Blocking scenarios:
+ * 1. Command failures — AutoRest or script crashes
+ * 2. Validation errors without "errors-acknowledged" label
+ *
+ * @param {object} params
+ * @param {import('@actions/github-script').AsyncFunctionArguments['context']} params.context
+ * @param {import('@actions/github-script').AsyncFunctionArguments['core']} params.core
+ * @param {{ specs: number, errors: number, warnings: number, commandFailures: number }} params.result
+ */
+export function checkBlockingConditions({ context, core, result }) {
+  const { errors, warnings, commandFailures } = result;
+
+  // Scenario 2: Command failures always block
+  if (commandFailures > 0) {
+    core.setFailed(
+      `Pipeline execution failed with ${commandFailures} command failure(s). ` +
+        "Review the logs and linter-findings artifact for details.",
+    );
+    return;
+  }
+
+  // Scenario 3: Validation errors block unless acknowledged
+  if (errors > 0) {
+    if (hasLabel(context, ERRORS_ACKNOWLEDGED_LABEL)) {
+      core.warning(
+        `Found ${errors} validation error(s) and ${warnings} warning(s). ` +
+          `Proceeding because "${ERRORS_ACKNOWLEDGED_LABEL}" label is present. ` +
+          "Reviewer approval is still required.",
+      );
+    } else {
+      core.setFailed(
+        `Found ${errors} validation error(s). Action required:\n` +
+          "  1. Review the errors in the linter-findings artifact\n" +
+          `  2. Add the "${ERRORS_ACKNOWLEDGED_LABEL}" label to this PR to confirm you have reviewed them\n` +
+          "  3. The workflow will automatically re-run when the label is added",
+      );
+    }
+  }
+}
+
+/** Label name used to acknowledge validation errors on a PR. */
+export const ERRORS_ACKNOWLEDGED_LABEL = "errors-acknowledged";
+
+/**
+ * Regex pattern matching linter rule source file paths.
+ * Covers both spectral and native rule paths.
+ */
+export const RULE_FILE_PATTERN =
+  /^packages\/rulesets\/src\/spectral\/(az-arm|az-common|az-dataplane|functions\/.+)\.ts$|^packages\/rulesets\/src\/native\/(legacyRules|functions|rulesets)\/.+\.ts$/;
+
+/**
+ * Detect whether any linter rule source files were changed in the current PR.
+ * Uses the GitHub REST API (pulls.listFiles) via the Octokit client provided by
+ * actions/github-script
+ *
+ * @param {import('@actions/github-script').AsyncFunctionArguments['github']} github - Octokit client
+ * @param {import('@actions/github-script').AsyncFunctionArguments['context']} context - GitHub Actions context
+ * @returns {Promise<boolean>} - true if rule files were changed
+ */
+export async function detectRuleChanges(github, context) {
+  const pr = context.payload.pull_request;
+  if (!pr) return false;
+
+  // Paginate to handle PRs with many changed files
+  const files = await github.paginate(github.rest.pulls.listFiles, {
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    pull_number: pr.number,
+    per_page: 100,
+  });
+
+  const changedRuleFiles = files.filter(
+    (f) => (f.status === "added" || f.status === "modified") && RULE_FILE_PATTERN.test(f.filename),
+  );
+
+  if (changedRuleFiles.length > 0) {
+    console.log("Detected rule file changes:");
+    changedRuleFiles.forEach((f) => console.log(`  ${f.status}\t${f.filename}`));
+    return true;
+  }
+
+  console.log("No rule file changes detected");
+  return false;
+}
+
+/**
  * Main execution function for GitHub Actions
  * @param {import('@actions/github-script').AsyncFunctionArguments} AsyncFunctionArguments
  */
-export async function runInGitHubActions({ context, core }) {
+export default async function runInGitHubActions({ github, context, core }) {
   try {
+    const ruleChangesDetected = await detectRuleChanges(github, context);
+
     // Extract rule names from PR
     const selectedRules = extractRuleNames(context);
 
@@ -227,7 +312,16 @@ export async function runInGitHubActions({ context, core }) {
     );
 
     if (selectedRules.length === 0) {
-      core.warning("No linting rules specified in labels or PR body");
+      // Scenario 1: Rule changes without test rules
+      if (ruleChangesDetected) {
+        core.setFailed(
+          "Rule changes detected but no test rules specified. " +
+            "Add test-<RuleName> labels to this PR.",
+        );
+        return;
+      }
+
+      console.log("No linter-related changes found in the PR. Exiting with empty findings file.");
       // Create empty output file
       const outputFile = join(
         process.env.GITHUB_WORKSPACE || "",
@@ -237,12 +331,17 @@ export async function runInGitHubActions({ context, core }) {
       mkdirSync(dirname(outputFile), { recursive: true });
       writeFileSync(
         outputFile,
-        "INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0\n",
+        "INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0, Command failures: 0\n",
       );
       return;
     }
 
-    return await runValidation(selectedRules, process.env, core);
+    const result = await runValidation(selectedRules, process.env, core);
+
+    // Evaluate blocking conditions (scenarios 2 & 3)
+    checkBlockingConditions({ context, core, result });
+
+    return result;
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     core.setFailed(`Script execution failed: ${errorMessage}`);
@@ -255,6 +354,7 @@ export async function runInGitHubActions({ context, core }) {
  * @param {string[]} selectedRules - Array of rule names to validate
  * @param {any} env - Environment variables object
  * @param {import('@actions/github-script').AsyncFunctionArguments['core'] | null} core - GitHub Actions core object (optional)
+ * @returns {Promise<{ specs: number, errors: number, warnings: number, commandFailures: number }>}
  */
 export async function runValidation(selectedRules, env, core = null) {
   const repoRoot = env.GITHUB_WORKSPACE || process.cwd();
@@ -281,7 +381,7 @@ export async function runValidation(selectedRules, env, core = null) {
     } else {
       console.error(`ERROR | ${message}`);
     }
-    return { specs: 0, errors: 0, warnings: 0 };
+    return { specs: 0, errors: 0, warnings: 0, commandFailures: 0 };
   }
   if (!specs.length) {
     const message = "No matching spec files found";
@@ -294,14 +394,15 @@ export async function runValidation(selectedRules, env, core = null) {
     mkdirSync(dirname(outputFile), { recursive: true });
     writeFileSync(
       outputFile,
-      "INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0\n",
+      "INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0, Command failures: 0\n",
     );
-    return { specs: 0, errors: 0, warnings: 0 };
+    return { specs: 0, errors: 0, warnings: 0, commandFailures: 0 };
   }
 
   console.log(`Processing ${specs.length} file(s)`);
   let errors = 0;
   let warnings = 0;
+  let commandFailures = 0;
   const outLines = [];
   const seenErrors = new Set(); // Track unique errors to avoid duplicates from $ref resolution
 
@@ -311,12 +412,16 @@ export async function runValidation(selectedRules, env, core = null) {
     try {
       res = await runAutorest(spec, specRoot, selectedRules, repoRoot);
     } catch (error) {
-      console.log(`Failed ${spec}: ${error}`);
+      commandFailures++;
+      const specRelPath = relative(specRoot, spec).replace(/\\/g, "/");
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.log(`Failed ${spec}: ${errorMessage}`);
       if (isExecError(error)) {
         if (error.stdout) console.log(`  stdout: ${error.stdout}`);
         if (error.stderr) console.log(`  stderr: ${error.stderr}`);
         if (error.code !== undefined) console.log(`  exit code: ${error.code}`);
       }
+      outLines.push(`ERROR | CommandFailed | ${specRelPath} | ${errorMessage}`);
       continue;
     }
 
@@ -395,22 +500,12 @@ export async function runValidation(selectedRules, env, core = null) {
   }
 
   // Output results
-  const summary = `INFO | Runner | summary | Files scanned: ${specs.length}, Errors: ${errors}, Warnings: ${warnings}`;
+  const summary = `INFO | Runner | summary | Files scanned: ${specs.length}, Errors: ${errors}, Warnings: ${warnings}, Command failures: ${commandFailures}`;
   console.log(summary);
 
   // Write output file
   mkdirSync(dirname(outputFile), { recursive: true });
   writeFileSync(outputFile, outLines.concat([summary]).join("\n") + "\n", "utf8");
 
-  // Handle failure conditions
-  if (errors > 0 && env.FAIL_ON_ERRORS === "true") {
-    const message = `Found ${errors} error(s) in validation`;
-    if (core) core.setFailed(message);
-    else {
-      console.error(`ERROR | ${message}`);
-      process.exit(1);
-    }
-  }
-
-  return { specs: specs.length, errors, warnings };
+  return { specs: specs.length, errors, warnings, commandFailures };
 }

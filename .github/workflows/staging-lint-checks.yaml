@@ -7,8 +7,6 @@ on:
       - opened
       - synchronize
       - reopened
-      # body can be used to select rule(s) for testing
-      - edited
       # labels can be used to select rule(s) for testing
       - labeled
       - unlabeled
@@ -19,7 +17,6 @@ permissions:
 env:
   SPEC_REPO: Azure/azure-rest-api-specs
   SPEC_CHECKOUT_PATH: specs
-  FAIL_ON_ERRORS: "false" # Set to "true" to fail the job when error findings appear
   MAX_FILES: "100"
   ALLOWED_RPS: "compute,monitor,sql,hdinsight,network,resource,storage"
 
@@ -66,8 +63,8 @@ jobs:
         uses: actions/github-script@v8
         with:
           script: |
-            const { runInGitHubActions } = await import('${{ github.workspace }}/.github/workflows/src/extract-rule-names-and-run-validation.js');
-            await runInGitHubActions({ context, core });
+            const { default: runInGitHubActions } = await import('${{ github.workspace }}/.github/workflows/src/extract-rule-names-and-run-validation.js');
+            await runInGitHubActions({ github, context, core });
 
       - name: Upload findings artifact
         if: always()

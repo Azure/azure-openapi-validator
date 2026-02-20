@@ -11,37 +11,52 @@ merged into the main codebase.
 The workflow serves as a validation tool for linter rule development with the following workflow:
 
 1. **Rule Development**: Engineers write new validation rules or modify existing ones
-2. **Testing Setup**: Engineers create a PR and specify which rules to test via labels or PR description
+2. **Testing Setup**: Engineers create a PR and specify which rules to test via labels
 3. **Automated Validation**: The workflow runs specified rules against live specification files using AutoRest
 4. **Result Analysis**: Engineers review the output to identify false positives, false negatives, or unexpected behavior
 5. **Quality Assurance**: Engineers and reviewers validate that rules work correctly before production release
 
-**Important**: This workflow is designed to assist validation, not to block PR merging. The responsibility for
-ensuring rule quality lies with the engineer and reviewer based on the workflow output.
+**Important**: This workflow enforces three merge-blocking gates:
+
+1. **Rule changes require test rules** — If rule files are modified, the PR must specify rules to test via labels
+2. **Command failures block merges** — AutoRest crashes or script errors cause the workflow to fail
+3. **Validation errors require acknowledgment** — When errors are found, the author must add an `errors-acknowledged` label after reviewing them
+
+The workflow automatically re-runs when labels are added or removed.
+
+## Validation Requirements
+
+### When Rule Files Are Changed
+
+If your PR modifies any of these files, you **must** specify test rules:
+
+- `packages/rulesets/src/spectral/az-arm.ts`
+- `packages/rulesets/src/spectral/az-common.ts`
+- `packages/rulesets/src/spectral/az-dataplane.ts`
+- `packages/rulesets/src/spectral/functions/*.ts`
+- `packages/rulesets/src/native/legacyRules/**/*.ts`
+- `packages/rulesets/src/native/functions/**/*.ts`
+- `packages/rulesets/src/native/rulesets/**/*.ts`
+
+The workflow will fail until test rules are specified.
+
+### When Validation Errors Are Found
+
+1. Download the `linter-findings` artifact and review the errors
+2. Add the `errors-acknowledged` label to confirm you have reviewed them
+3. The workflow re-runs automatically and passes (reviewer approval is still required)
+
+Removing the label re-triggers the workflow and re-blocks the PR.
 
 ## How to Use
 
 ### Specifying Rules to Test
-
-You can specify which validation rules to test using either of these methods:
-
-#### Method 1: PR Labels
 
 Add labels to your pull request with the format `test-<RuleName>`:
 
 - `test-PostResponseCodes`
 - `test-DeleteMustNotHaveRequestBody`
 - `test-LongRunningOperationsWithLongRunningExtension`
-
-#### Method 2: PR Description
-
-Add a line in your PR body:
-
-```text
-rules: PostResponseCodes, DeleteMustNotHaveRequestBody
-```
-
-Note: If both methods are used, rules from both sources are combined.
 
 ### Workflow Configuration
 
@@ -50,18 +65,23 @@ The workflow can be configured through environment variables:
 ```yaml
 env:
   SPEC_REPO: Azure/azure-rest-api-specs
-  FAIL_ON_ERRORS: "false"
   MAX_FILES: "100"
   ALLOWED_RPS: "compute,monitor,sql,hdinsight,network,resource,storage"
 ```
 
 - **SPEC_REPO**: Source repository for OpenAPI specifications
-- **FAIL_ON_ERRORS**: Whether the workflow should fail when validation errors are found
 - **MAX_FILES**: Maximum number of specification files to process
 - **ALLOWED_RPS**: Comma-separated list of resource providers to include in testing
 
 **Note**: These values can be modified directly in the `.github/workflows/staging-lint-checks.yaml` file to adjust the
 workflow behavior based on testing requirements.
+
+### Labels
+
+| Label | Purpose |
+|---|---|
+| `test-<RuleName>` | Specifies a rule to validate (e.g., `test-PostResponseCodes`) |
+| `errors-acknowledged` | Confirms the PR author has reviewed validation errors |
 
 ## Debugging and Troubleshooting
 
@@ -74,8 +94,7 @@ workflow behavior based on testing requirements.
 
 ### Common Issues
 
-**No rules detected**: Ensure your PR labels follow the exact format `test-<RuleName>` or verify the rules line
-in your PR description is properly formatted.
+**No rules detected**: Ensure your PR labels follow the exact format `test-<RuleName>`.
 
 **Workflow fails**: Check the workflow logs for specific error messages. The artifact will still be uploaded
 even if the workflow fails.
@@ -85,5 +104,5 @@ the `ALLOWED_RPS` environment variable.
 
 ## Related Components
 
-- `.github/workflows/src/extract-rule-names-and-run-validation.js`: Single consolidated script that parses rule names (from PR labels or body) and runs AutoRest with the selected rules over allowed spec files.
+- `.github/workflows/src/extract-rule-names-and-run-validation.js`: Single consolidated script that parses rule names from PR labels and runs AutoRest with the selected rules over allowed spec files.
 - GitHub Action workflow file: `.github/workflows/staging-lint-checks.yaml` orchestrates checkout, build, and script execution.
