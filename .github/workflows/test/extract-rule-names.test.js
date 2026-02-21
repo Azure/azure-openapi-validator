@@ -4,7 +4,6 @@ import {
   detectRuleChanges,
   extractRuleNames,
   extractRulesFromLabels,
-  hasLabel,
   RULE_FILE_PATTERN,
 } from "../src/extract-rule-names-and-run-validation.js";
 
