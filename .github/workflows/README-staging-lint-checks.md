@@ -78,10 +78,10 @@ workflow behavior based on testing requirements.
 
 ### Labels
 
-| Label | Purpose |
-|---|---|
-| `test-<RuleName>` | Specifies a rule to validate (e.g., `test-PostResponseCodes`) |
-| `errors-acknowledged` | Confirms the PR author has reviewed validation errors |
+| Label                 | Purpose                                                       |
+| --------------------- | ------------------------------------------------------------- |
+| `test-<RuleName>`     | Specifies a rule to validate (e.g., `test-PostResponseCodes`) |
+| `errors-acknowledged` | Confirms the PR author has reviewed validation errors         |
 
 ## Debugging and Troubleshooting
 
