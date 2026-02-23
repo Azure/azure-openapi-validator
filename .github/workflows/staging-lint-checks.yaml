@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
 
 env:
   SPEC_REPO: Azure/azure-rest-api-specs
