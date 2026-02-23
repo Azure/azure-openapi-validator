@@ -35,6 +35,13 @@ describe("IndividualAzureTests", () => {
     assertValidationRuleCount(messages, ruleName, 4)
   })
 
+  test("required properties in resource model with $ref property should not crash", async () => {
+    const fileNames = ["ext-resource-validation-ref-property.json"]
+    const ruleName = "RequiredPropertiesMissingInResourceModel"
+    const messages: LintResultMessage[] = await collectTestMessagesFromValidator(fileNames, OpenApiTypes.arm, ruleName)
+    assertValidationRuleCount(messages, ruleName, 1)
+  })
+
   test("[positive] required properties in resource model with reference", async () => {
     const fileNames = ["ext-resource-validation-with-reference.json", "common-types/types.json"]
     const ruleName = "RequiredPropertiesMissingInResourceModel"
