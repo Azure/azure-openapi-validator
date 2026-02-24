@@ -259,7 +259,7 @@ export const ERRORS_ACKNOWLEDGED_LABEL = "errors-acknowledged";
  * Covers both spectral and native rule paths.
  */
 export const RULE_FILE_PATTERN =
-  /^packages\/rulesets\/src\/spectral\/(az-arm|az-common|az-dataplane|functions\/.+)\.ts$|^packages\/rulesets\/src\/native\/(legacyRules|functions|rulesets)\/.+\.ts$/;
+  /^packages\/rulesets\/src\/spectral\/(az-arm|az-common|az-dataplane|functions\/.+|utils)\.ts$|^packages\/rulesets\/src\/native\/(legacyRules|functions|rulesets|utilities)\/.+\.ts$/;
 
 /**
  * Detect whether any linter rule source files were changed in the current PR.
