@@ -1,3 +1,7 @@
+---
+applyTo: .github/workflows/**
+---
+
 # Staging Lint Checks Workflow
 
 ## Overview
