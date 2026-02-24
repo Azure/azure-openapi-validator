@@ -4,7 +4,6 @@ import {
   detectRuleChanges,
   extractRuleNames,
   extractRulesFromLabels,
-  hasLabel,
   RULE_FILE_PATTERN,
 } from "../src/extract-rule-names-and-run-validation.js";
 
@@ -103,7 +102,7 @@ describe("extract-rule-names", () => {
       expect(result).toEqual(expected);
     });
   });
-  
+
   describe("checkBlockingConditions", () => {
     function mockCore() {
       return {
@@ -234,7 +233,10 @@ describe("extract-rule-names", () => {
   describe("detectRuleChanges", () => {
     test("returns true when rule files are changed", async () => {
       const mockPaginate = vi.fn().mockResolvedValue([
-        { filename: "packages/rulesets/src/spectral/functions/post-response-codes.ts", status: "modified" },
+        {
+          filename: "packages/rulesets/src/spectral/functions/post-response-codes.ts",
+          status: "modified",
+        },
         { filename: "README.md", status: "modified" },
       ]);
       const github = {
@@ -287,9 +289,11 @@ describe("extract-rule-names", () => {
     });
 
     test("ignores deleted rule files", async () => {
-      const mockPaginate = vi.fn().mockResolvedValue([
-        { filename: "packages/rulesets/src/spectral/az-arm.ts", status: "removed" },
-      ]);
+      const mockPaginate = vi
+        .fn()
+        .mockResolvedValue([
+          { filename: "packages/rulesets/src/spectral/az-arm.ts", status: "removed" },
+        ]);
       const github = {
         paginate: mockPaginate,
         rest: { pulls: { listFiles: "listFiles" } },
