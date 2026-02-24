@@ -22,7 +22,7 @@ env:
   ALLOWED_RPS: "compute,monitor,sql,hdinsight,network,resource,storage"
 
 jobs:
-  run-selected-rules:
+  staging-lint-checks:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout validator repository
