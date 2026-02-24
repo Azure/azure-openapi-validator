@@ -63,8 +63,8 @@ rush regression-test   # Run regression tests
 1. Add the new rule with appropriate severity and documentation
 2. Add a label to your PR in the format `test-<RuleName>` to trigger the staging-lint check pipeline
 3. Verify the rule works correctly by checking the staging-lint check results
-4. Wait for at least 10 PRs in azure-rest-api-specs to validate no false positives
-5. Create release PR to move rule to production
+4. Iterate on the rule based on validation results until it works as expected
+5. Once the PR is merged, the rule is automatically deployed and released
 
 ## Coding Conventions
 
