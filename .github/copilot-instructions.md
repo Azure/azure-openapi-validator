@@ -60,9 +60,11 @@ rush regression-test   # Run regression tests
 5. For significant changes, manually update `changelog.md`
 
 ### Adding New Linter Rules
-1. Add rule to staging pipeline first (set to run only in staging)
-2. Wait for at least 10 PRs to verify no false positives
-3. Create release PR to move rule to production
+1. Add the new rule with appropriate severity and documentation
+2. Add a label to your PR in the format `test-<RuleName>` to trigger the staging-lint check pipeline
+3. Verify the rule works correctly by checking the staging-lint check results
+4. Wait for at least 10 PRs in azure-rest-api-specs to validate no false positives
+5. Create release PR to move rule to production
 
 ## Coding Conventions
 
@@ -112,11 +114,18 @@ When writing validation rules:
 
 ## Common Tasks
 
+### Testing Rules with Staging-Lint Check
+The `.github/workflows/staging-lint-checks.yaml` workflow allows you to test specific rules:
+- Add a label to your PR in format `test-<RuleName>` (e.g., `test-ProvisioningStateSpecifiedForLROPut`)
+- You can also specify rules in the PR body: `rules: RuleName1, RuleName2`
+- The workflow runs selected rules against a subset of Azure REST API specs
+- Check the workflow results and linter-findings artifact to validate rule behavior
+
 ### Running Locally from Source
 See CONTRIBUTING.md section "How to run LintDiff locally from source"
 
-### Setting Rule to Staging Only
-See CONTRIBUTING.md section "How to set a Spectral rule to run only in staging"
+### Setting Rule to Staging Only (Legacy)
+The `stagingOnly: true` property in Spectral rules still exists but the deployment process has evolved. For new rules, use the staging-lint check workflow (above) to validate before production deployment. See CONTRIBUTING.md section "How to set a Spectral rule to run only in staging" for details on the stagingOnly property.
 
 ### Regenerating Rules Documentation
 ```bash
