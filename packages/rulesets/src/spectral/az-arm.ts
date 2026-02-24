@@ -180,7 +180,8 @@ const ruleset: any = {
     // RPC Code: RPC-Async-V1-11, RPC-Async-V1-14
     PostResponseCodes: {
       rpcGuidelineCode: "RPC-Async-V1-11, RPC-Async-V1-14, RPC-POST-V1-02, RPC-POST-V1-03",
-      description: "Synchronous POST must return 200 when a response body is required or 204 when no body is needed; LRO POST must initially return 202, with the final response returning 200 if a body is expected or 204 if not.",
+      description:
+        "Synchronous POST must return 200 when a response body is required or 204 when no body is needed; LRO POST must initially return 202, with the final response returning 200 if a body is expected or 204 if not.",
       severity: "error",
       disableForTypeSpecDataPlane: true,
       disableForTypeSpecDataPlaneReason:
@@ -690,7 +691,7 @@ const ruleset: any = {
       message: "{{error}}",
       severity: "error",
       resolved: true,
-      given: ["$[paths,'x-ms-paths'].*.[put,get,post].responses.*.schema.properties"],
+      given: ["$.definitions.*.properties"],
       then: {
         function: XMSSecretInResponse,
       },

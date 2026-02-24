@@ -1,5 +1,12 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.2.3
+
+### Patches
+
+- [XMSSecretInResponse] Enhanced rule to check definitions properties, exclude enum properties (enum and x-ms-enum), exclude properties containing 'public' in their name, and report errors at definition level
+- [RequiredPropertiesMissingInResourceModel] Fix crash with "TypeError: Cannot read properties of undefined|null"
+
 ## 2.2.2
 
 ### Patches
