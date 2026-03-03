@@ -4,7 +4,7 @@
 
 ### Patches
 
-- [XMSSecretInResponse] update generated code to match source and set "resolved:true"
+- [XMSSecretInResponse] Update generated code to match source and set "resolved:true"
 
 ## 2.2.3
 
