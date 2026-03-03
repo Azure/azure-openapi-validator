@@ -4,7 +4,7 @@
   "pnpmVersion": "10.30.3",
   "ensureConsistentVersions": true,
   "pnpmOptions": {
-    "strictPeerDependencies": true
+    "strictPeerDependencies": false
   },
   "nodeSupportedVersionRange": ">=18.0.0",
   "suppressNodeLtsWarning": true,
