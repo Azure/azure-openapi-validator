@@ -1,5 +1,11 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.2.4
+
+### Patches
+
+- [XMSSecretInResponse] update generated code to match source and set "resolved:true"
+
 ## 2.2.3
 
 ### Patches
