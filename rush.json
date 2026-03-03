@@ -6,7 +6,7 @@
   "pnpmOptions": {
     "strictPeerDependencies": false
   },
-  "nodeSupportedVersionRange": ">=18.0.0",
+  "nodeSupportedVersionRange": ">=20.0.0",
   "suppressNodeLtsWarning": true,
   "projectFolderMinDepth": 1,
   "projectFolderMaxDepth": 5,
