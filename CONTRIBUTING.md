@@ -8,6 +8,7 @@
   - [Communicate the addition of a rule to API reviewers](#communicate-the-addition-of-a-rule-to-api-reviewers)
   - [Ensure TypeSpec supports the new rule](#ensure-typespec-supports-the-new-rule)
   - [Add a new rule to the staging pipeline](#add-a-new-rule-to-the-staging-pipeline)
+  - [Test rules using the staging lint checks workflow](#test-rules-using-the-staging-lint-checks-workflow)
   - [Determine which rules are ready for release](#determine-which-rules-are-ready-for-release)
   - [Create a release PR and generate the changelog](#create-a-release-pr-and-generate-the-changelog)
   - [Create a release tag](#create-a-release-tag)
@@ -132,6 +133,77 @@ To add a rule to the staging pipeline:
 
 2. Merge the new rule to the main branch. Once merged, your new rule will start running in the staging pipeline. You can
 verify the rule is running with the instructions in [Verify the deployed changes](#verify-the-deployed-changes).
+
+## Test rules using the staging lint checks workflow
+
+The staging lint checks workflow (`.github/workflows/staging-lint-checks.yaml`) validates rule changes in this repository
+by running selected rules against spec files from the `azure-rest-api-specs` repository before merging. It provides a
+staging environment to test new rules and rule modifications with the following workflow:
+
+1. **Rule Development**: Engineers write new validation rules or modify existing ones
+2. **Testing Setup**: Engineers create a PR and specify which rules to test via labels
+3. **Automated Validation**: The workflow runs specified rules against live specification files using AutoRest
+4. **Result Analysis**: Engineers review the output to identify false positives, false negatives, or unexpected behavior
+5. **Quality Assurance**: Engineers and reviewers validate that rules work correctly before production release
+
+### Validation requirements
+
+**When rule files are changed**, if your PR modifies any of these files, you **must** specify test rules:
+
+- `packages/rulesets/src/spectral/az-arm.ts`
+- `packages/rulesets/src/spectral/az-common.ts`
+- `packages/rulesets/src/spectral/az-dataplane.ts`
+- `packages/rulesets/src/spectral/functions/*.ts`
+- `packages/rulesets/src/native/legacyRules/**/*.ts`
+- `packages/rulesets/src/native/functions/**/*.ts`
+- `packages/rulesets/src/native/rulesets/**/*.ts`
+
+**When validation errors are found:**
+
+1. Download the `linter-findings` artifact and review the errors
+2. Add the `errors-acknowledged` label to confirm you have reviewed them
+3. The workflow re-runs automatically and passes (reviewer approval is still required)
+
+Removing the label re-triggers the workflow and re-blocks the PR.
+
+### Merge-blocking gates
+
+The workflow enforces three merge-blocking gates:
+
+1. **Rule changes require test rules** — If rule files are modified, the PR must specify rules to test via labels
+2. **Command failures block merges** — AutoRest crashes or script errors cause the workflow to fail
+3. **Validation errors require acknowledgment** — When errors are found, the author must add an `errors-acknowledged` label after reviewing them
+
+### Specifying rules to test
+
+Add labels to your pull request with the format `test-<RuleName>`:
+
+- `test-PostResponseCodes`
+- `test-DeleteMustNotHaveRequestBody`
+- `test-LongRunningOperationsWithLongRunningExtension`
+
+### Labels
+
+| Label                 | Purpose                                                       |
+| --------------------- | ------------------------------------------------------------- |
+| `test-<RuleName>`     | Specifies a rule to validate (e.g., `test-PostResponseCodes`) |
+| `errors-acknowledged` | Confirms the PR author has reviewed validation errors         |
+
+### Workflow configuration
+
+The workflow can be configured through environment variables in `.github/workflows/staging-lint-checks.yaml`:
+
+- **SPEC_REPO**: Source repository for OpenAPI specifications (default: `Azure/azure-rest-api-specs`)
+- **MAX_FILES**: Maximum number of specification files to process (default: `100`)
+- **ALLOWED_RPS**: Comma-separated list of resource providers to include in testing (default:
+  `compute,monitor,sql,hdinsight,network,resource,storage`)
+
+### Viewing results
+
+1. Navigate to the Actions tab in your repository
+2. Find the workflow run for your PR
+3. Download the `linter-findings` artifact to see detailed validation results
+4. The artifact contains output logs and any errors found
 
 ## Determine which rules are ready for release
 
