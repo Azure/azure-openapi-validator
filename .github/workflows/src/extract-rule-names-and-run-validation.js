@@ -239,7 +239,7 @@ export async function runInGitHubActions({ context, core }) {
         outputFile,
         "INFO | Runner | summary | Files scanned: 0, Errors: 0, Warnings: 0\n",
       );
-      return;
+      return { specs: 0, errors: 0, warnings: 0 };
     }
 
     return await runValidation(selectedRules, process.env, core);

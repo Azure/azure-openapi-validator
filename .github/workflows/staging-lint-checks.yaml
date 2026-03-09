@@ -62,11 +62,12 @@ jobs:
         working-directory: .github
 
       - name: Extract rules and run AutoRest validation
+        id: validate
         uses: actions/github-script@v8
         with:
           script: |
             const { runInGitHubActions } = await import('${{ github.workspace }}/.github/workflows/src/extract-rule-names-and-run-validation.js');
-            await runInGitHubActions({ context, core });
+            return await runInGitHubActions({ context, core });
 
       - name: Upload findings artifact
         if: always()
@@ -75,3 +76,15 @@ jobs:
           name: linter-findings
           path: artifacts/linter-findings.txt
           if-no-files-found: warn
+
+      - name: Create empty file for label artifact
+        if: always() && fromJson(steps.validate.outputs.result || '{"errors":0}').errors > 0
+        run: mkdir -p "$RUNNER_TEMP/label-artifacts" && touch "$RUNNER_TEMP/label-artifacts/empty.txt"
+
+      - name: Upload label artifact to remove ARMReviewRequired when errors found
+        if: always() && fromJson(steps.validate.outputs.result || '{"errors":0}').errors > 0
+        uses: actions/upload-artifact@v6
+        with:
+          name: label-ARMReviewRequired=false
+          path: ${{ runner.temp }}/label-artifacts/empty.txt
+          if-no-files-found: error
