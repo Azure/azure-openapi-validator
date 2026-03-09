@@ -46,7 +46,6 @@ test("unknown rule -> processes without errors", async () => {
     SPEC_CHECKOUT_PATH: ".",
     MAX_FILES: "100",
     ALLOWED_RPS: "network,compute,monitor,sql,hdinsight,resource,storage",
-    FAIL_ON_ERRORS: "false",
   };
 
   const outFile = path.join(tmpRoot, "artifacts", "linter-findings.txt");
@@ -66,7 +65,6 @@ test("MAX_FILES limits scanning", async () => {
     SPEC_CHECKOUT_PATH: ".",
     MAX_FILES: "2",
     ALLOWED_RPS: "network,compute,monitor,sql,hdinsight,resource,storage",
-    FAIL_ON_ERRORS: "false",
   };
 
   const outFile = path.join(tmpRoot, "artifacts", "linter-findings.txt");
