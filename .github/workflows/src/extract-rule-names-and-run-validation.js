@@ -223,7 +223,7 @@ export function hasLabel(context, labelName) {
 export function checkBlockingConditions({ context, core, result }) {
   const { errors, warnings, commandFailures } = result;
 
-  // Scenario 2: Command failures always block
+  // Scenario 1: Command failures always block
   if (commandFailures > 0) {
     core.setFailed(
       `Pipeline execution failed with ${commandFailures} command failure(s). ` +
@@ -232,7 +232,7 @@ export function checkBlockingConditions({ context, core, result }) {
     return;
   }
 
-  // Scenario 3: Validation errors block unless acknowledged
+  // Scenario 2: Validation errors block unless acknowledged
   if (errors > 0) {
     if (hasLabel(context, ERRORS_ACKNOWLEDGED_LABEL)) {
       core.warning(
