@@ -1,10 +1,36 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
-## 2.2.2
+## 2.2.5
 
 ### Patches
 
 - [TopLevelResourcesListBySubscription] Exclude tenant-level APIs from validation
+
+## 2.2.4
+
+### Patches
+
+- [XMSSecretInResponse] Update generated code to match source and set "resolved:true"
+
+## 2.2.3
+
+### Patches
+
+- [XMSSecretInResponse] Enhanced rule to check definitions properties, exclude enum properties (enum and x-ms-enum), exclude properties containing 'public' in their name, and report errors at definition level
+- [RequiredPropertiesMissingInResourceModel] Fix crash with "TypeError: Cannot read properties of undefined|null"
+
+## 2.2.2
+
+### Patches
+
+- [MutabilityWithReadOnly] Add null check to given clause filter
+- Reduce package size by 88% (6.3MB → 745KB unpacked) by excluding test files and source TypeScript files
+- Upgrade minimum required Node.js version from 18 to 20
+
+## 2.2.1
+
+### Patches
+
 - [MutabilityWithReadOnly] Optimize rule to prevent excessive memory usage on large specs
 
 ## 2.2.0

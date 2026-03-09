@@ -134,3 +134,19 @@ test("MutabilityWithReadOnly: properties ignored by given clause", () => {
     expect(results.length).toBe(0);
   });
 });
+
+test("MutabilityWithReadOnly: null property values are filtered by given clause", () => {
+  const myOpenApiDocument = createOpenApiDoc({
+    nullProperty: null,
+    validProperty: {
+      type: "string",
+      readOnly: true,
+      "x-ms-mutability": ["read"],
+    },
+  });
+  return linter.run(myOpenApiDocument).then((results) => {
+    // Null property should be filtered out by the given clause (@ != null check)
+    // Only the valid property should pass through, and it's valid so 0 errors
+    expect(results.length).toBe(0);
+  });
+});

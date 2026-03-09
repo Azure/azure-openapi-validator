@@ -10,21 +10,21 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        node-version: [20, 22]
+        os: [ubuntu, windows]
+        node-version: [20, 24]
         exclude:
-          - os: ubuntu-latest
-            node-version: 22
-          - os: windows-latest
+          - os: ubuntu
+            node-version: 24
+          - os: windows
             node-version: 20
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ fromJSON('{"ubuntu":"ubuntu-24.04", "windows":"windows-2022"}')[matrix.os] }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Use Node ${{ matrix.node-version }}.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}.x
 
@@ -42,3 +42,17 @@ jobs:
 
       - name: rush regen-ruleindex
         run: node common/scripts/install-run-rush.js regen-ruleindex
+
+      - name: rush pack
+        if: contains(matrix.os, 'ubuntu')
+        run: node common/scripts/install-run-rush.js pack
+
+      - name: Upload npm packages
+        if: contains(matrix.os, 'ubuntu')
+        uses: actions/upload-artifact@v6
+        with:
+          name: packages
+          path: |
+            packages/**/*.tgz
+            !packages/**/node_modules/**
+          if-no-files-found: error

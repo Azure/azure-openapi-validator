@@ -4,6 +4,7 @@ import linterForRule from "./utils"
 let linter: Spectral
 
 const ERROR_MESSAGE = `Property '{prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`
+
 beforeAll(async () => {
   linter = await linterForRule("XMSSecretInResponse")
   return linter
@@ -191,43 +192,25 @@ test("XMSSecretInResponse should find errors", () => {
     },
   }
   return linter.run(oasDoc).then((results) => {
-    expect(results.length).toBe(18)
-    expect(results[0].message).toBe(ERROR_MESSAGE.replace("{prpName}", "somepassword"))
-    expect(results[0].path.join(".")).toBe("paths./foo.get.responses.200.schema.properties.properties.properties.somepassword")
-    expect(results[1].message).toBe(ERROR_MESSAGE.replace("{prpName}", "sometoken"))
-    expect(results[1].path.join(".")).toBe("paths./foo.get.responses.200.schema.properties.properties.properties.sometoken")
-    expect(results[2].message).toBe(ERROR_MESSAGE.replace("{prpName}", "someaccess"))
-    expect(results[2].path.join(".")).toBe("paths./foo.get.responses.200.schema.properties.someaccess")
-    expect(results[3].message).toBe(ERROR_MESSAGE.replace("{prpName}", "someconnection"))
-    expect(results[3].path.join(".")).toBe("paths./foo.get.responses.200.schema.properties.someconnection")
-    expect(results[4].message).toBe(ERROR_MESSAGE.replace("{prpName}", "somecredential"))
-    expect(results[4].path.join(".")).toBe("paths./foo.get.responses.201.schema.properties.properties.properties.somecredential")
-    expect(results[5].message).toBe(ERROR_MESSAGE.replace("{prpName}", "somesecret"))
-    expect(results[5].path.join(".")).toBe("paths./foo.get.responses.201.schema.properties.properties.properties.somesecret")
-    expect(results[6].message).toBe(ERROR_MESSAGE.replace("{prpName}", "somepassword"))
-    expect(results[6].path.join(".")).toBe("paths./foo.post.responses.200.schema.properties.properties.properties.somepassword")
-    expect(results[7].message).toBe(ERROR_MESSAGE.replace("{prpName}", "sometoken"))
-    expect(results[7].path.join(".")).toBe("paths./foo.post.responses.200.schema.properties.properties.properties.sometoken")
-    expect(results[8].message).toBe(ERROR_MESSAGE.replace("{prpName}", "someaccess"))
-    expect(results[8].path.join(".")).toBe("paths./foo.post.responses.200.schema.properties.someaccess")
-    expect(results[9].message).toBe(ERROR_MESSAGE.replace("{prpName}", "someconnection"))
-    expect(results[9].path.join(".")).toBe("paths./foo.post.responses.200.schema.properties.someconnection")
-    expect(results[10].message).toBe(ERROR_MESSAGE.replace("{prpName}", "somecredential"))
-    expect(results[10].path.join(".")).toBe("paths./foo.post.responses.201.schema.properties.properties.properties.somecredential")
-    expect(results[11].message).toBe(ERROR_MESSAGE.replace("{prpName}", "somesecret"))
-    expect(results[11].path.join(".")).toBe("paths./foo.post.responses.201.schema.properties.properties.properties.somesecret")
-    expect(results[12].message).toBe(ERROR_MESSAGE.replace("{prpName}", "somepassword"))
-    expect(results[12].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.properties.properties.somepassword")
-    expect(results[13].message).toBe(ERROR_MESSAGE.replace("{prpName}", "sometoken"))
-    expect(results[13].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.properties.properties.sometoken")
-    expect(results[14].message).toBe(ERROR_MESSAGE.replace("{prpName}", "someaccess"))
-    expect(results[14].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.someaccess")
-    expect(results[15].message).toBe(ERROR_MESSAGE.replace("{prpName}", "someconnection"))
-    expect(results[15].path.join(".")).toBe("paths./foo.put.responses.200.schema.properties.someconnection")
-    expect(results[16].message).toBe(ERROR_MESSAGE.replace("{prpName}", "somecredential"))
-    expect(results[16].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.properties.properties.somecredential")
-    expect(results[17].message).toBe(ERROR_MESSAGE.replace("{prpName}", "somesecret"))
-    expect(results[17].path.join(".")).toBe("paths./foo.put.responses.201.schema.properties.properties.properties.somesecret")
+    expect(results.length).toBe(10)
+    const errorPaths = results.map((r) => r.path.join("."))
+    expect(errorPaths).toContain("definitions.FooResource.properties.somepassword")
+    expect(errorPaths).toContain("definitions.FooResource.properties.sometoken")
+    expect(errorPaths).toContain("definitions.Foo.properties.somecredential")
+    expect(errorPaths).toContain("definitions.Foo.properties.somesecret")
+    expect(errorPaths).toContain("definitions.FooRule.properties.someaccess")
+    expect(errorPaths).toContain("definitions.FooRule.properties.someconnection")
+    expect(errorPaths).toContain("definitions.FooDefinition.properties.properties.properties.somecredential")
+    expect(errorPaths).toContain("definitions.FooDefinition.properties.properties.properties.somesecret")
+    expect(errorPaths).toContain("definitions.FooRule.properties.properties.properties.somepassword")
+    expect(errorPaths).toContain("definitions.FooRule.properties.properties.properties.sometoken")
+
+    // Verify error messages
+    results.forEach((result) => {
+      const propertyName = String(result.path[result.path.length - 1])
+      const expectedMessage = ERROR_MESSAGE.replace("{prpName}", propertyName)
+      expect(result.message).toBe(expectedMessage)
+    })
   })
 })
 
@@ -562,6 +545,30 @@ test("XMSSecretInResponse should find no errors", () => {
           enumtoken: {
             type: "enum",
             enum: ["value1", "value2", "value3"],
+          },
+          // Test that properties with "public" in name are not flagged
+          publicNetworkAccess: {
+            type: "string",
+            description: "State of public network access.",
+            enum: ["Enabled", "Disabled"],
+            "x-ms-enum": {
+              name: "PublicNetworkAccess",
+              modelAsString: true,
+            },
+          },
+          publicKey: {
+            type: "string",
+            description: "The public key for authentication.",
+          },
+          isPublicConnection: {
+            type: "string",
+            description: "Indicates if connection is public.",
+          },
+          // Test that enum properties (without x-ms-enum) are not flagged
+          networkAccessEnum: {
+            type: "string",
+            description: "Network access configuration.",
+            enum: ["Allow", "Deny"],
           },
         },
         required: ["properties"],

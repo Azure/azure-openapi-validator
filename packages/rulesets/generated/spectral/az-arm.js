@@ -1065,7 +1065,7 @@ const ruleset$1 = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths']..*[?(@.readOnly !== undefined && @['x-ms-mutability'] !== undefined)]"],
+            given: ["$[paths,'x-ms-paths']..*[?(@ != null && @.readOnly !== undefined && @['x-ms-mutability'] !== undefined)]"],
             then: {
                 function: mutabilityWithReadOnly,
             },
@@ -2674,7 +2674,7 @@ var Workspace;
             visited.add(source.value);
             source = resolveRef(source, inventory);
         }
-        if (!source) {
+        if (!source || !source.value) {
             return undefined;
         }
         const attribute = source.value[attributeName];
@@ -3259,10 +3259,13 @@ const XMSSecretInResponse = (properties, _opts, ctx) => {
         }
         else {
             if (isPotentialSensitiveProperty(prpName) &&
+                !prpName.toLowerCase().includes("public") &&
                 properties[prpName] &&
                 properties[prpName]["x-ms-secret"] !== true &&
                 !keyValuePairCheck &&
-                properties[prpName].type === "string") {
+                properties[prpName].type === "string" &&
+                !properties[prpName].enum &&
+                !properties[prpName]["x-ms-enum"]) {
                 errors.push({
                     message: `Property '${prpName}' contains secret keyword and does not have 'x-ms-secret' annotation. To ensure security, must add the 'x-ms-secret' annotation to this property.`,
                     path: [...path, prpName],
@@ -3781,7 +3784,7 @@ const ruleset = {
             message: "{{error}}",
             severity: "error",
             resolved: true,
-            given: ["$[paths,'x-ms-paths'].*.[put,get,post].responses.*.schema.properties"],
+            given: ["$.definitions.*.properties"],
             then: {
                 function: XMSSecretInResponse,
             },
