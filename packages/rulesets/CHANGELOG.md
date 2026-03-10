@@ -1,5 +1,11 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.2.5
+
+### Patches
+
+- [TopLevelResourcesListBySubscription] Exclude tenant-level APIs from validation
+
 ## 2.2.4
 
 ### Patches
