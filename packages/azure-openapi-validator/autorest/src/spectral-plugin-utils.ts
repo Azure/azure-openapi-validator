@@ -167,8 +167,8 @@ export function catchSpectralRunErrors(file: string, error: any, initiator: IAut
   // Check if "error" contains the "errors" property
   if (error && error.errors && Array.isArray(error.errors)) {
     error.errors.forEach((error: any, index: number) => {
-      // Push each error message and stack trace into the array
-      errorMessages.push(`Error ${index + 1}: ${innerError.message}`)
+      // Push each error message into the array
+      errorMessages.push(`Error ${index + 1}: ${error.message}`)
       if (innerError.stack) {
         errorMessages.push(`Stack ${index + 1}:\n${innerError.stack}`)
       }
