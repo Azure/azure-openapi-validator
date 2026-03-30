@@ -169,7 +169,7 @@ export function catchSpectralRunErrors(file: string, error: any, initiator: IAut
     error.errors.forEach((error: any, index: number) => {
       // Push each error message into the array
       errorMessages.push(`Error ${index + 1}: ${error.message}`)
-      if (innerError.stack) {
+      if (error.stack) {
         errorMessages.push(`Stack ${index + 1}:\n${innerError.stack}`)
       }
     })
