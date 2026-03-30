@@ -159,11 +159,19 @@ export function catchSpectralRunErrors(file: string, error: any, initiator: IAut
   // Initialize an array to collect error messages
   const errorMessages: string[] = [error]
 
+  // Include the stack trace from the top-level error if available
+  if (error && error.stack) {
+    errorMessages.push(`Stack trace:\n${error.stack}`)
+  }
+
   // Check if "error" contains the "errors" property
   if (error && error.errors && Array.isArray(error.errors)) {
-    error.errors.forEach((error: any, index: number) => {
-      // Push each error message into the array
-      errorMessages.push(`Error ${index + 1}: ${error.message}`)
+    error.errors.forEach((innerError: any, index: number) => {
+      // Push each error message and stack trace into the array
+      errorMessages.push(`Error ${index + 1}: ${innerError.message}`)
+      if (innerError.stack) {
+        errorMessages.push(`Stack trace for error ${index + 1}:\n${innerError.stack}`)
+      }
     })
   }
 
