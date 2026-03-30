@@ -161,7 +161,7 @@ export function catchSpectralRunErrors(file: string, error: any, initiator: IAut
 
   // Include the stack trace from the top-level error if available
   if (error && error.stack) {
-    errorMessages.push(`Stack trace:\n${error.stack}`)
+    errorMessages.push(`Stack:\n${error.stack}`)
   }
 
   // Check if "error" contains the "errors" property
