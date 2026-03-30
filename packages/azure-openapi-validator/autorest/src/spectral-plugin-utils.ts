@@ -170,7 +170,7 @@ export function catchSpectralRunErrors(file: string, error: any, initiator: IAut
       // Push each error message and stack trace into the array
       errorMessages.push(`Error ${index + 1}: ${innerError.message}`)
       if (innerError.stack) {
-        errorMessages.push(`Stack trace for error ${index + 1}:\n${innerError.stack}`)
+        errorMessages.push(`Stack ${index + 1}:\n${innerError.stack}`)
       }
     })
   }
