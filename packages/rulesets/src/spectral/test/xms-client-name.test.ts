@@ -65,13 +65,13 @@ test("XmsClientName: invalid combinations (x-ms-client-name matches name)", () =
   return linter.run(myOpenApiDocument).then((results) => {
     // 1 invalid parameter + 1 invalid property = 2 total errors
     expect(results.length).toBe(2);
-    results.sort((a, b) => a.path.join(".").localeCompare(b.path.join(".")));
+    results.sort((a, b) => a.path.join('.').localeCompare(b.path.join('.')));
     expect(results[0].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'name' Property/Model.`);
     expect(results[0].path.join(".")).toBe("paths./api/Paths.put.parameters.1");
     expect(results[1].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'length' Property/Model.`);
     expect(results[1].path.join(".")).toBe("paths./api/Paths.put.responses.200.schema.properties.length");
-  })
-})
+  });
+});
 
 test("XmsClientName: valid combinations (x-ms-client-name differs from name)", () => {
   const myOpenApiDocument = createOpenApiDoc(
