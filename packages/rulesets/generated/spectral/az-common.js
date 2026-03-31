@@ -210,12 +210,6 @@ const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
 };
 
 const xmsClientName = (opt, _opts, ctx) => {
-    if (opt === null || typeof opt !== "object") {
-        return [];
-    }
-    if (opt["x-ms-client-name"] === undefined) {
-        return [];
-    }
     const path = ctx.path || [];
     const errors = [];
     if (path.includes("parameters")) {
@@ -876,7 +870,7 @@ const ruleset = {
             severity: "error",
             resolved: true,
             formats: [oas2],
-            given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')^"],
+            given: ["$[paths,'x-ms-paths']..*[?(@ != null && @['x-ms-client-name'] !== undefined)]"],
             then: {
                 function: xmsClientName,
             },

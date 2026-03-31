@@ -8,62 +8,62 @@ beforeAll(async () => {
   return linter;
 });
 
-test("XmsClientName should find errors", () => {
-  const myOpenApiDocument = {
-    swagger: "2.0",
-    paths: {
-      "/api/Paths": {
-        put: {
-          operationId: "Path_Create",
-          parameters: [
-            {
-              name: "resourceGroupName",
-              in: "path",
-              required: true,
-              type: "string",
-              description: "The name of the resource group.",
-              "x-ms-client-name": "resource-group-name",
-            },
-            {
-              name: "name",
-              in: "path",
-              required: true,
-              type: "string",
-              description: "The name of the Redis cache.",
-              "x-ms-client-name": "name",
-            },
-          ],
-          responses: {
-            200: {
-              description: "Success",
-              schema: {
-                $ref: "#/definitions/LroStatusCodeSchema",
-              },
+// Helper function to create OpenAPI document with parameters and properties
+const createOpenApiDoc = (parameters: unknown[], properties: unknown) => ({
+  swagger: "2.0",
+  paths: {
+    "/api/Paths": {
+      put: {
+        operationId: "Path_Create",
+        parameters,
+        responses: {
+          200: {
+            description: "Success",
+            schema: {
+              $ref: "#/definitions/Schema",
             },
           },
         },
       },
     },
-    definitions: {
-      LroStatusCodeSchema: {
-        type: "object",
-        properties: {
-          name: {
-            type: "string",
-            readOnly: true,
-            "x-ms-mutability": ["read", "update"],
-          },
-          length: {
-            type: "string",
-            readOnly: false,
-            "x-ms-mutability": ["read"],
-            "x-ms-client-name": "length",
-          },
-        },
+  },
+  definitions: {
+    Schema: {
+      type: "object",
+      properties,
+    },
+  },
+});
+
+test("XmsClientName: invalid combinations (x-ms-client-name matches name)", () => {
+  const myOpenApiDocument = createOpenApiDoc(
+    [
+      {
+        name: "resourceGroupName",
+        in: "path",
+        required: true,
+        type: "string",
+        description: "The name of the resource group.",
+        "x-ms-client-name": "resource-group-name",
+      },
+      {
+        name: "name",
+        in: "path",
+        required: true,
+        type: "string",
+        description: "The name of the Redis cache.",
+        "x-ms-client-name": "name",
+      },
+    ],
+    {
+      length: {
+        type: "string",
+        "x-ms-client-name": "length",
       },
     },
-  };
+  );
   return linter.run(myOpenApiDocument).then((results) => {
+    // 1 invalid parameter + 1 invalid property = 2 total errors
     expect(results.length).toBe(2);
     results.sort((a, b) => a.path.join('.').localeCompare(b.path.join('.')));
     expect(results[0].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'name' Property/Model.`);
@@ -73,62 +73,72 @@ test("XmsClientName should find errors", () => {
   });
 });
 
-test("XmsClientName should find no errors", () => {
-  const myOpenApiDocument = {
-    swagger: "2.0",
-    paths: {
-      "/api/Paths": {
-        put: {
-          operationId: "Path_Create",
-          parameters: [
-            {
-              name: "resourceGroupName",
-              in: "path",
-              required: true,
-              type: "string",
-              description: "The name of the resource group.",
-              "x-ms-client-name": "resource-group-name",
-            },
-            {
-              name: "name",
-              in: "path",
-              required: true,
-              type: "string",
-              description: "The name of the Redis cache.",
-              "x-ms-client-name": "Name",
-            },
-          ],
-          responses: {
-            200: {
-              description: "Success",
-              schema: {
-                $ref: "#/definitions/LroStatusCodeSchema",
-              },
-            },
-          },
-        },
+test("XmsClientName: valid combinations (x-ms-client-name differs from name)", () => {
+  const myOpenApiDocument = createOpenApiDoc(
+    [
+      {
+        name: "resourceGroupName",
+        in: "path",
+        required: true,
+        type: "string",
+        description: "The name of the resource group.",
+        "x-ms-client-name": "resource-group-name",
+      },
+      {
+        name: "name",
+        in: "path",
+        required: true,
+        type: "string",
+        description: "The name of the Redis cache.",
+        "x-ms-client-name": "Name",
+      },
+    ],
+    {
+      length: {
+        type: "string",
+        "x-ms-client-name": "Length",
       },
     },
-    definitions: {
-      LroStatusCodeSchema: {
-        type: "object",
-        properties: {
-          name: {
-            type: "string",
-            readOnly: true,
-            "x-ms-mutability": ["read", "update"],
-          },
-          length: {
-            type: "string",
-            readOnly: false,
-            "x-ms-mutability": ["read"],
-            "x-ms-client-name": "Length",
-          },
-        },
-      },
-    },
-  };
+  );
   return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0);
+  });
+});
+
+test("XmsClientName: properties ignored by given clause", () => {
+  const myOpenApiDocument = createOpenApiDoc(
+    [
+      {
+        name: "paramWithoutClientName",
+        in: "path",
+        required: true,
+        type: "string",
+        description: "Parameter without x-ms-client-name.",
+      },
+    ],
+    {
+      noClientName: {
+        type: "string",
+      },
+    },
+  );
+  return linter.run(myOpenApiDocument).then((results) => {
+    // Properties/parameters without x-ms-client-name should be filtered out by the given clause
+    expect(results.length).toBe(0);
+  });
+});
+
+test("XmsClientName: null property values are filtered by given clause", () => {
+  const myOpenApiDocument = createOpenApiDoc([], {
+    nullProperty: null,
+    validProperty: {
+      type: "string",
+      "x-ms-client-name": "ValidName",
+    },
+  });
+  return linter.run(myOpenApiDocument).then((results) => {
+    // Null property should be filtered out by the given clause (@ != null check)
+    // Only the valid property should pass through, and it's valid so 0 errors
     expect(results.length).toBe(0);
   });
 });

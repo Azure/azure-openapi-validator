@@ -1,12 +1,7 @@
 // Validates if the name of parameter model and x-ms-client-name(if exists) does not match.
 
 export const xmsClientName = (opt: any, _opts: any, ctx: any) => {
-  if (opt === null || typeof opt !== "object") {
-    return [];
-  }
-  if (opt["x-ms-client-name"] === undefined) {
-    return [];
-  }
+  // The "given" clause already guarantees opt is non-null, an object, and has "x-ms-client-name" defined
   const path = ctx.path || [];
   const errors: any = [];
   if (path.includes("parameters")) {
