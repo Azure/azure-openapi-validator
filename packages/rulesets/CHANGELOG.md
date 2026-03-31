@@ -4,7 +4,7 @@
 
 ### Patches
 
-- [XmsClientName] Optimize rule to prevent excessive memory usage on large specs
+- [XmsClientName] Optimize rule to prevent stack overflow on large specs
 
 ## 2.2.5
 
