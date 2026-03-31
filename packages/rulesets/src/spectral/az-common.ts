@@ -324,7 +324,7 @@ const ruleset: any = {
       severity: "error",
       resolved: true,
       formats: [oas2],
-      given: ["$[paths,'x-ms-paths']..?(@property === 'x-ms-client-name')^"],
+      given: ["$[paths,'x-ms-paths']..*[?(@ != null && @['x-ms-client-name'] !== undefined)]"],
       then: {
         function: xmsClientName,
       },

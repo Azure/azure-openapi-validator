@@ -4,9 +4,7 @@ export const xmsClientName = (opt: any, _opts: any, ctx: any) => {
   if (opt === null || typeof opt !== "object") {
     return [];
   }
-  if (opt["x-ms-client-name"] === undefined) {
-    return [];
-  }
+  // The "given" clause already filters for "@['x-ms-client-name'] !== undefined"
   const path = ctx.path || [];
   const errors: any = [];
   if (path.includes("parameters")) {

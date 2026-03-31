@@ -1,5 +1,11 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.2.6
+
+### Patches
+
+- [XmsClientName] Optimize rule to prevent excessive memory usage on large specs
+
 ## 2.2.5
 
 ### Patches
