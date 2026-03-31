@@ -1,11 +1,11 @@
-import { Spectral } from "@stoplight/spectral-core"
-import linterForRule from "./utils"
+import { Spectral } from "@stoplight/spectral-core";
+import linterForRule from "./utils";
 
-let linter: Spectral
+let linter: Spectral;
 
 beforeAll(async () => {
-  linter = await linterForRule("XmsClientName")
-  return linter
+  linter = await linterForRule("XmsClientName");
+  return linter;
 })
 
 // Helper function to create OpenAPI document with parameters and properties
@@ -33,7 +33,7 @@ const createOpenApiDoc = (parameters: unknown[], properties: unknown) => ({
       properties,
     },
   },
-})
+});
 
 test("XmsClientName: invalid combinations (x-ms-client-name matches name)", () => {
   const myOpenApiDocument = createOpenApiDoc(
@@ -61,15 +61,15 @@ test("XmsClientName: invalid combinations (x-ms-client-name matches name)", () =
         "x-ms-client-name": "length",
       },
     },
-  )
+  );
   return linter.run(myOpenApiDocument).then((results) => {
     // 1 invalid parameter + 1 invalid property = 2 total errors
-    expect(results.length).toBe(2)
-    results.sort((a, b) => a.path.join(".").localeCompare(b.path.join(".")))
-    expect(results[0].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'name' Property/Model.`)
-    expect(results[0].path.join(".")).toBe("paths./api/Paths.put.parameters.1")
-    expect(results[1].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'length' Property/Model.`)
-    expect(results[1].path.join(".")).toBe("paths./api/Paths.put.responses.200.schema.properties.length")
+    expect(results.length).toBe(2);
+    results.sort((a, b) => a.path.join(".").localeCompare(b.path.join(".")));
+    expect(results[0].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'name' Property/Model.`);
+    expect(results[0].path.join(".")).toBe("paths./api/Paths.put.parameters.1");
+    expect(results[1].message).toBe(`Value of 'x-ms-client-name' cannot be the same as 'length' Property/Model.`);
+    expect(results[1].path.join(".")).toBe("paths./api/Paths.put.responses.200.schema.properties.length");
   })
 })
 
@@ -99,10 +99,10 @@ test("XmsClientName: valid combinations (x-ms-client-name differs from name)", (
         "x-ms-client-name": "Length",
       },
     },
-  )
+  );
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0)
-  })
+    expect(results.length).toBe(0);
+  });
 })
 
 test("XmsClientName: properties ignored by given clause", () => {
@@ -121,11 +121,11 @@ test("XmsClientName: properties ignored by given clause", () => {
         type: "string",
       },
     },
-  )
+  );
   return linter.run(myOpenApiDocument).then((results) => {
     // Properties/parameters without x-ms-client-name should be filtered out by the given clause
-    expect(results.length).toBe(0)
-  })
+    expect(results.length).toBe(0);
+  });
 })
 
 test("XmsClientName: null property values are filtered by given clause", () => {
@@ -135,10 +135,10 @@ test("XmsClientName: null property values are filtered by given clause", () => {
       type: "string",
       "x-ms-client-name": "ValidName",
     },
-  })
+  });
   return linter.run(myOpenApiDocument).then((results) => {
     // Null property should be filtered out by the given clause (@ != null check)
     // Only the valid property should pass through, and it's valid so 0 errors
-    expect(results.length).toBe(0)
-  })
+    expect(results.length).toBe(0);
+  });
 })
