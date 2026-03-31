@@ -103,7 +103,7 @@ test("XmsClientName: valid combinations (x-ms-client-name differs from name)", (
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(0);
   });
-})
+});
 
 test("XmsClientName: properties ignored by given clause", () => {
   const myOpenApiDocument = createOpenApiDoc(
@@ -126,7 +126,7 @@ test("XmsClientName: properties ignored by given clause", () => {
     // Properties/parameters without x-ms-client-name should be filtered out by the given clause
     expect(results.length).toBe(0);
   });
-})
+});
 
 test("XmsClientName: null property values are filtered by given clause", () => {
   const myOpenApiDocument = createOpenApiDoc([], {
@@ -141,4 +141,4 @@ test("XmsClientName: null property values are filtered by given clause", () => {
     // Only the valid property should pass through, and it's valid so 0 errors
     expect(results.length).toBe(0);
   });
-})
+});
