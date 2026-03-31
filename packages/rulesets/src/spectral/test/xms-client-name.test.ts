@@ -6,7 +6,7 @@ let linter: Spectral;
 beforeAll(async () => {
   linter = await linterForRule("XmsClientName");
   return linter;
-})
+});
 
 // Helper function to create OpenAPI document with parameters and properties
 const createOpenApiDoc = (parameters: unknown[], properties: unknown) => ({
