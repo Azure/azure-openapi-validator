@@ -456,9 +456,6 @@ const nextLinkPropertyMustExist = (opt, _opts, ctx) => {
 };
 
 const xmsClientName = (opt, _opts, ctx) => {
-    if (opt === null || typeof opt !== "object") {
-        return [];
-    }
     const path = ctx.path || [];
     const errors = [];
     if (path.includes("parameters")) {
