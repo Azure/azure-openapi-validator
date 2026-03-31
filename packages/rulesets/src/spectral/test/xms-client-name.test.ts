@@ -60,7 +60,7 @@ test("XmsClientName: invalid combinations (x-ms-client-name matches name)", () =
         type: "string",
         "x-ms-client-name": "length",
       },
-    }
+    },
   )
   return linter.run(myOpenApiDocument).then((results) => {
     // 1 invalid parameter + 1 invalid property = 2 total errors
@@ -98,7 +98,7 @@ test("XmsClientName: valid combinations (x-ms-client-name differs from name)", (
         type: "string",
         "x-ms-client-name": "Length",
       },
-    }
+    },
   )
   return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(0)
@@ -120,7 +120,7 @@ test("XmsClientName: properties ignored by given clause", () => {
       noClientName: {
         type: "string",
       },
-    }
+    },
   )
   return linter.run(myOpenApiDocument).then((results) => {
     // Properties/parameters without x-ms-client-name should be filtered out by the given clause
