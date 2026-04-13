@@ -43,6 +43,10 @@ jobs:
       - name: rush regen-ruleindex
         run: node common/scripts/install-run-rush.js regen-ruleindex
 
+      - name: Verify generated files are up-to-date
+        run: git diff --exit-code
+        shell: bash
+
       - name: rush pack
         if: contains(matrix.os, 'ubuntu')
         run: node common/scripts/install-run-rush.js pack
