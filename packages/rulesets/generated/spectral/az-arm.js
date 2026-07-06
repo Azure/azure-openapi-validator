@@ -1401,6 +1401,30 @@ const verifyArmPath = createRulesetFunction({
     return errors;
 });
 
+const BILLING_DATA = "billingdata";
+const PROPERTIES$2 = "properties";
+const ERROR_MESSAGE$3 = "The 'BillingData' property is not allowed in the resource properties bag.";
+function collectBillingDataPaths(object, basePath, matches) {
+    if (!_.isObject(object)) {
+        return;
+    }
+    for (const [key, value] of Object.entries(object)) {
+        if (key.toLowerCase() === BILLING_DATA) {
+            matches.push([...basePath, key]);
+        }
+        collectBillingDataPaths(value, [...basePath, key], matches);
+    }
+}
+const billingDataInPropertiesBag = (definition, _opts, ctx) => {
+    const properties = getProperties(definition);
+    const matches = [];
+    collectBillingDataPaths(properties, [], matches);
+    return matches.map((path) => ({
+        message: ERROR_MESSAGE$3,
+        path: _.concat(ctx.path, PROPERTIES$2, path),
+    }));
+};
+
 const bodyParamRepeatedInfo = (pathItem, _opts, paths) => {
     if (pathItem === null || typeof pathItem !== "object") {
         return [];
@@ -4060,6 +4084,18 @@ const ruleset = {
             given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
             then: {
                 function: systemDataInPropertiesBag,
+            },
+        },
+        BillingDataInPropertiesBag: {
+            description: "The 'BillingData' property is not allowed in the resource properties bag.",
+            message: "{{description}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
+            then: {
+                function: billingDataInPropertiesBag,
             },
         },
         ReservedResourceNamesModelAsEnum: {

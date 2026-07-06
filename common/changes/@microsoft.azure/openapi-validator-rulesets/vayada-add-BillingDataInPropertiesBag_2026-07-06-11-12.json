@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Add BillingDataInPropertiesBag rule that fails when a property named 'BillingData' (matched case-insensitively) is present in a resource's properties bag",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}

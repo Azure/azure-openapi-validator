@@ -2,6 +2,7 @@ import { oas2 } from "@stoplight/spectral-formats"
 import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
 import verifyArmPath from "./functions/arm-path-validation"
+import { billingDataInPropertiesBag } from "./functions/billing-data-in-properties-bag"
 import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
@@ -1023,6 +1024,22 @@ const ruleset: any = {
       given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
       then: {
         function: systemDataInPropertiesBag,
+      },
+    },
+
+    // A property named 'BillingData' (matched case-insensitively) must not be present in a
+    // resource's properties bag.
+    BillingDataInPropertiesBag: {
+      description: "The 'BillingData' property is not allowed in the resource properties bag.",
+      message: "{{description}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      // given definitions that have the properties bag
+      given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
+      then: {
+        function: billingDataInPropertiesBag,
       },
     },
 

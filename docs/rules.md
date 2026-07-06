@@ -145,6 +145,12 @@ This rule is to check if the tags definition of a resource conforms to the commo
 
 Please refer to [azure-resource-tags-schema.md](./azure-resource-tags-schema.md) for details.
 
+### BillingDataInPropertiesBag
+
+A property named `BillingData` (matched case-insensitively) must not be present in a resource's properties bag. If billing-related data is required, model it under a dedicated, appropriately named property or a separate model definition instead of placing a `BillingData` property directly in the resource properties bag.
+
+Please refer to [billing-data-in-properties-bag.md](./billing-data-in-properties-bag.md) for details.
+
 ### BodyPropertiesNamesCamelCase
 
 This violation is flagged if a request body parameter's property name (BodyPropertiesNamesCamelCase) is not in `camelCase` format. This is because the model's properties are sent across the wire and must adhere to common Json conventions for naming. This implies that every property name must start with a lower cased letter and all subsequent words within the name must start with a capital letter. In cases where there are acronyms involved, a maximum of three contiguous capital letters are allowed (acronyms should not be longer that 2 characters - see https://msdn.microsoft.com/en-us/library/141e06ef(v=vs.71).aspx, third upper case could be start of next word). Eg: `redisCache`, `publicIPAddress`, `location` are valid, but `sampleSQLQuery` is not (must be renamed as `sampleSqlQuery`).
