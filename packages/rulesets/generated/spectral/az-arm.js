@@ -1404,21 +1404,44 @@ const verifyArmPath = createRulesetFunction({
 const BILLING_DATA = "billingdata";
 const PROPERTIES$2 = "properties";
 const ERROR_MESSAGE$3 = "The 'BillingData' property is not allowed in the resource properties bag.";
-function collectBillingDataPaths(object, basePath, matches) {
-    if (!_.isObject(object)) {
+function collectBillingDataPropertyPaths(schema, basePath, matches, visited) {
+    if (!_.isObject(schema) || visited.has(schema)) {
         return;
     }
-    for (const [key, value] of Object.entries(object)) {
-        if (key.toLowerCase() === BILLING_DATA) {
-            matches.push([...basePath, key]);
+    visited.add(schema);
+    const s = schema;
+    if (_.isObject(s.properties)) {
+        for (const [name, propertySchema] of Object.entries(s.properties)) {
+            if (name.toLowerCase() === BILLING_DATA) {
+                matches.push([...basePath, PROPERTIES$2, name]);
+            }
+            collectBillingDataPropertyPaths(propertySchema, [...basePath, PROPERTIES$2, name], matches, visited);
         }
-        collectBillingDataPaths(value, [...basePath, key], matches);
+    }
+    for (const keyword of ["allOf", "anyOf", "oneOf"]) {
+        const subschemas = s[keyword];
+        if (Array.isArray(subschemas)) {
+            subschemas.forEach((subschema, index) => {
+                collectBillingDataPropertyPaths(subschema, [...basePath, keyword, index], matches, visited);
+            });
+        }
+    }
+    if (Array.isArray(s.items)) {
+        s.items.forEach((itemSchema, index) => {
+            collectBillingDataPropertyPaths(itemSchema, [...basePath, "items", index], matches, visited);
+        });
+    }
+    else if (_.isObject(s.items)) {
+        collectBillingDataPropertyPaths(s.items, [...basePath, "items"], matches, visited);
+    }
+    if (_.isObject(s.additionalProperties)) {
+        collectBillingDataPropertyPaths(s.additionalProperties, [...basePath, "additionalProperties"], matches, visited);
     }
 }
 const billingDataInPropertiesBag = (definition, _opts, ctx) => {
-    const properties = getProperties(definition);
+    const bag = getProperties(definition);
     const matches = [];
-    collectBillingDataPaths(properties, [], matches);
+    collectBillingDataPropertyPaths(bag, [], matches, new WeakSet());
     return matches.map((path) => ({
         message: ERROR_MESSAGE$3,
         path: _.concat(ctx.path, PROPERTIES$2, path),

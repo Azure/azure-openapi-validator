@@ -18,8 +18,11 @@ test(`${RULE} should find no errors when billingData is absent from the properti
       Resource: {
         properties: {
           properties: {
-            provisioningState: {
-              type: "string",
+            type: "object",
+            properties: {
+              provisioningState: {
+                type: "string",
+              },
             },
           },
         },
@@ -39,8 +42,11 @@ test(`${RULE} should find errors when billingData references a model definition`
       Resource: {
         properties: {
           properties: {
-            billingData: {
-              $ref: "#/definitions/BillingData",
+            type: "object",
+            properties: {
+              billingData: {
+                $ref: "#/definitions/BillingData",
+              },
             },
           },
         },
@@ -57,7 +63,7 @@ test(`${RULE} should find errors when billingData references a model definition`
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.billingData")
+    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.properties.billingData")
     expect(results[0].message).toBe(ERROR_MESSAGE)
   })
 })
@@ -70,8 +76,11 @@ test(`${RULE} should find errors when billingData is a primitive type`, async ()
       Resource: {
         properties: {
           properties: {
-            billingData: {
-              type: "string",
+            type: "object",
+            properties: {
+              billingData: {
+                type: "string",
+              },
             },
           },
         },
@@ -80,7 +89,7 @@ test(`${RULE} should find errors when billingData is a primitive type`, async ()
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.billingData")
+    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.properties.billingData")
     expect(results[0].message).toBe(ERROR_MESSAGE)
   })
 })
@@ -93,11 +102,14 @@ test(`${RULE} should find errors when billingData is an inline model`, async () 
       Resource: {
         properties: {
           properties: {
-            billingData: {
-              type: "object",
-              properties: {
-                amount: {
-                  type: "number",
+            type: "object",
+            properties: {
+              billingData: {
+                type: "object",
+                properties: {
+                  amount: {
+                    type: "number",
+                  },
                 },
               },
             },
@@ -108,7 +120,7 @@ test(`${RULE} should find errors when billingData is an inline model`, async () 
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(1)
-    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.billingData")
+    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.properties.billingData")
     expect(results[0].message).toBe(ERROR_MESSAGE)
   })
 })
@@ -121,11 +133,14 @@ test(`${RULE} should be case-insensitive when matching the property name`, async
       Resource: {
         properties: {
           properties: {
-            BillingData: {
-              type: "string",
-            },
-            BILLINGDATA: {
-              type: "string",
+            type: "object",
+            properties: {
+              BillingData: {
+                type: "string",
+              },
+              BILLINGDATA: {
+                type: "string",
+              },
             },
           },
         },
@@ -134,8 +149,8 @@ test(`${RULE} should be case-insensitive when matching the property name`, async
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(2)
-    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.BillingData")
-    expect(results[1].path.join(".")).toBe("definitions.Resource.properties.properties.BILLINGDATA")
+    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.properties.BillingData")
+    expect(results[1].path.join(".")).toBe("definitions.Resource.properties.properties.properties.BILLINGDATA")
     expect(results[0].message).toBe(ERROR_MESSAGE)
     expect(results[1].message).toBe(ERROR_MESSAGE)
   })
@@ -149,8 +164,11 @@ test(`${RULE} should not flag properties that only contain 'billingData' as a su
       Resource: {
         properties: {
           properties: {
-            billingDataId: {
-              type: "string",
+            type: "object",
+            properties: {
+              billingDataId: {
+                type: "string",
+              },
             },
           },
         },
@@ -175,6 +193,7 @@ test(`${RULE} should find errors when billingData is in a referenced properties 
         },
       },
       ResourceProperties: {
+        type: "object",
         properties: {
           billingData: {
             type: "string",
@@ -190,6 +209,39 @@ test(`${RULE} should find errors when billingData is in a referenced properties 
   })
 })
 
+test(`${RULE} should find errors when billingData is nested inside another property definition`, async () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {},
+    definitions: {
+      Resource: {
+        properties: {
+          properties: {
+            type: "object",
+            properties: {
+              nested: {
+                type: "object",
+                properties: {
+                  billingData: {
+                    type: "string",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe(
+      "definitions.Resource.properties.properties.properties.nested.properties.billingData"
+    )
+    expect(results[0].message).toBe(ERROR_MESSAGE)
+  })
+})
+
 test(`${RULE} should not flag billingData defined as a top-level property outside the properties bag`, async () => {
   const oasDoc = {
     swagger: "2.0",
@@ -198,8 +250,11 @@ test(`${RULE} should not flag billingData defined as a top-level property outsid
       Resource: {
         properties: {
           properties: {
-            provisioningState: {
-              type: "string",
+            type: "object",
+            properties: {
+              provisioningState: {
+                type: "string",
+              },
             },
           },
           billingData: {
@@ -211,5 +266,180 @@ test(`${RULE} should not flag billingData defined as a top-level property outsid
   }
   return linter.run(oasDoc).then((results) => {
     expect(results.length).toBe(0)
+  })
+})
+
+test(`${RULE} should not flag billingData keys that appear inside non-structural schema metadata`, async () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {},
+    definitions: {
+      Resource: {
+        properties: {
+          properties: {
+            type: "object",
+            properties: {
+              config: {
+                type: "object",
+                default: {
+                  billingData: "someDefaultValue",
+                },
+                enum: [
+                  {
+                    billingData: 1,
+                  },
+                ],
+                "x-ms-metadata": {
+                  billingData: true,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
+
+test(`${RULE} should find errors when billingData is defined via allOf composition`, async () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {},
+    definitions: {
+      Resource: {
+        properties: {
+          properties: {
+            allOf: [
+              {
+                type: "object",
+                properties: {
+                  billingData: {
+                    type: "string",
+                  },
+                },
+              },
+            ],
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("definitions.Resource.properties.properties.allOf.0.properties.billingData")
+    expect(results[0].message).toBe(ERROR_MESSAGE)
+  })
+})
+
+test(`${RULE} should find errors when billingData is defined in array items`, async () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {},
+    definitions: {
+      Resource: {
+        properties: {
+          properties: {
+            type: "object",
+            properties: {
+              list: {
+                type: "array",
+                items: {
+                  type: "object",
+                  properties: {
+                    billingData: {
+                      type: "string",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe(
+      "definitions.Resource.properties.properties.properties.list.items.properties.billingData"
+    )
+    expect(results[0].message).toBe(ERROR_MESSAGE)
+  })
+})
+
+test(`${RULE} should find errors when billingData is defined in tuple-style array items`, async () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {},
+    definitions: {
+      Resource: {
+        properties: {
+          properties: {
+            type: "object",
+            properties: {
+              tuple: {
+                type: "array",
+                items: [
+                  {
+                    type: "object",
+                    properties: {
+                      billingData: {
+                        type: "string",
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe(
+      "definitions.Resource.properties.properties.properties.tuple.items.0.properties.billingData"
+    )
+    expect(results[0].message).toBe(ERROR_MESSAGE)
+  })
+})
+
+test(`${RULE} should find errors when billingData is defined in additionalProperties`, async () => {
+  const oasDoc = {
+    swagger: "2.0",
+    paths: {},
+    definitions: {
+      Resource: {
+        properties: {
+          properties: {
+            type: "object",
+            properties: {
+              map: {
+                type: "object",
+                additionalProperties: {
+                  type: "object",
+                  properties: {
+                    billingData: {
+                      type: "string",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+  return linter.run(oasDoc).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe(
+      "definitions.Resource.properties.properties.properties.map.additionalProperties.properties.billingData"
+    )
+    expect(results[0].message).toBe(ERROR_MESSAGE)
   })
 })
