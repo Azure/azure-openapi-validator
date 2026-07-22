@@ -4,7 +4,7 @@
 
 ### Patches
 
-- Added rule BillingDataInPropertiesBag to disallow the reserved 'BillingData' property name (case-insensitive) in a resource's properties bag
+- Added rule ReservedNamesInPropertiesBag to disallow reserved property names (case-insensitive; currently 'BillingData') in a resource's properties bag
 
 ## 2.2.6
 

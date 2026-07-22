@@ -2,7 +2,6 @@ import { oas2 } from "@stoplight/spectral-formats"
 import { falsy, pattern, truthy } from "@stoplight/spectral-functions"
 import common from "./az-common"
 import verifyArmPath from "./functions/arm-path-validation"
-import { billingDataInPropertiesBag } from "./functions/billing-data-in-properties-bag"
 import bodyParamRepeatedInfo from "./functions/body-param-repeated-info"
 import { camelCase } from "./functions/camel-case"
 import collectionObjectPropertiesNaming from "./functions/collection-object-properties-naming"
@@ -43,6 +42,7 @@ import { putRequestResponseScheme } from "./functions/put-request-response-schem
 import { PutResponseCodes } from "./functions/put-response-codes"
 import { queryParametersInCollectionGet } from "./functions/query-parameters-in-collection-get"
 import { requestBodyMustExistForPutPatch } from "./functions/request-body-must-exist-for-put-patch"
+import { reservedNamesInPropertiesBag } from "./functions/reserved-names-in-properties-bag"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
@@ -1027,11 +1027,12 @@ const ruleset: any = {
       },
     },
 
-    // A property named 'BillingData' (matched case-insensitively) must not be present in a
-    // resource's properties bag.
-    BillingDataInPropertiesBag: {
-      description: "The 'BillingData' property is not allowed in the resource properties bag.",
-      message: "{{description}}",
+    // Property names that are reserved (matched case-insensitively) must not be present in a
+    // resource's properties bag. The set of reserved names is defined in the
+    // reservedNamesInPropertiesBag function.
+    ReservedNamesInPropertiesBag: {
+      description: "Reserved property names are not allowed in the resource properties bag.",
+      message: "{{error}}",
       severity: "error",
       stagingOnly: true,
       resolved: true,
@@ -1039,7 +1040,7 @@ const ruleset: any = {
       // given definitions that have the properties bag
       given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
       then: {
-        function: billingDataInPropertiesBag,
+        function: reservedNamesInPropertiesBag,
       },
     },
 
