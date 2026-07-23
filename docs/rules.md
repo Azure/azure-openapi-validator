@@ -1088,6 +1088,12 @@ Per [common-api-contracts](https://github.com/Azure/azure-resource-manager-rpc/b
 
 Please refer to [required-read-only-system-data.md](./required-read-only-system-data.md) for details.
 
+### ReservedNamesInPropertiesBag
+
+Certain property names are reserved and must not be defined in a resource's properties bag. Reserved names are matched case-insensitively and are maintained as an extensible list in the rule (currently `BillingData`); more names may be added over time. If information represented by a reserved name is required, model it under a dedicated, appropriately named property or a separate model definition instead of placing a reserved property directly in the resource properties bag.
+
+Please refer to [reserved-names-in-properties-bag.md](./reserved-names-in-properties-bag.md) for details.
+
 ### ReservedResourceNamesModelAsEnum
 
 Service-defined (reserved) resource names must be represented as an `enum` type with `modelAsString` set to `true`, not

@@ -2741,6 +2741,54 @@ const requestBodyMustExistForPutPatch = (putPatchOperationParameters, _opts, ctx
     return errors;
 };
 
+const PROPERTIES$2 = "properties";
+const RESERVED_PROPERTY_NAMES = ["BillingData"];
+const reservedNameLookup = new Set(RESERVED_PROPERTY_NAMES.map((name) => name.toLowerCase()));
+const errorMessage$1 = (name) => `Reserved property name '${name}' is not allowed in the resource properties bag.`;
+function collectReservedNamePaths(schema, basePath, matches, visited) {
+    if (!_.isObject(schema) || visited.has(schema)) {
+        return;
+    }
+    visited.add(schema);
+    const s = schema;
+    if (_.isObject(s.properties)) {
+        for (const [name, propertySchema] of Object.entries(s.properties)) {
+            if (reservedNameLookup.has(name.toLowerCase())) {
+                matches.push({ path: [...basePath, PROPERTIES$2, name], name });
+            }
+            collectReservedNamePaths(propertySchema, [...basePath, PROPERTIES$2, name], matches, visited);
+        }
+    }
+    for (const keyword of ["allOf", "anyOf", "oneOf"]) {
+        const subschemas = s[keyword];
+        if (Array.isArray(subschemas)) {
+            subschemas.forEach((subschema, index) => {
+                collectReservedNamePaths(subschema, [...basePath, keyword, index], matches, visited);
+            });
+        }
+    }
+    if (Array.isArray(s.items)) {
+        s.items.forEach((itemSchema, index) => {
+            collectReservedNamePaths(itemSchema, [...basePath, "items", index], matches, visited);
+        });
+    }
+    else if (_.isObject(s.items)) {
+        collectReservedNamePaths(s.items, [...basePath, "items"], matches, visited);
+    }
+    if (_.isObject(s.additionalProperties)) {
+        collectReservedNamePaths(s.additionalProperties, [...basePath, "additionalProperties"], matches, visited);
+    }
+}
+const reservedNamesInPropertiesBag = (definition, _opts, ctx) => {
+    const bag = getProperties(definition);
+    const matches = [];
+    collectReservedNamePaths(bag, [], matches, new WeakSet());
+    return matches.map((match) => ({
+        message: errorMessage$1(match.name),
+        path: _.concat(ctx.path, PROPERTIES$2, match.path),
+    }));
+};
+
 const ARM_ALLOWED_RESERVED_NAMES = ["operations"];
 const INCLUDED_OPERATIONS = ["get", "put", "delete", "patch"];
 const reservedResourceNamesModelAsEnum = (pathItem, _opts, ctx) => {
@@ -4060,6 +4108,18 @@ const ruleset = {
             given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
             then: {
                 function: systemDataInPropertiesBag,
+            },
+        },
+        ReservedNamesInPropertiesBag: {
+            description: "Reserved property names are not allowed in the resource properties bag.",
+            message: "{{error}}",
+            severity: "error",
+            stagingOnly: true,
+            resolved: true,
+            formats: [oas2],
+            given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
+            then: {
+                function: reservedNamesInPropertiesBag,
             },
         },
         ReservedResourceNamesModelAsEnum: {

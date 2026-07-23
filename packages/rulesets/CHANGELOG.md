@@ -1,5 +1,11 @@
 # Change Log - @microsoft.azure/openapi-validator-rulesets
 
+## 2.2.7
+
+### Patches
+
+- Added rule ReservedNamesInPropertiesBag to disallow reserved property names (case-insensitive; currently 'BillingData') in a resource's properties bag
+
 ## 2.2.6
 
 ### Patches

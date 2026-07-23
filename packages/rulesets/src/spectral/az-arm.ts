@@ -42,6 +42,7 @@ import { putRequestResponseScheme } from "./functions/put-request-response-schem
 import { PutResponseCodes } from "./functions/put-response-codes"
 import { queryParametersInCollectionGet } from "./functions/query-parameters-in-collection-get"
 import { requestBodyMustExistForPutPatch } from "./functions/request-body-must-exist-for-put-patch"
+import { reservedNamesInPropertiesBag } from "./functions/reserved-names-in-properties-bag"
 import { reservedResourceNamesModelAsEnum } from "./functions/reserved-resource-names-model-as-enum"
 import resourceNameRestriction from "./functions/resource-name-restriction"
 import responseSchemaSpecifiedForSuccessStatusCode from "./functions/response-schema-specified-for-success-status-code"
@@ -1023,6 +1024,23 @@ const ruleset: any = {
       given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
       then: {
         function: systemDataInPropertiesBag,
+      },
+    },
+
+    // Property names that are reserved (matched case-insensitively) must not be present in a
+    // resource's properties bag. The set of reserved names is defined in the
+    // reservedNamesInPropertiesBag function.
+    ReservedNamesInPropertiesBag: {
+      description: "Reserved property names are not allowed in the resource properties bag.",
+      message: "{{error}}",
+      severity: "error",
+      stagingOnly: true,
+      resolved: true,
+      formats: [oas2],
+      // given definitions that have the properties bag
+      given: ["$.definitions.*.properties[?(@property === 'properties')]^"],
+      then: {
+        function: reservedNamesInPropertiesBag,
       },
     },
 
