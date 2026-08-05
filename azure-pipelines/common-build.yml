@@ -9,8 +9,20 @@ steps:
       versionSpec: '${{ parameters.NodeVersion }}'
     displayName: 'Install Node.js ${{ parameters.NodeVersion }}'
 
+  - pwsh: |
+      "registry=https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-js/npm/registry/" |
+        Out-File "$(Agent.TempDirectory)/aoav.npmrc"
+    displayName: 'Create npm config'
+
+  - task: npmAuthenticate@0
+    inputs:
+      workingFile: '$(Agent.TempDirectory)/aoav.npmrc'
+    displayName: 'Authenticate npm config'
+
   - script: 'node common/scripts/install-run-rush.js install'
     displayName: 'rush install'
+    env:
+      NPM_CONFIG_USERCONFIG: '$(Agent.TempDirectory)/aoav.npmrc'
 
   - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
     displayName: 'rush build'
