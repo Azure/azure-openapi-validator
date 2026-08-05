@@ -28,6 +28,9 @@ extends:
 
               - script: 'node common/scripts/install-run-rush.js test'
                 displayName: 'rush test'
+                env:
+                  NPM_CONFIG_USERCONFIG: '$(Agent.TempDirectory)/aoav.npmrc'
+                  autorest_registry: 'https://packagefeedproxy.microsoft.io/npm/'
 
               - script: 'node common/scripts/install-run-rush.js regen-ruleindex'
                 displayName: 'rush regen-ruleindex'
