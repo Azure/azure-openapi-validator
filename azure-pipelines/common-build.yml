@@ -11,19 +11,10 @@ steps:
 
   - template: /eng/common/pipelines/templates/steps/create-authenticated-npmrc.yml
     parameters:
-      npmrcPath: $(Agent.TempDirectory)/aoav.npmrc
-
-  - pwsh: |
-      $rushJson = Get-Content -Raw "$(Build.SourcesDirectory)/rush.json" | ConvertFrom-Json
-      npm install -g "pnpm@$($rushJson.pnpmVersion)"
-    displayName: 'Install pnpm'
-    env:
-      NPM_CONFIG_USERCONFIG: '$(Agent.TempDirectory)/aoav.npmrc'
+      npmrcPath: $(Build.SourcesDirectory)/common/config/rush/.npmrc
 
   - script: 'node common/scripts/install-run-rush.js install'
     displayName: 'rush install'
-    env:
-      NPM_CONFIG_USERCONFIG: '$(Agent.TempDirectory)/aoav.npmrc'
 
   - script: 'node common/scripts/install-run-rush.js rebuild --verbose'
     displayName: 'rush build'
