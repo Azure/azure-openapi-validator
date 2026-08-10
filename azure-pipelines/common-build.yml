@@ -9,6 +9,10 @@ steps:
       versionSpec: '${{ parameters.NodeVersion }}'
     displayName: 'Install Node.js ${{ parameters.NodeVersion }}'
 
+  - template: /eng/common/pipelines/templates/steps/create-authenticated-npmrc.yml
+    parameters:
+      npmrcPath: $(Build.SourcesDirectory)/common/config/rush/.npmrc
+
   - script: 'node common/scripts/install-run-rush.js install'
     displayName: 'rush install'
 
