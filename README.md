@@ -1,6 +1,6 @@
 # ⚠️ Deprecation Notice
 
-**AutoRest is deprecated and will be retired on July 1, 2026.**
+**AutoRest and its plugins are deprecated and will be retired on July 1, 2026.**
 
 AutoRest is no longer under active development. No new features, language generators, or plugins will be added.
 
