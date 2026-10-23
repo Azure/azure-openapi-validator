@@ -1,5 +1,5 @@
 name: New Lint Rule Request
-description: request a new lint rule
+description: New rules are not accepted here; propose Azure rules in Azure/typespec-azure.
 title: "[new rule]: "
 labels: ["linter", "rule"]
 assignees: jianyxi,ruoxuanwang
@@ -7,8 +7,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        This form is to collect lint rule candidate for swagger validation. We will evaluate collected candidates in Swagger reviewer meeting in regular basis. For qualified candidates, swagger team will either prioritize to add them to validation tool, or document them as manual rules must be conformed in swagger authorization. If any question, please mail to Swagger and Tools Team (vscswagger@microsoft.com).
-        To avoid duplicate, please refer to the following two documents for all existing rules:
+        > **No new lint rules are being accepted in this repository.**
+        >
+        > Please propose new Azure lint rules in [Azure/typespec-azure](https://github.com/Azure/typespec-azure).
+
+        For existing Swagger validation guidelines, see:
         Automated guidelines: https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-automated-guidelines.md
         Manual guidelines: https://github.com/Azure/azure-rest-api-specs/blob/master/documentation/openapi-authoring-manual-guidelines.md
   - type: textarea
