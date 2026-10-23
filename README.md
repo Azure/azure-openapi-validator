@@ -8,6 +8,8 @@ AutoRest is no longer under active development. No new features, language genera
 
 The recommended successor to AutoRest is **[TypeSpec](https://typespec.io/)** — a modern, actively developed API description language and code generation platform.
 
+**⚠️ No new linting rule will be accepted**. For azure ecosystem add TypeSpec rules here https://github.com/azure/typespec-azure
+
 # azure-openapi-validator
 
 For a deep-dive on this tool, please see https://aka.ms/lintdiff.
