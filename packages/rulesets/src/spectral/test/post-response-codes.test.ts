@@ -4,9 +4,9 @@ import linterForRule from "./utils"
 const SYNC_ERROR =
   "Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. No other response codes are permitted."
 const LR_ERROR =
-  "Long-running POST operations must initially return 202 with a default response and no schema. The final response must be 200 with a schema if one is required, or 204 with no schema if not. No other response codes are permitted."
-const LR_NO_SCHEMA_ERROR_OK =
-  "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified."
+  "Long-running POST operations must only return 202 with a default response. The final state schema must be specified via x-ms-long-running-operation-options. No other response codes are permitted."
+const LR_MISSING_OPTIONS_ERROR =
+  'A LRO Post operation must have "x-ms-long-running-operation-options" extension with "final-state-via" set to "location" or "azure-async-operation".'
 const LR_SCHEMA_ERROR_ACCEPTED = "202 response for a LRO POST operation must not have a response schema specified."
 const LR_SCHEMA_ERROR_NO_CONTENT = "204 response for a Sync/LRO POST operation must not have a response schema specified."
 
@@ -625,11 +625,13 @@ test("PostResponseCodes should find errors for lro post with only 202", () => {
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(2)
+    expect(results.length).toBe(3)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
     expect(results[0].message).toContain(LR_ERROR)
     expect(results[1].path.join(".")).toBe("paths./foo.post")
-    expect(results[1].message).toContain(LR_SCHEMA_ERROR_ACCEPTED)
+    expect(results[1].message).toContain(LR_MISSING_OPTIONS_ERROR)
+    expect(results[2].path.join(".")).toBe("paths./foo.post")
+    expect(results[2].message).toContain(LR_SCHEMA_ERROR_ACCEPTED)
   })
 })
 
@@ -696,9 +698,11 @@ test("PostResponseCodes should find errors for lro post with only 200", () => {
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
+    expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
     expect(results[0].message).toContain(LR_ERROR)
+    expect(results[1].path.join(".")).toBe("paths./foo.post")
+    expect(results[1].message).toContain(LR_MISSING_OPTIONS_ERROR)
   })
 })
 
@@ -771,11 +775,13 @@ test("PostResponseCodes should find errors for lro post without default response
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(2)
+    expect(results.length).toBe(3)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
     expect(results[0].message).toContain(LR_ERROR)
     expect(results[1].path.join(".")).toBe("paths./foo.post")
-    expect(results[1].message).toContain(LR_SCHEMA_ERROR_ACCEPTED)
+    expect(results[1].message).toContain(LR_MISSING_OPTIONS_ERROR)
+    expect(results[2].path.join(".")).toBe("paths./foo.post")
+    expect(results[2].message).toContain(LR_SCHEMA_ERROR_ACCEPTED)
   })
 })
 
@@ -852,9 +858,11 @@ test("PostResponseCodes should find errors for lro post with extra response code
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(1)
+    expect(results.length).toBe(2)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
     expect(results[0].message).toContain(LR_ERROR)
+    expect(results[1].path.join(".")).toBe("paths./foo.post")
+    expect(results[1].message).toContain(LR_MISSING_OPTIONS_ERROR)
   })
 })
 
@@ -928,11 +936,13 @@ test("PostResponseCodes should find errors for lro post with empty schema in 200
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(2)
+    expect(results.length).toBe(3)
     expect(results[0].path.join(".")).toBe("paths./foo.post")
-    expect(results[0].message).toContain(LR_NO_SCHEMA_ERROR_OK)
+    expect(results[0].message).toContain(LR_ERROR)
     expect(results[1].path.join(".")).toBe("paths./foo.post")
-    expect(results[1].message).toContain(LR_SCHEMA_ERROR_ACCEPTED)
+    expect(results[1].message).toContain(LR_MISSING_OPTIONS_ERROR)
+    expect(results[2].path.join(".")).toBe("paths./foo.post")
+    expect(results[2].message).toContain(LR_SCHEMA_ERROR_ACCEPTED)
   })
 })
 
@@ -1014,7 +1024,7 @@ test("PostResponseCodes should find errors for async post with 202 but no x-ms-l
   })
 })
 
-test("PostResponseCodes should find no errors for lro post when 200 with schema, 202, default codes are provided", () => {
+test("PostResponseCodes should find errors for lro post with 200 in responses (final state must not be on operation)", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -1084,11 +1094,15 @@ test("PostResponseCodes should find no errors for lro post when 200 with schema,
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
-    expect(results.length).toBe(0)
+    expect(results.length).toBe(2)
+    expect(results[0].path.join(".")).toBe("paths./foo.post")
+    expect(results[0].message).toContain(LR_ERROR)
+    expect(results[1].path.join(".")).toBe("paths./foo.post")
+    expect(results[1].message).toContain(LR_MISSING_OPTIONS_ERROR)
   })
 })
 
-test("PostResponseCodes should find no errors for lro post when 202, 204 no content, default codes are provided", () => {
+test("PostResponseCodes should find errors for lro post with 204 in responses (final state must not be on operation)", () => {
   const myOpenApiDocument = {
     swagger: "2.0",
     paths: {
@@ -1155,6 +1169,126 @@ test("PostResponseCodes should find no errors for lro post when 202, 204 no cont
     },
   }
   return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(2)
+    expect(results[0].path.join(".")).toBe("paths./foo.post")
+    expect(results[0].message).toContain(LR_ERROR)
+    expect(results[1].path.join(".")).toBe("paths./foo.post")
+    expect(results[1].message).toContain(LR_MISSING_OPTIONS_ERROR)
+  })
+})
+
+const definitionsBlock = {
+  FooRequestParams: {
+    allOf: [{ $ref: "#/definitions/FooProps" }],
+  },
+  FooResource: {
+    allOf: [{ $ref: "#/definitions/FooProps" }],
+  },
+  FooResourceUpdate: {
+    allOf: [{ $ref: "#/definitions/FooProps" }],
+  },
+  FooProps: {
+    properties: {
+      prop0: { type: "string", default: "my def val" },
+    },
+  },
+}
+
+test("PostResponseCodes should find no errors for lro post when 202, default, and x-ms-long-running-operation-options with location are provided", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        post: {
+          operationId: "Foo_Create",
+          responses: {
+            "202": { description: "accepted" },
+            default: { description: "Error", schema: {} },
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "location",
+          },
+        },
+      },
+    },
+    definitions: definitionsBlock,
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
     expect(results.length).toBe(0)
+  })
+})
+
+test("PostResponseCodes should find no errors for lro post when 202, default, and x-ms-long-running-operation-options with azure-async-operation are provided", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        post: {
+          operationId: "Foo_Create",
+          responses: {
+            "202": { description: "accepted" },
+            default: { description: "Error", schema: {} },
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation",
+          },
+        },
+      },
+    },
+    definitions: definitionsBlock,
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(0)
+  })
+})
+
+test("PostResponseCodes should find errors for lro post with 202, default but missing x-ms-long-running-operation-options", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        post: {
+          operationId: "Foo_Create",
+          responses: {
+            "202": { description: "accepted" },
+            default: { description: "Error", schema: {} },
+          },
+          "x-ms-long-running-operation": true,
+        },
+      },
+    },
+    definitions: definitionsBlock,
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./foo.post")
+    expect(results[0].message).toContain(LR_MISSING_OPTIONS_ERROR)
+  })
+})
+
+test("PostResponseCodes should find errors for lro post with 202, default but x-ms-long-running-operation-options missing final-state-via", () => {
+  const myOpenApiDocument = {
+    swagger: "2.0",
+    paths: {
+      "/foo": {
+        post: {
+          operationId: "Foo_Create",
+          responses: {
+            "202": { description: "accepted" },
+            default: { description: "Error", schema: {} },
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {},
+        },
+      },
+    },
+    definitions: definitionsBlock,
+  }
+  return linter.run(myOpenApiDocument).then((results) => {
+    expect(results.length).toBe(1)
+    expect(results[0].path.join(".")).toBe("paths./foo.post")
+    expect(results[0].message).toContain(LR_MISSING_OPTIONS_ERROR)
   })
 })
