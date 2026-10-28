@@ -643,12 +643,6 @@ You should avoid the use of `x-nullable: true`. Properties with no value should 
 
 Please refer to [nullable.md](./nullable.md) for details.
 
-### OneUnderscoreInOperationId
-
-An operationId can have exactly one underscore, not adhering to it can cause errors in code generation.
-
-Please refer to [one-underscore-in-operation-id.md](./one-underscore-in-operation-id.md) for details.
-
 ### OperationDescriptionOrSummaryRequired
 
 Every operation must have a 'description'/'summary' property.
@@ -672,6 +666,12 @@ Please refer to [operation-id-noun-verb.md](./operation-id-noun-verb.md) for det
 Each operation must have a unique operationId.
 
 Please refer to [operation-id-required.md](./operation-id-required.md) for details.
+
+### OperationIdSingleUnderscore
+
+An operationId can have exactly one underscore, not adhering to it can cause errors in code generation.
+
+Please refer to [operation-id-single-underscore.md](./operation-id-single-underscore.md) for details.
 
 ### OperationId
 
