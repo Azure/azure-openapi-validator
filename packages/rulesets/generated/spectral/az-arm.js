@@ -3280,7 +3280,9 @@ const sensitiveKeywords = ["access", "credential", "secret", "password", "key", 
 const excludeKeywords = ["publicKey"].map((keyword) => keyword.toLowerCase());
 function isPotentialSensitiveProperty(propertyName) {
     const lowerName = propertyName.toLowerCase();
-    return (sensitiveKeywords.some((keyword) => lowerName.endsWith(keyword) && !lowerName.startsWith(keyword)) &&
+    return ((lowerName === "password" ||
+        lowerName.endsWith("passphrase") ||
+        sensitiveKeywords.some((keyword) => lowerName.endsWith(keyword) && !lowerName.startsWith(keyword))) &&
         !excludeKeywords.some((keyword) => lowerName.endsWith(keyword) && !lowerName.startsWith(keyword)));
 }
 function isKeyValuePairKeyProp(propertiesKeys) {

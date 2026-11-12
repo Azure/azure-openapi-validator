@@ -10,7 +10,17 @@ beforeAll(async () => {
   return linter
 })
 
-test.each(["password", "PASSWORD", "PassWord", "passphrase", "PASSPHRASE", "PassPhrase", "clusterPeeringPassphrase", "clusterPEERINGPASSPHRASE"])(
+test.each([
+  "password",
+  "PASSWORD",
+  "PassWord",
+  "passphrase",
+  "PASSPHRASE",
+  "PassPhrase",
+  "clusterPeeringPassphrase",
+  "clusterPEERINGPASSPHRASE",
+  "passphraseResetPassphrase",
+])(
   "XMSSecretInResponse detects and accepts an annotation on %s",
   async (propertyName) => {
     const property: { type: string; "x-ms-secret"?: boolean } = { type: "string" }
@@ -32,6 +42,8 @@ test.each(["password", "PASSWORD", "PassWord", "passphrase", "PASSPHRASE", "Pass
     expect(results[0].message).toBe(ERROR_MESSAGE.replace("{prpName}", propertyName))
     expect(results[0].severity).toBe(0)
 
+    property["x-ms-secret"] = false
+    expect(await linter.run(oasDoc)).toHaveLength(1)
     property["x-ms-secret"] = true
     expect(await linter.run(oasDoc)).toHaveLength(0)
   },
@@ -49,6 +61,7 @@ test("XMSSecretInResponse preserves exclusions and existing sensitive suffix bou
           passwordHash: { type: "string" },
           passwordPolicy: { type: "string" },
           passphraseHint: { type: "string" },
+          passwordResetPassword: { type: "string" },
           publicPassword: { type: "string" },
           publicPassphrase: { type: "string" },
           passwordEnum: { type: "string" },
