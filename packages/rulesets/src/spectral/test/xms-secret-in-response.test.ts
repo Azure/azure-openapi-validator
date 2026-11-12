@@ -10,6 +10,92 @@ beforeAll(async () => {
   return linter
 })
 
+test.each([
+  "password",
+  "PASSWORD",
+  "PassWord",
+  "passphrase",
+  "PASSPHRASE",
+  "PassPhrase",
+  "clusterPeeringPassphrase",
+  "clusterPEERINGPASSPHRASE",
+  "passphraseResetPassphrase",
+])(
+  "XMSSecretInResponse detects and accepts an annotation on %s",
+  async (propertyName) => {
+    const property: { type: string; "x-ms-secret"?: boolean } = { type: "string" }
+    const oasDoc = {
+      swagger: "2.0",
+      info: { title: "Credentials", version: "1.0" },
+      paths: {},
+      definitions: {
+        Credentials: {
+          type: "object",
+          properties: { [propertyName]: property },
+        },
+      },
+    }
+
+    const results = await linter.run(oasDoc)
+    expect(results).toHaveLength(1)
+    expect(results[0].path).toEqual(["definitions", "Credentials", "properties", propertyName])
+    expect(results[0].message).toBe(ERROR_MESSAGE.replace("{prpName}", propertyName))
+    expect(results[0].severity).toBe(0)
+
+    property["x-ms-secret"] = false
+    expect(await linter.run(oasDoc)).toHaveLength(1)
+    property["x-ms-secret"] = true
+    expect(await linter.run(oasDoc)).toHaveLength(0)
+  },
+)
+
+test("XMSSecretInResponse preserves exclusions and existing sensitive suffix boundaries", async () => {
+  const oasDoc = {
+    swagger: "2.0",
+    info: { title: "Credentials", version: "1.0" },
+    paths: {},
+    definitions: {
+      Credentials: {
+        type: "object",
+        properties: {
+          passwordHash: { type: "string" },
+          passwordPolicy: { type: "string" },
+          passphraseHint: { type: "string" },
+          passwordResetPassword: { type: "string" },
+          publicPassword: { type: "string" },
+          publicPassphrase: { type: "string" },
+          passwordEnum: { type: "string" },
+          password: { type: "string", enum: ["one", "two"] },
+          passphrase: { type: "string", "x-ms-enum": { name: "Passphrase", modelAsString: true } },
+          clusterPeeringPassphrase: { type: "integer" },
+          anotherPassphrase: { type: "string", "x-ms-secret": true },
+          credential: { type: "string" },
+          token: { type: "string" },
+          secret: { type: "string" },
+          key: { type: "string", description: "A password or passphrase" },
+          value: { type: "string" },
+          tokenRefreshToken: { type: "string" },
+          accountPassword: { type: "string" },
+          accessToken: { type: "string" },
+        },
+      },
+      DictionaryEntry: {
+        type: "object",
+        properties: {
+          key: { type: "string" },
+          value: { type: "string" },
+        },
+      },
+    },
+  }
+
+  const results = await linter.run(oasDoc)
+  expect(results.map((result) => result.path.join("."))).toEqual(
+    expect.arrayContaining(["definitions.Credentials.properties.accountPassword", "definitions.Credentials.properties.accessToken"]),
+  )
+  expect(results).toHaveLength(2)
+})
+
 test("XMSSecretInResponse should find errors", () => {
   const oasDoc = {
     swagger: "2.0",
