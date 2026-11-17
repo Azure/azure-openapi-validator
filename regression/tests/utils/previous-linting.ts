@@ -49,7 +49,7 @@ export async function runLinter(readme: string) {
 
 // runs the command on a given swagger spec.
 async function runCmd(cmd:string) {
-  const { stdout, stderr } = await new Promise(res =>
+  const { stdout, stderr } = await new Promise<{ stdout: string; stderr: string }>(res =>
     exec(cmd, { encoding: "utf8", maxBuffer: 1024 * 1024 * 64 }, (err, stdout, stderr) => res({ stdout, stderr }))
   )
   let resultString = ""

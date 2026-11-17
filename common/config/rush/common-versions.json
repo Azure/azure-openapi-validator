@@ -18,7 +18,7 @@
    * will recalculate all version selections.
    */
   "preferredVersions": {
-    "form-data": "^3.0.4"
+    "form-data": "^3.0.5"
   },
   /**
    * When set to true, for all projects in the repo, all dependencies will be automatically added as preferredVersions,

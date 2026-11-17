@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator",
+      "comment": "Update vulnerable dependencies and require Node.js ^18.18.0 or >=20.17.0.",
+      "type": "major"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator"
+}

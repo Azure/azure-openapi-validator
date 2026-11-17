@@ -16,21 +16,88 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 679877:
-/*!************************************************!*\
-  !*** ./lib-esnext/utilities/npmrcUtilities.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 953844
+/*!**************************************************************!*\
+  !*** ./lib-intermediate-esm/utilities/executionUtilities.js ***!
+  \**************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "isVariableSetInNpmrcFile": () => (/* binding */ isVariableSetInNpmrcFile),
-/* harmony export */   "syncNpmrc": () => (/* binding */ syncNpmrc)
+/* harmony export */   IS_WINDOWS: () => (/* binding */ IS_WINDOWS),
+/* harmony export */   escapeArgumentIfNeeded: () => (/* binding */ escapeArgumentIfNeeded),
+/* harmony export */   quoteShellArgumentIfNeeded: () => (/* binding */ quoteShellArgumentIfNeeded)
 /* harmony export */ });
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! fs */ 657147);
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! path */ 371017);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);
+// Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+// See LICENSE in the project root for license information.
+const IS_WINDOWS = process.platform === 'win32';
+// The characters that Python's shlex.quote() leaves unquoted.
+const POSIX_SAFE_ARGUMENT_REGEXP = /^[A-Za-z0-9_@%+=:,./-]+$/;
+// Whitespace, and the characters that cmd.exe or the MSVC argument parser treat specially.
+const WINDOWS_UNSAFE_ARGUMENT_REGEXP = /[\s"&|<>()^]/;
+// A run of backslashes, followed by a double quote or the end of the value.
+const WINDOWS_BACKSLASHES_BEFORE_QUOTE_REGEXP = /(\\*)("|$)/g;
+/**
+ * Quotes an argument so that the shell that runs a lifecycle command (`sh -c` on POSIX,
+ * `cmd.exe /d /s /c` on Windows) passes it to the command as one literal argument.
+ * An argument that needs no quoting is returned unchanged.
+ *
+ * @remarks
+ * On Windows, the argument is wrapped in double quotes. An embedded double quote is written as `""`,
+ * which keeps cmd.exe's quote state in step with the argument parser's, and the backslashes before it,
+ * or before the closing quote, are doubled. cmd.exe still expands `%NAME%` inside double quotes.
+ */
+function quoteShellArgumentIfNeeded(argument, isWindows = IS_WINDOWS) {
+    if (isWindows) {
+        if (argument && !WINDOWS_UNSAFE_ARGUMENT_REGEXP.test(argument)) {
+            return argument;
+        }
+        const escapedArgument = argument.replace(WINDOWS_BACKSLASHES_BEFORE_QUOTE_REGEXP, (match, backslashes, quote) => `${backslashes}${backslashes}${quote ? '""' : ''}`);
+        return `"${escapedArgument}"`;
+    }
+    else {
+        if (POSIX_SAFE_ARGUMENT_REGEXP.test(argument)) {
+            return argument;
+        }
+        return `'${argument.replace(/'/g, `'\\''`)}'`;
+    }
+}
+function escapeArgumentIfNeeded(command, isWindows = IS_WINDOWS) {
+    if (command.includes(' ')) {
+        if (isWindows) {
+            // Windows: use double quotes and escape internal double quotes
+            return `"${command.replace(/"/g, '""')}"`;
+        }
+        else {
+            // Unix: use JSON.stringify for proper escaping
+            return JSON.stringify(command);
+        }
+    }
+    else {
+        return command;
+    }
+}
+//# sourceMappingURL=executionUtilities.js.map
+
+/***/ },
+
+/***/ 359480
+/*!**********************************************************!*\
+  !*** ./lib-intermediate-esm/utilities/npmrcUtilities.js ***!
+  \**********************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getNpmrcEnvironmentVariables: () => (/* binding */ getNpmrcEnvironmentVariables),
+/* harmony export */   isVariableSetInNpmrcFile: () => (/* binding */ isVariableSetInNpmrcFile),
+/* harmony export */   syncNpmrc: () => (/* binding */ syncNpmrc),
+/* harmony export */   trimNpmrcFileLines: () => (/* binding */ trimNpmrcFileLines)
+/* harmony export */ });
+/* harmony import */ var node_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! node:fs */ 973024);
+/* harmony import */ var node_fs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(node_fs__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var node_path__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! node:path */ 176760);
+/* harmony import */ var node_path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(node_path__WEBPACK_IMPORTED_MODULE_1__);
 // Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 // See LICENSE in the project root for license information.
 // IMPORTANT - do not use any non-built-in libraries in this file
@@ -43,33 +110,303 @@ __webpack_require__.r(__webpack_exports__);
  * @returns
  * The text of the the .npmrc.
  */
-// create a global _combinedNpmrc for cache purpose
-const _combinedNpmrcMap = new Map();
 function _trimNpmrcFile(options) {
-    const { sourceNpmrcPath, linesToPrepend, linesToAppend } = options;
-    const combinedNpmrcFromCache = _combinedNpmrcMap.get(sourceNpmrcPath);
-    if (combinedNpmrcFromCache !== undefined) {
-        return combinedNpmrcFromCache;
-    }
+    const { sourceNpmrcPath, linesToPrepend, linesToAppend, supportEnvVarFallbackSyntax, filterNpmIncompatibleProperties, moveSensitiveSettingsToEnvironment, environmentVariableSettingNames, env = process.env } = options;
     let npmrcFileLines = [];
     if (linesToPrepend) {
         npmrcFileLines.push(...linesToPrepend);
     }
-    if (fs__WEBPACK_IMPORTED_MODULE_0__.existsSync(sourceNpmrcPath)) {
-        npmrcFileLines.push(...fs__WEBPACK_IMPORTED_MODULE_0__.readFileSync(sourceNpmrcPath).toString().split('\n'));
+    if (node_fs__WEBPACK_IMPORTED_MODULE_0__.existsSync(sourceNpmrcPath)) {
+        npmrcFileLines.push(...node_fs__WEBPACK_IMPORTED_MODULE_0__.readFileSync(sourceNpmrcPath).toString().split('\n'));
     }
     if (linesToAppend) {
         npmrcFileLines.push(...linesToAppend);
     }
     npmrcFileLines = npmrcFileLines.map((line) => (line || '').trim());
+    const resultLines = trimNpmrcFileLines(npmrcFileLines, env, supportEnvVarFallbackSyntax, filterNpmIncompatibleProperties, moveSensitiveSettingsToEnvironment, environmentVariableSettingNames);
+    const combinedNpmrc = resultLines.join('\n');
+    return combinedNpmrc;
+}
+/**
+ * List of npmrc properties that are not supported by npm but may be present in the config.
+ * These include pnpm-specific properties and deprecated npm properties.
+ */
+const NPM_INCOMPATIBLE_PROPERTIES = new Set([
+    // pnpm-specific hoisting configuration
+    'hoist',
+    'hoist-pattern',
+    'public-hoist-pattern',
+    'shamefully-hoist',
+    // Deprecated or unknown npm properties that cause warnings
+    'email',
+    'publish-branch'
+]);
+/**
+ * List of registry-scoped npmrc property suffixes that are pnpm-specific.
+ * These are properties like "//registry.example.com/:tokenHelper" where "tokenHelper"
+ * is the suffix after the last colon.
+ */
+const NPM_INCOMPATIBLE_REGISTRY_SCOPED_PROPERTIES = new Set([
+    // pnpm-specific token helper properties
+    'tokenHelper',
+    'urlTokenHelper'
+]);
+/**
+ * Regular expression to extract property names from .npmrc lines.
+ * Matches everything before '=', '[', or whitespace to capture the property name.
+ * Note: The 'g' flag is intentionally omitted since we only need the first match.
+ * Examples:
+ *   "registry=https://..." -> matches "registry"
+ *   "hoist-pattern[]=..." -> matches "hoist-pattern"
+ */
+const PROPERTY_NAME_REGEX = /^([^=\[\s]+)/;
+/**
+ * Regular expression to extract environment variable names and optional fallback values.
+ * Matches patterns like:
+ *   nameString                 -> group 1: nameString,    group 2: undefined
+ *   nameString-fallbackString  -> group 1: nameString,    group 2: fallbackString
+ *   nameString:-fallbackString -> group 1: nameString,    group 2: fallbackString
+ */
+const ENV_VAR_WITH_FALLBACK_REGEX = /^(?<name>[^:-]+)(?::?-(?<fallback>.+))?$/;
+// Matches an environment variable reference such as "${NPM_TOKEN}" anywhere in a setting.
+const ENVIRONMENT_VARIABLE_DETECTION_REGEX = /\$\{[^\}]+\}/;
+/**
+ * The comment marker that is written in place of an .npmrc setting whose value was moved into an
+ * `npm_config_*` environment variable. The remainder of the line is the original (unexpanded)
+ * setting, so that the secret itself never gets written to disk.
+ *
+ * @remarks
+ * See {@link getNpmrcEnvironmentVariables} for the code that reads these lines back.
+ */
+const PROVIDED_VIA_ENVIRONMENT_PREFIX = '; PROVIDED VIA ENVIRONMENT: ';
+/**
+ * The names of .npmrc settings that PNPM considers to be credentials. They may appear either
+ * as a bare setting name (`_authToken=...`) or scoped to a registry URI
+ * (`//registry.example.com/:_authToken=...`).
+ *
+ * @remarks
+ * This list mirrors PNPM's own list; PNPM 10.34.2 and newer refuse to expand `${VAR}` tokens in
+ * these settings when they come from a project or workspace .npmrc file.
+ */
+const AUTH_VALUE_SETTING_NAMES = new Set([
+    '_authToken',
+    '_auth',
+    '_password',
+    'username',
+    'tokenHelper',
+    'cert',
+    'key'
+]);
+/**
+ * The names of .npmrc settings that determine where PNPM sends a request. PNPM 10.34.2 and newer
+ * refuse to expand `${VAR}` tokens in these settings when they come from a project or workspace
+ * .npmrc file, because a compromised value could redirect a request (and its credentials) to an
+ * attacker-controlled server.
+ */
+const REQUEST_DESTINATION_SETTING_NAMES = new Set([
+    'registry',
+    'proxy',
+    'http-proxy',
+    'https-proxy'
+]);
+function _isRegistrySettingName(settingName) {
+    return settingName === 'registry' || (settingName.startsWith('@') && settingName.endsWith(':registry'));
+}
+/**
+ * Returns true if PNPM treats the setting's value as a credential.
+ */
+function _isAuthValueSettingName(settingName) {
+    if (AUTH_VALUE_SETTING_NAMES.has(settingName)) {
+        return true;
+    }
+    // Example: "//registry.example.com/:_authToken" --> "_authToken"
+    const lastColonIndex = settingName.lastIndexOf(':');
+    return lastColonIndex >= 0 && AUTH_VALUE_SETTING_NAMES.has(settingName.substring(lastColonIndex + 1));
+}
+/**
+ * Returns true if PNPM refuses to expand environment variables that appear in the setting's NAME.
+ */
+function _isRequestDestinationSettingName(settingName) {
+    return _isRegistrySettingName(settingName) || settingName.startsWith('//');
+}
+/**
+ * Returns true if PNPM refuses to expand environment variables that appear in the setting's VALUE.
+ */
+function _isRequestDestinationValueSettingName(settingName) {
+    return _isRegistrySettingName(settingName) || REQUEST_DESTINATION_SETTING_NAMES.has(settingName);
+}
+function _tryParseNpmrcSetting(line) {
+    const equalsIndex = line.indexOf('=');
+    if (equalsIndex < 0) {
+        return undefined;
+    }
+    return {
+        line,
+        name: line.substring(0, equalsIndex),
+        value: line.substring(equalsIndex + 1)
+    };
+}
+function _hasIgnoredEnvironmentVariable(setting) {
+    const { name, value } = setting;
+    return ((ENVIRONMENT_VARIABLE_DETECTION_REGEX.test(name) &&
+        (_isRequestDestinationSettingName(name) || _isAuthValueSettingName(name))) ||
+        (ENVIRONMENT_VARIABLE_DETECTION_REGEX.test(value) &&
+            (_isRequestDestinationValueSettingName(name) || _isAuthValueSettingName(name))));
+}
+/**
+ * Reproduces PNPM's `envKeyToSetting()`, which converts the portion of an `npm_config_*` environment
+ * variable name that follows the prefix back into an .npmrc setting name.
+ */
+function _environmentVariableSuffixToSettingName(suffix) {
+    const colonIndex = suffix.indexOf(':');
+    if (colonIndex === -1) {
+        return _normalizeSettingNamePart(suffix);
+    }
+    return `${suffix.substring(0, colonIndex)}:${_normalizeSettingNamePart(suffix.substring(colonIndex + 1))}`;
+}
+function _normalizeSettingNamePart(settingNamePart) {
+    const lowerCased = settingNamePart.toLowerCase();
+    if (lowerCased === '_authtoken') {
+        return '_authToken';
+    }
+    // Underscores become dashes, except for a leading underscore
+    return lowerCased.charAt(0) + lowerCased.substring(1).replace(/_/g, '-');
+}
+/**
+ * Returns true if the setting can be expressed as an `npm_config_*` environment variable without
+ * being mangled by PNPM's name normalization.
+ *
+ * @remarks
+ * For example, a registry URL that includes an explicit port such as
+ * `//registry.example.com:8080/:_authToken` cannot round-trip, because PNPM splits the name on its
+ * FIRST colon and then normalizes everything after it.
+ */
+function _canSettingRoundTripThroughEnvironmentVariable(settingName) {
+    return _environmentVariableSuffixToSettingName(settingName) === settingName;
+}
+// This finds environment variable tokens that look like "${VAR_NAME}"
+const ENVIRONMENT_VARIABLE_REGEX = /\$\{([^\}]+)\}/g;
+function _expandEnvironmentVariables(text, env, supportEnvVarFallbackSyntax) {
+    let hasVariable = false;
+    let hasUndefinedVariable = false;
+    const expandedText = text.replace(ENVIRONMENT_VARIABLE_REGEX, (token) => {
+        hasVariable = true;
+        /**
+         * Remove the leading "${" and the trailing "}" from the token
+         *
+         * ${nameString}                  -> nameString
+         * ${nameString-fallbackString}   -> nameString-fallbackString
+         * ${nameString:-fallbackString}  -> nameString:-fallbackString
+         */
+        const nameWithFallback = token.slice(2, -1);
+        let environmentVariableName;
+        let fallback;
+        if (supportEnvVarFallbackSyntax) {
+            /**
+             * Get the environment variable name and fallback value.
+             *
+             *                                name          fallback
+             * nameString                 ->  nameString    undefined
+             * nameString-fallbackString  ->  nameString    fallbackString
+             * nameString:-fallbackString ->  nameString    fallbackString
+             */
+            const matched = nameWithFallback.match(ENV_VAR_WITH_FALLBACK_REGEX);
+            environmentVariableName = matched?.groups?.name ?? nameWithFallback;
+            fallback = matched?.groups?.fallback;
+        }
+        else {
+            environmentVariableName = nameWithFallback;
+        }
+        const environmentVariableValue = env[environmentVariableName];
+        if (environmentVariableValue) {
+            return environmentVariableValue;
+        }
+        else if (fallback) {
+            return fallback;
+        }
+        else {
+            hasUndefinedVariable = true;
+            return token;
+        }
+    });
+    return {
+        expandedText: hasUndefinedVariable ? text : expandedText,
+        hasVariable,
+        hasUndefinedVariable
+    };
+}
+/**
+ * Determines how a .npmrc line whose environment variables are all defined must be transformed
+ * so that PNPM 10.34.2 and newer will honor it. Returns `undefined` if PNPM expands the line's
+ * environment variables itself, in which case the line is left alone.
+ */
+function _classifySensitiveNpmrcSetting(setting, env, supportEnvVarFallbackSyntax) {
+    const { name: settingName, value: settingValue } = setting;
+    const expandedName = _expandEnvironmentVariables(settingName, env, supportEnvVarFallbackSyntax);
+    const expandedValue = _expandEnvironmentVariables(settingValue, env, supportEnvVarFallbackSyntax);
+    if (expandedName.hasUndefinedVariable || expandedValue.hasUndefinedVariable) {
+        return undefined;
+    }
+    // Consider both spellings, because PNPM discards the setting if EITHER form is sensitive
+    const isAuthValue = _isAuthValueSettingName(expandedName.expandedText) || _isAuthValueSettingName(settingName);
+    if (isAuthValue) {
+        if (_canSettingRoundTripThroughEnvironmentVariable(expandedName.expandedText)) {
+            return {
+                kind: 'environment',
+                variableName: `npm_config_${expandedName.expandedText}`,
+                variableValue: expandedValue.expandedText
+            };
+        }
+        throw new Error(`The .npmrc credential setting "${expandedName.expandedText}" cannot be provided via an ` +
+            'environment variable because PNPM cannot round-trip this setting name.');
+    }
+    const isRequestDestination = (expandedName.hasVariable &&
+        (_isRequestDestinationSettingName(expandedName.expandedText) ||
+            _isRequestDestinationSettingName(settingName))) ||
+        (expandedValue.hasVariable && _isRequestDestinationValueSettingName(expandedName.expandedText));
+    if (isRequestDestination) {
+        return { kind: 'expand', expandedLine: `${expandedName.expandedText}=${expandedValue.expandedText}` };
+    }
+    return undefined;
+}
+/**
+ * Returns the replacement text for a .npmrc line that PNPM would otherwise discard, or `undefined`
+ * if the line does not need to be rewritten.
+ */
+function _rewriteSensitiveNpmrcLine(setting, env, supportEnvVarFallbackSyntax) {
+    const action = _classifySensitiveNpmrcSetting(setting, env, supportEnvVarFallbackSyntax);
+    switch (action?.kind) {
+        case 'environment':
+            // Example output:
+            // "; PROVIDED VIA ENVIRONMENT: //my-registry.com/npm/:_authToken=${MY_AUTH_TOKEN}"
+            return PROVIDED_VIA_ENVIRONMENT_PREFIX + setting.line;
+        case 'expand':
+            return action.expandedLine;
+        default:
+            return undefined;
+    }
+}
+/**
+ *
+ * @param npmrcFileLines The npmrc file's lines
+ * @param env The environment variables object
+ * @param supportEnvVarFallbackSyntax Whether to support fallback values in the form of `${VAR_NAME:-fallback}`
+ * @param filterNpmIncompatibleProperties Whether to filter out properties that npm doesn't understand
+ * @param moveSensitiveSettingsToEnvironment Whether to replace settings that PNPM refuses to expand
+ * environment variables in with a `; PROVIDED VIA ENVIRONMENT: ` comment. See
+ * {@link getNpmrcEnvironmentVariables}.
+ * @param environmentVariableSettingNames If provided, collects settings containing environment
+ * variable references that PNPM ignores in a project `.npmrc`.
+ * @returns An array of processed npmrc file lines with undefined environment variables and npm-incompatible properties commented out
+ */
+function trimNpmrcFileLines(npmrcFileLines, env, supportEnvVarFallbackSyntax, filterNpmIncompatibleProperties = false, moveSensitiveSettingsToEnvironment = false, environmentVariableSettingNames) {
     const resultLines = [];
-    // This finds environment variable tokens that look like "${VAR_NAME}"
-    const expansionRegExp = /\$\{([^\}]+)\}/g;
     // Comment lines start with "#" or ";"
     const commentRegExp = /^\s*[#;]/;
     // Trim out lines that reference environment variables that aren't defined
     for (let line of npmrcFileLines) {
         let lineShouldBeTrimmed = false;
+        let trimReason = '';
         //remove spaces before or after key and value
         line = line
             .split('=')
@@ -77,132 +414,220 @@ function _trimNpmrcFile(options) {
             .join('=');
         // Ignore comment lines
         if (!commentRegExp.test(line)) {
-            const environmentVariables = line.match(expansionRegExp);
-            if (environmentVariables) {
-                for (const token of environmentVariables) {
-                    // Remove the leading "${" and the trailing "}" from the token
-                    const environmentVariableName = token.substring(2, token.length - 1);
-                    // Is the environment variable defined?
-                    if (!process.env[environmentVariableName]) {
-                        // No, so trim this line
-                        lineShouldBeTrimmed = true;
-                        break;
+            const parsedSetting = _tryParseNpmrcSetting(line);
+            if (environmentVariableSettingNames && parsedSetting && _hasIgnoredEnvironmentVariable(parsedSetting)) {
+                environmentVariableSettingNames.add(parsedSetting.name);
+            }
+            // Check if this is a property that npm doesn't understand
+            if (filterNpmIncompatibleProperties) {
+                // Extract the property name (everything before the '=' or '[')
+                const match = line.match(PROPERTY_NAME_REGEX);
+                if (match) {
+                    const propertyName = match[1];
+                    // Check if this is a registry-scoped property (starts with "//" like "//registry.npmjs.org/:_authToken")
+                    const isRegistryScoped = propertyName.startsWith('//');
+                    if (isRegistryScoped) {
+                        // For registry-scoped properties, check if the suffix (after the last colon) is npm-incompatible
+                        // Example: "//registry.example.com/:tokenHelper" -> suffix is "tokenHelper"
+                        const lastColonIndex = propertyName.lastIndexOf(':');
+                        if (lastColonIndex !== -1) {
+                            const registryPropertySuffix = propertyName.substring(lastColonIndex + 1);
+                            if (NPM_INCOMPATIBLE_REGISTRY_SCOPED_PROPERTIES.has(registryPropertySuffix)) {
+                                lineShouldBeTrimmed = true;
+                                trimReason = 'NPM_INCOMPATIBLE_PROPERTY';
+                            }
+                        }
+                    }
+                    else {
+                        // For non-registry-scoped properties, check the full property name
+                        if (NPM_INCOMPATIBLE_PROPERTIES.has(propertyName)) {
+                            lineShouldBeTrimmed = true;
+                            trimReason = 'NPM_INCOMPATIBLE_PROPERTY';
+                        }
+                    }
+                }
+            }
+            // Check for undefined environment variables
+            if (!lineShouldBeTrimmed) {
+                const { hasVariable, hasUndefinedVariable } = _expandEnvironmentVariables(line, env, supportEnvVarFallbackSyntax);
+                if (hasUndefinedVariable) {
+                    lineShouldBeTrimmed = true;
+                    trimReason = 'MISSING_ENVIRONMENT_VARIABLE';
+                }
+                else if (hasVariable && moveSensitiveSettingsToEnvironment && parsedSetting) {
+                    const rewrittenLine = _rewriteSensitiveNpmrcLine(parsedSetting, env, supportEnvVarFallbackSyntax);
+                    if (rewrittenLine !== undefined) {
+                        resultLines.push(rewrittenLine);
+                        continue;
                     }
                 }
             }
         }
         if (lineShouldBeTrimmed) {
-            // Example output:
-            // "; MISSING ENVIRONMENT VARIABLE: //my-registry.com/npm/:_authToken=${MY_AUTH_TOKEN}"
-            resultLines.push('; MISSING ENVIRONMENT VARIABLE: ' + line);
+            // Comment out the line with appropriate reason
+            if (trimReason === 'NPM_INCOMPATIBLE_PROPERTY') {
+                // Example output:
+                // "; UNSUPPORTED BY NPM: email=test@example.com"
+                resultLines.push('; UNSUPPORTED BY NPM: ' + line);
+            }
+            else {
+                // Example output:
+                // "; MISSING ENVIRONMENT VARIABLE: //my-registry.com/npm/:_authToken=${MY_AUTH_TOKEN}"
+                resultLines.push('; MISSING ENVIRONMENT VARIABLE: ' + line);
+            }
         }
         else {
             resultLines.push(line);
         }
     }
-    const combinedNpmrc = resultLines.join('\n');
-    //save the cache
-    _combinedNpmrcMap.set(sourceNpmrcPath, combinedNpmrc);
-    return combinedNpmrc;
+    return resultLines;
 }
 function _copyAndTrimNpmrcFile(options) {
-    const { logger, sourceNpmrcPath, targetNpmrcPath, linesToPrepend, linesToAppend } = options;
-    logger.info(`Transforming ${sourceNpmrcPath}`); // Verbose
-    logger.info(`  --> "${targetNpmrcPath}"`);
-    const combinedNpmrc = _trimNpmrcFile({
-        sourceNpmrcPath,
-        linesToPrepend,
-        linesToAppend
-    });
-    fs__WEBPACK_IMPORTED_MODULE_0__.writeFileSync(targetNpmrcPath, combinedNpmrc);
+    const { logger, sourceNpmrcPath, targetNpmrcPath } = options;
+    logger.info(`Transforming ${sourceNpmrcPath}`, 'local-sensitive'); // Verbose
+    logger.info(`  --> "${targetNpmrcPath}"`, 'local-sensitive');
+    const combinedNpmrc = _trimNpmrcFile(options);
+    node_fs__WEBPACK_IMPORTED_MODULE_0__.writeFileSync(targetNpmrcPath, combinedNpmrc);
     return combinedNpmrc;
 }
 function syncNpmrc(options) {
     const { sourceNpmrcFolder, targetNpmrcFolder, useNpmrcPublish, logger = {
         // eslint-disable-next-line no-console
-        info: console.log,
+        info: (text) => console.log(text),
         // eslint-disable-next-line no-console
-        error: console.error
-    }, createIfMissing = false, linesToAppend, linesToPrepend } = options;
-    const sourceNpmrcPath = path__WEBPACK_IMPORTED_MODULE_1__.join(sourceNpmrcFolder, !useNpmrcPublish ? '.npmrc' : '.npmrc-publish');
-    const targetNpmrcPath = path__WEBPACK_IMPORTED_MODULE_1__.join(targetNpmrcFolder, '.npmrc');
+        error: (text) => console.error(text)
+    }, createIfMissing = false } = options;
+    const sourceNpmrcPath = node_path__WEBPACK_IMPORTED_MODULE_1__.join(sourceNpmrcFolder, !useNpmrcPublish ? '.npmrc' : '.npmrc-publish');
+    const targetNpmrcPath = node_path__WEBPACK_IMPORTED_MODULE_1__.join(targetNpmrcFolder, '.npmrc');
     try {
-        if (fs__WEBPACK_IMPORTED_MODULE_0__.existsSync(sourceNpmrcPath) || createIfMissing) {
+        if (node_fs__WEBPACK_IMPORTED_MODULE_0__.existsSync(sourceNpmrcPath) || createIfMissing) {
             // Ensure the target folder exists
-            if (!fs__WEBPACK_IMPORTED_MODULE_0__.existsSync(targetNpmrcFolder)) {
-                fs__WEBPACK_IMPORTED_MODULE_0__.mkdirSync(targetNpmrcFolder, { recursive: true });
+            if (!node_fs__WEBPACK_IMPORTED_MODULE_0__.existsSync(targetNpmrcFolder)) {
+                node_fs__WEBPACK_IMPORTED_MODULE_0__.mkdirSync(targetNpmrcFolder, { recursive: true });
             }
             return _copyAndTrimNpmrcFile({
                 sourceNpmrcPath,
                 targetNpmrcPath,
                 logger,
-                linesToAppend,
-                linesToPrepend
+                ...options
             });
         }
-        else if (fs__WEBPACK_IMPORTED_MODULE_0__.existsSync(targetNpmrcPath)) {
+        else if (node_fs__WEBPACK_IMPORTED_MODULE_0__.existsSync(targetNpmrcPath)) {
             // If the source .npmrc doesn't exist and there is one in the target, delete the one in the target
-            logger.info(`Deleting ${targetNpmrcPath}`); // Verbose
-            fs__WEBPACK_IMPORTED_MODULE_0__.unlinkSync(targetNpmrcPath);
+            logger.info(`Deleting ${targetNpmrcPath}`, 'local-sensitive'); // Verbose
+            node_fs__WEBPACK_IMPORTED_MODULE_0__.unlinkSync(targetNpmrcPath);
         }
     }
     catch (e) {
         throw new Error(`Error syncing .npmrc file: ${e}`);
     }
 }
-function isVariableSetInNpmrcFile(sourceNpmrcFolder, variableKey) {
+function isVariableSetInNpmrcFile(sourceNpmrcFolder, variableKey, supportEnvVarFallbackSyntax) {
     const sourceNpmrcPath = `${sourceNpmrcFolder}/.npmrc`;
     //if .npmrc file does not exist, return false directly
-    if (!fs__WEBPACK_IMPORTED_MODULE_0__.existsSync(sourceNpmrcPath)) {
+    if (!node_fs__WEBPACK_IMPORTED_MODULE_0__.existsSync(sourceNpmrcPath)) {
         return false;
     }
-    const trimmedNpmrcFile = _trimNpmrcFile({ sourceNpmrcPath });
+    const trimmedNpmrcFile = _trimNpmrcFile({
+        sourceNpmrcPath,
+        supportEnvVarFallbackSyntax,
+        filterNpmIncompatibleProperties: false
+    });
     const variableKeyRegExp = new RegExp(`^${variableKey}=`, 'm');
     return trimmedNpmrcFile.match(variableKeyRegExp) !== null;
 }
+/**
+ * Returns the `npm_config_*` environment variables that must be passed to the package manager to
+ * provide the credentials that {@link syncNpmrc} moved out of the generated .npmrc file when its
+ * `moveSensitiveSettingsToEnvironment` option was enabled. Returns `undefined` if there are none.
+ *
+ * @remarks
+ * PNPM only expands `${VAR}` tokens in credentials that come from a trusted source, and an
+ * environment variable is such a source. Recomputing the variables from the generated .npmrc file
+ * (instead of remembering them from the {@link syncNpmrc} call) allows commands such as
+ * `rush-pnpm` to authenticate without re-synchronizing the file.
+ */
+function getNpmrcEnvironmentVariables(options) {
+    const { npmrcFolder, supportEnvVarFallbackSyntax, env = process.env } = options;
+    let npmrcFileContent;
+    try {
+        npmrcFileContent = node_fs__WEBPACK_IMPORTED_MODULE_0__.readFileSync(node_path__WEBPACK_IMPORTED_MODULE_1__.join(npmrcFolder, '.npmrc')).toString();
+    }
+    catch (e) {
+        if (e.code === 'ENOENT') {
+            return undefined;
+        }
+        throw e;
+    }
+    let environmentVariables;
+    for (const npmrcFileLine of npmrcFileContent.split('\n')) {
+        const trimmedLine = npmrcFileLine.trim();
+        if (!trimmedLine.startsWith(PROVIDED_VIA_ENVIRONMENT_PREFIX)) {
+            continue;
+        }
+        const originalLine = trimmedLine.substring(PROVIDED_VIA_ENVIRONMENT_PREFIX.length);
+        const parsedSetting = _tryParseNpmrcSetting(originalLine);
+        const action = parsedSetting && _classifySensitiveNpmrcSetting(parsedSetting, env, supportEnvVarFallbackSyntax);
+        if (action?.kind === 'environment') {
+            environmentVariables ??= {};
+            environmentVariables[action.variableName] = action.variableValue;
+        }
+    }
+    return environmentVariables;
+}
 //# sourceMappingURL=npmrcUtilities.js.map
 
-/***/ }),
+/***/ },
 
-/***/ 532081:
-/*!********************************!*\
-  !*** external "child_process" ***!
-  \********************************/
-/***/ ((module) => {
+/***/ 731421
+/*!*************************************!*\
+  !*** external "node:child_process" ***!
+  \*************************************/
+(module) {
 
-module.exports = require("child_process");
+module.exports = require("node:child_process");
 
-/***/ }),
+/***/ },
 
-/***/ 657147:
-/*!*********************!*\
-  !*** external "fs" ***!
-  \*********************/
-/***/ ((module) => {
+/***/ 973024
+/*!**************************!*\
+  !*** external "node:fs" ***!
+  \**************************/
+(module) {
 
-module.exports = require("fs");
+module.exports = require("node:fs");
 
-/***/ }),
+/***/ },
 
-/***/ 822037:
-/*!*********************!*\
-  !*** external "os" ***!
-  \*********************/
-/***/ ((module) => {
+/***/ 848161
+/*!**************************!*\
+  !*** external "node:os" ***!
+  \**************************/
+(module) {
 
-module.exports = require("os");
+module.exports = require("node:os");
 
-/***/ }),
+/***/ },
 
-/***/ 371017:
-/*!***********************!*\
-  !*** external "path" ***!
-  \***********************/
-/***/ ((module) => {
+/***/ 176760
+/*!****************************!*\
+  !*** external "node:path" ***!
+  \****************************/
+(module) {
 
-module.exports = require("path");
+module.exports = require("node:path");
 
-/***/ })
+/***/ },
+
+/***/ 446193
+/*!**************************************!*\
+  !*** external "node:string_decoder" ***!
+  \**************************************/
+(module) {
+
+module.exports = require("node:string_decoder");
+
+/***/ }
 
 /******/ 	});
 /************************************************************************/
@@ -224,6 +649,12 @@ module.exports = require("path");
 /******/ 		};
 /******/
 /******/ 		// Execute the module function
+/******/ 		if (!(moduleId in __webpack_modules__)) {
+/******/ 			delete __webpack_module_cache__[moduleId];
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
+/******/ 		}
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/
 /******/ 		// Return the exports of the module
@@ -273,31 +704,38 @@ module.exports = require("path");
 /******/
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!*******************************************!*\
-  !*** ./lib-esnext/scripts/install-run.js ***!
-  \*******************************************/
+/*!*****************************************************!*\
+  !*** ./lib-intermediate-esm/scripts/install-run.js ***!
+  \*****************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "RUSH_JSON_FILENAME": () => (/* binding */ RUSH_JSON_FILENAME),
-/* harmony export */   "findRushJsonFolder": () => (/* binding */ findRushJsonFolder),
-/* harmony export */   "getNpmPath": () => (/* binding */ getNpmPath),
-/* harmony export */   "installAndRun": () => (/* binding */ installAndRun),
-/* harmony export */   "runWithErrorAndStatusCode": () => (/* binding */ runWithErrorAndStatusCode)
+/* harmony export */   NPM_OUTPUT_CAPTURE_SCRIPT: () => (/* binding */ NPM_OUTPUT_CAPTURE_SCRIPT),
+/* harmony export */   RUSH_JSON_FILENAME: () => (/* binding */ RUSH_JSON_FILENAME),
+/* harmony export */   finalizeCapturedNpmOutput: () => (/* binding */ finalizeCapturedNpmOutput),
+/* harmony export */   findRushJsonFolder: () => (/* binding */ findRushJsonFolder),
+/* harmony export */   getNpmPath: () => (/* binding */ getNpmPath),
+/* harmony export */   installAndRun: () => (/* binding */ installAndRun),
+/* harmony export */   runWithErrorAndStatusCode: () => (/* binding */ runWithErrorAndStatusCode)
 /* harmony export */ });
-/* harmony import */ var child_process__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! child_process */ 532081);
-/* harmony import */ var child_process__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(child_process__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! fs */ 657147);
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! os */ 822037);
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! path */ 371017);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _utilities_npmrcUtilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utilities/npmrcUtilities */ 679877);
+/* harmony import */ var node_child_process__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! node:child_process */ 731421);
+/* harmony import */ var node_child_process__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(node_child_process__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var node_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! node:fs */ 973024);
+/* harmony import */ var node_fs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(node_fs__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var node_os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! node:os */ 848161);
+/* harmony import */ var node_os__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(node_os__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var node_path__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! node:path */ 176760);
+/* harmony import */ var node_path__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(node_path__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var node_string_decoder__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! node:string_decoder */ 446193);
+/* harmony import */ var node_string_decoder__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(node_string_decoder__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utilities_npmrcUtilities__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utilities/npmrcUtilities */ 359480);
+/* harmony import */ var _utilities_executionUtilities__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utilities/executionUtilities */ 953844);
 // Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 // See LICENSE in the project root for license information.
 /* eslint-disable no-console */
+
+
 
 
 
@@ -309,6 +747,69 @@ const INSTALL_RUN_LOCKFILE_PATH_VARIABLE = 'INSTALL_RUN_LOCKFILE_PATH';
 const INSTALLED_FLAG_FILENAME = 'installed.flag';
 const NODE_MODULES_FOLDER_NAME = 'node_modules';
 const PACKAGE_JSON_FILENAME = 'package.json';
+let _externalOutputCaptureId = 0;
+const NPM_OUTPUT_CAPTURE_SCRIPT = `
+const childProcess = require('node:child_process');
+const fs = require('node:fs');
+const { StringDecoder } = require('node:string_decoder');
+const [
+  command,
+  argsJson,
+  capturePath,
+  useShell,
+  maxBytesText,
+  renderStdoutText,
+  renderStderrText
+] = process.argv.slice(1);
+const child = childProcess.spawn(command, JSON.parse(argsJson), {
+  cwd: process.cwd(),
+  env: process.env,
+  shell: useShell === '1',
+  windowsVerbatimArguments: false,
+  stdio: ['inherit', 'pipe', 'pipe']
+});
+const decoders = { stdout: new StringDecoder('utf8'), stderr: new StringDecoder('utf8') };
+const maxBytes = Number(maxBytesText);
+let capturedBytes = 0;
+let overflowed = false;
+const renderedStreams = { stdout: renderStdoutText === '1', stderr: renderStderrText === '1' };
+function capture(stream, text) {
+  if (!text || overflowed) {
+    return;
+  }
+  const record = JSON.stringify({ stream, text, wasRendered: renderedStreams[stream] }) + '\\n';
+  const recordBytes = Buffer.byteLength(record);
+  if (capturedBytes + recordBytes <= maxBytes) {
+    fs.appendFileSync(capturePath, record);
+    capturedBytes += recordBytes;
+  } else {
+    overflowed = true;
+    fs.appendFileSync(capturePath, JSON.stringify({ overflow: true }) + '\\n');
+  }
+}
+function forwardAndCapture(stream, chunk) {
+  if (renderedStreams[stream]) {
+    (stream === 'stdout' ? process.stdout : process.stderr).write(chunk);
+  }
+  capture(stream, decoders[stream].write(chunk));
+}
+child.stdout.on('data', (chunk) => forwardAndCapture('stdout', chunk));
+child.stderr.on('data', (chunk) => forwardAndCapture('stderr', chunk));
+child.on('error', (error) => {
+  process.stderr.write(String(error) + '\\n');
+  process.exitCode = 1;
+});
+child.on('close', (code, signal) => {
+  capture('stdout', decoders.stdout.end());
+  capture('stderr', decoders.stderr.end());
+  if (signal) {
+    process.stderr.write('npm was terminated by signal: ' + signal + '\\n');
+    process.exitCode = 1;
+  } else {
+    process.exitCode = code === null ? 1 : code;
+  }
+});
+`;
 /**
  * Parse a package specifier (in the form of name\@version) into name and version parts.
  */
@@ -341,34 +842,34 @@ let _npmPath = undefined;
 function getNpmPath() {
     if (!_npmPath) {
         try {
-            if (_isWindows()) {
+            if (_utilities_executionUtilities__WEBPACK_IMPORTED_MODULE_6__.IS_WINDOWS) {
                 // We're on Windows
-                const whereOutput = child_process__WEBPACK_IMPORTED_MODULE_0__.execSync('where npm', { stdio: [] }).toString();
-                const lines = whereOutput.split(os__WEBPACK_IMPORTED_MODULE_2__.EOL).filter((line) => !!line);
+                const whereOutput = node_child_process__WEBPACK_IMPORTED_MODULE_0__.execSync('where npm', { stdio: [] }).toString();
+                const lines = whereOutput.split(node_os__WEBPACK_IMPORTED_MODULE_2__.EOL).filter((line) => !!line);
                 // take the last result, we are looking for a .cmd command
                 // see https://github.com/microsoft/rushstack/issues/759
                 _npmPath = lines[lines.length - 1];
             }
             else {
                 // We aren't on Windows - assume we're on *NIX or Darwin
-                _npmPath = child_process__WEBPACK_IMPORTED_MODULE_0__.execSync('command -v npm', { stdio: [] }).toString();
+                _npmPath = node_child_process__WEBPACK_IMPORTED_MODULE_0__.execSync('command -v npm', { stdio: [] }).toString();
             }
         }
         catch (e) {
             throw new Error(`Unable to determine the path to the NPM tool: ${e}`);
         }
         _npmPath = _npmPath.trim();
-        if (!fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(_npmPath)) {
+        if (!node_fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(_npmPath)) {
             throw new Error('The NPM executable does not exist');
         }
     }
     return _npmPath;
 }
 function _ensureFolder(folderPath) {
-    if (!fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(folderPath)) {
-        const parentDir = path__WEBPACK_IMPORTED_MODULE_3__.dirname(folderPath);
+    if (!node_fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(folderPath)) {
+        const parentDir = node_path__WEBPACK_IMPORTED_MODULE_3__.dirname(folderPath);
         _ensureFolder(parentDir);
-        fs__WEBPACK_IMPORTED_MODULE_1__.mkdirSync(folderPath);
+        node_fs__WEBPACK_IMPORTED_MODULE_1__.mkdirSync(folderPath);
     }
 }
 /**
@@ -382,14 +883,14 @@ function _ensureAndJoinPath(baseFolder, ...pathSegments) {
     try {
         for (let pathSegment of pathSegments) {
             pathSegment = pathSegment.replace(/[\\\/]/g, '+');
-            joinedPath = path__WEBPACK_IMPORTED_MODULE_3__.join(joinedPath, pathSegment);
-            if (!fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(joinedPath)) {
-                fs__WEBPACK_IMPORTED_MODULE_1__.mkdirSync(joinedPath);
+            joinedPath = node_path__WEBPACK_IMPORTED_MODULE_3__.join(joinedPath, pathSegment);
+            if (!node_fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(joinedPath)) {
+                node_fs__WEBPACK_IMPORTED_MODULE_1__.mkdirSync(joinedPath);
             }
         }
     }
     catch (e) {
-        throw new Error(`Error building local installation folder (${path__WEBPACK_IMPORTED_MODULE_3__.join(baseFolder, ...pathSegments)}): ${e}`);
+        throw new Error(`Error building local installation folder (${node_path__WEBPACK_IMPORTED_MODULE_3__.join(baseFolder, ...pathSegments)}): ${e}`);
     }
     return joinedPath;
 }
@@ -436,13 +937,16 @@ function _resolvePackageVersion(logger, rushCommonFolder, { name, version }) {
         // version resolves to
         try {
             const rushTempFolder = _getRushTempFolder(rushCommonFolder);
-            const sourceNpmrcFolder = path__WEBPACK_IMPORTED_MODULE_3__.join(rushCommonFolder, 'config', 'rush');
-            (0,_utilities_npmrcUtilities__WEBPACK_IMPORTED_MODULE_4__.syncNpmrc)({
+            const sourceNpmrcFolder = node_path__WEBPACK_IMPORTED_MODULE_3__.join(rushCommonFolder, 'config', 'rush');
+            (0,_utilities_npmrcUtilities__WEBPACK_IMPORTED_MODULE_5__.syncNpmrc)({
                 sourceNpmrcFolder,
                 targetNpmrcFolder: rushTempFolder,
-                logger
+                logger,
+                supportEnvVarFallbackSyntax: false,
+                // Always filter npm-incompatible properties in install-run scripts.
+                // Any warnings will be shown when running Rush commands directly.
+                filterNpmIncompatibleProperties: true
             });
-            const npmPath = getNpmPath();
             // This returns something that looks like:
             // ```
             // [
@@ -460,16 +964,11 @@ function _resolvePackageVersion(logger, rushCommonFolder, { name, version }) {
             // ```
             //
             // if only a single version matches.
-            const spawnSyncOptions = {
+            const npmVersionSpawnResult = _runNpmConfirmSuccess(['view', `${name}@${version}`, 'version', '--no-update-notifier', '--json'], {
                 cwd: rushTempFolder,
                 stdio: [],
-                shell: _isWindows()
-            };
-            const platformNpmPath = _getPlatformPath(npmPath);
-            const npmVersionSpawnResult = child_process__WEBPACK_IMPORTED_MODULE_0__.spawnSync(platformNpmPath, ['view', `${name}@${version}`, 'version', '--no-update-notifier', '--json'], spawnSyncOptions);
-            if (npmVersionSpawnResult.status !== 0) {
-                throw new Error(`"npm view" returned error code ${npmVersionSpawnResult.status}`);
-            }
+                env: process.env
+            }, 'npm view');
             const npmViewVersionOutput = npmVersionSpawnResult.stdout.toString();
             const parsedVersionOutput = JSON.parse(npmViewVersionOutput);
             const versions = Array.isArray(parsedVersionOutput)
@@ -501,15 +1000,15 @@ function findRushJsonFolder() {
         let basePath = __dirname;
         let tempPath = __dirname;
         do {
-            const testRushJsonPath = path__WEBPACK_IMPORTED_MODULE_3__.join(basePath, RUSH_JSON_FILENAME);
-            if (fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(testRushJsonPath)) {
+            const testRushJsonPath = node_path__WEBPACK_IMPORTED_MODULE_3__.join(basePath, RUSH_JSON_FILENAME);
+            if (node_fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(testRushJsonPath)) {
                 _rushJsonFolder = basePath;
                 break;
             }
             else {
                 basePath = tempPath;
             }
-        } while (basePath !== (tempPath = path__WEBPACK_IMPORTED_MODULE_3__.dirname(basePath))); // Exit the loop when we hit the disk root
+        } while (basePath !== (tempPath = node_path__WEBPACK_IMPORTED_MODULE_3__.dirname(basePath))); // Exit the loop when we hit the disk root
         if (!_rushJsonFolder) {
             throw new Error(`Unable to find ${RUSH_JSON_FILENAME}.`);
         }
@@ -521,11 +1020,11 @@ function findRushJsonFolder() {
  */
 function _isPackageAlreadyInstalled(packageInstallFolder) {
     try {
-        const flagFilePath = path__WEBPACK_IMPORTED_MODULE_3__.join(packageInstallFolder, INSTALLED_FLAG_FILENAME);
-        if (!fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(flagFilePath)) {
+        const flagFilePath = node_path__WEBPACK_IMPORTED_MODULE_3__.join(packageInstallFolder, INSTALLED_FLAG_FILENAME);
+        if (!node_fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(flagFilePath)) {
             return false;
         }
-        const fileContents = fs__WEBPACK_IMPORTED_MODULE_1__.readFileSync(flagFilePath).toString();
+        const fileContents = node_fs__WEBPACK_IMPORTED_MODULE_1__.readFileSync(flagFilePath).toString();
         return fileContents.trim() === process.version;
     }
     catch (e) {
@@ -537,7 +1036,7 @@ function _isPackageAlreadyInstalled(packageInstallFolder) {
  */
 function _deleteFile(file) {
     try {
-        fs__WEBPACK_IMPORTED_MODULE_1__.unlinkSync(file);
+        node_fs__WEBPACK_IMPORTED_MODULE_1__.unlinkSync(file);
     }
     catch (err) {
         if (err.code !== 'ENOENT' && err.code !== 'ENOTDIR') {
@@ -553,19 +1052,19 @@ function _deleteFile(file) {
  */
 function _cleanInstallFolder(rushTempFolder, packageInstallFolder, lockFilePath) {
     try {
-        const flagFile = path__WEBPACK_IMPORTED_MODULE_3__.resolve(packageInstallFolder, INSTALLED_FLAG_FILENAME);
+        const flagFile = node_path__WEBPACK_IMPORTED_MODULE_3__.resolve(packageInstallFolder, INSTALLED_FLAG_FILENAME);
         _deleteFile(flagFile);
-        const packageLockFile = path__WEBPACK_IMPORTED_MODULE_3__.resolve(packageInstallFolder, 'package-lock.json');
+        const packageLockFile = node_path__WEBPACK_IMPORTED_MODULE_3__.resolve(packageInstallFolder, 'package-lock.json');
         if (lockFilePath) {
-            fs__WEBPACK_IMPORTED_MODULE_1__.copyFileSync(lockFilePath, packageLockFile);
+            node_fs__WEBPACK_IMPORTED_MODULE_1__.copyFileSync(lockFilePath, packageLockFile);
         }
         else {
             // Not running `npm ci`, so need to cleanup
             _deleteFile(packageLockFile);
-            const nodeModulesFolder = path__WEBPACK_IMPORTED_MODULE_3__.resolve(packageInstallFolder, NODE_MODULES_FOLDER_NAME);
-            if (fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(nodeModulesFolder)) {
+            const nodeModulesFolder = node_path__WEBPACK_IMPORTED_MODULE_3__.resolve(packageInstallFolder, NODE_MODULES_FOLDER_NAME);
+            if (node_fs__WEBPACK_IMPORTED_MODULE_1__.existsSync(nodeModulesFolder)) {
                 const rushRecyclerFolder = _ensureAndJoinPath(rushTempFolder, 'rush-recycler');
-                fs__WEBPACK_IMPORTED_MODULE_1__.renameSync(nodeModulesFolder, path__WEBPACK_IMPORTED_MODULE_3__.join(rushRecyclerFolder, `install-run-${Date.now().toString()}`));
+                node_fs__WEBPACK_IMPORTED_MODULE_1__.renameSync(nodeModulesFolder, node_path__WEBPACK_IMPORTED_MODULE_3__.join(rushRecyclerFolder, `install-run-${Date.now().toString()}`));
             }
         }
     }
@@ -585,8 +1084,8 @@ function _createPackageJson(packageInstallFolder, name, version) {
             repository: "DON'T WARN",
             license: 'MIT'
         };
-        const packageJsonPath = path__WEBPACK_IMPORTED_MODULE_3__.join(packageInstallFolder, PACKAGE_JSON_FILENAME);
-        fs__WEBPACK_IMPORTED_MODULE_1__.writeFileSync(packageJsonPath, JSON.stringify(packageJsonContents, undefined, 2));
+        const packageJsonPath = node_path__WEBPACK_IMPORTED_MODULE_3__.join(packageInstallFolder, PACKAGE_JSON_FILENAME);
+        node_fs__WEBPACK_IMPORTED_MODULE_1__.writeFileSync(packageJsonPath, JSON.stringify(packageJsonContents, undefined, 2));
     }
     catch (e) {
         throw new Error(`Unable to create package.json: ${e}`);
@@ -595,95 +1094,265 @@ function _createPackageJson(packageInstallFolder, name, version) {
 /**
  * Run "npm install" in the package install folder.
  */
-function _installPackage(logger, packageInstallFolder, name, version, command) {
+function _installPackage(logger, packageInstallFolder, name, version, npmCommand, onExternalOutput, onExternalOutputOverflow, externalOutputCaptureMaxBytes, externalOutputLiveStreams) {
+    let capturePath;
     try {
         logger.info(`Installing ${name}...`);
-        const npmPath = getNpmPath();
-        const platformNpmPath = _getPlatformPath(npmPath);
-        const result = child_process__WEBPACK_IMPORTED_MODULE_0__.spawnSync(platformNpmPath, [command], {
-            stdio: 'inherit',
-            cwd: packageInstallFolder,
-            env: process.env,
-            shell: _isWindows()
-        });
-        if (result.status !== 0) {
-            throw new Error(`"npm ${command}" encountered an error`);
+        if (onExternalOutput) {
+            capturePath = node_path__WEBPACK_IMPORTED_MODULE_3__.join(packageInstallFolder, `.install-run-output-${process.pid}-${_externalOutputCaptureId++}.log`);
+            node_fs__WEBPACK_IMPORTED_MODULE_1__.closeSync(node_fs__WEBPACK_IMPORTED_MODULE_1__.openSync(capturePath, 'wx', 0o600));
         }
-        logger.info(`Successfully installed ${name}@${version}`);
+        if (capturePath) {
+            _runNpmWithCaptureConfirmSuccess([npmCommand], {
+                stdio: 'inherit',
+                cwd: packageInstallFolder,
+                env: process.env
+            }, capturePath, externalOutputCaptureMaxBytes ?? 1024 * 1024, externalOutputLiveStreams ?? { stdout: true, stderr: true }, `npm ${npmCommand}`);
+        }
+        else {
+            _runNpmConfirmSuccess([npmCommand], {
+                stdio: 'inherit',
+                cwd: packageInstallFolder,
+                env: process.env
+            }, `npm ${npmCommand}`);
+        }
     }
     catch (e) {
         throw new Error(`Unable to install package: ${e}`);
+    }
+    finally {
+        if (capturePath !== undefined) {
+            finalizeCapturedNpmOutput(capturePath, logger, onExternalOutput, onExternalOutputOverflow);
+        }
+    }
+    logger.info(`Successfully installed ${name}@${version}`);
+}
+function _reportCaptureDamage(logger, capturePath, detail) {
+    const message = `Warning: npm output capture ${JSON.stringify(capturePath)} ${detail}`;
+    try {
+        if (logger.warning) {
+            logger.warning(message, 'local-sensitive');
+        }
+        else {
+            logger.error(message, 'local-sensitive');
+        }
+    }
+    catch {
+        try {
+            process.stderr.write(`${message}\n`);
+        }
+        catch {
+            // Capture diagnostics are best-effort and must not change the install result.
+        }
+    }
+}
+function finalizeCapturedNpmOutput(capturePath, logger, onExternalOutput, onExternalOutputOverflow) {
+    let firstDamageDetail;
+    let damageCount = 0;
+    try {
+        _readCapturedNpmOutput(capturePath, onExternalOutput, onExternalOutputOverflow, (detail) => {
+            firstDamageDetail ??= detail;
+            damageCount++;
+        });
+    }
+    catch (error) {
+        firstDamageDetail ??= `could not be read: ${String(error)}.`;
+        damageCount++;
+    }
+    if (firstDamageDetail) {
+        const additionalDamage = damageCount > 1 ? ` ${damageCount - 1} additional capture issue(s) were discarded.` : '';
+        _reportCaptureDamage(logger, capturePath, `${firstDamageDetail}${additionalDamage}`);
+    }
+    try {
+        _deleteFile(capturePath);
+    }
+    catch (error) {
+        _reportCaptureDamage(logger, capturePath, `could not be deleted: ${String(error)}.`);
+    }
+}
+function _readCapturedNpmOutput(capturePath, onExternalOutput, onExternalOutputOverflow, onCaptureDamage) {
+    const fileDescriptor = node_fs__WEBPACK_IMPORTED_MODULE_1__.openSync(capturePath, 'r');
+    const buffer = Buffer.allocUnsafe(64 * 1024);
+    const decoder = new node_string_decoder__WEBPACK_IMPORTED_MODULE_4__.StringDecoder('utf8');
+    let pending = '';
+    try {
+        for (;;) {
+            const bytesRead = node_fs__WEBPACK_IMPORTED_MODULE_1__.readSync(fileDescriptor, buffer, 0, buffer.length, null);
+            if (bytesRead === 0) {
+                break;
+            }
+            pending += decoder.write(buffer.subarray(0, bytesRead));
+            let newlineIndex;
+            while ((newlineIndex = pending.indexOf('\n')) >= 0) {
+                const line = pending.slice(0, newlineIndex);
+                pending = pending.slice(newlineIndex + 1);
+                if (line) {
+                    let record;
+                    try {
+                        record = JSON.parse(line);
+                    }
+                    catch (error) {
+                        onCaptureDamage(`contains a corrupt record that was discarded: ${String(error)}.`);
+                        continue;
+                    }
+                    if (record.overflow === true) {
+                        onExternalOutputOverflow?.();
+                    }
+                    else if ((record.stream === 'stdout' || record.stream === 'stderr') &&
+                        typeof record.text === 'string') {
+                        onExternalOutput(record.stream, record.text, record.wasRendered === true);
+                    }
+                    else {
+                        onCaptureDamage('contains an invalid record that was discarded.');
+                    }
+                }
+            }
+        }
+        pending += decoder.end();
+        if (pending.trim()) {
+            onCaptureDamage('ended with a partial record that was discarded.');
+        }
+    }
+    finally {
+        node_fs__WEBPACK_IMPORTED_MODULE_1__.closeSync(fileDescriptor);
     }
 }
 /**
  * Get the ".bin" path for the package.
  */
 function _getBinPath(packageInstallFolder, binName) {
-    const binFolderPath = path__WEBPACK_IMPORTED_MODULE_3__.resolve(packageInstallFolder, NODE_MODULES_FOLDER_NAME, '.bin');
-    const resolvedBinName = _isWindows() ? `${binName}.cmd` : binName;
-    return path__WEBPACK_IMPORTED_MODULE_3__.resolve(binFolderPath, resolvedBinName);
+    const binFolderPath = node_path__WEBPACK_IMPORTED_MODULE_3__.resolve(packageInstallFolder, NODE_MODULES_FOLDER_NAME, '.bin');
+    const resolvedBinName = _utilities_executionUtilities__WEBPACK_IMPORTED_MODULE_6__.IS_WINDOWS ? `${binName}.cmd` : binName;
+    return node_path__WEBPACK_IMPORTED_MODULE_3__.resolve(binFolderPath, resolvedBinName);
 }
-/**
- * Returns a cross-platform path - windows must enclose any path containing spaces within double quotes.
- */
-function _getPlatformPath(platformPath) {
-    return _isWindows() && platformPath.includes(' ') ? `"${platformPath}"` : platformPath;
-}
-function _isWindows() {
-    return os__WEBPACK_IMPORTED_MODULE_2__.platform() === 'win32';
+function _buildShellCommand(command, args) {
+    const escapedCommand = (0,_utilities_executionUtilities__WEBPACK_IMPORTED_MODULE_6__.escapeArgumentIfNeeded)(command);
+    const escapedArgs = args.map((arg) => (0,_utilities_executionUtilities__WEBPACK_IMPORTED_MODULE_6__.escapeArgumentIfNeeded)(arg));
+    return [escapedCommand, ...escapedArgs].join(' ');
 }
 /**
  * Write a flag file to the package's install directory, signifying that the install was successful.
  */
 function _writeFlagFile(packageInstallFolder) {
     try {
-        const flagFilePath = path__WEBPACK_IMPORTED_MODULE_3__.join(packageInstallFolder, INSTALLED_FLAG_FILENAME);
-        fs__WEBPACK_IMPORTED_MODULE_1__.writeFileSync(flagFilePath, process.version);
+        const flagFilePath = node_path__WEBPACK_IMPORTED_MODULE_3__.join(packageInstallFolder, INSTALLED_FLAG_FILENAME);
+        node_fs__WEBPACK_IMPORTED_MODULE_1__.writeFileSync(flagFilePath, process.version);
     }
     catch (e) {
         throw new Error(`Unable to create installed.flag file in ${packageInstallFolder}`);
     }
 }
-function installAndRun(logger, packageName, packageVersion, packageBinName, packageBinArgs, lockFilePath = process.env[INSTALL_RUN_LOCKFILE_PATH_VARIABLE]) {
+/**
+ * Run npm under the platform's shell and throw if it didn't succeed.
+ */
+function _runNpmConfirmSuccess(args, options, commandNameForLogging) {
+    const command = getNpmPath();
+    let result;
+    if (_utilities_executionUtilities__WEBPACK_IMPORTED_MODULE_6__.IS_WINDOWS) {
+        result = node_child_process__WEBPACK_IMPORTED_MODULE_0__.spawnSync(_buildShellCommand(command, args), {
+            ...options,
+            shell: true,
+            windowsVerbatimArguments: false
+        });
+    }
+    else {
+        result = node_child_process__WEBPACK_IMPORTED_MODULE_0__.spawnSync(command, args, options);
+    }
+    _throwIfSpawnFailed(result, commandNameForLogging);
+    return result;
+}
+function _runNpmWithCaptureConfirmSuccess(args, options, capturePath, captureMaxBytes, liveStreams, commandNameForLogging) {
+    const npmPath = getNpmPath();
+    const command = _utilities_executionUtilities__WEBPACK_IMPORTED_MODULE_6__.IS_WINDOWS ? _buildShellCommand(npmPath, args) : npmPath;
+    const commandArgs = _utilities_executionUtilities__WEBPACK_IMPORTED_MODULE_6__.IS_WINDOWS ? [] : args;
+    const result = node_child_process__WEBPACK_IMPORTED_MODULE_0__.spawnSync(process.execPath, [
+        '-e',
+        NPM_OUTPUT_CAPTURE_SCRIPT,
+        command,
+        JSON.stringify(commandArgs),
+        capturePath,
+        _utilities_executionUtilities__WEBPACK_IMPORTED_MODULE_6__.IS_WINDOWS ? '1' : '0',
+        String(captureMaxBytes),
+        liveStreams.stdout ? '1' : '0',
+        liveStreams.stderr ? '1' : '0'
+    ], options);
+    _throwIfSpawnFailed(result, commandNameForLogging);
+    return result;
+}
+function _throwIfSpawnFailed(result, commandNameForLogging) {
+    if (result.status !== 0) {
+        if (!result.status) {
+            // Is status null or undefined?
+            if (result.error) {
+                throw new Error(`"${commandNameForLogging}" failed: ${result.error.message.toString()}`);
+            }
+            else if (result.signal) {
+                throw new Error(`"${commandNameForLogging}" was terminated by signal: ${result.signal}`);
+            }
+            else {
+                throw new Error(`"${commandNameForLogging}" failed for an unknown reason`);
+            }
+        }
+        else {
+            throw new Error(`"${commandNameForLogging}" returned error code ${result.status}`);
+        }
+    }
+}
+function installAndRun(logger, packageName, packageVersion, packageBinName, packageBinArgs, lockFilePath = process.env[INSTALL_RUN_LOCKFILE_PATH_VARIABLE], options = {}) {
     const rushJsonFolder = findRushJsonFolder();
-    const rushCommonFolder = path__WEBPACK_IMPORTED_MODULE_3__.join(rushJsonFolder, 'common');
+    const rushCommonFolder = node_path__WEBPACK_IMPORTED_MODULE_3__.join(rushJsonFolder, 'common');
     const rushTempFolder = _getRushTempFolder(rushCommonFolder);
     const packageInstallFolder = _ensureAndJoinPath(rushTempFolder, 'install-run', `${packageName}@${packageVersion}`);
     if (!_isPackageAlreadyInstalled(packageInstallFolder)) {
         // The package isn't already installed
         _cleanInstallFolder(rushTempFolder, packageInstallFolder, lockFilePath);
-        const sourceNpmrcFolder = path__WEBPACK_IMPORTED_MODULE_3__.join(rushCommonFolder, 'config', 'rush');
-        (0,_utilities_npmrcUtilities__WEBPACK_IMPORTED_MODULE_4__.syncNpmrc)({
+        const sourceNpmrcFolder = node_path__WEBPACK_IMPORTED_MODULE_3__.join(rushCommonFolder, 'config', 'rush');
+        (0,_utilities_npmrcUtilities__WEBPACK_IMPORTED_MODULE_5__.syncNpmrc)({
             sourceNpmrcFolder,
             targetNpmrcFolder: packageInstallFolder,
-            logger
+            logger,
+            supportEnvVarFallbackSyntax: false,
+            // Always filter npm-incompatible properties in install-run scripts.
+            // Any warnings will be shown when running Rush commands directly.
+            filterNpmIncompatibleProperties: true
         });
         _createPackageJson(packageInstallFolder, packageName, packageVersion);
-        const command = lockFilePath ? 'ci' : 'install';
-        _installPackage(logger, packageInstallFolder, packageName, packageVersion, command);
+        const installCommand = lockFilePath ? 'ci' : 'install';
+        _installPackage(logger, packageInstallFolder, packageName, packageVersion, installCommand, options.onExternalOutput, options.onExternalOutputOverflow, options.externalOutputCaptureMaxBytes, options.externalOutputLiveStreams);
         _writeFlagFile(packageInstallFolder);
     }
-    const statusMessage = `Invoking "${packageBinName} ${packageBinArgs.join(' ')}"`;
+    const invocation = options.onExternalOutput
+        ? packageBinName
+        : `${packageBinName} ${packageBinArgs.join(' ')}`;
+    const statusMessage = `Invoking "${invocation}"`;
     const statusMessageLine = new Array(statusMessage.length + 1).join('-');
     logger.info('\n' + statusMessage + '\n' + statusMessageLine + '\n');
+    options.prepareToRun?.();
     const binPath = _getBinPath(packageInstallFolder, packageBinName);
-    const binFolderPath = path__WEBPACK_IMPORTED_MODULE_3__.resolve(packageInstallFolder, NODE_MODULES_FOLDER_NAME, '.bin');
+    const binFolderPath = node_path__WEBPACK_IMPORTED_MODULE_3__.resolve(packageInstallFolder, NODE_MODULES_FOLDER_NAME, '.bin');
     // Windows environment variables are case-insensitive.  Instead of using SpawnSyncOptions.env, we need to
     // assign via the process.env proxy to ensure that we append to the right PATH key.
     const originalEnvPath = process.env.PATH || '';
     let result;
     try {
-        // `npm` bin stubs on Windows are `.cmd` files
-        // Node.js will not directly invoke a `.cmd` file unless `shell` is set to `true`
-        const platformBinPath = _getPlatformPath(binPath);
-        process.env.PATH = [binFolderPath, originalEnvPath].join(path__WEBPACK_IMPORTED_MODULE_3__.delimiter);
-        result = child_process__WEBPACK_IMPORTED_MODULE_0__.spawnSync(platformBinPath, packageBinArgs, {
+        process.env.PATH = [binFolderPath, originalEnvPath].join(node_path__WEBPACK_IMPORTED_MODULE_3__.delimiter);
+        const spawnOptions = {
             stdio: 'inherit',
-            windowsVerbatimArguments: false,
-            shell: _isWindows(),
             cwd: process.cwd(),
             env: process.env
-        });
+        };
+        if (_utilities_executionUtilities__WEBPACK_IMPORTED_MODULE_6__.IS_WINDOWS) {
+            result = node_child_process__WEBPACK_IMPORTED_MODULE_0__.spawnSync(_buildShellCommand(binPath, packageBinArgs), {
+                ...spawnOptions,
+                windowsVerbatimArguments: false,
+                // `npm` bin stubs on Windows are `.cmd` files
+                // Node.js will not directly invoke a `.cmd` file unless `shell` is set to `true`
+                shell: true
+            });
+        }
+        else {
+            result = node_child_process__WEBPACK_IMPORTED_MODULE_0__.spawnSync(binPath, packageBinArgs, spawnOptions);
+        }
     }
     finally {
         process.env.PATH = originalEnvPath;
@@ -708,9 +1377,10 @@ function runWithErrorAndStatusCode(logger, fn) {
 function _run() {
     const [nodePath /* Ex: /bin/node */, scriptPath /* /repo/common/scripts/install-run-rush.js */, rawPackageSpecifier /* qrcode@^1.2.0 */, packageBinName /* qrcode */, ...packageBinArgs /* [-f, myproject/lib] */] = process.argv;
     if (!nodePath) {
-        throw new Error('Unexpected exception: could not detect node path');
+        throw new Error('Could not detect node path');
     }
-    if (path__WEBPACK_IMPORTED_MODULE_3__.basename(scriptPath).toLowerCase() !== 'install-run.js') {
+    const scriptFileName = node_path__WEBPACK_IMPORTED_MODULE_3__.basename(scriptPath).toLowerCase();
+    if (scriptFileName !== 'install-run.js' && scriptFileName !== 'install-run') {
         // If install-run.js wasn't directly invoked, don't execute the rest of this function. Return control
         // to the script that (presumably) imported this file
         return;
@@ -720,7 +1390,10 @@ function _run() {
         console.log('Example: install-run.js qrcode@1.2.2 qrcode https://rushjs.io');
         process.exit(1);
     }
-    const logger = { info: console.log, error: console.error };
+    const logger = {
+        info: (text) => console.log(text),
+        error: (text) => console.error(text)
+    };
     runWithErrorAndStatusCode(logger, () => {
         const rushJsonFolder = findRushJsonFolder();
         const rushCommonFolder = _ensureAndJoinPath(rushJsonFolder, 'common');
