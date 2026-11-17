@@ -2,8 +2,25 @@
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/pnpm-config.schema.json",
   "strictPeerDependencies": true,
   "globalOverrides": {
+    "@babel/generator@7.29.14": "7.29.13",
+    "@babel/helper-module-transforms@7.29.14": "7.29.13",
+    "@babel/helper-string-parser@7.29.14": "7.29.13",
+    "@babel/helpers@7.29.14": "7.29.13",
+    "@babel/parser@7.29.14": "7.29.13",
+    "@babel/traverse@7.29.14": "7.29.13",
+    "@babel/types@7.29.14": "7.29.11",
     "@typescript-eslint/typescript-estree@6.21.0>minimatch": "9.0.9",
+    "@jridgewell/resolve-uri@3.1.3": "3.1.2",
+    "baseline-browser-mapping@2.11.38": "2.11.35",
+    "brace-expansion@1.1.22": "1.1.21",
+    "browserslist@4.29.6": "4.29.5",
+    "caniuse-lite@1.0.30001826": "1.0.30001823",
+    "electron-to-chromium@1.5.487": "1.5.479",
+    "graceful-fs@4.2.12": "4.2.11",
     "jsonpath@1.3.0>underscore": "1.13.8",
-    "minimatch@9.0.9>brace-expansion": "2.1.7"
+    "minimatch@9.0.9>brace-expansion": "2.1.7",
+    "node-releases@2.0.65": "2.0.63",
+    "update-browserslist-db@1.4.0": "1.3.4",
+    "ws@7.5.14": "7.5.13"
   }
 }
