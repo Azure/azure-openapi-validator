@@ -19,7 +19,7 @@
     "lint": "eslint ./src --ext .ts --max-warnings=0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20.17.0"
   },
   "repository": {
     "type": "git",
@@ -43,13 +43,13 @@
     "@apidevtools/json-schema-ref-parser": "^9.0.9",
     "@microsoft.azure/openapi-validator-core": "^1.0.0",
     "@stoplight/json-ref-resolver": "^3.1.6",
-    "@stoplight/spectral-core": "^1.18.3",
+    "@stoplight/spectral-core": "^1.24.1",
     "@stoplight/spectral-formats": "^1.6.0",
     "@stoplight/spectral-functions": "^1.7.2",
     "@stoplight/types": "^14.1.1",
     "jsonpath-plus": "^10.3.0",
     "string.prototype.matchall": "^4.0.11",
-    "lodash": "^4.17.21",
+    "lodash": "^4.18.1",
     "tslib": "^2.3.1"
   },
   "devDependencies": {
@@ -61,19 +61,19 @@
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.3.2",
     "jest": "^27.0.6",
     "eslint": "^8.57.0",
-    "eslint-plugin-jest": "^28.3.0",
+    "eslint-plugin-jest": "28.3.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-unicorn": "^52.0.0",
     "eslint-plugin-import": "^2.29.1",
-    "nimma": "0.2.2",
-    "prettier": "^3.2.5",
-    "rollup": "^2.70.1",
+    "nimma": "0.2.3",
+    "prettier": "3.9.10",
+    "rollup": "^2.80.0",
     "ts-jest": "^27.1.3",
-    "typescript": "~4.6.4"
+    "typescript": "~4.9.5"
   },
   "jest": {
     "collectCoverage": true,

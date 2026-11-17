@@ -28,6 +28,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}.x
 
+      - name: Apply npm quarantine window
+        shell: bash
+        run: echo "npm_config_before=$(node -p 'new Date(Date.now() - 7 * 86400000).toISOString()')" >> "$GITHUB_ENV"
+
       - name: rush install
         run: node common/scripts/install-run-rush.js install
 

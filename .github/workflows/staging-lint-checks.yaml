@@ -33,6 +33,9 @@ jobs:
         with:
           node-version: 24
 
+      - name: Apply npm quarantine window
+        run: echo "npm_config_before=$(node -p 'new Date(Date.now() - 7 * 86400000).toISOString()')" >> "$GITHUB_ENV"
+
       - name: Checkout specs repository (sparse - only needed RPs)
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

@@ -9,6 +9,10 @@ steps:
       versionSpec: '${{ parameters.NodeVersion }}'
     displayName: 'Install Node.js ${{ parameters.NodeVersion }}'
 
+  - script: |
+      node -e "console.log('##vso[task.setvariable variable=npm_config_before]' + new Date(Date.now() - 7 * 86400000).toISOString())"
+    displayName: 'Apply npm quarantine window'
+
   - template: /eng/common/pipelines/templates/steps/create-authenticated-npmrc.yml
     parameters:
       npmrcPath: $(Build.SourcesDirectory)/common/config/rush/.npmrc
