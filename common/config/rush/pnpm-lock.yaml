@@ -97,7 +97,7 @@ importers:
         version: 11.1.0(eslint@8.57.1)
       eslint-plugin-prettier:
         specifier: ^5.1.3
-        version: 5.5.7(eslint@8.57.1)(prettier@3.10.1)
+        version: 5.5.7(eslint@8.57.1)(prettier@3.9.10)
       eslint-plugin-unicorn:
         specifier: ^52.0.0
         version: 52.0.0(eslint@8.57.1)
@@ -129,8 +129,8 @@ importers:
         specifier: 0.2.3
         version: 0.2.3
       prettier:
-        specifier: ^3.2.5
-        version: 3.10.1
+        specifier: 3.9.10
+        version: 3.9.10
       rollup:
         specifier: ^2.80.0
         version: 2.80.0
@@ -504,19 +504,19 @@ packages:
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
   '@rush-temp/openapi-validator-core@file:projects/openapi-validator-core.tgz':
-    resolution: {integrity: sha512-0H18jxzw/vvC3Nyt/l1pA8z1mDGZVeJF83IAeLIxzg08HeFuVqFMb+C6YzoJO06WqWiiViUN7Snx3CL6yIIJ5A==, tarball: file:projects/openapi-validator-core.tgz}
+    resolution: {integrity: sha512-vLOkUgrSuB3/ioq0FvpFvS6ZLzPAO1FKHdpm1998R2z+QxE+bQTaR7QE2QGg4YZ+Cj/qw9lqSHvqBxhyRlTQGg==, tarball: file:projects/openapi-validator-core.tgz}
     version: 0.0.0
 
   '@rush-temp/openapi-validator-regression@file:projects/openapi-validator-regression.tgz':
-    resolution: {integrity: sha512-tRQR4/2QqYUA/lFTk1YgPyiqWDzcR/+c/QO6KmwYpsvz62HwGX1jVz1ZwTdJ9zUYrKlToRTTlksZG5hTFOb6pA==, tarball: file:projects/openapi-validator-regression.tgz}
+    resolution: {integrity: sha512-TvHyrF6JUNA0ibDxHKg6UoWrX2HxZwx7RQiEwFqDkc6KhlIeB6ZIErvgd2V6/otXYtXW3Q1HHD1UZJ0ML/UANQ==, tarball: file:projects/openapi-validator-regression.tgz}
     version: 0.0.0
 
   '@rush-temp/openapi-validator-rulesets@file:projects/openapi-validator-rulesets.tgz':
-    resolution: {integrity: sha512-gSDsV9aAfkzM4IR8aPAlXSEAFY+gfHRFS7VGoZk0kojw1ruz08Dpzh07LPav1QIfk+zv0YhrpTb2vifIbJuKqg==, tarball: file:projects/openapi-validator-rulesets.tgz}
+    resolution: {integrity: sha512-UgueHOcmaXP+ox8qp1TGEe46hSm9utyehNRF9UmLNcVT9MylIZwDcCgduRSoaUzE6UGzZhFGMIbzDXAeScnUBw==, tarball: file:projects/openapi-validator-rulesets.tgz}
     version: 0.0.0
 
   '@rush-temp/openapi-validator@file:projects/openapi-validator.tgz':
-    resolution: {integrity: sha512-t/k/ik96GxvAWA0nSaXU7t5lIpcALeaPVyZNMFdYSm2aCrQFjp1Ti1Xa8zbniCyMbKWAVi3Q0Q9TH4ElsT9eng==, tarball: file:projects/openapi-validator.tgz}
+    resolution: {integrity: sha512-TgaSYIpmNtsKKt1zNr4WSqUQTZgRllhtLWvyWAWRfaCuDKeb5bHUa9r8XQ9dsPkK5vCl3bFMNOVjeDob8hB5Aw==, tarball: file:projects/openapi-validator.tgz}
     version: 0.0.0
 
   '@scarf/scarf@1.4.0':
@@ -2308,8 +2308,8 @@ packages:
     resolution: {integrity: sha512-SxToR7P8Y2lWmv/kTzVLC1t/GDI2WGjMwNhLLE9qtH8Q13C+aEmuRlzDst4Up4s0Wc8sF2M+J57iB3cMLqftfg==}
     engines: {node: '>=6.0.0'}
 
-  prettier@3.10.1:
-    resolution: {integrity: sha512-70vp3ZUYoPlFbF9uiTdXHUUCGEIp7d4+6p+8DYbkm2jP7x/3i/paXVF6dopSI3zd/CEitrZN1rc4i85xWmmXlg==}
+  prettier@3.9.10:
+    resolution: {integrity: sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3417,13 +3417,13 @@ snapshots:
       eslint-plugin-import: 2.32.0(eslint@8.57.1)
       eslint-plugin-jest: 28.3.0(@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@4.9.5))(eslint@8.57.1)(typescript@4.9.5))(eslint@8.57.1)(jest@27.5.1)(typescript@4.9.5)
       eslint-plugin-node: 11.1.0(eslint@8.57.1)
-      eslint-plugin-prettier: 5.5.7(eslint@8.57.1)(prettier@3.10.1)
+      eslint-plugin-prettier: 5.5.7(eslint@8.57.1)(prettier@3.9.10)
       eslint-plugin-unicorn: 52.0.0(eslint@8.57.1)
       jest: 27.5.1
       jsonc-parser: 3.3.1
       jsonpath-plus: 10.4.0
       lodash: 4.18.1
-      prettier: 3.10.1
+      prettier: 3.9.10
       ts-jest: 27.1.5(@babel/core@7.29.13)(@types/jest@27.5.2)(babel-jest@27.5.1(@babel/core@7.29.13))(jest@27.5.1)(typescript@4.9.5)
       tslib: 2.9.1
       typescript: 4.9.5
@@ -3454,13 +3454,13 @@ snapshots:
       eslint-plugin-import: 2.32.0(eslint@8.57.1)
       eslint-plugin-jest: 28.3.0(@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@4.9.5))(eslint@8.57.1)(typescript@4.9.5))(eslint@8.57.1)(jest@27.5.1)(typescript@4.9.5)
       eslint-plugin-node: 11.1.0(eslint@8.57.1)
-      eslint-plugin-prettier: 5.5.7(eslint@8.57.1)(prettier@3.10.1)
+      eslint-plugin-prettier: 5.5.7(eslint@8.57.1)(prettier@3.9.10)
       eslint-plugin-unicorn: 52.0.0(eslint@8.57.1)
       glob: 10.5.0
       jest: 27.5.1
       jsonpath: 1.3.0
       lodash: 4.18.1
-      prettier: 3.10.1
+      prettier: 3.9.10
       ts-jest: 27.1.5(@babel/core@7.29.13)(@types/jest@27.5.2)(babel-jest@27.5.1(@babel/core@7.29.13))(jest@27.5.1)(typescript@4.9.5)
       tslib: 2.9.1
       typescript: 4.9.5
@@ -3497,14 +3497,14 @@ snapshots:
       eslint-plugin-import: 2.32.0(eslint@8.57.1)
       eslint-plugin-jest: 28.3.0(@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@4.9.5))(eslint@8.57.1)(typescript@4.9.5))(eslint@8.57.1)(jest@27.5.1)(typescript@4.9.5)
       eslint-plugin-node: 11.1.0(eslint@8.57.1)
-      eslint-plugin-prettier: 5.5.7(eslint@8.57.1)(prettier@3.10.1)
+      eslint-plugin-prettier: 5.5.7(eslint@8.57.1)(prettier@3.9.10)
       eslint-plugin-unicorn: 52.0.0(eslint@8.57.1)
       jest: 27.5.1
       js-yaml: 4.3.2
       jsonpath-plus: 10.4.0
       lodash: 4.18.1
       nimma: 0.2.3
-      prettier: 3.10.1
+      prettier: 3.9.10
       rollup: 2.80.0
       string.prototype.matchall: 4.1.0
       ts-jest: 27.1.5(@babel/core@7.29.13)(@types/jest@27.5.2)(babel-jest@27.5.1(@babel/core@7.29.13))(jest@27.5.1)(typescript@4.9.5)
@@ -3539,11 +3539,11 @@ snapshots:
       eslint-plugin-import: 2.32.0(eslint@8.57.1)
       eslint-plugin-jest: 28.3.0(@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@4.9.5))(eslint@8.57.1)(typescript@4.9.5))(eslint@8.57.1)(jest@27.5.1)(typescript@4.9.5)
       eslint-plugin-node: 11.1.0(eslint@8.57.1)
-      eslint-plugin-prettier: 5.5.7(eslint@8.57.1)(prettier@3.10.1)
+      eslint-plugin-prettier: 5.5.7(eslint@8.57.1)(prettier@3.9.10)
       eslint-plugin-unicorn: 52.0.0(eslint@8.57.1)
       jest: 27.5.1
       js-yaml: 4.3.2
-      prettier: 3.10.1
+      prettier: 3.9.10
       ts-jest: 27.1.5(@babel/core@7.29.13)(@types/jest@27.5.2)(babel-jest@27.5.1(@babel/core@7.29.13))(jest@27.5.1)(typescript@4.9.5)
       tslib: 2.9.1
       typescript: 4.9.5
@@ -4536,10 +4536,10 @@ snapshots:
       resolve: 1.22.14
       semver: 6.3.2
 
-  eslint-plugin-prettier@5.5.7(eslint@8.57.1)(prettier@3.10.1):
+  eslint-plugin-prettier@5.5.7(eslint@8.57.1)(prettier@3.9.10):
     dependencies:
       eslint: 8.57.1
-      prettier: 3.10.1
+      prettier: 3.9.10
       prettier-linter-helpers: 1.0.1
       synckit: 0.12.3
 
@@ -5839,7 +5839,7 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier@3.10.1: {}
+  prettier@3.9.10: {}
 
   pretty-format@27.5.1:
     dependencies:
