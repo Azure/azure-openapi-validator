@@ -5,7 +5,9 @@ const excludeKeywords = ["publicKey"].map((keyword) => keyword.toLowerCase())
 function isPotentialSensitiveProperty(propertyName: string): boolean {
   const lowerName = propertyName.toLowerCase()
   return (
-    sensitiveKeywords.some((keyword) => lowerName.endsWith(keyword) && !lowerName.startsWith(keyword)) &&
+    (lowerName === "password" ||
+      lowerName.endsWith("passphrase") ||
+      sensitiveKeywords.some((keyword) => lowerName.endsWith(keyword) && !lowerName.startsWith(keyword))) &&
     !excludeKeywords.some((keyword) => lowerName.endsWith(keyword) && !lowerName.startsWith(keyword))
   )
 }
