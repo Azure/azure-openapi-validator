@@ -1,23 +1,22 @@
-// Synchronous POST must have 200 & 204 return codes and LRO POST must have 202 & 200 or 202 & 204 or 202, 200 & 204 return codes.
+// Synchronous POST must have 200 & default or 204 & default return codes. LRO POST must have 202 & default return codes only,
+// with final state conveyed via x-ms-long-running-operation-options.
 
 const SYNC_POST_RESPONSES_OK = ["200", "default"]
 const SYNC_POST_RESPONSES_NO_CONTENT = ["204", "default"]
-const LR_POST_RESPONSES_OK = ["202", "200", "default"]
-const LR_POST_RESPONSES_NO_CONTENT = ["202", "204", "default"]
-const HTTP_STATUS_CODE_OK = "200"
+const LR_POST_RESPONSES = ["202", "default"]
 const HTTP_STATUS_CODE_ACCEPTED = "202"
 const HTTP_STATUS_CODE_NO_CONTENT = "204"
 
 const SYNC_ERROR =
   "Synchronous POST operations must have one of the following combinations of responses - 200 and default ; 204 and default. No other response codes are permitted."
 const LR_ERROR =
-  "Long-running POST operations must initially return 202 with a default response and no schema. The final response must be 200 with a schema if one is required, or 204 with no schema if not. No other response codes are permitted."
-const LR_NO_SCHEMA_ERROR_OK =
-  "200 return code does not have a schema specified. LRO POST must have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified."
+  "Long-running POST operations must only return 202 with a default response. The final state schema must be specified via x-ms-long-running-operation-options. No other response codes are permitted."
+const LR_MISSING_OPTIONS_ERROR =
+  'A LRO Post operation must have "x-ms-long-running-operation-options" extension with "final-state-via" set to "location" or "azure-async-operation".'
 const LR_SCHEMA_ERROR_ACCEPTED = "202 response for a LRO POST operation must not have a response schema specified."
 const LR_SCHEMA_ERROR_NO_CONTENT = "204 response for a Sync/LRO POST operation must not have a response schema specified."
 const EmptyResponse_ERROR =
-  "POST operation response codes must be non-empty. Synchronous POST operation must have response codes 200 and default or 204 and default. LRO POST operations must have response codes 202 and default. They must also have a 200 return code if only if the final response is intended to have a schema, if not the 200 return code must not be specified."
+  "POST operation response codes must be non-empty. Synchronous POST operation must have response codes 200 and default or 204 and default. LRO POST operations must have response codes 202 and default. The final state must be defined via x-ms-long-running-operation-options."
 
 export const PostResponseCodes = (postOp: any, _opts: any, ctx: any) => {
   if (postOp === null || typeof postOp !== "object") {
@@ -52,12 +51,26 @@ export const PostResponseCodes = (postOp: any, _opts: any, ctx: any) => {
 
     const respSet = new Set(responses)
     const setEquals = (target: string[]) => target.length === respSet.size && target.every((v) => respSet.has(v))
-    const matchesOk = setEquals(LR_POST_RESPONSES_OK)
-    const matchesNoContent = setEquals(LR_POST_RESPONSES_NO_CONTENT)
 
-    if (!(matchesOk || matchesNoContent)) {
+    if (!setEquals(LR_POST_RESPONSES)) {
       errors.push({
         message: LR_ERROR,
+        path: path,
+      })
+    }
+
+    const lroOptions = postOp["x-ms-long-running-operation-options"]
+    const finalStateVia = lroOptions?.["final-state-via"]
+    if (!lroOptions || (finalStateVia !== "location" && finalStateVia !== "azure-async-operation")) {
+      errors.push({
+        message: LR_MISSING_OPTIONS_ERROR,
+        path: path,
+      })
+    }
+
+    if (postOp.responses[HTTP_STATUS_CODE_ACCEPTED]?.schema) {
+      errors.push({
+        message: LR_SCHEMA_ERROR_ACCEPTED,
         path: path,
       })
     }
@@ -74,27 +87,13 @@ export const PostResponseCodes = (postOp: any, _opts: any, ctx: any) => {
         path: path,
       })
     }
-  }
 
-  if (postOp.responses[HTTP_STATUS_CODE_OK] && !postOp.responses[HTTP_STATUS_CODE_OK]?.schema) {
-    errors.push({
-      message: LR_NO_SCHEMA_ERROR_OK,
-      path: path,
-    })
-  }
-
-  if (postOp.responses[HTTP_STATUS_CODE_ACCEPTED]?.schema) {
-    errors.push({
-      message: LR_SCHEMA_ERROR_ACCEPTED,
-      path: path,
-    })
-  }
-
-  if (postOp.responses[HTTP_STATUS_CODE_NO_CONTENT]?.schema) {
-    errors.push({
-      message: LR_SCHEMA_ERROR_NO_CONTENT,
-      path: path,
-    })
+    if (postOp.responses[HTTP_STATUS_CODE_NO_CONTENT]?.schema) {
+      errors.push({
+        message: LR_SCHEMA_ERROR_NO_CONTENT,
+        path: path,
+      })
+    }
   }
 
   return errors
