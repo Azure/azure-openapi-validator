@@ -1,6 +1,5 @@
 import { fileURLToPath } from "url"
-import { resolveUri } from "@azure-tools/uri"
-import { OpenApiTypes, getOpenapiType, isUriAbsolute } from "@microsoft.azure/openapi-validator-core"
+import { OpenApiTypes, getOpenapiType, isUriAbsolute, resolveUri } from "@microsoft.azure/openapi-validator-core"
 import {
   SpectralRulesetPayload,
   deleteRulesPropertiesInPayloadNotValidForSpectralRules,

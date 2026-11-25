@@ -1,8 +1,8 @@
-import { createFileOrFolderUri,readUri } from "@azure-tools/uri";
 import _ from "lodash"
 import { nodes, stringify } from "./jsonpath"
 import { SwaggerInventory } from "./swaggerInventory";
 import { ISwaggerInventory, OpenApiTypes,JsonPath } from "./types"
+import { createFileOrFolderUri, readUri } from "./uri";
 /**
  *
  * @param doc

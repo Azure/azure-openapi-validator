@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator",
+      "comment": "Replace the archived URI dependency and require Node.js >=20.17.0.",
+      "type": "major"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator"
+}
