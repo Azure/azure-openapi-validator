@@ -72,13 +72,13 @@ export function resolveUri(baseUri: string, pathOrUri: string): string {
 
 export function toRawDataUrl(uri: string): string {
   uri = simplifyUri(uri)
-  if (uri.startsWith("https://github.com")) {
+  if (uri.startsWith("https://github.com/")) {
     uri = uri.replace(/^https?:\/\/(github.com)(\/[^/]+\/[^/]+\/)(blob|tree)\/(.*)$/gi, "https://raw.githubusercontent.com$2$4")
   }
   if (uri.startsWith("gist://")) {
     uri = uri.replace(/^gist:\/\/([^/]+\/[^/]+)$/gi, "https://gist.githubusercontent.com/$1/raw/")
   }
-  if (uri.startsWith("https://gist.github.com")) {
+  if (uri.startsWith("https://gist.github.com/")) {
     uri = uri.replace(/^https?:\/\/gist.github.com\/([^/]+\/[^/]+)$/gi, "https://gist.githubusercontent.com/$1/raw/")
   }
   return uri.startsWith(relativeProtocol) ? uri.slice(relativeProtocol.length) : uri
