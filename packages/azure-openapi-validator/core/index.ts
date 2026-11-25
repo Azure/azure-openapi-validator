@@ -9,5 +9,6 @@ export * from "./src/runner"
 export * from "./src/ruleLoader"
 export * from "./src/api"
 export * from "./src/utils"
+export { createFileOrFolderUri, resolveUri } from "./src/uri"
 
 

@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "npm run build && jest",
+    "test": "npm run build && node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
     "lint:fix": "eslint ./src --fix --ext .ts",
     "lint": "eslint ./src --ext .ts --max-warnings=0"
   },
@@ -27,17 +27,23 @@
     "url": "https://github.com/Azure/azure-openapi-validator/issues"
   },
   "homepage": "https://github.com/Azure/azure-openapi-validator/blob/main/README.md",
+  "engines": {
+    "node": ">=20.17.0"
+  },
   "dependencies": {
-    "@azure-tools/uri": "^3.1.1",
     "dependency-graph": "^1.0.0",
+    "file-url": "^3.0.0",
+    "get-uri": "^8.0.2",
     "jsonc-parser": "^3.2.1",
     "jsonpath-plus": "^10.3.0",
     "lodash": "^4.18.1",
-    "tslib": "^2.3.1"
+    "tslib": "^2.3.1",
+    "urijs": "^1.19.11"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.0",
     "@types/node": "^18.11.9",
+    "@types/urijs": "^1.19.19",
     "@types/jest": "^27.0.6",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",

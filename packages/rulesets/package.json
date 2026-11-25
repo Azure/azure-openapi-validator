@@ -13,7 +13,7 @@
     "build-esm": "tsc -p ./tsconfig.spectral.esm.json",
     "rollup-spectral": "rollup -c ./rollup.config.js",
     "test": "npm run test-spectral && npm run test-native",
-    "test-native": "jest -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.native.config.js",
+    "test-native": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.native.config.js",
     "test-spectral": "jest -u --max-old-space-size=10192 --ci --reporters=default --config ./jest.config.js",
     "lint:fix": "eslint ./src --fix --ext .ts",
     "lint": "eslint ./src --ext .ts --max-warnings=0"

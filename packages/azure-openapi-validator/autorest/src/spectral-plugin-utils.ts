@@ -1,5 +1,4 @@
-import { createFileOrFolderUri } from "@azure-tools/uri"
-import { LintResultMessage, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
+import { createFileOrFolderUri, LintResultMessage, OpenApiTypes } from "@microsoft.azure/openapi-validator-core"
 import { SpectralRulesetPayload, disableRulesInRuleset, spectralRulesets } from "@microsoft.azure/openapi-validator-rulesets"
 import { ISpectralDiagnostic, Ruleset, Spectral } from "@stoplight/spectral-core"
 import { DiagnosticSeverity } from "@stoplight/types"

@@ -1,4 +1,4 @@
-import { resolveUri } from "@azure-tools/uri";
+import { resolveUri } from "./uri";
 import { isExample, traverse ,isUriAbsolute} from "./utils"
 
 export class Resolver {

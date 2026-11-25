@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft.azure/openapi-validator-rulesets",
+      "comment": "Enable ESM support for native rule tests.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@microsoft.azure/openapi-validator-rulesets"
+}
